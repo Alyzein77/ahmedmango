@@ -3,7 +3,7 @@ import { CheckCircle2, XCircle } from "lucide-react";
 
 export const RatingSystem = () => {
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section id="rating" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-black mb-4">

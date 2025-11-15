@@ -5,7 +5,7 @@ import { Gift, Trophy, Star, Zap } from "lucide-react";
 
 export const RewardsSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
+    <section id="rewards" className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-slide-up">
           <div className="inline-block mb-4">

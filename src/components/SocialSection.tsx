@@ -30,7 +30,7 @@ export const SocialSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-background to-primary/5">
+    <section id="social" className="py-20 px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-black mb-4">
