@@ -15,7 +15,7 @@ export const Hero = () => {
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Content */}
-          <div className="text-center md:text-right space-y-6 animate-slide-up order-2 md:order-1">
+          <div className="text-center md:text-right space-y-6 animate-slide-up order-2 md:order-2">
             <div className="inline-block">
               <span className="inline-block px-4 py-2 bg-primary/10 border-2 border-primary rounded-full text-primary font-bold text-sm mb-4 animate-pulse-glow">
                 🎯 نظام التقييم الأشهر في المنطقة
@@ -34,7 +34,7 @@ export const Hero = () => {
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
               <Button 
                 size="lg" 
                 className="text-lg font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-8"
@@ -51,7 +51,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 justify-center md:justify-end pt-8 flex-wrap">
+            <div className="flex gap-8 justify-center md:justify-start pt-8 flex-wrap">
               <div className="text-center">
                 <div className="text-3xl font-black text-primary">500K+</div>
                 <div className="text-sm text-muted-foreground">متابع</div>
@@ -68,7 +68,7 @@ export const Hero = () => {
           </div>
 
           {/* Image */}
-          <div className="relative order-1 md:order-2 animate-bounce-in">
+          <div className="relative order-1 md:order-1 animate-bounce-in">
             <div className="relative w-full max-w-md mx-auto">
               <img 
                 src={heroMango} 

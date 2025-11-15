@@ -24,7 +24,7 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b-2 border-primary/20 shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 flex-row-reverse">
           {/* Logo */}
           <a 
             href="#" 
@@ -34,14 +34,14 @@ export const Navbar = () => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <span className="text-4xl animate-wiggle">🥭</span>
             <span className="text-2xl font-black text-secondary">
               أحمد مانجو
             </span>
+            <span className="text-4xl animate-wiggle">🥭</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 flex-row-reverse">
             {navLinks.map((link) => (
               <a
                 key={link.href}
