@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Music2, Instagram, Facebook } from "lucide-react";
 
 export const SocialSection = () => {
   const socialPlatforms = [
     {
       name: "TikTok",
-      icon: "📱",
+      Icon: Music2,
       followers: "350K+",
       handle: "@ahmed_mangoo",
       color: "from-pink-500 to-purple-600",
@@ -13,7 +14,7 @@ export const SocialSection = () => {
     },
     {
       name: "Instagram",
-      icon: "📸",
+      Icon: Instagram,
       followers: "120K+",
       handle: "@ahmedmango.official",
       color: "from-purple-500 to-pink-500",
@@ -21,7 +22,7 @@ export const SocialSection = () => {
     },
     {
       name: "Facebook",
-      icon: "👍",
+      Icon: Facebook,
       followers: "80K+",
       handle: "AhmedMango.Official",
       color: "from-blue-500 to-blue-600",
@@ -49,8 +50,8 @@ export const SocialSection = () => {
               style={{ animationDelay: `${idx * 0.1}s` }}
               onClick={() => window.open(platform.url, '_blank')}
             >
-              <div className={`text-6xl mb-4 group-hover:scale-110 transition-transform`}>
-                {platform.icon}
+              <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-primary to-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <platform.Icon className="w-10 h-10 text-white" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-black mb-2 text-secondary">

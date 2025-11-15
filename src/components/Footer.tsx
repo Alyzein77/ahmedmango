@@ -1,5 +1,25 @@
+import { Music2, Instagram, Facebook } from "lucide-react";
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { 
+      name: "TikTok",
+      url: "https://www.tiktok.com/@ahmed_mangoo",
+      Icon: Music2
+    },
+    {
+      name: "Instagram", 
+      url: "https://www.instagram.com/ahmedmango.official/",
+      Icon: Instagram
+    },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/AhmedMango.Official/",
+      Icon: Facebook
+    }
+  ];
 
   return (
     <footer className="bg-secondary text-secondary-foreground py-12 px-4">
@@ -30,10 +50,19 @@ export const Footer = () => {
           {/* Social */}
           <div className="text-center md:text-left">
             <h4 className="font-bold text-lg mb-3">تابعنا</h4>
-            <div className="flex gap-4 justify-center md:justify-start text-2xl">
-              <a href="https://www.tiktok.com/@ahmed_mangoo" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">📱</a>
-              <a href="https://www.instagram.com/ahmedmango.official/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">📸</a>
-              <a href="https://www.facebook.com/AhmedMango.Official/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">👍</a>
+            <div className="flex gap-4 justify-center md:justify-start">
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.name}
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 rounded-full bg-secondary-foreground/10 hover:bg-primary flex items-center justify-center hover:scale-110 transition-all group"
+                  aria-label={social.name}
+                >
+                  <social.Icon className="w-5 h-5 text-secondary-foreground group-hover:text-primary-foreground" />
+                </a>
+              ))}
             </div>
             <p className="text-secondary-foreground/60 text-sm mt-4">
               للتعاون والإعلانات:<br />
