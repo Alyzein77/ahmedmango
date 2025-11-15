@@ -3,7 +3,7 @@ import heroMango from "@/assets/hero-mango.png";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12">
+    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-6xl animate-float opacity-30">🥭</div>
