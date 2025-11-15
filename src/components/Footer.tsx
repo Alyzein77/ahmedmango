@@ -26,7 +26,7 @@ export const Footer = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
-          <div className="text-center md:text-right">
+          <div className="text-center md:text-right order-1">
             <h3 className="text-2xl font-black mb-3">
               🥭 أحمد مانجو
             </h3>
@@ -37,7 +37,7 @@ export const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className="text-center">
+          <div className="text-center order-2">
             <h4 className="font-bold text-lg mb-3">روابط سريعة</h4>
             <ul className="space-y-2 text-secondary-foreground/80">
               <li><a href="#" className="hover:text-primary transition-colors">المراجعات</a></li>
@@ -48,9 +48,9 @@ export const Footer = () => {
           </div>
 
           {/* Social */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-right order-3">
             <h4 className="font-bold text-lg mb-3">تابعنا</h4>
-            <div className="flex gap-4 justify-center md:justify-start">
+            <div className="flex gap-4 justify-center md:justify-end">
               {socialLinks.map((social) => (
                 <a 
                   key={social.name}

@@ -25,7 +25,7 @@ export const RewardsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           {/* Image */}
-          <div className="relative animate-bounce-in order-2 md:order-1">
+          <div className="relative animate-bounce-in order-2 md:order-2">
             <img 
               src={rewardsGame} 
               alt="Rewards Game" 
@@ -35,7 +35,7 @@ export const RewardsSection = () => {
           </div>
 
           {/* Content */}
-          <div className="space-y-6 animate-slide-up order-1 md:order-2">
+          <div className="space-y-6 animate-slide-up order-1 md:order-1">
             <h3 className="text-2xl md:text-3xl font-black text-secondary">
               طريقة اللعبة سهلة! 🎯
             </h3>
