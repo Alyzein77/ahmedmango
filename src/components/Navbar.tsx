@@ -40,7 +40,7 @@ export const Navbar = () => {
             behavior: "smooth"
           });
         }}>
-            <img src={mangoLogo} alt="Mango Snacks Logo" className="h-12 w-auto" />
+            <img src={mangoLogo} alt="Mango Snacks Logo" className="h-24 w-auto" />
             <span className="font-black font-sans text-xl text-[#ffbd23]">
               أحمد مانجو
             </span>
