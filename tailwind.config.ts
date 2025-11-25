@@ -13,9 +13,6 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -41,18 +38,6 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-        },
-        pink: {
-          DEFAULT: "hsl(var(--pink))",
-          foreground: "hsl(var(--pink-foreground))",
-        },
-        sky: {
-          DEFAULT: "hsl(var(--sky))",
-          foreground: "hsl(var(--sky-foreground))",
-        },
-        orange: {
-          DEFAULT: "hsl(var(--orange))",
-          foreground: "hsl(var(--orange-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

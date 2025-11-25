@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import mangoLogo from "@/assets/mango-logo.jpg";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,17 +28,13 @@ export const Navbar = () => {
           {/* Logo - on the right in RTL */}
           <a 
             href="#" 
-            className="flex items-center gap-3 hover:scale-105 transition-transform"
+            className="flex items-center gap-2 hover:scale-105 transition-transform"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <img 
-              src={mangoLogo} 
-              alt="Mango Snacks Logo" 
-              className="h-12 w-auto"
-            />
+            <span className="text-4xl animate-wiggle">🥭</span>
             <span className="text-2xl font-black text-secondary">
               أحمد مانجو
             </span>

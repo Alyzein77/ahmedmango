@@ -9,65 +9,55 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 250 43% 16%;
+    --foreground: 20 14% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 250 43% 16%;
+    --card-foreground: 20 14% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 250 43% 16%;
+    --popover-foreground: 20 14% 10%;
 
-    /* Brand Primary Yellow */
-    --primary: 42 100% 64%;
-    --primary-foreground: 250 43% 16%;
+    /* Mango Yellow - Primary Brand Color */
+    --primary: 42 100% 54%;
+    --primary-foreground: 20 14% 10%;
 
-    /* Brand Navy Blue */
-    --secondary: 250 43% 16%;
-    --secondary-foreground: 42 100% 64%;
+    /* Mango Black - Bold Secondary */
+    --secondary: 20 14% 10%;
+    --secondary-foreground: 42 100% 54%;
 
-    --muted: 42 50% 96%;
-    --muted-foreground: 250 20% 50%;
+    --muted: 45 20% 96%;
+    --muted-foreground: 20 14% 46%;
 
-    /* Brand Magenta - Accent */
-    --accent: 326 100% 41%;
+    /* Fresh Green - 2staka Approved */
+    --accent: 142 76% 36%;
     --accent-foreground: 0 0% 100%;
 
-    /* Brand Light Pink */
-    --pink: 340 60% 90%;
-    --pink-foreground: 250 43% 16%;
-
-    /* Brand Light Blue */
-    --sky: 195 70% 75%;
-    --sky-foreground: 250 43% 16%;
-
-    /* Brand Orange */
-    --orange: 33 100% 55%;
-    --orange-foreground: 250 43% 16%;
-
-    /* Destructive */
-    --destructive: 326 100% 41%;
+    /* Spicy Red - Fastaka Rejected */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 250 20% 85%;
-    --input: 250 20% 85%;
-    --ring: 42 100% 64%;
+    --border: 42 30% 85%;
+    --input: 42 30% 85%;
+    --ring: 42 100% 54%;
 
     --radius: 1rem;
     
-    /* Brand Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(42 100% 64%), hsl(33 100% 55%));
+    /* Mango Gradients */
+    --gradient-mango: linear-gradient(135deg, hsl(42 100% 54%), hsl(30 100% 50%));
     --gradient-hero: linear-gradient(180deg, hsl(42 100% 96%), hsl(0 0% 100%));
-    --gradient-accent: linear-gradient(135deg, hsl(326 100% 41%), hsl(326 100% 50%));
-    --gradient-sky: linear-gradient(135deg, hsl(195 70% 75%), hsl(195 70% 85%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 70% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 90% 50%));
     
     /* Shadows */
-    --shadow-primary: 0 8px 32px hsl(42 100% 64% / 0.3);
-    --shadow-card: 0 4px 16px hsl(250 43% 16% / 0.08);
-    --shadow-bold: 0 12px 40px hsl(250 43% 16% / 0.15);
+    --shadow-mango: 0 8px 32px hsl(42 100% 54% / 0.25);
+    --shadow-card: 0 4px 16px hsl(20 14% 10% / 0.08);
+    --shadow-bold: 0 12px 40px hsl(20 14% 10% / 0.15);
     
     /* Transitions */
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -87,42 +77,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 250 43% 16%;
+    --background: 20 14% 10%;
     --foreground: 42 100% 96%;
 
-    --card: 250 30% 20%;
+    --card: 20 20% 15%;
     --card-foreground: 42 100% 96%;
 
-    --popover: 250 30% 20%;
+    --popover: 20 20% 15%;
     --popover-foreground: 42 100% 96%;
 
-    --primary: 42 100% 64%;
-    --primary-foreground: 250 43% 16%;
+    --primary: 42 100% 54%;
+    --primary-foreground: 20 14% 10%;
 
     --secondary: 42 100% 96%;
-    --secondary-foreground: 250 43% 16%;
+    --secondary-foreground: 20 14% 10%;
 
-    --muted: 250 20% 25%;
-    --muted-foreground: 42 50% 75%;
+    --muted: 20 20% 20%;
+    --muted-foreground: 42 30% 70%;
 
-    --accent: 326 100% 41%;
+    --accent: 142 76% 36%;
     --accent-foreground: 0 0% 100%;
 
-    --pink: 340 40% 30%;
-    --pink-foreground: 340 60% 90%;
-
-    --sky: 195 50% 40%;
-    --sky-foreground: 0 0% 100%;
-
-    --orange: 33 100% 55%;
-    --orange-foreground: 250 43% 16%;
-
-    --destructive: 326 100% 41%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 250 20% 30%;
-    --input: 250 20% 30%;
-    --ring: 42 100% 64%;
+    --border: 20 20% 25%;
+    --input: 20 20% 25%;
+    --ring: 42 100% 54%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -140,6 +121,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground;
   }
 }
