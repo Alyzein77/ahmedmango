@@ -38,9 +38,9 @@ export const Navbar = () => {
             <img 
               src={mangoLogo} 
               alt="Mango Snacks Logo" 
-              className="h-12 w-auto"
+              className="h-24 w-auto"
             />
-            <span className="text-2xl font-black text-secondary">
+            <span className="text-2xl font-black text-accent">
               أحمد مانجو
             </span>
           </a>
