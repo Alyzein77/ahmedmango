@@ -45,8 +45,8 @@ export const Hero = () => {
           {/* Content */}
           <div className="text-center lg:text-right space-y-8 animate-slide-up order-2 lg:order-2">
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight text-white drop-shadow-lg">
-              Welcome to<br />
-              <span className="inline-block mt-2">the Mangoverse.</span>
+              أهلاً بك في<br />
+              <span className="inline-block mt-2">عالم المانجو</span>
             </h1>
             
             <p className="text-2xl md:text-3xl text-white font-bold leading-relaxed drop-shadow-md">
