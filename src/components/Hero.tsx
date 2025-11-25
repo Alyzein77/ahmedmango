@@ -1,15 +1,19 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
-
 export const Hero = () => {
-  return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12">
+  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-6xl animate-float opacity-30">🥭</div>
-        <div className="absolute top-40 right-20 text-4xl animate-float opacity-20" style={{ animationDelay: '1s' }}>✅</div>
-        <div className="absolute bottom-40 left-20 text-5xl animate-float opacity-25" style={{ animationDelay: '2s' }}>❌</div>
-        <div className="absolute bottom-20 right-10 text-6xl animate-float opacity-30" style={{ animationDelay: '0.5s' }}>🔥</div>
+        <div className="absolute top-40 right-20 text-4xl animate-float opacity-20" style={{
+        animationDelay: '1s'
+      }}>✅</div>
+        <div className="absolute bottom-40 left-20 text-5xl animate-float opacity-25" style={{
+        animationDelay: '2s'
+      }}>❌</div>
+        <div className="absolute bottom-20 right-10 text-6xl animate-float opacity-30" style={{
+        animationDelay: '0.5s'
+      }}>🔥</div>
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -35,17 +39,10 @@ export const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-              <Button 
-                size="lg" 
-                className="text-lg font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-8"
-              >
+              <Button size="lg" className="text-lg font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-8">
                 🎮 العب واكسب جوائز
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8"
-              >
+              <Button size="lg" variant="outline" className="text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8">
                 📱 شوف المراجعات
               </Button>
             </div>
@@ -70,17 +67,12 @@ export const Hero = () => {
           {/* Image */}
           <div className="relative order-1 md:order-1 animate-bounce-in">
             <div className="relative w-full max-w-md mx-auto">
-              <img 
-                src={heroMango} 
-                alt="Ahmed Mango Mascot" 
-                className="w-full h-auto drop-shadow-2xl animate-float"
-              />
+              <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
