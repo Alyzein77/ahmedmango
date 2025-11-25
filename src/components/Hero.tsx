@@ -1,10 +1,16 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 import mangoSmile from "@/assets/mango-smile.jpg";
+import mangoPattern from "@/assets/mango-pattern.png";
 
 export const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-orange to-primary px-4 py-20">
+      {/* Mango Pattern Background */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 bg-repeat" style={{ backgroundImage: `url(${mangoPattern})`, backgroundSize: '400px' }}></div>
+      </div>
+      
       {/* Playful Doodles Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Mango outlines */}
