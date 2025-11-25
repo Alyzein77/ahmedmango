@@ -40,7 +40,7 @@ export const Navbar = () => {
               alt="Mango Snacks Logo" 
               className="h-24 w-auto"
             />
-            <span className="text-2xl font-black text-accent">
+            <span className="text-2xl font-black text-orange">
               أحمد مانجو
             </span>
           </a>
