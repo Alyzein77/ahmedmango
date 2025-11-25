@@ -27,8 +27,8 @@ export const Hero = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-black leading-tight">
-              <span className="block text-secondary">أحمد مانجو</span>
-              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow">
+              <span className="block text-secondary font-sans">أحمد مانجو</span>
+              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow text-6xl">
                 2استكا أو فاستكا؟
               </span>
             </h1>
