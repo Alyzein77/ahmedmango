@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { RatingSystem } from "@/components/RatingSystem";
+import { MangoApproachSection } from "@/components/MangoApproachSection";
 import { SponsorBanner } from "@/components/SponsorBanner";
 import { RewardsSection } from "@/components/RewardsSection";
 import { SponsorsShowcase } from "@/components/SponsorsShowcase";
@@ -25,6 +26,7 @@ const Index = () => {
       </div>
       
       <RatingSystem />
+      <MangoApproachSection />
       <RewardsSection />
       
       {/* Sponsors Showcase Section */}
