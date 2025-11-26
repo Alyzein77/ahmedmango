@@ -14,7 +14,7 @@ export const Hero = () => {
         <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           
           {/* Image - Mobile First */}
-          <div className="relative order-1 animate-bounce-in flex justify-center w-full md:absolute md:-left-[13rem] lg:-left-[23rem] md:top-1/2 md:-translate-y-1/2">
+          <div className="relative order-1 animate-bounce-in flex justify-center w-full md:absolute md:-left-[18rem] lg:-left-[28rem] md:top-[40%] md:-translate-y-1/2">
             <div className="relative w-2/3 sm:w-1/2 md:w-full max-w-5xl">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
               {/* Glow Effect */}
