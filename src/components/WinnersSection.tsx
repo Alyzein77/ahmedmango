@@ -28,7 +28,7 @@ export const WinnersSection = () => {
   ];
 
   return (
-    <section id="winners" className="py-20 px-4 bg-muted/30">
+    <section id="winners" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-slide-up">
           <div className="inline-flex items-center gap-2 mb-4 flex-wrap justify-center">

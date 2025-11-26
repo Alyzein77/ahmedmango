@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, XCircle } from "lucide-react";
 export const RatingSystem = () => {
-  return <section id="rating" className="py-20 px-4 bg-muted/30">
+  return <section id="rating" className="py-12 sm:py-16 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-slide-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4">
