@@ -21,8 +21,8 @@ export const Hero = () => {
             </div>
             
             <h1 className="text-7xl md:text-9xl font-black leading-tight">
-              <span className="block font-sans text-right drop-shadow-lg text-slate-50 text-9xl mt-[103px] mr-[103px] mb-[103px] ml-[103px] py-0 px-0 my-[33px] mx-[84px]">أحمد مانجو</span>
-              <span className="block text-slate-900 drop-shadow-lg font-sans text-right px-0 my-[31px] mx-0 text-7xl md:text-7xl font-normal">
+              <span className="inline-block font-sans text-right drop-shadow-lg text-slate-50 text-9xl">أحمد مانجو</span>
+              <span className="inline-block text-slate-900 drop-shadow-lg font-sans text-right text-7xl md:text-7xl font-normal">
                 2استكا أو فاستكا؟
               </span>
             </h1>
