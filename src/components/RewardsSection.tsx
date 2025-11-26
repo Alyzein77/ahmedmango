@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import rewardsGame from "@/assets/rewards-game.png";
 import { Gift, Trophy, Star, Zap } from "lucide-react";
 export const RewardsSection = () => {
-  return <section id="rewards" className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
+  return <section id="rewards" className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-slide-up">
           <div className="inline-block mb-4">

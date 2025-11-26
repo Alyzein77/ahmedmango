@@ -49,7 +49,7 @@ const tierLabels = {
 
 export const SponsorsShowcase = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-background to-muted/20">
+    <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4">

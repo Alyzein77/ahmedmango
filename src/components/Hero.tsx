@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 export const Hero = () => {
-  return <section id="hero" className="relative min-h-[100vh] sm:min-h-[90vh] flex items-center justify-center px-4 py-8 sm:py-12 overflow-hidden" style={{
+  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-12" style={{
     backgroundImage: 'url(/hero-bg.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -11,51 +11,51 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center">
-          {/* Content */}
-          <div className="flex flex-col items-center md:items-end space-y-4 sm:space-y-6 md:space-y-10 animate-slide-up order-2 md:order-2 w-full">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+          <div className="flex flex-col items-end space-y-6 md:space-y-10 animate-slide-up order-1 md:order-2 w-full">
             
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-black leading-tight text-center md:text-right w-full">
-              <div className="text-gray-50">أحمد مانجو</div>
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-medium mt-2 md:mt-4">
+            
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black leading-tight text-right w-full">
+              <div className="text-right text-gray-50 border-none border-0">أحمد مانجو</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium mt-2 md:mt-4 text-right">
                 2استكا أو فاستكا؟
               </div>
             </h1>
             
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-center md:text-right">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right px-4 md:px-0">
               مراجعات صادقة للمنتجات اليومية 🍿<br />
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start pt-4 md:pt-8 w-full">
-              <Button size="lg" className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 bg-[#e20351] w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start pt-4 md:pt-8 w-full px-4 md:px-0">
+              <Button size="lg" className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-6 sm:px-8 md:px-12 py-4 md:py-6 bg-[#e20351]">
                 🎮 العب واكسب جوائز
               </Button>
-              <Button size="lg" variant="outline" className="text-sm sm:text-base md:text-lg lg:text-xl font-bold border-2 bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-white rounded-full px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 lg:py-6 border-white/0 w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold border-2 bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-white rounded-full px-6 sm:px-8 md:px-12 py-4 md:py-6 border-white/0">
                 📱 شوف المراجعات
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-12 pt-6 md:pt-12 w-full">
+            <div className="gap-4 sm:gap-8 md:gap-12 justify-center pt-6 md:pt-12 flex flex-row flex-wrap md:flex-nowrap md:items-center md:justify-end w-full px-4 md:px-0">
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black drop-shadow-md text-gray-50">٥٠٠+</div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-50">ألف متابع</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black drop-shadow-md text-gray-50">٥٠٠ ألف +</div>
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-50">متابع</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black drop-shadow-md text-gray-50">١٠٠٠+</div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-50">منتج</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black drop-shadow-md text-gray-50">١٠٠٠+</div>
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-50">منتج مراجع</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black drop-shadow-md text-gray-50">٢٠٠+</div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-gray-50">فيديو</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black drop-shadow-md text-gray-50">٢٠٠+</div>
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-50">فيديو</div>
               </div>
             </div>
           </div>
 
           {/* Image */}
-          <div className="relative order-1 md:order-1 animate-bounce-in">
-            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-4xl mx-auto md:mx-0">
+          <div className="relative order-2 md:order-1 animate-bounce-in flex justify-center md:absolute md:-left-[13rem] lg:-left-[23rem] md:top-1/2 md:-translate-y-1/2">
+            <div className="relative w-3/4 sm:w-2/3 md:w-full max-w-5xl">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
