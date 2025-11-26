@@ -13,25 +13,22 @@ export const Hero = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Content */}
-          <div className="flex flex-col items-end space-y-10 animate-slide-up order-1 md:order-2">
-            <div className="flex justify-end">
-              <span className="inline-block px-4 py-2 bg-white/90 border-2 border-slate-900 rounded-full text-slate-900 font-bold text-xl shadow-lg">
-                🎯 نظام التقييم الأشهر في المنطقة
-              </span>
-            </div>
-            
-            <h1 className="text-7xl md:text-9xl font-black leading-tight flex flex-col items-end">
-              <span className="font-sans text-right drop-shadow-lg text-slate-50 text-9xl">أحمد مانجو</span>
-            <span className="drop-shadow-lg font-sans text-7xl md:text-7xl font-medium text-slate-50 mt-[114px] mr-[114px] mb-[114px] ml-[114px] mx-0 px-0 text-right my-[30px] whitespace-nowrap">
-              2استكا أو فاستكا؟
+          <div className="flex flex-col items-end space-y-10 animate-slide-up order-1 md:order-2 w-full">
+            <span className="inline-block px-4 py-2 bg-white/90 border-2 border-slate-900 rounded-full text-slate-900 font-bold text-xl shadow-lg text-right">
+              🎯 نظام التقييم الأشهر في المنطقة
             </span>
+            
+            <h1 className="text-7xl md:text-9xl font-black leading-tight text-right w-full">
+              <div className="text-right">أحمد مانجو</div>
+              <div className="text-7xl md:text-7xl font-medium mt-4 text-right whitespace-nowrap">
+                2استكا أو فاستكا؟
+              </div>
             </h1>
             
-            <div className="flex justify-end">
-              <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right">مراجعات صادقة للمنتجات اليومية 🍿<br />
-                لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
-              </p>
-            </div>
+            <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right">
+              مراجعات صادقة للمنتجات اليومية 🍿<br />
+              لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-8">
               <Button size="lg" className="text-2xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-12 py-6 bg-[#e20351]">
