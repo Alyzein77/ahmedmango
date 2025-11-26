@@ -59,9 +59,9 @@ export const Hero = () => {
           </div>
 
           {/* Image */}
-          <div className="relative order-2 md:order-1 animate-bounce-in md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2">
-            <div className="relative w-full max-w-7xl">
-              <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" style={{ transform: 'scaleX(-1)' }} />
+          <div className="relative order-2 md:order-1 animate-bounce-in md:absolute md:-left-32 md:top-1/2 md:-translate-y-1/2">
+            <div className="relative w-full max-w-3xl">
+              <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
             </div>
