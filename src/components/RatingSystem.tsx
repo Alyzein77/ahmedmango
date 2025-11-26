@@ -26,9 +26,9 @@ export const RatingSystem = () => {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center">
-              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">طعم حلو 😋</span>
-              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">سعر كويس 💰</span>
-              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">جودة عالية ⭐</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">طعم حلو 😋</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">سعر كويس 💰</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">جودة عالية ⭐</span>
             </div>
           </Card>
 
