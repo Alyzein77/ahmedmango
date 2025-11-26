@@ -43,15 +43,15 @@ export const Hero = () => {
 
             {/* Stats */}
             <div className="gap-12 justify-center pt-12 flex flex-row md:flex md:items-center md:justify-end">
-              <div className="text-center">
+              <div className="flex items-center gap-2">
                 <div className="text-5xl md:text-6xl font-black text-slate-900 drop-shadow-md">٥٠٠ ألف+</div>
                 <div className="text-lg md:text-xl text-slate-800 font-semibold">متابع</div>
               </div>
-              <div className="text-center">
+              <div className="flex items-center gap-2">
                 <div className="text-5xl md:text-6xl font-black text-slate-900 drop-shadow-md">١٠٠٠+</div>
                 <div className="text-lg md:text-xl text-slate-800 font-semibold">منتج مراجع</div>
               </div>
-              <div className="text-center">
+              <div className="flex items-center gap-2">
                 <div className="text-5xl md:text-6xl font-black text-slate-900 drop-shadow-md">٢٠٠+</div>
                 <div className="text-lg md:text-xl text-slate-800 font-semibold">فيديو</div>
               </div>
