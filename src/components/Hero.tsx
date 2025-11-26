@@ -22,7 +22,7 @@ export const Hero = () => {
             
             <h1 className="text-7xl md:text-9xl font-black leading-tight flex flex-col items-end">
               <span className="font-sans text-right drop-shadow-lg text-slate-50 text-9xl">أحمد مانجو</span>
-              <span className="text-slate-900 drop-shadow-lg font-sans text-right text-7xl md:text-7xl font-normal">
+              <span className="text-slate-900 drop-shadow-lg font-sans text-right text-7xl md:text-7xl font-medium">
                 2استكا أو فاستكا؟
               </span>
             </h1>
