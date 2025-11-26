@@ -33,11 +33,11 @@ export const SocialSection = () => {
   return (
     <section id="social" className="py-20 px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+        <div className="text-center mb-8 md:mb-12 animate-slide-up">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
             <span className="text-secondary">تابعني على السوشيال ميديا 📱</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             فيديوهات يومية، مراجعات حصرية، وتفاعل مباشر معاك
           </p>
         </div>
@@ -78,17 +78,17 @@ export const SocialSection = () => {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-gradient-to-r from-primary via-orange-500 to-primary p-8 md:p-12 rounded-2xl text-center shadow-2xl animate-slide-up">
+        <div className="bg-gradient-to-r from-primary via-orange-500 to-primary p-6 sm:p-8 md:p-12 rounded-2xl text-center shadow-2xl animate-slide-up">
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-black mb-4 text-primary-foreground">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 text-primary-foreground">
               🔥 متفوتش أي فيديو جديد!
             </h3>
-            <p className="text-xl mb-6 text-primary-foreground/90 font-medium">
+            <p className="text-base sm:text-lg md:text-xl mb-6 text-primary-foreground/90 font-medium">
               فعّل الإشعارات عشان توصلك كل المراجعات والجوائز الجديدة
             </p>
             <Button 
               size="lg"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-xl font-black px-8 py-6 rounded-full hover:scale-105 transition-transform shadow-xl"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-base sm:text-lg md:text-xl font-black px-6 sm:px-8 py-4 md:py-6 rounded-full hover:scale-105 transition-transform shadow-xl"
             >
               🔔 فعّل الإشعارات
             </Button>

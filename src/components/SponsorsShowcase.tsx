@@ -51,11 +51,11 @@ export const SponsorsShowcase = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4">
             شركاؤنا المميزون
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             نفخر بشراكتنا مع أفضل العلامات التجارية لتقديم أفضل تجربة لمتابعينا
           </p>
         </div>
@@ -63,25 +63,25 @@ export const SponsorsShowcase = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Featured Gold Sponsor */}
           <Card className={`${tierStyles.gold} border-2 md:col-span-2`}>
-            <CardContent className="p-8">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                  <span className="bg-yellow-500 text-yellow-950 px-4 py-2 rounded-lg font-bold text-sm">
+            <CardContent className="p-4 sm:p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+                <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                  <span className="bg-yellow-500 text-yellow-950 px-3 py-1 sm:px-4 sm:py-2 rounded-lg font-bold text-xs sm:text-sm">
                     {tierLabels.gold}
                   </span>
-                  <div className="w-24 h-24 bg-background/80 rounded-2xl flex items-center justify-center border-2 border-border">
-                    <span className="text-4xl">👑</span>
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-background/80 rounded-2xl flex items-center justify-center border-2 border-border">
+                    <span className="text-3xl sm:text-4xl">👑</span>
                   </div>
-                  <div className="text-right">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <div className="text-center sm:text-right">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">
                       {sponsors[0].name}
                     </h3>
-                    <p className="text-muted-foreground">{sponsors[0].description}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{sponsors[0].description}</p>
                   </div>
                 </div>
                 <a
                   href={sponsors[0].website}
-                  className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform text-lg shadow-xl"
+                  className="bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:scale-105 transition-transform text-sm sm:text-base md:text-lg shadow-xl w-full sm:w-auto text-center"
                 >
                   احجز مساحتك الآن
                 </a>
@@ -123,17 +123,17 @@ export const SponsorsShowcase = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <div className="bg-gradient-to-l from-primary/10 to-secondary/10 border-2 border-primary/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-3">
+        <div className="mt-8 md:mt-12 text-center">
+          <div className="bg-gradient-to-l from-primary/10 to-secondary/10 border-2 border-primary/30 rounded-2xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
               هل تريد أن تكون شريكاً؟
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 max-w-2xl mx-auto px-4">
               انضم إلى قائمة شركائنا واحصل على تغطية إعلامية مميزة أمام آلاف المتابعين المهتمين
             </p>
             <a
               href="mailto:business@ahmadmango.com"
-              className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform shadow-xl"
+              className="inline-block bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:scale-105 transition-transform shadow-xl text-sm sm:text-base"
             >
               تواصل معنا للرعاية
             </a>
