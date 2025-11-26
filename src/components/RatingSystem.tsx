@@ -5,7 +5,7 @@ export const RatingSystem = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-black mb-4">
-            <span className="text-secondary">نظام التقييم 🎯</span>
+            <span className="text-secondary font-sans text-6xl">نظام التقييم 🎯</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             كل منتج بجربه بيتقيم بطريقة واحدة بسيطة وصادقة
@@ -33,9 +33,9 @@ export const RatingSystem = () => {
           </Card>
 
           {/* فاستكا - Bad */}
-          <Card className="p-8 text-center hover:scale-105 transition-transform bg-destructive/10 border-2 border-destructive/30 hover:border-destructive cursor-pointer group animate-slide-up" style={{
+          <Card style={{
           animationDelay: '0.2s'
-        }}>
+        }} className="p-8 text-center hover:scale-105 transition-transform border-destructive/30 hover:border-destructive cursor-pointer group animate-slide-up bg-[#1a1349] border-0">
             <div className="w-24 h-24 mx-auto mb-6 bg-destructive rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow">
               <XCircle className="w-14 h-14 text-white" strokeWidth={3} />
             </div>
