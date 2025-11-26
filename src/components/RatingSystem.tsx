@@ -35,7 +35,7 @@ export const RatingSystem = () => {
           </Card>
 
           {/* فاستكا - Bad */}
-          <Card className="p-8 text-center hover:scale-105 transition-transform bg-gradient-to-br from-destructive/10 to-background border-2 border-destructive/30 hover:border-destructive cursor-pointer group animate-slide-up" style={{
+          <Card className="p-8 text-center hover:scale-105 transition-transform bg-destructive/10 border-2 border-destructive/30 hover:border-destructive cursor-pointer group animate-slide-up" style={{
           animationDelay: '0.2s'
         }}>
             <div className="w-24 h-24 mx-auto mb-6 bg-destructive rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow">
