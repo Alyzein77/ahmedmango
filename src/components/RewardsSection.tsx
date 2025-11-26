@@ -5,18 +5,18 @@ import { Gift, Trophy, Star, Zap } from "lucide-react";
 export const RewardsSection = () => {
   return <section id="rewards" className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-slide-up">
+        <div className="text-center mb-8 md:mb-12 animate-slide-up">
           <div className="inline-block mb-4">
-            <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-bold animate-pulse-glow">
+            <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs sm:text-sm font-bold animate-pulse-glow">
               🎁 جديد!
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4">
             <span className="bg-gradient-to-r from-primary via-orange-500 to-destructive bg-clip-text text-transparent">
               العب واكسب جوائز! 🎮
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             شارك، تفاعل، واكسب نقاط لجوائز حقيقية كل أسبوع
           </p>
         </div>
@@ -29,8 +29,8 @@ export const RewardsSection = () => {
           </div>
 
           {/* Content */}
-          <div className="space-y-6 animate-slide-up order-1 md:order-1">
-            <h3 className="text-2xl md:text-3xl font-black text-secondary">
+          <div className="space-y-4 md:space-y-6 animate-slide-up order-1 md:order-1">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-secondary">
               طريقة اللعبة سهلة! 🎯
             </h3>
             
@@ -66,7 +66,7 @@ export const RewardsSection = () => {
               </div>
             </div>
 
-            <Button size="lg" className="w-full text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-6">
+            <Button size="lg" className="w-full text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-4 md:py-6">
               🚀 ابدأ اللعب دلوقتي
             </Button>
           </div>

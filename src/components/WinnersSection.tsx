@@ -30,15 +30,15 @@ export const WinnersSection = () => {
   return (
     <section id="winners" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-slide-up">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Trophy className="w-8 h-8 text-primary animate-wiggle" />
-            <h2 className="text-4xl md:text-5xl font-black">
+        <div className="text-center mb-8 md:mb-12 animate-slide-up">
+          <div className="inline-flex items-center gap-2 mb-4 flex-wrap justify-center">
+            <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-primary animate-wiggle" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black">
               <span className="text-secondary">الفائزين الأخيرين 🏆</span>
             </h2>
-            <Trophy className="w-8 h-8 text-primary animate-wiggle" />
+            <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-primary animate-wiggle" />
           </div>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
             ممكن تكون انت الفائز الجاي!
           </p>
         </div>
@@ -79,11 +79,11 @@ export const WinnersSection = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center p-8 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl border-2 border-primary/20">
-          <p className="text-2xl font-black mb-2 text-secondary">
+        <div className="mt-8 md:mt-12 text-center p-6 sm:p-8 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl border-2 border-primary/20">
+          <p className="text-xl sm:text-2xl font-black mb-2 text-secondary">
             🎯 السحب القادم خلال 3 أيام!
           </p>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground px-4">
             اكسب نقاط أكتر عشان تزود فرصك في الفوز
           </p>
         </div>
