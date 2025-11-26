@@ -16,7 +16,7 @@ export const Hero = () => {
       }}>🔥</div>
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Content */}
           <div className="text-center md:text-right space-y-6 animate-slide-up order-2 md:order-2">
