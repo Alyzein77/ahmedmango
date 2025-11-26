@@ -37,7 +37,11 @@ export const Hero = () => {
           {/* TEXT BLOCK - Left Side */}
           <div className="pt-6 space-y-4">
             {/* Main Heading */}
-            <h1 className="text-5xl font-black leading-tight text-[#1A1349]">
+            <h1 className="text-5xl font-black leading-tight text-[#1A1349]" style={{ 
+              textShadow: '2px 2px 0 rgba(26, 19, 73, 0.2)',
+              fontWeight: '900',
+              letterSpacing: '-0.02em'
+            }}>
               أحمد مانجو
             </h1>
             
