@@ -20,7 +20,7 @@ export const Hero = () => {
               </span>
             </div>
             
-            <h1 className="text-7xl md:text-9xl font-black leading-tight">
+            <h1 className="text-7xl md:text-9xl font-black leading-tight whitespace-nowrap">
               <span className="inline-block font-sans text-right drop-shadow-lg text-slate-50 text-9xl">أحمد مانجو</span>
               <span className="inline-block text-slate-900 drop-shadow-lg font-sans text-right text-7xl md:text-7xl font-normal">
                 2استكا أو فاستكا؟
