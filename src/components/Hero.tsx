@@ -42,7 +42,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="gap-12 justify-center pt-12 flex-wrap flex flex-row md:flex md:items-center md:justify-end">
+            <div className="gap-12 justify-center pt-12 flex flex-row md:flex md:items-center md:justify-end">
               <div className="text-center">
                 <div className="text-5xl md:text-6xl font-black text-slate-900 drop-shadow-md">500K+</div>
                 <div className="text-lg md:text-xl text-slate-800 font-semibold">متابع</div>
