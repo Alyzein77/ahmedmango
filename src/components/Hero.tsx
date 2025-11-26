@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
-
 export const Hero = () => {
-  return (
-    <section id="hero" className="relative w-full overflow-hidden font-poppins bg-gradient-to-br from-[#FFCF45] via-[#FBA919] to-[#FFCF45] pt-8 pb-20">
+  return <section id="hero" className="relative w-full overflow-hidden font-poppins bg-gradient-to-br from-[#FFCF45] via-[#FBA919] to-[#FFCF45] pt-8 pb-20">
       {/* Abstract Mango Background with Organic Shapes */}
       <div className="absolute inset-0 overflow-hidden">
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -37,11 +35,11 @@ export const Hero = () => {
           {/* TEXT BLOCK - Left Side */}
           <div className="pt-6 space-y-4">
             {/* Main Heading */}
-            <h1 className="text-5xl font-black leading-tight text-[#1A1349]" style={{ 
-              textShadow: '2px 2px 0 rgba(26, 19, 73, 0.2)',
-              fontWeight: '900',
-              letterSpacing: '-0.02em'
-            }}>
+            <h1 style={{
+            textShadow: '2px 2px 0 rgba(26, 19, 73, 0.2)',
+            fontWeight: '900',
+            letterSpacing: '-0.02em'
+          }} className="text-5xl leading-tight text-[#1A1349] font-extrabold">
               أحمد مانجو
             </h1>
             
@@ -61,34 +59,25 @@ export const Hero = () => {
 
           {/* MAN IMAGE - Top Right */}
           <div className="flex-shrink-0 -mr-6 -mt-2">
-            <img 
-              alt="Ahmed Mango" 
-              className="w-[160px] h-auto drop-shadow-2xl"
-              src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png"
-            />
+            <img alt="Ahmed Mango" className="w-[160px] h-auto drop-shadow-2xl" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
           </div>
         </div>
 
         {/* BUTTONS SECTION - Two Horizontal Buttons */}
         <div className="flex gap-3 mb-8">
           {/* Button 1 - Play & Win (Primary Pink) */}
-          <Button 
-            className="flex-1 h-14 text-base font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300"
-            style={{ backgroundColor: '#D1007C' }}
-          >
+          <Button className="flex-1 h-14 text-base font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300" style={{
+          backgroundColor: '#D1007C'
+        }}>
             <span>العب واكسب جوائز 🎮</span>
           </Button>
 
           {/* Button 2 - View Reviews (Secondary White) */}
-          <Button 
-            className="flex-1 h-14 text-base font-bold rounded-full shadow-md hover:scale-105 transition-all duration-300"
-            style={{ 
-              backgroundColor: 'white', 
-              color: '#1A1349',
-              border: '2px solid #1A1349'
-            }}
-            variant="outline"
-          >
+          <Button className="flex-1 h-14 text-base font-bold rounded-full shadow-md hover:scale-105 transition-all duration-300" style={{
+          backgroundColor: 'white',
+          color: '#1A1349',
+          border: '2px solid #1A1349'
+        }} variant="outline">
             <span>شوف المراجعات 📱</span>
           </Button>
         </div>
@@ -132,6 +121,5 @@ export const Hero = () => {
           <path d="M0,200 C240,170 480,190 720,180 C960,170 1200,190 1440,200 L1440,320 L0,320 Z" fill="white"></path>
         </svg>
       </div>
-    </section>
-  );
+    </section>;
 };
