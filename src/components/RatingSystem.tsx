@@ -14,7 +14,7 @@ export const RatingSystem = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* 2استكا - Good */}
-          <Card className="p-8 text-center hover:scale-105 transition-transform bg-gradient-to-br from-accent/10 to-background border-2 cursor-pointer group animate-slide-up border-[#1c1250]">
+          <Card className="p-8 text-center hover:scale-105 transition-transform bg-gradient-to-br from-accent/10 to-background cursor-pointer group animate-slide-up border-[#1c1250] border-0 bg-[#06235d]">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow bg-[#05245e]">
               <CheckCircle2 className="w-14 h-14 text-white" strokeWidth={3} />
             </div>
@@ -23,14 +23,14 @@ export const RatingSystem = () => {
               2استكا ✅
             </h3>
             
-            <p className="text-lg leading-relaxed font-sans font-extrabold text-gray-50 bg-[#686c97]">
+            <p className="text-lg leading-relaxed font-sans font-extrabold text-gray-50 bg-[#06235c]/0">
               المنتج ممتاز! طعمه حلو، سعره مناسب، وجودته عالية. ده اللي يستاهل فلوسك 🔥
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center">
-              <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-bold">طعم حلو 😋</span>
-              <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-bold">سعر كويس 💰</span>
-              <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-bold">جودة عالية ⭐</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-400">طعم حلو 😋</span>
+              <span className="px-3 py-1 bg-accent/20 rounded-full text-sm font-bold text-slate-50">سعر كويس 💰</span>
+              <span className="px-3 py-1 bg-accent/20 rounded-full text-sm font-bold text-slate-50">جودة عالية ⭐</span>
             </div>
           </Card>
 
