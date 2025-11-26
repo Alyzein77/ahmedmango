@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 export const Hero = () => {
-  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 py-12" style={{
+  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-12" style={{
       backgroundImage: 'url(/mango-pattern-bg.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -59,7 +59,7 @@ export const Hero = () => {
           </div>
 
           {/* Image */}
-          <div className="relative order-2 md:order-1 animate-bounce-in md:-ml-60 lg:-ml-80 xl:-ml-96">
+          <div className="relative order-2 md:order-1 animate-bounce-in md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2">
             <div className="relative w-full max-w-7xl">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" style={{ transform: 'scaleX(-1)' }} />
               {/* Glow Effect */}
