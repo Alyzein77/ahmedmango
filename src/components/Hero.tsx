@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
+import heroBg from "@/assets/hero-bg.png";
 export const Hero = () => {
-  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background px-4 py-12">
+  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 py-12" style={{ backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-6xl animate-float opacity-30">🥭</div>
