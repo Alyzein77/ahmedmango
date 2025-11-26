@@ -16,7 +16,7 @@ export const Hero = () => {
             
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black leading-tight text-right w-full">
-              <div className="text-right text-gray-50 border-none border-0">أحمد مانجو</div>
+              <div className="text-right text-gray-50 border-none border-0 font-black">أحمد مانجو</div>
               <div className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium mt-2 md:mt-4 text-right">
                 2استكا أو فاستكا؟
               </div>
