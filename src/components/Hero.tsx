@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 export const Hero = () => {
-  return <section id="hero" className="relative min-h-[70vh] flex items-start justify-center px-4 py-6 pt-20" style={{
+  return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-12" style={{
     backgroundImage: 'url(/hero-bg-new.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -11,7 +11,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-12 items-center">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           
           {/* Image - Mobile First */}
           <div className="relative order-1 animate-bounce-in flex justify-center w-full md:absolute md:-left-[13rem] lg:-left-[23rem] md:top-1/2 md:-translate-y-1/2">
@@ -23,7 +23,7 @@ export const Hero = () => {
           </div>
 
           {/* Content */}
-          <div className="flex flex-col items-center md:items-end space-y-3 md:space-y-4 lg:space-y-6 animate-slide-up order-2 w-full px-4 md:px-0">
+          <div className="flex flex-col items-center md:items-end space-y-4 md:space-y-6 lg:space-y-10 animate-slide-up order-2 w-full px-4 md:px-0">
             
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black leading-tight text-center md:text-right w-full">
               <div className="text-center md:text-right text-gray-50 border-none border-0 font-black">أحمد مانجو</div>
@@ -37,7 +37,7 @@ export const Hero = () => {
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
-            <div className="flex flex-col w-full gap-2 pt-2 md:pt-4">
+            <div className="flex flex-col w-full gap-3 pt-4 md:pt-6">
               <Button size="lg" className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-6 py-3 md:px-8 md:py-4 bg-[#e20351] w-full md:w-auto">
                 🎮 العب واكسب جوائز
               </Button>
@@ -47,7 +47,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 justify-center pt-2 md:pt-4 w-full">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 justify-center pt-4 md:pt-8 w-full">
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black drop-shadow-md text-gray-50">٥٠٠ ألف +</div>
                 <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-50">متابع</div>
