@@ -27,14 +27,14 @@ export const Hero = () => {
             </div>
             
             <h1 className="text-7xl md:text-9xl font-black leading-tight">
-              <span className="block font-sans text-[#1a1349]">أحمد مانجو</span>
-              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow text-8xl md:text-9xl font-sans">
+              <span className="block font-sans text-[#1a1349] text-right text-8xl">أحمد مانجو</span>
+              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow md:text-9xl font-sans text-right font-medium text-7xl px-0 my-[31px] mx-[39px]">
                 2استكا أو فاستكا؟
               </span>
             </h1>
             
-            <p className="text-2xl md:text-4xl font-medium leading-relaxed text-[#1a1349] font-sans">مراجعات صادقة للمنتجات اليومية 🍿
-لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌<br />
+            <p className="text-2xl leading-relaxed text-[#1a1349] font-sans text-right md:text-3xl font-semibold">مراجعات صادقة للمنتجات اليومية 🍿
+لو حلو = 2استكا ✅  لو وحش = فاستكا ❌<br />
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
