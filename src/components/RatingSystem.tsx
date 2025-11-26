@@ -19,18 +19,16 @@ export const RatingSystem = () => {
               <CheckCircle2 className="w-14 h-14 text-white" strokeWidth={3} />
             </div>
             
-            <h3 className="text-3xl font-black mb-3 text-stone-50 font-sans">
-              2استكا ✅
-            </h3>
+            <h3 className="text-3xl font-black mb-3 font-sans text-[#1a1349]">2استكا</h3>
             
-            <p className="text-lg leading-relaxed font-sans font-extrabold text-gray-50 bg-[#06235c]/0">
+            <p className="text-lg leading-relaxed font-sans font-extrabold bg-[#06235c]/0 text-[#1a1349]">
               المنتج ممتاز! طعمه حلو، سعره مناسب، وجودته عالية. ده اللي يستاهل فلوسك 🔥
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center">
-              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-400">طعم حلو 😋</span>
-              <span className="px-3 py-1 bg-accent/20 rounded-full text-sm font-bold text-slate-50">سعر كويس 💰</span>
-              <span className="px-3 py-1 bg-accent/20 rounded-full text-sm font-bold text-slate-50">جودة عالية ⭐</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">طعم حلو 😋</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">سعر كويس 💰</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold text-slate-50 bg-gray-50">جودة عالية ⭐</span>
             </div>
           </Card>
 
