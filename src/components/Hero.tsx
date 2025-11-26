@@ -48,17 +48,17 @@ export const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-12 justify-center md:justify-start pt-12 flex-wrap">
+            <div className="gap-12 justify-center pt-12 flex-wrap flex flex-row md:flex md:items-center md:justify-end">
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-black text-primary">500K+</div>
+                <div className="text-5xl md:text-6xl font-black text-[#ffc847]">500K+</div>
                 <div className="text-lg md:text-xl text-muted-foreground">متابع</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-black text-accent">1000+</div>
+                <div className="text-5xl md:text-6xl font-black text-[#ffc847]">1000+</div>
                 <div className="text-lg md:text-xl text-muted-foreground">منتج مراجع</div>
               </div>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-black text-destructive">200+</div>
+                <div className="text-5xl md:text-6xl font-black text-[#ffc847]">200+</div>
                 <div className="text-lg md:text-xl text-muted-foreground">فيديو</div>
               </div>
             </div>
