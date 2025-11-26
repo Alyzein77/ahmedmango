@@ -12,7 +12,7 @@ export const Hero = () => {
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-          <div className="flex flex-col items-end space-y-6 md:space-y-10 animate-slide-up order-1 md:order-2 w-full">
+          <div className="flex flex-col items-end space-y-6 md:space-y-10 animate-slide-up order-2 md:order-2 w-full">
             
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black leading-tight text-right w-full">
@@ -54,8 +54,8 @@ export const Hero = () => {
           </div>
 
           {/* Image */}
-          <div className="relative order-2 md:order-1 animate-bounce-in flex justify-center md:absolute md:-left-[13rem] lg:-left-[23rem] md:top-1/2 md:-translate-y-1/2">
-            <div className="relative w-3/4 sm:w-2/3 md:w-full max-w-5xl">
+          <div className="relative order-1 md:order-1 animate-bounce-in flex justify-center">
+            <div className="relative w-3/4 sm:w-2/3 md:w-full max-w-md lg:max-w-lg">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
