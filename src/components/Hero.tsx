@@ -36,7 +36,7 @@ export const Hero = () => {
               <Button size="lg" className="text-2xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-12 py-6 bg-[#e20351]">
                 🎮 العب واكسب جوائز
               </Button>
-              <Button size="lg" variant="outline" className="text-2xl font-bold border-2 border-slate-900 bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-white rounded-full px-12 py-6">
+              <Button size="lg" variant="outline" className="text-2xl font-bold border-2 bg-white/90 text-slate-900 hover:bg-slate-900 hover:text-white rounded-full px-12 py-6 border-white/0">
                 📱 شوف المراجعات
               </Button>
             </div>
