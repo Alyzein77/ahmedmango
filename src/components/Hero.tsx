@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-[85vh] w-full overflow-hidden font-poppins">
+    <section id="hero" className="relative w-full overflow-hidden font-poppins pb-24">
       {/* Bright Mango-Themed Background with Abstract Shapes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCF45] via-[#FBA919] to-[#FFCF45]">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FFCF45] via-[#FBA919] to-[#FFCF45]" style={{ minHeight: '100%' }}>
         {/* Abstract Mango Shapes */}
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
           {/* Large organic blob shapes */}
