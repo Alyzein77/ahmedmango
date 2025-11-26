@@ -27,8 +27,8 @@ export const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-2xl leading-relaxed text-slate-900 font-sans text-right md:text-3xl font-medium drop-shadow-md">مراجعات صادقة للمنتجات اليومية 🍿  
-لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌<br />
+            <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right md:text-2xl">مراجعات صادقة للمنتجات اليومية 🍿
+ لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌<br />
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
