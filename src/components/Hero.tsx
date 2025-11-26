@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 export const Hero = () => {
   return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-12" style={{
-    backgroundImage: 'url(/hero-bg.png)',
+    backgroundImage: 'url(/hero-bg-new.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
