@@ -22,15 +22,15 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12 px-4">
+    <footer className="bg-secondary text-secondary-foreground py-8 sm:py-10 md:py-12 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div className="text-center md:text-right order-1">
-            <h3 className="text-2xl font-black mb-3">
+            <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3">
               🥭 أحمد مانجو
             </h3>
-            <p className="text-secondary-foreground/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-secondary-foreground/80 leading-relaxed">
               مراجعات صادقة للمنتجات اليومية<br />
               2استكا أو فاستكا - مافيش وسط!
             </p>
@@ -38,8 +38,8 @@ export const Footer = () => {
 
           {/* Links */}
           <div className="text-center order-2">
-            <h4 className="font-bold text-lg mb-3">روابط سريعة</h4>
-            <ul className="space-y-2 text-secondary-foreground/80">
+            <h4 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">روابط سريعة</h4>
+            <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-secondary-foreground/80">
               <li><a href="#" className="hover:text-primary transition-colors">المراجعات</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">العب واكسب</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">الفائزين</a></li>
@@ -48,9 +48,9 @@ export const Footer = () => {
           </div>
 
           {/* Social */}
-          <div className="text-center md:text-right order-3">
-            <h4 className="font-bold text-lg mb-3">تابعنا</h4>
-            <div className="flex gap-4 justify-center md:justify-end">
+          <div className="text-center md:text-right order-3 sm:col-span-2 md:col-span-1">
+            <h4 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">تابعنا</h4>
+            <div className="flex gap-3 sm:gap-4 justify-center md:justify-end">
               {socialLinks.map((social) => (
                 <a 
                   key={social.name}
@@ -64,7 +64,7 @@ export const Footer = () => {
                 </a>
               ))}
             </div>
-            <p className="text-secondary-foreground/60 text-sm mt-4">
+            <p className="text-secondary-foreground/60 text-xs sm:text-sm mt-3 sm:mt-4">
               للتعاون والإعلانات:<br />
               <a href="mailto:business@ahmedmango.com" className="hover:text-primary transition-colors">
                 business@ahmedmango.com
@@ -74,9 +74,9 @@ export const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-secondary-foreground/20 pt-6 text-center text-secondary-foreground/60 text-sm">
+        <div className="border-t border-secondary-foreground/20 pt-4 sm:pt-6 text-center text-secondary-foreground/60 text-xs sm:text-sm">
           <p>© {currentYear} أحمد مانجو. جميع الحقوق محفوظة 🥭</p>
-          <p className="mt-2">صنع بـ ❤️ في مصر</p>
+          <p className="mt-1 sm:mt-2">صنع بـ ❤️ في مصر</p>
         </div>
       </div>
     </footer>
