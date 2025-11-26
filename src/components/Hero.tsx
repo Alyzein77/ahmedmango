@@ -27,9 +27,11 @@ export const Hero = () => {
             </span>
             </h1>
             
-            <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right">مراجعات صادقة للمنتجات اليومية 🍿<br />
-              لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
-            </p>
+            <div className="flex justify-end">
+              <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right">مراجعات صادقة للمنتجات اليومية 🍿<br />
+                لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-8">
               <Button size="lg" className="text-2xl font-bold text-white hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-12 py-6 bg-[#e20351]">
