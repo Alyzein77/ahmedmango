@@ -14,7 +14,7 @@ export const RatingSystem = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* 2استكا - Good */}
-          <Card className="p-8 text-center hover:scale-105 transition-transform bg-gradient-to-br from-accent/10 to-background cursor-pointer group animate-slide-up border-[#1c1250] border-0 bg-[#06235d]">
+          <Card className="p-8 text-center hover:scale-105 transition-transform cursor-pointer group animate-slide-up border-[#1c1250] border-0 bg-[#06235d]">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow bg-[#f90787]">
               <CheckCircle2 className="w-14 h-14 text-white" strokeWidth={3} />
             </div>
