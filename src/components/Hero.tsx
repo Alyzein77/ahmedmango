@@ -21,7 +21,7 @@ export const Hero = () => {
             </div>
             
             <h1 className="text-7xl md:text-9xl font-black leading-tight">
-              <span className="block font-sans text-right text-8xl drop-shadow-lg text-slate-50">أحمد مانجو</span>
+              <span className="block font-sans text-right drop-shadow-lg text-slate-50 text-9xl mt-[103px] mr-[103px] mb-[103px] ml-[103px] py-0 px-0 my-0 mx-0">أحمد مانجو</span>
               <span className="block text-slate-900 drop-shadow-lg font-sans text-right px-0 my-[31px] mx-0 text-7xl md:text-7xl font-normal">
                 2استكا أو فاستكا؟
               </span>
@@ -78,17 +78,17 @@ export const Hero = () => {
           <path d="M0,200 C240,150 480,190 720,170 C960,150 1200,190 1440,200 L1440,320 L0,320 Z" fill="white" className="text-background"></path>
           
           {/* Decorative mango shapes */}
-          <ellipse cx="150" cy="155" rx="25" ry="35" fill="#FF6B9D" opacity="0.6" transform="rotate(-20 150 155)"/>
-          <ellipse cx="850" cy="175" rx="30" ry="40" fill="#FF6B9D" opacity="0.6" transform="rotate(15 850 175)"/>
+          <ellipse cx="150" cy="155" rx="25" ry="35" fill="#FF6B9D" opacity="0.6" transform="rotate(-20 150 155)" />
+          <ellipse cx="850" cy="175" rx="30" ry="40" fill="#FF6B9D" opacity="0.6" transform="rotate(15 850 175)" />
           
           {/* Star decorations */}
-          <path d="M280,140 L285,150 L295,152 L287,160 L289,170 L280,165 L271,170 L273,160 L265,152 L275,150 Z" fill="#E91E63" opacity="0.7"/>
-          <path d="M1100,160 L1105,170 L1115,172 L1107,180 L1109,190 L1100,185 L1091,190 L1093,180 L1085,172 L1095,170 Z" fill="#E91E63" opacity="0.7"/>
+          <path d="M280,140 L285,150 L295,152 L287,160 L289,170 L280,165 L271,170 L273,160 L265,152 L275,150 Z" fill="#E91E63" opacity="0.7" />
+          <path d="M1100,160 L1105,170 L1115,172 L1107,180 L1109,190 L1100,185 L1091,190 L1093,180 L1085,172 L1095,170 Z" fill="#E91E63" opacity="0.7" />
           
           {/* Small decorative circles */}
-          <circle cx="450" cy="165" r="8" fill="#FFB84D" opacity="0.5"/>
-          <circle cx="600" cy="155" r="10" fill="#FFB84D" opacity="0.5"/>
-          <circle cx="1250" cy="170" r="7" fill="#FFB84D" opacity="0.5"/>
+          <circle cx="450" cy="165" r="8" fill="#FFB84D" opacity="0.5" />
+          <circle cx="600" cy="155" r="10" fill="#FFB84D" opacity="0.5" />
+          <circle cx="1250" cy="170" r="7" fill="#FFB84D" opacity="0.5" />
         </svg>
       </div>
     </section>;
