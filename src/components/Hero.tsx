@@ -14,9 +14,7 @@ export const Hero = () => {
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Content */}
           <div className="flex flex-col items-end space-y-10 animate-slide-up order-1 md:order-2 w-full">
-            <span className="inline-block px-4 py-2 bg-white/90 border-2 border-slate-900 rounded-full text-slate-900 font-bold text-xl shadow-lg text-right">
-              🎯 نظام التقييم الأشهر في المنطقة
-            </span>
+            
             
             <h1 className="text-7xl md:text-9xl font-black leading-tight text-right w-full">
               <div className="text-right">أحمد مانجو</div>
