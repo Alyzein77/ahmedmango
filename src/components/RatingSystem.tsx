@@ -40,18 +40,16 @@ export const RatingSystem = () => {
               <XCircle className="w-14 h-14 text-white" strokeWidth={3} />
             </div>
             
-            <h3 className="text-3xl font-black mb-3 text-destructive">
-              فاستكا ❌
-            </h3>
+            <h3 className="text-3xl font-black mb-3 text-slate-50">فاستكا</h3>
             
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg leading-relaxed text-gray-50">
               المنتج سيء! طعمه وحش، مش يستاهل السعر، وجودته ضعيفة. متضيعش فلوسك عليه 🚫
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center">
-              <span className="px-3 py-1 bg-destructive/20 text-destructive rounded-full text-sm font-bold">طعم وحش 🤢</span>
-              <span className="px-3 py-1 bg-destructive/20 text-destructive rounded-full text-sm font-bold">سعر غالي 💸</span>
-              <span className="px-3 py-1 bg-destructive/20 text-destructive rounded-full text-sm font-bold">جودة ضعيفة 👎</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">طعم وحش 🤢</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">سعر غالي 💸</span>
+              <span className="px-3 py-1 rounded-full text-sm font-bold bg-gray-50 text-[#1a1349]">جودة ضعيفة 👎</span>
             </div>
           </Card>
         </div>
