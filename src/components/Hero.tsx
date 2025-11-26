@@ -66,7 +66,7 @@ export const Hero = () => {
 
           {/* Image */}
           <div className="relative order-2 md:order-1 animate-bounce-in md:-ml-12 lg:-ml-24">
-            <div className="relative w-full max-w-2xl">
+            <div className="relative w-full max-w-5xl">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
