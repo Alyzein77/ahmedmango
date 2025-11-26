@@ -13,9 +13,9 @@ export const Hero = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Content */}
-          <div className="text-center md:text-left space-y-10 animate-slide-up order-1 md:order-2">
-            <div className="inline-block">
-              <span className="inline-block px-4 py-2 bg-white/90 border-2 border-slate-900 rounded-full text-slate-900 font-bold text-xl mb-4 shadow-lg">
+          <div className="flex flex-col items-end space-y-10 animate-slide-up order-1 md:order-2">
+            <div className="flex justify-end">
+              <span className="inline-block px-4 py-2 bg-white/90 border-2 border-slate-900 rounded-full text-slate-900 font-bold text-xl shadow-lg">
                 🎯 نظام التقييم الأشهر في المنطقة
               </span>
             </div>
@@ -27,8 +27,7 @@ export const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right md:text-2xl">مراجعات صادقة للمنتجات اليومية 🍿
- لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌<br />
+            <p className="text-2xl leading-relaxed font-sans font-medium drop-shadow-md text-gray-50 text-right">مراجعات صادقة للمنتجات اليومية 🍿<br />
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
