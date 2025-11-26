@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import heroMango from "@/assets/hero-mango.png";
 export const Hero = () => {
   return <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-12" style={{
-      backgroundImage: 'url(/mango-pattern-bg.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
+    backgroundImage: 'url(/mango-pattern-bg.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
 
@@ -61,7 +61,7 @@ export const Hero = () => {
           {/* Image */}
           <div className="relative order-2 md:order-1 animate-bounce-in md:absolute md:-left-64 lg:-left-80 md:top-1/2 md:-translate-y-1/2">
             <div className="relative w-full max-w-3xl">
-              <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" />
+              <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl -z-10 rounded-full"></div>
             </div>
