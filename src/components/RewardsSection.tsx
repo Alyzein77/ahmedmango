@@ -2,10 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import rewardsGame from "@/assets/rewards-game.png";
 import { Gift, Trophy, Star, Zap } from "lucide-react";
-
 export const RewardsSection = () => {
-  return (
-    <section id="rewards" className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
+  return <section id="rewards" className="py-20 px-4 bg-gradient-to-b from-primary/5 via-background to-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-slide-up">
           <div className="inline-block mb-4">
@@ -26,11 +24,7 @@ export const RewardsSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           {/* Image */}
           <div className="relative animate-bounce-in order-2 md:order-2">
-            <img 
-              src={rewardsGame} 
-              alt="Rewards Game" 
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
+            <img alt="Rewards Game" className="w-full h-auto rounded-2xl shadow-2xl" src="/lovable-uploads/de1bfc73-4d03-4bdd-8144-0c7153fec776.png" />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-orange-500/10 blur-2xl -z-10 rounded-2xl"></div>
           </div>
 
@@ -72,10 +66,7 @@ export const RewardsSection = () => {
               </div>
             </div>
 
-            <Button 
-              size="lg" 
-              className="w-full text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-6"
-            >
+            <Button size="lg" className="w-full text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-6">
               🚀 ابدأ اللعب دلوقتي
             </Button>
           </div>
@@ -83,23 +74,29 @@ export const RewardsSection = () => {
 
         {/* Prize Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-          {[
-            { icon: "🎁", title: "منتجات مجانية", color: "primary" },
-            { icon: "💰", title: "كاش برايز", color: "accent" },
-            { icon: "🎟️", title: "كوبونات خصم", color: "destructive" },
-            { icon: "⭐", title: "جوائز مفاجأة", color: "primary" }
-          ].map((prize, idx) => (
-            <Card 
-              key={idx}
-              className="p-6 text-center hover:scale-105 transition-transform cursor-pointer animate-bounce-in bg-card/50 backdrop-blur"
-              style={{ animationDelay: `${idx * 0.1}s` }}
-            >
+          {[{
+          icon: "🎁",
+          title: "منتجات مجانية",
+          color: "primary"
+        }, {
+          icon: "💰",
+          title: "كاش برايز",
+          color: "accent"
+        }, {
+          icon: "🎟️",
+          title: "كوبونات خصم",
+          color: "destructive"
+        }, {
+          icon: "⭐",
+          title: "جوائز مفاجأة",
+          color: "primary"
+        }].map((prize, idx) => <Card key={idx} className="p-6 text-center hover:scale-105 transition-transform cursor-pointer animate-bounce-in bg-card/50 backdrop-blur" style={{
+          animationDelay: `${idx * 0.1}s`
+        }}>
               <div className="text-4xl mb-2">{prize.icon}</div>
               <p className="font-bold text-sm">{prize.title}</p>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
