@@ -19,53 +19,53 @@ export const Hero = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Content */}
-          <div className="text-center md:text-right space-y-6 animate-slide-up order-2 md:order-2">
+          <div className="text-center md:text-left space-y-10 animate-slide-up order-1 md:order-2">
             <div className="inline-block">
-              <span className="inline-block px-4 py-2 bg-primary/10 border-2 border-primary rounded-full text-primary font-bold text-sm mb-4 animate-pulse-glow">
+              <span className="inline-block px-4 py-2 bg-primary/10 border-2 border-primary rounded-full text-primary font-bold text-xl mb-4 animate-pulse-glow">
                 🎯 نظام التقييم الأشهر في المنطقة
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-black leading-tight">
+            <h1 className="text-7xl md:text-9xl font-black leading-tight">
               <span className="block font-sans text-[#1a1349]">أحمد مانجو</span>
-              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow text-6xl font-sans">
+              <span className="block bg-gradient-to-r from-primary via-orange-500 to-primary bg-clip-text text-transparent animate-pulse-glow text-8xl md:text-9xl font-sans">
                 2استكا أو فاستكا؟
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl font-medium leading-relaxed text-[#1a1349] font-sans">مراجعات صادقة للمنتجات اليومية 🍿
+            <p className="text-2xl md:text-4xl font-medium leading-relaxed text-[#1a1349] font-sans">مراجعات صادقة للمنتجات اليومية 🍿
 لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌<br />
               لو حلو = 2استكا ✅ | لو وحش = فاستكا ❌
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-              <Button size="lg" className="text-lg font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-8">
+              <Button size="lg" className="text-2xl font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg hover:shadow-2xl rounded-full px-12 py-6">
                 🎮 العب واكسب جوائز
               </Button>
-              <Button size="lg" variant="outline" className="text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8">
+              <Button size="lg" variant="outline" className="text-2xl font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-12 py-6">
                 📱 شوف المراجعات
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 justify-center md:justify-start pt-8 flex-wrap">
+            <div className="flex gap-12 justify-center md:justify-start pt-12 flex-wrap">
               <div className="text-center">
-                <div className="text-3xl font-black text-primary">500K+</div>
-                <div className="text-sm text-muted-foreground">متابع</div>
+                <div className="text-5xl md:text-6xl font-black text-primary">500K+</div>
+                <div className="text-lg md:text-xl text-muted-foreground">متابع</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black text-accent">1000+</div>
-                <div className="text-sm text-muted-foreground">منتج مراجع</div>
+                <div className="text-5xl md:text-6xl font-black text-accent">1000+</div>
+                <div className="text-lg md:text-xl text-muted-foreground">منتج مراجع</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black text-destructive">200+</div>
-                <div className="text-sm text-muted-foreground">فيديو</div>
+                <div className="text-5xl md:text-6xl font-black text-destructive">200+</div>
+                <div className="text-lg md:text-xl text-muted-foreground">فيديو</div>
               </div>
             </div>
           </div>
 
           {/* Image */}
-          <div className="relative order-1 md:order-1 animate-bounce-in">
+          <div className="relative order-2 md:order-1 animate-bounce-in">
             <div className="relative w-full max-w-2xl mx-auto">
               <img alt="Ahmed Mango Mascot" className="w-full h-auto drop-shadow-2xl animate-float" src="/lovable-uploads/f587694f-8ab0-4660-89aa-0cedb7aec52f.png" />
               {/* Glow Effect */}
