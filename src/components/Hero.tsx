@@ -65,16 +65,16 @@ export const Hero = () => {
         </div>
 
         {/* BUTTONS SECTION - Two Horizontal Buttons */}
-        <div className="flex gap-3 mb-8">
+        <div className="flex justify-center gap-3 mb-8">
           {/* Button 1 - Play & Win (Primary Pink) */}
-          <Button className="flex-1 h-14 text-base font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300" style={{
+          <Button className="h-11 px-5 text-sm font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300" style={{
           backgroundColor: '#D1007C'
         }}>
             <span>العب واكسب جوائز 🎮</span>
           </Button>
 
           {/* Button 2 - View Reviews (Secondary White) */}
-          <Button className="flex-1 h-14 text-base font-bold rounded-full shadow-md hover:scale-105 transition-all duration-300" style={{
+          <Button className="h-11 px-5 text-sm font-bold rounded-full shadow-md hover:scale-105 transition-all duration-300" style={{
           backgroundColor: 'white',
           color: '#1A1349',
           border: '2px solid #1A1349'
