@@ -39,7 +39,7 @@ export const Hero = () => {
             textShadow: '2px 2px 0 rgba(26, 19, 73, 0.2)',
             fontWeight: '900',
             letterSpacing: '-0.02em'
-          }} className="text-5xl leading-tight text-[#1A1349] font-extrabold">
+          }} className="text-5xl leading-tight text-[#1A1349] font-extrabold font-sans">
               أحمد مانجو
             </h1>
             
