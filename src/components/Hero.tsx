@@ -37,7 +37,7 @@ export const Hero = () => {
           <div className="relative flex-shrink-0 -ml-4">
             {/* Subtle shadow behind */}
             <div className="absolute inset-0 bg-[#1A1349]/10 rounded-full blur-2xl scale-90 translate-y-2" />
-            <img alt="Ahmed Mango" className="relative w-[140px] h-auto drop-shadow-xl" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
+            <img alt="Ahmed Mango" className="relative w-[140px] h-auto drop-shadow-xl" src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" />
           </div>
 
           {/* TEXT BLOCK - Right Side */}
