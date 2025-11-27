@@ -52,8 +52,9 @@ export const Hero = () => {
             
             {/* Description */}
             <p className="text-sm font-medium leading-relaxed text-[#1A1349] space-y-1">
-              <span className="block">مراجعات صادقة للمنتجات اليومية 🍿</span>
-              <span className="block">لو حلو = ✔️ 2استكا | لو وحش = ✖️ فاستكا</span>
+              <span className="block">مراجعات صادقة للمنتجات اليومية</span>
+              <span className="block font-sans">لو حلو = ✔️ 2استكا
+لو وحش = ✖️ فاستكا</span>
             </p>
           </div>
 
