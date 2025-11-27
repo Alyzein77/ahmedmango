@@ -1,29 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import heroBgPattern from "@/assets/hero-bg-pattern.png";
+
 export const Hero = () => {
-  return <section id="hero" className="relative w-full overflow-hidden font-poppins bg-gradient-to-br from-[#FFCF45] via-[#FBA919] to-[#FFCF45] pt-8 pb-20">
-      {/* Abstract Mango Background with Organic Shapes */}
+  return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-8 pb-20">
+      {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          {/* Large organic curved shapes */}
-          <ellipse cx="85%" cy="25%" rx="180" ry="250" fill="#F8CBDF" opacity="0.5" />
-          <ellipse cx="10%" cy="55%" rx="140" ry="190" fill="#9CDAEB" opacity="0.45" />
-          <ellipse cx="75%" cy="70%" rx="120" ry="160" fill="#F8CBDF" opacity="0.4" />
-          
-          {/* Medium accent shapes */}
-          <circle cx="20%" cy="20%" r="70" fill="#9CDAEB" opacity="0.35" />
-          <circle cx="90%" cy="60%" r="90" fill="#D1007C" opacity="0.25" />
-          <circle cx="15%" cy="85%" r="60" fill="#FBA919" opacity="0.3" />
-          
-          {/* Small decorative highlights */}
-          <circle cx="45%" cy="15%" r="25" fill="#1A1349" opacity="0.15" />
-          <circle cx="80%" cy="45%" r="35" fill="#F8CBDF" opacity="0.4" />
-          <circle cx="30%" cy="75%" r="20" fill="#D1007C" opacity="0.25" />
-          
-          {/* Soft gradient overlay curves */}
-          <path d="M 0,100 Q 150,50 300,100 T 600,100" stroke="none" fill="#FFCF45" opacity="0.2" />
-          <path d="M 0,200 Q 200,150 400,200 T 800,200" stroke="none" fill="#FBA919" opacity="0.15" />
-        </svg>
+        <img 
+          src={heroBgPattern} 
+          alt="" 
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content Container */}
