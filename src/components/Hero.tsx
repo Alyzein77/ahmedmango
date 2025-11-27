@@ -26,66 +26,58 @@ export const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full flex flex-col items-center">
         
-        {/* Two-Column Layout: Image Left, Text Right */}
-        <div className="flex items-center gap-4">
+        {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
+        <div className="relative flex items-center justify-center mb-6">
+          {/* Large circular gradient background */}
+          <div className="absolute w-[320px] h-[320px] rounded-full bg-gradient-to-br from-[#FFCF45]/50 via-[#FBA919]/40 to-[#FFCF45]/30" />
+          <div className="absolute w-[280px] h-[280px] rounded-full bg-gradient-to-br from-[#FFCF45]/30 to-[#FBA919]/20" />
           
-          {/* LEFT COLUMN — IMAGE (far left, 2x bigger) */}
-          <div className="relative flex-shrink-0 -ml-4">
-            {/* Circular container for the image */}
-            <div className="relative w-[280px] h-[280px] rounded-full bg-gradient-to-br from-[#FFCF45]/30 to-[#FBA919]/40 p-3 overflow-hidden shadow-xl">
-              {/* Inner glow ring */}
-              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
-              {/* Soft shadow behind image */}
-              <div className="absolute inset-0 bg-[#1A1349]/10 rounded-full blur-2xl scale-90 translate-y-2" />
-              <img 
-                alt="Ahmed Mango" 
-                className="relative w-full h-full object-cover object-top rounded-full drop-shadow-lg" 
-                src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
-              />
-            </div>
-          </div>
+          {/* Soft shadow behind image */}
+          <div className="absolute w-[240px] h-[240px] bg-[#1A1349]/15 rounded-full blur-3xl translate-y-4" />
+          
+          {/* Man image - centered and slightly overlapping */}
+          <img 
+            alt="Ahmed Mango" 
+            className="relative w-[260px] h-[260px] object-cover object-top rounded-full drop-shadow-2xl" 
+            src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
+          />
+        </div>
 
-          {/* RIGHT COLUMN — TEXT BLOCK (55% width) */}
-          <div className="flex-1 text-right space-y-3">
-            {/* Heading 1 - Large, Navy */}
-            <h1 
-              className="text-4xl leading-none text-[#1A1349] font-extrabold tracking-tight"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              أحمد مانجو
-            </h1>
-            
-            {/* Heading 2 - Mixed Colors */}
-            <h2 
-              className="text-xl font-bold leading-tight"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              <span className="text-[#1A1349]">2استكا</span>{" "}
-              <span className="text-[#D1007C]">أو فاستكا؟</span>
-            </h2>
-            
-            {/* Description - Medium, Navy */}
-            <p className="text-sm font-medium text-[#1A1349] leading-relaxed pt-1">
-              مراجعات صادقة للمنتجات اليومية 🍿
-            </p>
-            
-            {/* Rating Rules - Evenly Spaced */}
-            <div className="text-sm font-medium text-[#1A1349] space-y-2 pt-2">
-              <p className="flex items-center justify-end gap-2">
-                <span>✔️ لو حلو = 2استكا</span>
-              </p>
-              <p className="flex items-center justify-end gap-2">
-                <span>✖️ لو وحش = فاستكا</span>
-              </p>
-            </div>
+        {/* TEXT STACKED UNDER THE IMAGE (CENTERED) */}
+        <div className="flex flex-col items-center text-center space-y-3">
+          {/* Heading - Large, Navy */}
+          <h1 
+            className="text-4xl leading-none text-[#1A1349] font-extrabold tracking-tight"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
+          >
+            أحمد مانجو
+          </h1>
+          
+          {/* Subheading - Bold, Two-color */}
+          <h2 
+            className="text-xl font-bold leading-tight"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
+          >
+            <span className="text-[#1A1349]">2استكا</span>{" "}
+            <span className="text-[#D1007C]">أو فاستكا؟</span>
+          </h2>
+          
+          {/* Description - Medium, Navy */}
+          <p className="text-sm font-medium text-[#1A1349] leading-relaxed">
+            مراجعات صادقة للمنتجات اليومية 🍿
+          </p>
+          
+          {/* Rating Rules - Clean, Centered, Equal Spacing */}
+          <div className="text-sm font-medium text-[#1A1349] space-y-1 pt-2">
+            <p>✔️ لو حلو = 2استكا</p>
+            <p>✖️ لو وحش = فاستكا</p>
           </div>
         </div>
 
         {/* BUTTONS SECTION */}
-        <div className="flex justify-center gap-3 mb-12">
-          {/* Button 1 - Play & Win */}
+        <div className="flex justify-center gap-3 mt-6 mb-10">
           <Button 
             className="h-9 px-4 text-xs font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
             style={{
@@ -96,7 +88,6 @@ export const Hero = () => {
             <span className="text-[#1A1349]">العب واكسب جوائز 🎮</span>
           </Button>
 
-          {/* Button 2 - View Reviews */}
           <Button 
             className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300 border-0"
             style={{
@@ -112,7 +103,6 @@ export const Hero = () => {
 
         {/* STATS ROW */}
         <div className="flex justify-center items-start gap-10">
-          {/* Stat 1 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
             <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -121,7 +111,6 @@ export const Hero = () => {
             <div className="text-[10px] font-medium text-[#1A1349]/70">متابع</div>
           </div>
 
-          {/* Stat 2 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
             <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -130,7 +119,6 @@ export const Hero = () => {
             <div className="text-[10px] font-medium text-[#1A1349]/70">منتج مراجع</div>
           </div>
 
-          {/* Stat 3 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
             <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
