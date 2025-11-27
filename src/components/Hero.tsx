@@ -76,13 +76,13 @@ export const Hero = () => {
         </div>
 
         {/* BUTTONS SECTION - Two Horizontal Buttons */}
-        <div className="flex justify-center gap-3 mb-10">
+        <div className="flex justify-center gap-2 mb-10">
           {/* Button 1 - Play & Win (Primary Pink Gradient) */}
           <Button 
-            className="h-12 px-6 text-sm font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
+            className="h-9 px-4 text-xs font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
             style={{
               background: 'linear-gradient(135deg, #D1007C 0%, #F55BAE 100%)',
-              boxShadow: '0 8px 20px -6px rgba(209, 0, 124, 0.4)'
+              boxShadow: '0 6px 16px -4px rgba(209, 0, 124, 0.4)'
             }}
           >
             <span>العب واكسب جوائز 🎮</span>
@@ -90,7 +90,7 @@ export const Hero = () => {
 
           {/* Button 2 - View Reviews (Secondary White) */}
           <Button 
-            className="h-12 px-6 text-sm font-bold rounded-full hover:scale-105 transition-all duration-300"
+            className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300"
             style={{
               backgroundColor: 'white',
               color: '#1A1349',
