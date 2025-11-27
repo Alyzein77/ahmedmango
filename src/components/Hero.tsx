@@ -35,8 +35,8 @@ export const Hero = () => {
           {/* Man image - centered inside circle */}
           <img 
             alt="Ahmed Mango" 
-            className="relative w-[200px] h-[200px] object-cover object-top rounded-full drop-shadow-xl" 
-            src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
+            className="relative w-[200px] h-[200px] object-cover object-center rounded-full drop-shadow-xl" 
+            src="/lovable-uploads/ahmed-mango-hero.png" 
           />
         </div>
 
