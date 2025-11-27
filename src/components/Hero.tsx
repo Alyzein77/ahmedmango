@@ -77,7 +77,7 @@ export const Hero = () => {
           background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
           boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
         }} className="h-9 px-4 text-xs font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0 bg-[#f89808] opacity-100">
-            <span>العب واكسب جوائز 🎮</span>
+            <span className="text-stone-950">العب واكسب جوائز 🎮</span>
           </Button>
 
           {/* Button 2 - View Reviews (Secondary White) */}
