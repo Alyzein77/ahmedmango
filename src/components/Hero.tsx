@@ -84,32 +84,23 @@ export const Hero = () => {
         </div>
 
         {/* STATS ROW - Centered Horizontally */}
-        <div className="flex justify-center items-center gap-8 pt-6">
+        <div className="flex justify-center items-center gap-6 pt-4">
           {/* Stat 1 */}
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-1 mb-1">
-              <Star className="w-4 h-4 fill-[#FBA919] text-[#FBA919]" />
-            </div>
-            <div className="text-3xl font-black text-[#1A1349]">٥٠٠ ألف +</div>
-            <div className="text-xs font-semibold text-[#1A1349]">متابع</div>
+          <div className="text-center">
+            <div className="text-lg font-black text-white" style={{ fontFamily: 'Arial Black, sans-serif' }}>٥٠٠ ألف +</div>
+            <div className="text-[10px] font-bold text-white/90">متابع</div>
           </div>
 
           {/* Stat 2 */}
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-1 mb-1">
-              <Star className="w-4 h-4 fill-[#FBA919] text-[#FBA919]" />
-            </div>
-            <div className="text-3xl font-black text-[#1A1349]">١٠٠٠+</div>
-            <div className="text-xs font-semibold text-[#1A1349]">منتج مراجع</div>
+          <div className="text-center">
+            <div className="text-lg font-black text-white" style={{ fontFamily: 'Arial Black, sans-serif' }}>١٠٠٠+</div>
+            <div className="text-[10px] font-bold text-white/90">منتج مراجع</div>
           </div>
 
           {/* Stat 3 */}
-          <div className="text-center space-y-1">
-            <div className="flex items-center justify-center gap-1 mb-1">
-              <Star className="w-4 h-4 fill-[#FBA919] text-[#FBA919]" />
-            </div>
-            <div className="text-3xl font-black text-[#1A1349]">٢٠٠+</div>
-            <div className="text-xs font-semibold text-[#1A1349]">فيديو</div>
+          <div className="text-center">
+            <div className="text-lg font-black text-white" style={{ fontFamily: 'Arial Black, sans-serif' }}>٢٠٠+</div>
+            <div className="text-[10px] font-bold text-white/90">فيديو</div>
           </div>
         </div>
       </div>
