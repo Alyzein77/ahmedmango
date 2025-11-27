@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
-
 export const Hero = () => {
-  return (
-    <section id="hero" className="relative w-full overflow-hidden font-poppins pt-12 pb-24">
+  return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-12 pb-24">
       {/* Premium Abstract Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Base gradient */}
@@ -39,25 +37,22 @@ export const Hero = () => {
           <div className="relative flex-shrink-0 -ml-4">
             {/* Subtle shadow behind */}
             <div className="absolute inset-0 bg-[#1A1349]/10 rounded-full blur-2xl scale-90 translate-y-2" />
-            <img 
-              alt="Ahmed Mango" 
-              className="relative w-[140px] h-auto drop-shadow-xl" 
-              src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" 
-            />
+            <img alt="Ahmed Mango" className="relative w-[140px] h-auto drop-shadow-xl" src="/lovable-uploads/f97809ec-51a9-476f-ac07-23c98169f96d.png" />
           </div>
 
           {/* TEXT BLOCK - Right Side */}
           <div className="text-right space-y-3">
             {/* Main Heading */}
-            <h1 
-              className="text-4xl leading-none text-[#1A1349] font-extrabold tracking-tight"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
+            <h1 className="text-4xl leading-none text-[#1A1349] font-extrabold tracking-tight" style={{
+            fontFamily: 'Poppins, sans-serif'
+          }}>
               أحمد مانجو
             </h1>
             
             {/* Subheading with Color Variation */}
-            <h2 className="text-xl font-bold leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-xl font-bold leading-tight" style={{
+            fontFamily: 'Poppins, sans-serif'
+          }}>
               <span className="text-[#1A1349]">2استكا</span>{" "}
               <span className="text-[#D1007C]">أو فاستكا؟</span>
             </h2>
@@ -78,27 +73,20 @@ export const Hero = () => {
         {/* BUTTONS SECTION - Two Horizontal Buttons */}
         <div className="flex justify-center gap-2 mb-10">
           {/* Button 1 - Play & Win (Primary Orange Gradient) */}
-          <Button 
-            className="h-9 px-4 text-xs font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
-            style={{
-              background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
-              boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
-            }}
-          >
+          <Button style={{
+          background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
+          boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
+        }} className="h-9 px-4 text-xs font-bold text-white rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0 bg-[#f89808] opacity-100">
             <span>العب واكسب جوائز 🎮</span>
           </Button>
 
           {/* Button 2 - View Reviews (Secondary White) */}
-          <Button 
-            className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300"
-            style={{
-              backgroundColor: 'white',
-              color: '#1A1349',
-              border: '2px solid #1A1349',
-              boxShadow: 'inset 0 2px 4px rgba(26, 19, 73, 0.08)'
-            }}
-            variant="outline"
-          >
+          <Button className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300" style={{
+          backgroundColor: 'white',
+          color: '#1A1349',
+          border: '2px solid #1A1349',
+          boxShadow: 'inset 0 2px 4px rgba(26, 19, 73, 0.08)'
+        }} variant="outline">
             <span>شوف المراجعات 📱</span>
           </Button>
         </div>
@@ -108,7 +96,9 @@ export const Hero = () => {
           {/* Stat 1 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <div className="text-base font-semibold text-[#1A1349]" style={{
+            fontFamily: 'Poppins, sans-serif'
+          }}>
               +٥٠٠ ألف
             </div>
             <div className="text-[10px] font-medium text-[#1A1349]/70">متابع</div>
@@ -117,7 +107,9 @@ export const Hero = () => {
           {/* Stat 2 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <div className="text-base font-semibold text-[#1A1349]" style={{
+            fontFamily: 'Poppins, sans-serif'
+          }}>
               +١٠٠٠
             </div>
             <div className="text-[10px] font-medium text-[#1A1349]/70">منتج مراجع</div>
@@ -126,7 +118,9 @@ export const Hero = () => {
           {/* Stat 3 */}
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-base font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <div className="text-base font-semibold text-[#1A1349]" style={{
+            fontFamily: 'Poppins, sans-serif'
+          }}>
               +٢٠٠
             </div>
             <div className="text-[10px] font-medium text-[#1A1349]/70">فيديو</div>
@@ -142,6 +136,5 @@ export const Hero = () => {
           <path d="M0,200 C240,170 480,190 720,180 C960,170 1200,190 1440,200 L1440,320 L0,320 Z" fill="white"></path>
         </svg>
       </div>
-    </section>
-  );
+    </section>;
 };
