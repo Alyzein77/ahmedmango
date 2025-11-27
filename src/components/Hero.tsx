@@ -3,34 +3,34 @@ import { Sparkles } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section id="hero" className="relative w-full overflow-hidden font-poppins pt-12 pb-24">
-      {/* Premium Abstract Background - Softer */}
+    <section id="hero" className="relative w-full overflow-hidden font-poppins pt-10 pb-20">
+      {/* Premium Abstract Background - Softer opacities */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFCF45] via-[#FBA919]/80 to-[#FFCF45]" />
         
         {/* Layered curves with reduced opacity */}
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <ellipse cx="90%" cy="20%" rx="180" ry="240" fill="#F8CBDF" opacity="0.12" />
-          <ellipse cx="5%" cy="60%" rx="160" ry="200" fill="#9CDAEB" opacity="0.10" />
-          <ellipse cx="80%" cy="75%" rx="120" ry="160" fill="#F8CBDF" opacity="0.10" />
-          <ellipse cx="15%" cy="30%" rx="80" ry="120" fill="#9CDAEB" opacity="0.08" />
-          <circle cx="85%" cy="50%" r="50" fill="#D1007C" opacity="0.06" />
-          <circle cx="10%" cy="80%" r="35" fill="#FBA919" opacity="0.08" />
+          <ellipse cx="90%" cy="20%" rx="180" ry="240" fill="#F8CBDF" opacity="0.08" />
+          <ellipse cx="5%" cy="60%" rx="160" ry="200" fill="#9CDAEB" opacity="0.06" />
+          <ellipse cx="80%" cy="75%" rx="120" ry="160" fill="#F8CBDF" opacity="0.06" />
+          <ellipse cx="15%" cy="30%" rx="80" ry="120" fill="#9CDAEB" opacity="0.05" />
+          <circle cx="85%" cy="50%" r="50" fill="#D1007C" opacity="0.04" />
+          <circle cx="10%" cy="80%" r="35" fill="#FBA919" opacity="0.05" />
         </svg>
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 w-full flex flex-col items-center px-4">
+      {/* Content Container - constrained width */}
+      <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
         
         {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
-        <div className="relative flex items-center justify-center mb-8">
+        <div className="relative flex items-center justify-center mb-6">
           {/* Large circular gradient background - tighter around man */}
-          <div className="absolute w-[220px] h-[220px] rounded-full bg-gradient-to-br from-[#FFCF45]/60 via-[#FBA919]/50 to-[#FFCF45]/40" />
-          <div className="absolute w-[200px] h-[200px] rounded-full bg-gradient-to-br from-[#FFCF45]/40 to-[#FBA919]/30" />
+          <div className="absolute w-[200px] h-[200px] rounded-full bg-gradient-to-br from-[#FFCF45]/60 via-[#FBA919]/50 to-[#FFCF45]/40" />
+          <div className="absolute w-[180px] h-[180px] rounded-full bg-gradient-to-br from-[#FFCF45]/40 to-[#FBA919]/30" />
           
           {/* Soft shadow behind image */}
-          <div className="absolute w-[180px] h-[180px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
+          <div className="absolute w-[160px] h-[160px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
           
           {/* Man image - centered inside circle */}
           <img 
@@ -41,10 +41,10 @@ export const Hero = () => {
         </div>
 
         {/* TEXT STACKED UNDER THE IMAGE (CENTERED & TIGHT) */}
-        <div className="flex flex-col items-center text-center space-y-2">
+        <div className="flex flex-col items-center text-center">
           {/* Heading - Large, Navy */}
           <h1 
-            className="text-3xl leading-none text-[#1A1349] font-extrabold tracking-tight"
+            className="text-3xl leading-none text-[#1A1349] font-extrabold tracking-tight mb-2"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             أحمد مانجو
@@ -52,10 +52,10 @@ export const Hero = () => {
           
           {/* Subheading - Bold, Two-color with better contrast */}
           <h2 
-            className="text-lg font-bold leading-tight"
+            className="text-lg font-bold leading-tight mb-2"
             style={{ 
               fontFamily: 'Poppins, sans-serif',
-              textShadow: '0 1px 2px rgba(0,0,0,0.08)'
+              textShadow: '0 1px 3px rgba(0,0,0,0.12)'
             }}
           >
             <span className="text-[#1A1349]">2استكا</span>{" "}
@@ -63,7 +63,7 @@ export const Hero = () => {
           </h2>
           
           {/* Description - Medium, Navy */}
-          <p className="text-sm font-medium text-[#1A1349] leading-relaxed">
+          <p className="text-sm font-medium text-[#1A1349] leading-relaxed mb-2">
             مراجعات صادقة للمنتجات اليومية 🍿
           </p>
           
@@ -75,9 +75,9 @@ export const Hero = () => {
         </div>
 
         {/* BUTTONS SECTION - Perfectly Aligned */}
-        <div className="flex justify-center items-center gap-3 mt-5 mb-8">
+        <div className="flex justify-center items-center gap-3 mt-4 mb-6">
           <Button 
-            className="h-10 px-5 text-xs font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
+            className="h-10 px-5 min-w-[140px] text-xs font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 border-0"
             style={{
               background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
               boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
@@ -87,7 +87,7 @@ export const Hero = () => {
           </Button>
 
           <Button 
-            className="h-10 px-5 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300 bg-white border border-[#1A1349]/20"
+            className="h-10 px-5 min-w-[140px] text-xs font-bold rounded-full hover:scale-105 transition-all duration-300 bg-white border border-[#1A1349]/20"
             style={{
               color: '#1A1349',
               boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
@@ -98,7 +98,7 @@ export const Hero = () => {
         </div>
 
         {/* STATS ROW - Tighter spacing */}
-        <div className="flex justify-center items-start gap-6">
+        <div className="flex justify-center items-start gap-5">
           <div className="text-center">
             <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
             <div className="text-sm font-semibold text-[#1A1349]" style={{ fontFamily: 'Poppins, sans-serif' }}>
