@@ -26,13 +26,13 @@ export const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full px-0">
         
         {/* Two-Column Layout: Image Left, Text Right */}
         <div className="flex items-center gap-4">
           
-          {/* LEFT COLUMN — IMAGE (far left, 2x bigger) */}
-          <div className="relative flex-shrink-0 -ml-20">
+          {/* LEFT COLUMN — IMAGE (touching left edge) */}
+          <div className="relative flex-shrink-0 ml-0">
             {/* Circular container for the image */}
             <div className="relative w-[280px] h-[280px] rounded-full bg-gradient-to-br from-[#FFCF45]/30 to-[#FBA919]/40 p-3 overflow-hidden shadow-xl">
               {/* Inner glow ring */}
