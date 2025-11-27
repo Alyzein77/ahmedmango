@@ -32,7 +32,7 @@ export const Hero = () => {
         <div className="flex items-center gap-4">
           
           {/* LEFT COLUMN — IMAGE (far left, 2x bigger) */}
-          <div className="relative flex-shrink-0 -ml-4">
+          <div className="relative flex-shrink-0 -ml-20">
             {/* Circular container for the image */}
             <div className="relative w-[280px] h-[280px] rounded-full bg-gradient-to-br from-[#FFCF45]/30 to-[#FBA919]/40 p-3 overflow-hidden shadow-xl">
               {/* Inner glow ring */}
