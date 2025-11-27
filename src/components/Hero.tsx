@@ -81,10 +81,9 @@ export const Hero = () => {
           </Button>
 
           {/* Button 2 - View Reviews (Secondary White) */}
-          <Button className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300" style={{
+          <Button className="h-9 px-4 text-xs font-bold rounded-full hover:scale-105 transition-all duration-300 border-0" style={{
           backgroundColor: 'white',
           color: '#1A1349',
-          border: '2px solid #1A1349',
           boxShadow: 'inset 0 2px 4px rgba(26, 19, 73, 0.08)'
         }} variant="outline">
             <span>شوف المراجعات 📱</span>
