@@ -26,18 +26,18 @@ export const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-6 max-w-lg">
+      <div className="relative z-10 w-full">
         
-        {/* Two-Column Layout: Image Left (45%), Text Right (55%) */}
-        <div className="flex items-center gap-6 mb-12">
+        {/* Two-Column Layout: Image Left, Text Right */}
+        <div className="flex items-center gap-4">
           
-          {/* LEFT COLUMN — IMAGE (45% width) */}
-          <div className="relative flex-shrink-0 w-[45%]">
+          {/* LEFT COLUMN — IMAGE (far left, 2x bigger) */}
+          <div className="relative flex-shrink-0 -ml-4">
             {/* Soft shadow behind image */}
             <div className="absolute inset-0 bg-[#1A1349]/15 rounded-full blur-3xl scale-95 translate-y-3" />
             <img 
               alt="Ahmed Mango" 
-              className="relative w-full h-auto drop-shadow-2xl" 
+              className="relative w-[280px] h-auto drop-shadow-2xl" 
               src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
             />
           </div>
