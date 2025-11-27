@@ -33,13 +33,18 @@ export const Hero = () => {
           
           {/* LEFT COLUMN — IMAGE (far left, 2x bigger) */}
           <div className="relative flex-shrink-0 -ml-4">
-            {/* Soft shadow behind image */}
-            <div className="absolute inset-0 bg-[#1A1349]/15 rounded-full blur-3xl scale-95 translate-y-3" />
-            <img 
-              alt="Ahmed Mango" 
-              className="relative w-[280px] h-auto drop-shadow-2xl" 
-              src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
-            />
+            {/* Circular container for the image */}
+            <div className="relative w-[280px] h-[280px] rounded-full bg-gradient-to-br from-[#FFCF45]/30 to-[#FBA919]/40 p-3 overflow-hidden shadow-xl">
+              {/* Inner glow ring */}
+              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+              {/* Soft shadow behind image */}
+              <div className="absolute inset-0 bg-[#1A1349]/10 rounded-full blur-2xl scale-90 translate-y-2" />
+              <img 
+                alt="Ahmed Mango" 
+                className="relative w-full h-full object-cover object-top rounded-full drop-shadow-lg" 
+                src="/lovable-uploads/0a148d67-bdd7-4ad2-ac49-3dfa0bd03f40.png" 
+              />
+            </div>
           </div>
 
           {/* RIGHT COLUMN — TEXT BLOCK (55% width) */}
