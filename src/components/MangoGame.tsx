@@ -86,7 +86,7 @@ export const MangoGame = () => {
               <Button 
                 variant="outline" 
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3"
-                onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+                onClick={() => window.open('https://mango.risca.dev/ar/leaderboard', '_blank')}
               >
                 <Gift className="w-4 h-4 ml-2" />
                 آخر الفائزين
