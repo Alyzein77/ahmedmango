@@ -24,8 +24,8 @@ export const Hero = () => {
         {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
         <div className="relative flex items-center justify-center mb-4 sm:mb-6">
           {/* Large circular gradient background */}
-          <div className="absolute w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full bg-gradient-to-br from-[#FFCF45]/60 via-[#FBA919]/50 to-[#FFCF45]/40" />
-          <div className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full bg-gradient-to-br from-[#FFCF45]/40 to-[#FBA919]/30" />
+          <div className="absolute w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)' }} />
+          <div className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)', opacity: 0.6 }} />
           
           {/* Soft shadow behind image */}
           <div className="absolute w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
