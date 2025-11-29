@@ -20,7 +20,7 @@ const mockProducts: Product[] = [
   { id: 3, name: "أغرب مشروب ممكن تشربه", image: "/lovable-uploads/aghrab-mashroub.jpg", rating: "fasteka", note: "مشروب حار غريب 🥵🌶️", category: "مشروبات" },
   { id: 4, name: "مشروبات الشتاء وبرد المروحة", image: "/lovable-uploads/mashrobat-shita.jpg", rating: "tasteka", note: "مشروبات دافية للشتاء 🥶😊", category: "مشروبات" },
   { id: 3, name: "بسكوت بالتيراميسو", image: "/lovable-uploads/biskrem-tiramisu.jpg", rating: "tasteka", note: "أول مرة اجربه 😍🥮", category: "بسكويت" },
-  { id: 4, name: "عصير فريش", image: "/placeholder.svg", rating: "fasteka", note: "طعمه صناعي", category: "مشروبات" },
+  { id: 4, name: "شيتوس نوتيلا كيندر", image: "/lovable-uploads/cheetos-nutella-kinder.jpg", rating: "tasteka", note: "خليط غريب بس لذيذ 🐯🌰🍫", category: "سناكس" },
   { id: 5, name: "شوكولاتة جالكسي", image: "/placeholder.svg", rating: "tasteka", note: "ناعمة وكريمية", category: "حلويات" },
   { id: 6, name: "بطاطس ليز", image: "/placeholder.svg", rating: "fasteka", note: "مالحة زيادة", category: "سناكس" },
   { id: 7, name: "آيس كريم كواليتي", image: "/placeholder.svg", rating: "tasteka", note: "طعم الفانيليا رهيب", category: "آيس كريم" },
