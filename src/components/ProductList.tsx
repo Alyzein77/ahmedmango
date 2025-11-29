@@ -126,7 +126,7 @@ export const ProductList = () => {
           </Button>
           <Button variant={activeFilter === "tasteka" ? "default" : "outline"} onClick={() => setActiveFilter("tasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 ${activeFilter === "tasteka" ? "bg-primary text-primary-foreground" : "border-primary/30 text-secondary hover:bg-primary/10"}`}>
             <Check className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-            2استكا
+            استكا
           </Button>
           <Button variant={activeFilter === "fasteka" ? "default" : "outline"} onClick={() => setActiveFilter("fasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 ${activeFilter === "fasteka" ? "bg-accent text-accent-foreground" : "border-accent/30 text-secondary hover:bg-accent/10"}`}>
             <X className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
