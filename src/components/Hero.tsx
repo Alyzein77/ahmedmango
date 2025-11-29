@@ -11,11 +11,21 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/hero-bg.png)' }}
-      />
+      {/* Premium Abstract Background - Softer opacities */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FFCF45] via-[#FBA919]/80 to-[#FFCF45]" />
+        
+        {/* Layered curves with reduced opacity */}
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="90%" cy="20%" rx="180" ry="240" fill="#F8CBDF" opacity="0.08" />
+          <ellipse cx="5%" cy="60%" rx="160" ry="200" fill="#9CDAEB" opacity="0.06" />
+          <ellipse cx="80%" cy="75%" rx="120" ry="160" fill="#F8CBDF" opacity="0.06" />
+          <ellipse cx="15%" cy="30%" rx="80" ry="120" fill="#9CDAEB" opacity="0.05" />
+          <circle cx="85%" cy="50%" r="50" fill="#D1007C" opacity="0.04" />
+          <circle cx="10%" cy="80%" r="35" fill="#FBA919" opacity="0.05" />
+        </svg>
+      </div>
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
