@@ -13,9 +13,9 @@ export const Hero = () => {
       {/* Background Image Only */}
       <div className="absolute inset-0">
         <img 
-          src="/mango-pattern-bg.png" 
+          src="/hero-background.png" 
           alt="" 
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
       </div>
       
