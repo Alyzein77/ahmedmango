@@ -20,12 +20,12 @@ const platformConfig = {
 };
 
 const videos: Video[] = [
-  { id: 1, title: "مراجعة شيبسي جديد 🔥", thumbnail: "/placeholder.svg", platform: "tiktok", views: "250K", url: "#" },
-  { id: 2, title: "أسوأ منتج جربته!", thumbnail: "/placeholder.svg", platform: "instagram", views: "180K", url: "#" },
-  { id: 3, title: "تحدي السناكس المصرية", thumbnail: "/placeholder.svg", platform: "youtube", views: "500K", url: "#" },
-  { id: 4, title: "فاستكا ولا 2استكا؟", thumbnail: "/placeholder.svg", platform: "tiktok", views: "320K", url: "#" },
-  { id: 5, title: "منتجات لازم تجربها", thumbnail: "/placeholder.svg", platform: "instagram", views: "145K", url: "#" },
-  { id: 6, title: "مقارنة بين الشيبسيات", thumbnail: "/placeholder.svg", platform: "youtube", views: "420K", url: "#" },
+  { id: 1, title: "شيبسي بالكبدة والكفتة 🔥", thumbnail: "/lovable-uploads/chipsy-kebda-kofta.jpg", platform: "tiktok", views: "250K", url: "#" },
+  { id: 2, title: "أصلي ولا التقليد؟", thumbnail: "/lovable-uploads/asly-vs-takleed.jpg", platform: "instagram", views: "180K", url: "#" },
+  { id: 3, title: "أغرب مشروب ممكن تشربه", thumbnail: "/lovable-uploads/aghrab-mashroub.jpg", platform: "youtube", views: "500K", url: "#" },
+  { id: 4, title: "مشروبات الشتاء 🥶", thumbnail: "/lovable-uploads/mashrobat-shita.jpg", platform: "tiktok", views: "320K", url: "#" },
+  { id: 5, title: "بسكوت بالتيراميسو 😍", thumbnail: "/lovable-uploads/biskrem-tiramisu.jpg", platform: "instagram", views: "145K", url: "#" },
+  { id: 6, title: "شيتوس نوتيلا كيندر", thumbnail: "/lovable-uploads/cheetos-nutella-kinder.jpg", platform: "youtube", views: "420K", url: "#" },
 ];
 
 export const RecentVideos = () => {
