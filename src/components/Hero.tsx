@@ -37,8 +37,9 @@ export const Hero = () => {
         {/* TEXT STACKED UNDER THE IMAGE */}
         <div className="flex flex-col items-center text-center">
           <h1 style={{
-          fontFamily: 'Poppins, sans-serif'
-        }} className="sm:text-3xl leading-none text-[#1A1349] font-extrabold tracking-tight mb-2 text-6xl font-sans text-center">
+          fontFamily: 'Cairo, sans-serif',
+          fontWeight: 900
+        }} className="sm:text-3xl leading-none text-[#1A1349] tracking-tight mb-2 text-6xl text-center">
             أحمد مانجو
           </h1>
           
