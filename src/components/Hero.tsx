@@ -11,20 +11,13 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Premium Abstract Background - Softer opacities */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FFCF45] via-[#FBA919]/80 to-[#FFCF45]" />
-        
-        {/* Layered curves with reduced opacity */}
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <ellipse cx="90%" cy="20%" rx="180" ry="240" fill="#F8CBDF" opacity="0.08" />
-          <ellipse cx="5%" cy="60%" rx="160" ry="200" fill="#9CDAEB" opacity="0.06" />
-          <ellipse cx="80%" cy="75%" rx="120" ry="160" fill="#F8CBDF" opacity="0.06" />
-          <ellipse cx="15%" cy="30%" rx="80" ry="120" fill="#9CDAEB" opacity="0.05" />
-          <circle cx="85%" cy="50%" r="50" fill="#D1007C" opacity="0.04" />
-          <circle cx="10%" cy="80%" r="35" fill="#FBA919" opacity="0.05" />
-        </svg>
+      {/* Background Image Only */}
+      <div className="absolute inset-0">
+        <img 
+          src="/hero-bg.png" 
+          alt="" 
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content Container */}
@@ -131,14 +124,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Wave Bottom Transition */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg className="relative block w-full h-[50px] sm:h-[70px]" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <path d="M0,160 C240,120 480,140 720,130 C960,120 1200,140 1440,160 L1440,320 L0,320 Z" fill="#FBA919" opacity="0.3"></path>
-          <path d="M0,180 C240,150 480,170 720,160 C960,150 1200,170 1440,180 L1440,320 L0,320 Z" fill="#FFCF45" opacity="0.4"></path>
-          <path d="M0,200 C240,170 480,190 720,180 C960,170 1200,190 1440,200 L1440,320 L0,320 Z" fill="white"></path>
-        </svg>
-      </div>
     </section>
   );
 };
