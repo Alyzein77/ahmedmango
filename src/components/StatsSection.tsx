@@ -50,7 +50,7 @@ export const StatsSection = () => {
       <div className="container mx-auto max-w-5xl relative z-10">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-1 sm:mb-2">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-1 sm:mb-2 font-lalezar">
             إحصائيات أحمد مانجو 📊
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base">
