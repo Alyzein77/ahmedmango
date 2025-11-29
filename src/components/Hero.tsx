@@ -42,8 +42,8 @@ export const Hero = () => {
             أحمد مانجو
           </h1>
           
-          <h2 className="text-base sm:text-lg font-bold leading-tight mb-2" style={{
-          fontFamily: 'Poppins, sans-serif',
+          <h2 className="text-base sm:text-lg leading-tight mb-2" style={{
+          fontFamily: 'Lalezar, sans-serif',
           textShadow: '0 1px 3px rgba(0,0,0,0.12)'
         }}>
             <span className="text-[#1A1349]">2استكا</span>{" "}
