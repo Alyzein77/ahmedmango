@@ -48,8 +48,8 @@ export const Hero = () => {
           fontFamily: 'Lalezar, sans-serif',
           textShadow: '0 1px 3px rgba(0,0,0,0.12)'
         }}>
-            <span className="text-orange-foreground text-3xl">استكة</span>{" "}
-            <span className="text-[#1d173a] text-3xl">ولا فستكة؟</span>
+            <span className="text-orange-foreground text-3xl">استكا</span>{" "}
+            <span className="text-[#1d173a] text-3xl">ولا فستكا؟</span>
           </h2>
           
           
