@@ -6,6 +6,12 @@ export const MangoGame = () => {
       {/* Energetic gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent via-accent/90 to-primary" />
       
+      {/* Top fade overlay - blends into previous section */}
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-background to-transparent z-[1]" />
+      
+      {/* Bottom fade overlay - blends into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-t from-background to-transparent z-[1]" />
+      
       {/* Abstract shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-24 sm:w-40 h-24 sm:h-40 bg-primary/30 rounded-full blur-3xl" />
