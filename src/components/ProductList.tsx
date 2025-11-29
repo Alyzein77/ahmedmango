@@ -113,8 +113,8 @@ export const ProductList = () => {
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-2 sm:mb-3">قائمة المنتجات </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-2 sm:mb-3 font-oi">قائمة المنتجات </h2>
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto px-4 font-tajawal">
             كل المنتجات اللي راجعتها بتقييم صادق
           </p>
         </div>
