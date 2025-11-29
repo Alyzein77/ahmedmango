@@ -24,8 +24,8 @@ export const Hero = () => {
         {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
         <div className="relative flex items-center justify-center mb-4 sm:mb-6">
           {/* Large circular gradient background */}
-          <div className="absolute w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)' }} />
-          <div className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)', opacity: 0.6 }} />
+          <div className="absolute w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)' }} />
+          <div className="absolute w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] rounded-full" style={{ background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)', opacity: 0.6 }} />
           
           {/* Soft shadow behind image */}
           <div className="absolute w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
@@ -62,11 +62,11 @@ export const Hero = () => {
           <Button style={{
           background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)',
           boxShadow: '0 6px 16px -4px rgba(232, 93, 4, 0.5)'
-        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-white shadow-xl border-0">
+        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-white shadow-xl border-0 font-tajawal">
             <span className="text-sm text-white">العب واكسب جوائز</span>
           </Button>
 
-          <Button className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20" style={{
+          <Button className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20 font-tajawal" style={{
           color: '#1A1349',
           boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
         }} onClick={() => scrollToSection("#products")}>
