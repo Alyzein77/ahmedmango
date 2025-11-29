@@ -120,7 +120,18 @@ export const Footer = () => {
         <div className="border-t border-secondary-foreground/20 pt-4 sm:pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 sm:gap-4 text-secondary-foreground/60 text-xs sm:text-sm">
             <p>© {currentYear} أحمد مانجو. جميع الحقوق محفوظة 🥭</p>
-            <p>صنع بـ ❤️ في مصر</p>
+            <div className="flex flex-col md:flex-row items-center gap-2">
+              <p>صنع بـ ❤️ في مصر</p>
+              <span className="hidden md:inline">•</span>
+              <a 
+                href="https://www.risca.dev" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                Made by Risca.dev
+              </a>
+            </div>
           </div>
         </div>
       </div>
