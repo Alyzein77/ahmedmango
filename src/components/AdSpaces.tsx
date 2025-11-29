@@ -54,9 +54,15 @@ export const AdSpaces = () => {
               
               {/* Ad Content */}
               <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px]">
-                <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] bg-muted rounded-lg sm:rounded-xl border-2 border-dashed border-muted-foreground/30 flex items-center justify-center mb-2 sm:mb-4">
-                  <span className="text-muted-foreground text-[10px] sm:text-sm font-medium text-center px-1">شعار الراعي</span>
-                </div>
+                <div 
+                  className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-4"
+                  style={{
+                    backgroundImage: 'url(/lovable-uploads/juhayna-mix-ad.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+
                 <p className="text-secondary font-bold text-center text-xs sm:text-base">
                   مساحة إعلانية
                 </p>
