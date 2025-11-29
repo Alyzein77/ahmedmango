@@ -16,9 +16,12 @@ export const Hero = () => {
         <img 
           src="/mango-pattern-bg.png" 
           alt="" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
       </div>
+      
+      {/* White fade at bottom for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
