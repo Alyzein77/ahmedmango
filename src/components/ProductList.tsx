@@ -105,7 +105,7 @@ const mockProducts: Product[] = [{
 }];
 export const ProductList = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | ProductRating>("all");
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(4);
   const filteredProducts = activeFilter === "all" ? mockProducts : mockProducts.filter(p => p.rating === activeFilter);
   const visibleProducts = filteredProducts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredProducts.length;
@@ -172,7 +172,7 @@ export const ProductList = () => {
 
         {/* Load More */}
         {hasMore && <div className="text-center mt-6 sm:mt-8">
-            <Button variant="outline" onClick={() => setVisibleCount(prev => prev + 6)} className="rounded-full font-bold px-6 sm:px-8 border-secondary/30 text-secondary hover:bg-secondary/10 h-10 sm:h-11">
+            <Button variant="outline" onClick={() => setVisibleCount(prev => prev + 4)} className="rounded-full font-bold px-6 sm:px-8 border-secondary/30 text-secondary hover:bg-secondary/10 h-10 sm:h-11">
               تحميل المزيد ⬇️
             </Button>
           </div>}
