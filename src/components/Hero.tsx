@@ -12,7 +12,11 @@ export const Hero = () => {
   return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Background Image Only */}
       <div className="absolute inset-0">
-        
+        <img 
+          src="/mango-pattern-bg.png" 
+          alt="" 
+          className="w-full h-full object-contain"
+        />
       </div>
       
       {/* White fade at bottom for smooth transition */}
