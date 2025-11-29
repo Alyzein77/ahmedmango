@@ -41,24 +41,24 @@ export const MangoGame = () => {
             
             
             <p className="text-sm sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 lg:mr-0">
-              ساعد القرد الجعان يمسك المنجا! امسك أكتر منجا، اكسب نقاط أعلى، 
-              واربح جوائز حقيقية كل أسبوع 🎁
+              ساعد القرد الجعان يمسك المنجا… اللعبة بسيطة بس صدقني مش سهلة.
+              حرّك يمين وشمال، امسك المنجا النازلة، وخلي بالك ما توقعهاش! 🥭
             </p>
 
             {/* Features - 2x2 grid */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0">
               {[{
               icon: Zap,
-              text: "أسئلة يومية"
+              text: "اللعبة بتسرّع"
             }, {
               icon: Trophy,
-              text: "جوائز حقيقية"
+              text: "سجّل رقمك القياسي"
             }, {
               icon: Gift,
-              text: "هدايا مفاجئة"
+              text: "كل منجاية 10 نقاط"
             }, {
               icon: Star,
-              text: "نقاط متراكمة"
+              text: "دخول سريع"
             }].map((feature, idx) => <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3">
                   <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                   <span className="text-white font-medium text-xs sm:text-sm">{feature.text}</span>
@@ -70,7 +70,7 @@ export const MangoGame = () => {
               className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow"
               onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
             >
-              ابدأ اللعب الآن 🚀
+              يلا نلعب 🥭
             </Button>
             
             {/* Secondary Buttons */}
