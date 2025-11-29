@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Music2, Instagram, Youtube } from "lucide-react";
@@ -29,6 +30,10 @@ const videos: Video[] = [
 ];
 
 export const RecentVideos = () => {
+  const [visibleCount, setVisibleCount] = useState(4);
+  const visibleVideos = videos.slice(0, visibleCount);
+  const hasMore = visibleCount < videos.length;
+
   return (
     <section id="videos" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto max-w-6xl">
@@ -43,8 +48,8 @@ export const RecentVideos = () => {
         </div>
 
         {/* Video Grid - 2 cols mobile, 3 cols desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-          {videos.map((video, idx) => {
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          {visibleVideos.map((video, idx) => {
             const config = platformConfig[video.platform];
             
             return (
@@ -98,15 +103,18 @@ export const RecentVideos = () => {
           })}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-6 sm:mt-10">
-          <Button
-            variant="outline"
-            className="rounded-full font-bold px-6 sm:px-8 border-secondary/30 text-secondary hover:bg-secondary/10 h-10 sm:h-11"
-          >
-            شوف كل الفيديوهات 🎥
-          </Button>
-        </div>
+        {/* Load More */}
+        {hasMore && (
+          <div className="text-center mt-6 sm:mt-8">
+            <Button
+              variant="outline"
+              onClick={() => setVisibleCount(prev => prev + 4)}
+              className="rounded-full font-bold px-6 sm:px-8 border-secondary/30 text-secondary hover:bg-secondary/10 h-10 sm:h-11"
+            >
+              تحميل المزيد ⬇️
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
