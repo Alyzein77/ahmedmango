@@ -21,7 +21,7 @@ const mockProducts: Product[] = [
   { id: 4, name: "مشروبات الشتاء وبرد المروحة", image: "/lovable-uploads/mashrobat-shita.jpg", rating: "tasteka", note: "مشروبات دافية للشتاء 🥶😊", category: "مشروبات" },
   { id: 3, name: "بسكوت بالتيراميسو", image: "/lovable-uploads/biskrem-tiramisu.jpg", rating: "tasteka", note: "أول مرة اجربه 😍🥮", category: "بسكويت" },
   { id: 4, name: "شيتوس نوتيلا كيندر", image: "/lovable-uploads/cheetos-nutella-kinder.jpg", rating: "tasteka", note: "خليط غريب بس لذيذ 🐯🌰🍫", category: "سناكس" },
-  { id: 5, name: "شوكولاتة جالكسي", image: "/placeholder.svg", rating: "tasteka", note: "ناعمة وكريمية", category: "حلويات" },
+  { id: 5, name: "شيبسي بطعم البطيخ", image: "/lovable-uploads/chipsy-watermelon.jpg", rating: "fasteka", note: "جربته وكان غريب 🍉😂", category: "سناكس" },
   { id: 6, name: "بطاطس ليز", image: "/placeholder.svg", rating: "fasteka", note: "مالحة زيادة", category: "سناكس" },
   { id: 7, name: "آيس كريم كواليتي", image: "/placeholder.svg", rating: "tasteka", note: "طعم الفانيليا رهيب", category: "آيس كريم" },
   { id: 8, name: "عصير تروبيكانا", image: "/placeholder.svg", rating: "fasteka", note: "فيه سكر كتير", category: "مشروبات" },
