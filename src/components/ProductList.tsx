@@ -17,7 +17,8 @@ interface Product {
 const mockProducts: Product[] = [
   { id: 1, name: "شيبسي بالكبدة والكفتة", image: "/lovable-uploads/chipsy-kebda-kofta.jpg", rating: "tasteka", note: "طعم جديد ومختلف 😂🙀", category: "سناكس" },
   { id: 2, name: "أصلي ولا التقليد؟", image: "/lovable-uploads/asly-vs-takleed.jpg", rating: "tasteka", note: "مقارنة بين الأصلي والتقليد", category: "مقارنات" },
-  { id: 3, name: "شيبسي تشيلي", image: "/placeholder.svg", rating: "tasteka", note: "طعمه حلو وسعره كويس", category: "سناكس" },
+  { id: 3, name: "أغرب مشروب ممكن تشربه", image: "/lovable-uploads/aghrab-mashroub.jpg", rating: "fasteka", note: "مشروب حار غريب 🥵🌶️", category: "مشروبات" },
+  { id: 4, name: "شيبسي تشيلي", image: "/placeholder.svg", rating: "tasteka", note: "طعمه حلو وسعره كويس", category: "سناكس" },
   { id: 3, name: "بسكويت أوريو", image: "/placeholder.svg", rating: "tasteka", note: "كريمي ولذيذ", category: "بسكويت" },
   { id: 4, name: "عصير فريش", image: "/placeholder.svg", rating: "fasteka", note: "طعمه صناعي", category: "مشروبات" },
   { id: 5, name: "شوكولاتة جالكسي", image: "/placeholder.svg", rating: "tasteka", note: "ناعمة وكريمية", category: "حلويات" },
