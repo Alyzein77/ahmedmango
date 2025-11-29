@@ -15,14 +15,15 @@ interface Product {
 }
 
 const mockProducts: Product[] = [
-  { id: 1, name: "شيبسي تشيلي", image: "/placeholder.svg", rating: "tasteka", note: "طعمه حلو وسعره كويس", category: "سناكس" },
-  { id: 2, name: "بسكويت أوريو", image: "/placeholder.svg", rating: "tasteka", note: "كريمي ولذيذ", category: "بسكويت" },
-  { id: 3, name: "عصير فريش", image: "/placeholder.svg", rating: "fasteka", note: "طعمه صناعي", category: "مشروبات" },
-  { id: 4, name: "شوكولاتة جالكسي", image: "/placeholder.svg", rating: "tasteka", note: "ناعمة وكريمية", category: "حلويات" },
-  { id: 5, name: "بطاطس ليز", image: "/placeholder.svg", rating: "fasteka", note: "مالحة زيادة", category: "سناكس" },
-  { id: 6, name: "آيس كريم كواليتي", image: "/placeholder.svg", rating: "tasteka", note: "طعم الفانيليا رهيب", category: "آيس كريم" },
-  { id: 7, name: "عصير تروبيكانا", image: "/placeholder.svg", rating: "fasteka", note: "فيه سكر كتير", category: "مشروبات" },
-  { id: 8, name: "كيت كات", image: "/placeholder.svg", rating: "tasteka", note: "الويفر مقرمش", category: "حلويات" },
+  { id: 1, name: "شيبسي بالكبدة والكفتة", image: "/lovable-uploads/chipsy-kebda-kofta.jpg", rating: "tasteka", note: "طعم جديد ومختلف 😂🙀", category: "سناكس" },
+  { id: 2, name: "شيبسي تشيلي", image: "/placeholder.svg", rating: "tasteka", note: "طعمه حلو وسعره كويس", category: "سناكس" },
+  { id: 3, name: "بسكويت أوريو", image: "/placeholder.svg", rating: "tasteka", note: "كريمي ولذيذ", category: "بسكويت" },
+  { id: 4, name: "عصير فريش", image: "/placeholder.svg", rating: "fasteka", note: "طعمه صناعي", category: "مشروبات" },
+  { id: 5, name: "شوكولاتة جالكسي", image: "/placeholder.svg", rating: "tasteka", note: "ناعمة وكريمية", category: "حلويات" },
+  { id: 6, name: "بطاطس ليز", image: "/placeholder.svg", rating: "fasteka", note: "مالحة زيادة", category: "سناكس" },
+  { id: 7, name: "آيس كريم كواليتي", image: "/placeholder.svg", rating: "tasteka", note: "طعم الفانيليا رهيب", category: "آيس كريم" },
+  { id: 8, name: "عصير تروبيكانا", image: "/placeholder.svg", rating: "fasteka", note: "فيه سكر كتير", category: "مشروبات" },
+  { id: 9, name: "كيت كات", image: "/placeholder.svg", rating: "tasteka", note: "الويفر مقرمش", category: "حلويات" },
 ];
 
 export const ProductList = () => {
