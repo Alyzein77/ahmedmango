@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        oi: ['Oi', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
