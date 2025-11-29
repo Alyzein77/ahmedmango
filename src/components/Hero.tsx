@@ -64,10 +64,10 @@ export const Hero = () => {
         {/* BUTTONS SECTION */}
         <div className="flex flex-col justify-center items-center gap-2 mt-4 mb-4 sm:mb-6 w-full">
           <Button style={{
-          background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
-          boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
-        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-orange-50 shadow-xl border-0 bg-orange-50">
-            <span className="text-sm text-orange-foreground">العب واكسب جوائز</span>
+          background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)',
+          boxShadow: '0 6px 16px -4px rgba(232, 93, 4, 0.5)'
+        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-white shadow-xl border-0">
+            <span className="text-sm text-white">العب واكسب جوائز</span>
           </Button>
 
           <Button className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20" style={{
