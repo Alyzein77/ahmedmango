@@ -79,37 +79,7 @@ export const Hero = () => {
         </div>
 
         {/* STATS ROW */}
-        <div className="flex justify-center items-start gap-4 sm:gap-5">
-          <div className="text-center">
-            <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-xs sm:text-sm font-semibold text-[#1A1349]" style={{
-            fontFamily: 'Poppins, sans-serif'
-          }}>
-              +٥٠٠ ألف
-            </div>
-            <div className="text-[9px] sm:text-[10px] font-medium text-[#1A1349]/70">متابع</div>
-          </div>
-
-          <div className="text-center">
-            <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-xs sm:text-sm font-semibold text-[#1A1349]" style={{
-            fontFamily: 'Poppins, sans-serif'
-          }}>
-              +١٠٠٠
-            </div>
-            <div className="text-[9px] sm:text-[10px] font-medium text-[#1A1349]/70">منتج مراجع</div>
-          </div>
-
-          <div className="text-center">
-            <Sparkles className="w-4 h-4 text-[#D1007C]/60 mx-auto mb-1" />
-            <div className="text-xs sm:text-sm font-semibold text-[#1A1349]" style={{
-            fontFamily: 'Poppins, sans-serif'
-          }}>
-              +٢٠٠
-            </div>
-            <div className="text-[9px] sm:text-[10px] font-medium text-[#1A1349]/70">فيديو</div>
-          </div>
-        </div>
+        
       </div>
 
     </section>;
