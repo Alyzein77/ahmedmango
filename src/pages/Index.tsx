@@ -1,37 +1,41 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { RatingSystem } from "@/components/RatingSystem";
-import { SponsorBanner } from "@/components/SponsorBanner";
-import { RewardsSection } from "@/components/RewardsSection";
-import { SponsorsShowcase } from "@/components/SponsorsShowcase";
-import { WinnersSection } from "@/components/WinnersSection";
-import { SocialSection } from "@/components/SocialSection";
+import { AdSpaces } from "@/components/AdSpaces";
+import { ProductList } from "@/components/ProductList";
+import { MangoGame } from "@/components/MangoGame";
+import { StatsSection } from "@/components/StatsSection";
+import { RecentVideos } from "@/components/RecentVideos";
+import { SocialFeeds } from "@/components/SocialFeeds";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-poppins">
+      {/* Section 1: Navigation */}
       <Navbar />
+      
+      {/* Section 1: Hero */}
       <Hero />
       
-      {/* Sponsor Banner after Hero */}
-      <div className="container mx-auto px-4">
-        <SponsorBanner
-          sponsorName="مساحة إعلانية متاحة"
-          sponsorTagline="روج لعلامتك التجارية أمام آلاف المتابعين"
-          ctaText="احجز الآن"
-          ctaLink="mailto:business@ahmadmango.com"
-        />
-      </div>
+      {/* Section 2: Ad Spaces */}
+      <AdSpaces />
       
-      <RatingSystem />
-      <RewardsSection />
+      {/* Section 3: Product List (2استكا / فاستكا) */}
+      <ProductList />
       
-      {/* Sponsors Showcase Section */}
-      <SponsorsShowcase />
+      {/* Section 4: Mango Game */}
+      <MangoGame />
       
-      <WinnersSection />
-      <SocialSection />
+      {/* Section 5: Stats Section */}
+      <StatsSection />
+      
+      {/* Section 6: Recent Videos */}
+      <RecentVideos />
+      
+      {/* Section 7: Social Feeds */}
+      <SocialFeeds />
+      
+      {/* Section 8: Footer */}
       <Footer />
     </div>
   );
