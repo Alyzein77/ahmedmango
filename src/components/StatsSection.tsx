@@ -63,7 +63,7 @@ export const StatsSection = () => {
           {stats.map((stat, idx) => (
             <div 
               key={idx}
-              className="group relative bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center border border-transparent hover:border-primary/20 transition-all duration-300 hover:shadow-xl animate-slide-up"
+              className="group relative bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center border border-transparent hover:border-primary/20 transition-all duration-300 shadow-lg hover:shadow-xl animate-slide-up"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Decorative blob */}
@@ -77,7 +77,7 @@ export const StatsSection = () => {
               </div>
               
               {/* Value */}
-              <div className="text-xl sm:text-2xl md:text-3xl font-black text-secondary mb-0.5 sm:mb-1 font-poppins">
+              <div className="text-xl sm:text-2xl md:text-3xl font-black text-secondary mb-0.5 sm:mb-1 font-lalezar">
                 {stat.value}
               </div>
               
