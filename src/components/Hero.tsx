@@ -12,7 +12,7 @@ export const Hero = () => {
   return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Background Image Only */}
       <div className="absolute inset-0">
-        <img src="/hero-background.png" alt="" className="w-full h-full object-cover" />
+        <img src="/hero-background.png" alt="" className="w-full h-full object-cover opacity-90 shadow-inner rounded-none" />
       </div>
       
       {/* White fade at bottom for smooth transition */}
