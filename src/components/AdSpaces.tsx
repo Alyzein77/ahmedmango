@@ -21,7 +21,7 @@ export const AdSpaces = () => {
           {/* Ad Content */}
           <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px]">
             <div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2 font-lalezar">
                 🥭 أعلن مع أحمد مانجو
               </h3>
               <p className="text-secondary/70 font-medium text-sm sm:text-base">
