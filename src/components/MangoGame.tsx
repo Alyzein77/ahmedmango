@@ -41,8 +41,8 @@ export const MangoGame = () => {
             
             
             <p className="text-sm sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 lg:mr-0">
-              جمّع النقاط من خلال الإجابة على أسئلة السناكس واكسب جوائز حقيقية! 
-              كل يوم أسئلة جديدة وفرص ربح أكتر 🎁
+              ساعد القرد الجعان يمسك المنجا! امسك أكتر منجا، اكسب نقاط أعلى، 
+              واربح جوائز حقيقية كل أسبوع 🎁
             </p>
 
             {/* Features - 2x2 grid */}
@@ -65,17 +65,29 @@ export const MangoGame = () => {
                 </div>)}
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow">
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow"
+              onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+            >
               ابدأ اللعب الآن 🚀
             </Button>
             
             {/* Secondary Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
-              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3">
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3"
+                onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+              >
                 <Trophy className="w-4 h-4 ml-2" />
                 المتصدرين
               </Button>
-              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3">
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3"
+                onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+              >
                 <Gift className="w-4 h-4 ml-2" />
                 آخر الفائزين
               </Button>
