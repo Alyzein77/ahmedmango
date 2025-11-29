@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
+
 export const AdSpaces = () => {
-  return <section className="py-6 sm:py-8 px-3 sm:px-4">
+  return (
+    <section className="py-6 sm:py-8 px-3 sm:px-4">
       <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         
         {/* Wide Banner Ad */}
@@ -12,7 +14,9 @@ export const AdSpaces = () => {
           </div>
           
           {/* Ad Label */}
-          
+          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-secondary text-secondary-foreground text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full z-10">
+            مساحة إعلانية
+          </div>
           
           {/* Ad Content */}
           <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px]">
@@ -26,17 +30,24 @@ export const AdSpaces = () => {
             </div>
             
             {/* Ad Image */}
-            <div className="w-full max-w-[300px] sm:max-w-[400px] h-20 sm:h-28 rounded-lg sm:rounded-xl overflow-hidden" style={{
-            backgroundImage: 'url(/lovable-uploads/blazo-ad.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }} />
+            <div 
+              className="w-full max-w-[300px] sm:max-w-[400px] h-20 sm:h-28 rounded-lg sm:rounded-xl overflow-hidden"
+              style={{
+                backgroundImage: 'url(/lovable-uploads/blazo-ad.jpeg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
           </div>
         </div>
 
         {/* Two Square Ads */}
         <div className="grid grid-cols-2 gap-3 sm:gap-6">
-          {[1, 2].map(idx => <Card key={idx} className="relative overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-colors">
+          {[1, 2].map((idx) => (
+            <Card 
+              key={idx}
+              className="relative overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-colors"
+            >
               {/* Ad Label */}
               <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-accent-foreground text-[9px] sm:text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full z-10">
                 إعلان
@@ -48,11 +59,14 @@ export const AdSpaces = () => {
               
               {/* Ad Content */}
               <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px]">
-                <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-4" style={{
-              backgroundImage: 'url(/lovable-uploads/juhayna-mix-ad.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }} />
+                <div 
+                  className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-4"
+                  style={{
+                    backgroundImage: 'url(/lovable-uploads/juhayna-mix-ad.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
 
                 <p className="text-secondary font-bold text-center text-xs sm:text-base">
                   مساحة إعلانية
@@ -61,8 +75,10 @@ export const AdSpaces = () => {
                   تواصل معنا للحجز
                 </p>
               </div>
-            </Card>)}
+            </Card>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
