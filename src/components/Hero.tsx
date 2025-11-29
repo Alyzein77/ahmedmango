@@ -12,11 +12,7 @@ export const Hero = () => {
   return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Background Image Only */}
       <div className="absolute inset-0">
-        <img 
-          src="/hero-background.png" 
-          alt="" 
-          className="w-full h-full object-cover"
-        />
+        <img src="/hero-background.png" alt="" className="w-full h-full object-cover" />
       </div>
       
       {/* White fade at bottom for smooth transition */}
@@ -67,10 +63,10 @@ export const Hero = () => {
 
         {/* BUTTONS SECTION */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mt-4 mb-4 sm:mb-6 w-full">
-          <Button className="h-11 sm:h-10 px-5 w-full sm:w-auto sm:min-w-[140px] text-xs font-bold rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border-0" style={{
+          <Button style={{
           background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
           boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
-        }} onClick={() => scrollToSection("#game")}>
+        }} onClick={() => scrollToSection("#game")} className="h-11 sm:h-10 px-5 w-full sm:w-auto sm:min-w-[140px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-[#ffd028] text-orange-50 border-2 shadow-xl">
             <span className="text-[#1A1349]">العب واكسب جوائز 🎮</span>
           </Button>
 
