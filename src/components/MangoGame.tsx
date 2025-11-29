@@ -1,35 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Trophy, Star, Gift, Zap, Crown, Medal } from "lucide-react";
-const latestWinners = [{
-  name: "محمد أحمد",
-  prize: "كارت أمازون 100$",
-  avatar: "🏆"
-}, {
-  name: "سارة محمود",
-  prize: "آيفون 15 برو",
-  avatar: "🎉"
-}, {
-  name: "أحمد علي",
-  prize: "بلايستيشن 5",
-  avatar: "🎮"
-}];
-const leaderboard = [{
-  rank: 1,
-  name: "يوسف_مانجو",
-  points: 15420,
-  icon: Crown
-}, {
-  rank: 2,
-  name: "نورهان_قمر",
-  points: 12850,
-  icon: Medal
-}, {
-  rank: 3,
-  name: "عمرو_فاستكا",
-  points: 11200,
-  icon: Star
-}];
+import { Trophy, Gift, Zap, Star } from "lucide-react";
+
 export const MangoGame = () => {
   return <section id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
       {/* Energetic gradient background */}
@@ -91,52 +62,25 @@ export const MangoGame = () => {
             <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow">
               ابدأ اللعب الآن 🚀
             </Button>
+            
+            {/* Secondary Buttons */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
+              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3">
+                <Trophy className="w-4 h-4 ml-2" />
+                المتصدرين
+              </Button>
+              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3">
+                <Gift className="w-4 h-4 ml-2" />
+                آخر الفائزين
+              </Button>
+            </div>
           </div>
 
-          {/* Right Side - Mango Character + Stats */}
-          <div className="order-2 space-y-4 sm:space-y-6 w-full">
-            {/* Big Game Header - Desktop only */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative">
-                <img src="/lovable-uploads/game-header.png" alt="العب واكسب مع أحمد مانجو" className="w-full max-w-md rounded-2xl shadow-2xl animate-float" />
-              </div>
+          {/* Right Side - Game Header Image */}
+          <div className="order-2 w-full hidden lg:flex justify-center">
+            <div className="relative">
+              <img src="/lovable-uploads/game-header.png" alt="العب واكسب مع أحمد مانجو" className="w-full max-w-md rounded-2xl shadow-2xl animate-float" />
             </div>
-
-            {/* Leaderboard Card */}
-            <Card className="bg-white/10 backdrop-blur-md border-white/20 p-4 sm:p-5">
-              <h3 className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2">
-                <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                المتصدرين
-              </h3>
-              <div className="space-y-2 sm:space-y-3">
-                {leaderboard.map(player => <div key={player.rank} className="flex items-center justify-between bg-white/10 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${player.rank === 1 ? 'bg-primary' : player.rank === 2 ? 'bg-sky' : 'bg-orange'}`}>
-                        <player.icon className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
-                      </div>
-                      <span className="text-white font-medium text-xs sm:text-base">{player.name}</span>
-                    </div>
-                    <span className="text-primary font-bold text-xs sm:text-base">{player.points.toLocaleString()}</span>
-                  </div>)}
-              </div>
-            </Card>
-
-            {/* Latest Winners */}
-            <Card className="bg-white/10 backdrop-blur-md border-white/20 p-4 sm:p-5">
-              <h3 className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2">
-                <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-pink" />
-                آخر الفائزين
-              </h3>
-              <div className="space-y-2 sm:space-y-3">
-                {latestWinners.map((winner, idx) => <div key={idx} className="flex items-center justify-between bg-white/10 rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <span className="text-xl sm:text-2xl">{winner.avatar}</span>
-                      <span className="text-white font-medium text-xs sm:text-base">{winner.name}</span>
-                    </div>
-                    <span className="text-pink text-[10px] sm:text-sm font-bold">{winner.prize}</span>
-                  </div>)}
-              </div>
-            </Card>
           </div>
         </div>
       </div>
