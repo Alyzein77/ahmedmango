@@ -18,6 +18,7 @@ export default {
         poppins: ['Poppins', 'sans-serif'],
         oi: ['Oi', 'cursive'],
         tajawal: ['Tajawal', 'sans-serif'],
+        lalezar: ['Lalezar', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
