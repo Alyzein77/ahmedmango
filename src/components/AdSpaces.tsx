@@ -29,10 +29,15 @@ export const AdSpaces = () => {
               </p>
             </div>
             
-            {/* Placeholder Image Area */}
-            <div className="w-full max-w-[200px] sm:max-w-[250px] h-16 sm:h-20 bg-secondary/10 rounded-lg sm:rounded-xl border-2 border-dashed border-secondary/30 flex items-center justify-center">
-              <span className="text-secondary/50 font-medium text-xs sm:text-sm">صورة الإعلان</span>
-            </div>
+            {/* Ad Image */}
+            <div 
+              className="w-full max-w-[300px] sm:max-w-[400px] h-20 sm:h-28 rounded-lg sm:rounded-xl overflow-hidden"
+              style={{
+                backgroundImage: 'url(/lovable-uploads/blazo-ad.jpeg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
           </div>
         </div>
 
