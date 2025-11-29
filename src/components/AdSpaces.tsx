@@ -24,7 +24,7 @@ export const AdSpaces = () => {
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2 font-lalezar">
                 🥭 أعلن مع أحمد مانجو
               </h3>
-              <p className="text-secondary/70 font-medium text-sm sm:text-base">
+              <p className="text-secondary/70 font-medium text-sm sm:text-base font-tajawal">
                 وصّل منتجك لآلاف المتابعين المهتمين
               </p>
             </div>
