@@ -46,8 +46,8 @@ export const Hero = () => {
           fontFamily: 'Lalezar, sans-serif',
           textShadow: '0 1px 3px rgba(0,0,0,0.12)'
         }}>
-            <span className="text-[#1A1349]">2استكا</span>{" "}
-            <span className="text-[#C0006B]">أو فاستكا؟</span>
+            <span className="text-4xl text-[#c1006b]">2استكا</span>{" "}
+            <span className="text-[#C0006B] text-4xl">أو فاستكا؟</span>
           </h2>
           
           <p className="text-xs sm:text-sm font-medium text-[#1A1349] leading-relaxed mb-2">
