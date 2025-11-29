@@ -24,8 +24,12 @@ export const Hero = () => {
         {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
         <div className="relative flex items-center justify-center mb-4 sm:mb-6">
           {/* Large circular gradient background */}
-          <div className="absolute w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full" style={{ background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.5) 0%, rgba(244, 140, 6, 0.4) 100%)' }} />
-          <div className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full" style={{ background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.3) 0%, rgba(244, 140, 6, 0.2) 100%)' }} />
+          <div className="absolute w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full" style={{
+          background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.5) 0%, rgba(244, 140, 6, 0.4) 100%)'
+        }} />
+          <div className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full" style={{
+          background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.3) 0%, rgba(244, 140, 6, 0.2) 100%)'
+        }} />
           
           {/* Soft shadow behind image */}
           <div className="absolute w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
@@ -36,7 +40,7 @@ export const Hero = () => {
 
         {/* TEXT STACKED UNDER THE IMAGE */}
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-oi sm:text-3xl leading-none text-[#1A1349] tracking-tight mb-2 text-center text-5xl">
+          <h1 className="font-oi sm:text-3xl leading-none text-[#1A1349] tracking-tight mb-2 text-center text-4xl">
             أحمد مانجو
           </h1>
           
@@ -44,8 +48,8 @@ export const Hero = () => {
           fontFamily: 'Lalezar, sans-serif',
           textShadow: '0 1px 3px rgba(0,0,0,0.12)'
         }}>
-            <span className="text-4xl text-orange-foreground">استكة</span>{" "}
-            <span className="text-4xl text-[#1d173a]">ولا فستكة؟</span>
+            <span className="text-orange-foreground text-3xl">استكة</span>{" "}
+            <span className="text-[#1d173a] text-3xl">ولا فستكة؟</span>
           </h2>
           
           
