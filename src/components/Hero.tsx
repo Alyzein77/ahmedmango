@@ -64,17 +64,17 @@ export const Hero = () => {
         {/* BUTTONS SECTION */}
         <div className="flex flex-col justify-center items-center gap-2 mt-4 mb-4 sm:mb-6 w-full">
           <Button style={{
-            background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
-            boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
-          }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-orange-50 shadow-xl border-0 bg-orange-50">
-            <span className="text-sm text-orange-600">العب واكسب جوائز</span>
+          background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
+          boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
+        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-orange-50 shadow-xl border-0 bg-orange-50">
+            <span className="text-sm text-orange-foreground">العب واكسب جوائز</span>
           </Button>
 
           <Button className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20" style={{
-            color: '#1A1349',
-            boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
-          }} onClick={() => scrollToSection("#products")}>
-            <span className="text-sm text-orange-600">شوف المراجعات 📱</span>
+          color: '#1A1349',
+          boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
+        }} onClick={() => scrollToSection("#products")}>
+            <span className="text-sm text-orange-600">شوف المراجعات</span>
           </Button>
         </div>
 
