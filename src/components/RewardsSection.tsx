@@ -66,7 +66,11 @@ export const RewardsSection = () => {
               </div>
             </div>
 
-            <Button size="lg" className="w-full text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-4 md:py-6">
+            <Button 
+              size="lg" 
+              className="w-full text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-primary via-orange-500 to-primary hover:scale-105 transition-transform shadow-xl rounded-full py-4 md:py-6"
+              onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+            >
               🚀 ابدأ اللعب دلوقتي
             </Button>
           </div>
