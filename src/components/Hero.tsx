@@ -48,14 +48,12 @@ export const Hero = () => {
             <span className="text-4xl text-[#1d173a]">أو فاستكا؟</span>
           </h2>
           
-          <p className="text-xs sm:text-sm font-medium text-[#1A1349] leading-relaxed mb-2">
-            مراجعات صادقة للمنتجات اليومية 🍿
-          </p>
+          
           
           {/* Rating Rules */}
           <div className="text-xs sm:text-sm font-medium text-[#1A1349] space-y-1">
-            <p>✔️ لو حلو = 2استكا</p>
-            <p>✖️ لو وحش = فاستكا</p>
+            
+            
           </div>
         </div>
 
