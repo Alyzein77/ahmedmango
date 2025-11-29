@@ -15,7 +15,7 @@ const stats = [
   },
   { 
     icon: Video,
-    value: "+٢٠٠", 
+    value: "+١٫٥ ألف", 
     label: "فيديو",
     color: "text-orange"
   },
