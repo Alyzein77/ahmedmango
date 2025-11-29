@@ -5,7 +5,7 @@ import { ProductList } from "@/components/ProductList";
 import { MangoGame } from "@/components/MangoGame";
 import { StatsSection } from "@/components/StatsSection";
 import { RecentVideos } from "@/components/RecentVideos";
-import { SocialFeeds } from "@/components/SocialFeeds";
+import { SocialSection } from "@/components/SocialSection";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -32,8 +32,8 @@ const Index = () => {
       {/* Section 6: Recent Videos */}
       <RecentVideos />
       
-      {/* Section 7: Social Feeds */}
-      <SocialFeeds />
+      {/* Section 7: Social Section */}
+      <SocialSection />
       
       {/* Section 8: Footer */}
       <Footer />
