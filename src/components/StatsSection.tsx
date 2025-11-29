@@ -3,7 +3,7 @@ import { Sparkles, Star, Video, Users } from "lucide-react";
 const stats = [
   { 
     icon: Users,
-    value: "+٥٠٠ ألف", 
+    value: "+٢ مليون", 
     label: "متابع",
     color: "text-accent"
   },
