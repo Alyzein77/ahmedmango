@@ -36,7 +36,7 @@ export const Hero = () => {
 
         {/* TEXT STACKED UNDER THE IMAGE */}
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-oi sm:text-3xl leading-none tracking-tight mb-2 text-center text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-sm">
+          <h1 className="font-oi sm:text-3xl leading-none text-[#1A1349] tracking-tight mb-2 text-6xl text-center">
             أحمد مانجو
           </h1>
           
