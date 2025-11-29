@@ -62,15 +62,14 @@ export const Hero = () => {
           <Button style={{
           background: 'linear-gradient(135deg, #E85D04 0%, #F48C06 100%)',
           boxShadow: '0 6px 16px -4px rgba(232, 93, 4, 0.5)'
-        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-white shadow-xl border-0 font-tajawal">
-            <span className="text-sm text-white">العب واكسب جوائز</span>
+        }} onClick={() => scrollToSection("#game")} className="h-10 px-4 w-[180px] text-sm font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-white shadow-xl border-0 font-tajawal flex items-center justify-center">
+            العب واكسب جوائز
           </Button>
 
-          <Button className="h-10 px-4 w-[180px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20 font-tajawal" style={{
-          color: '#1A1349',
+          <Button className="h-10 px-4 w-[180px] text-sm font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20 font-tajawal flex items-center justify-center text-orange-600" style={{
           boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
         }} onClick={() => scrollToSection("#products")}>
-            <span className="text-sm text-orange-600">شوف المراجعات</span>
+            شوف المراجعات
           </Button>
         </div>
 
