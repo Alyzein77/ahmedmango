@@ -46,7 +46,7 @@ export const AdSpaces = () => {
           {[1, 2].map((idx) => (
             <Card 
               key={idx}
-              className="relative overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-colors"
+              className="relative overflow-hidden border-2 border-primary/30 hover:border-primary/40 transition-colors bg-primary/20"
             >
               {/* Ad Label */}
               <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-accent-foreground text-[9px] sm:text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full z-10">
