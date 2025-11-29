@@ -37,8 +37,14 @@ export const MangoGame = () => {
           
           {/* Content - Always first on mobile */}
           <div className="text-center lg:text-right order-1">
-            {/* Fun mango character - visible on mobile */}
-            <div className="text-6xl sm:text-7xl mb-4 sm:mb-6 animate-bounce-in lg:hidden">🥭</div>
+            {/* Game header image - visible on mobile */}
+            <div className="mb-4 sm:mb-6 lg:hidden">
+              <img 
+                src="/lovable-uploads/game-header.png" 
+                alt="العب واكسب مع أحمد مانجو" 
+                className="w-full max-w-xs mx-auto rounded-2xl shadow-xl"
+              />
+            </div>
             
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
               العب واكسب مع مانجو 🎮
@@ -77,13 +83,14 @@ export const MangoGame = () => {
 
           {/* Right Side - Mango Character + Stats */}
           <div className="order-2 space-y-4 sm:space-y-6 w-full">
-            {/* Big Mango Character - Desktop only */}
+            {/* Big Game Header - Desktop only */}
             <div className="hidden lg:flex justify-center">
               <div className="relative">
-                <div className="text-[120px] xl:text-[150px] animate-float">🥭</div>
-                <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-full px-3 py-1 font-bold text-sm animate-bounce">
-                  العب!
-                </div>
+                <img 
+                  src="/lovable-uploads/game-header.png" 
+                  alt="العب واكسب مع أحمد مانجو" 
+                  className="w-full max-w-md rounded-2xl shadow-2xl animate-float"
+                />
               </div>
             </div>
 
