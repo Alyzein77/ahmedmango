@@ -66,15 +66,15 @@ export const Hero = () => {
           <Button style={{
           background: 'linear-gradient(135deg, #FBA919 0%, #FFCF45 100%)',
           boxShadow: '0 6px 16px -4px rgba(251, 169, 25, 0.5)'
-        }} onClick={() => scrollToSection("#game")} className="h-11 sm:h-10 px-5 w-full sm:w-auto sm:min-w-[140px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-[#ffd028] text-orange-50 shadow-xl border-0">
-            <span className="text-[#1A1349]">العب واكسب جوائز 🎮</span>
+        }} onClick={() => scrollToSection("#game")} className="h-11 sm:h-10 px-5 w-full sm:w-auto sm:min-w-[140px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 text-orange-50 shadow-xl border-0 bg-orange-50">
+            <span className="text-base text-orange-600">العب واكسب جوائز</span>
           </Button>
 
           <Button className="h-11 sm:h-10 px-5 w-full sm:w-auto sm:min-w-[140px] text-xs font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 bg-white border border-[#1A1349]/20" style={{
           color: '#1A1349',
           boxShadow: '0 2px 8px rgba(26, 19, 73, 0.08)'
         }} onClick={() => scrollToSection("#products")}>
-            <span>شوف المراجعات 📱</span>
+            <span className="text-base text-orange-600">شوف المراجعات 📱</span>
           </Button>
         </div>
 
