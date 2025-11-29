@@ -2,65 +2,65 @@ import { Card } from "@/components/ui/card";
 
 export const AdSpaces = () => {
   return (
-    <section className="py-8 px-4">
-      <div className="container mx-auto max-w-6xl space-y-6">
+    <section className="py-6 sm:py-8 px-3 sm:px-4">
+      <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         
         {/* Wide Banner Ad */}
-        <div className="relative w-full bg-primary/20 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg">
+        <div className="relative w-full bg-primary/20 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg">
           {/* Mango-style decorative border */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-0 w-20 h-20 bg-primary/20 rounded-full -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-orange/20 rounded-full translate-x-1/2 translate-y-1/2" />
+            <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 bg-primary/20 rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-orange/20 rounded-full translate-x-1/2 translate-y-1/2" />
           </div>
           
           {/* Ad Label */}
-          <div className="absolute top-3 right-3 bg-secondary text-secondary-foreground text-xs font-bold px-3 py-1 rounded-full z-10">
+          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-secondary text-secondary-foreground text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full z-10">
             مساحة إعلانية
           </div>
           
           {/* Ad Content */}
-          <div className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[160px]">
-            <div className="text-center md:text-right">
-              <h3 className="text-xl md:text-2xl font-bold text-secondary mb-2">
+          <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px]">
+            <div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2">
                 🥭 أعلن مع أحمد مانجو
               </h3>
-              <p className="text-secondary/70 font-medium">
+              <p className="text-secondary/70 font-medium text-sm sm:text-base">
                 وصّل منتجك لآلاف المتابعين المهتمين
               </p>
             </div>
             
             {/* Placeholder Image Area */}
-            <div className="w-full md:w-64 h-24 bg-secondary/10 rounded-xl border-2 border-dashed border-secondary/30 flex items-center justify-center">
-              <span className="text-secondary/50 font-medium">صورة الإعلان</span>
+            <div className="w-full max-w-[200px] sm:max-w-[250px] h-16 sm:h-20 bg-secondary/10 rounded-lg sm:rounded-xl border-2 border-dashed border-secondary/30 flex items-center justify-center">
+              <span className="text-secondary/50 font-medium text-xs sm:text-sm">صورة الإعلان</span>
             </div>
           </div>
         </div>
 
         {/* Two Square Ads */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6">
           {[1, 2].map((idx) => (
             <Card 
               key={idx}
               className="relative overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-colors"
             >
               {/* Ad Label */}
-              <div className="absolute top-3 right-3 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full z-10">
-                مساحة إعلانية
+              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-accent-foreground text-[9px] sm:text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full z-10">
+                إعلان
               </div>
               
               {/* Decorative shapes */}
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-pink/40 rounded-full" />
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-sky/40 rounded-full" />
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-10 sm:w-16 h-10 sm:h-16 bg-pink/40 rounded-full" />
+              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 sm:w-12 h-8 sm:h-12 bg-sky/40 rounded-full" />
               
               {/* Ad Content */}
-              <div className="relative p-6 flex flex-col items-center justify-center min-h-[200px]">
-                <div className="w-full aspect-square max-w-[150px] bg-muted rounded-xl border-2 border-dashed border-muted-foreground/30 flex items-center justify-center mb-4">
-                  <span className="text-muted-foreground text-sm font-medium">شعار الراعي</span>
+              <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px]">
+                <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] bg-muted rounded-lg sm:rounded-xl border-2 border-dashed border-muted-foreground/30 flex items-center justify-center mb-2 sm:mb-4">
+                  <span className="text-muted-foreground text-[10px] sm:text-sm font-medium text-center px-1">شعار الراعي</span>
                 </div>
-                <p className="text-secondary font-bold text-center">
-                  مساحة إعلانية متاحة
+                <p className="text-secondary font-bold text-center text-xs sm:text-base">
+                  مساحة إعلانية
                 </p>
-                <p className="text-muted-foreground text-sm text-center">
+                <p className="text-muted-foreground text-[10px] sm:text-sm text-center hidden sm:block">
                   تواصل معنا للحجز
                 </p>
               </div>
