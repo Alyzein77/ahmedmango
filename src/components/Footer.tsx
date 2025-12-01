@@ -77,10 +77,10 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
+                <Link to="/terms" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
                   <FileText className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
-                  الشروط
-                </a>
+                  الشروط والأحكام
+                </Link>
               </li>
             </ul>
           </div>
