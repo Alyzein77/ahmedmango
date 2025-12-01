@@ -4,6 +4,7 @@ import AdminSidebar from "./AdminSidebar";
 import ProductsManager from "./ProductsManager";
 import VideosManager from "./VideosManager";
 import LatestContentManager from "./LatestContentManager";
+import TikTokManager from "./TikTokManager";
 import AdminStats from "./AdminStats";
 
 interface AdminDashboardProps {
@@ -11,7 +12,7 @@ interface AdminDashboardProps {
   onLogout: () => void;
 }
 
-type AdminView = "products" | "videos" | "content" | "stats";
+type AdminView = "products" | "videos" | "content" | "tiktok" | "stats";
 
 const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
   const [currentView, setCurrentView] = useState<AdminView>("products");
@@ -32,6 +33,7 @@ const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
           {currentView === "products" && <ProductsManager />}
           {currentView === "videos" && <VideosManager />}
           {currentView === "content" && <LatestContentManager />}
+          {currentView === "tiktok" && <TikTokManager />}
           {currentView === "stats" && <AdminStats />}
         </div>
       </main>
