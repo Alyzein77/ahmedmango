@@ -134,6 +134,48 @@ export type Database = {
         }
         Relationships: []
       }
+      tiktok_tagged_videos: {
+        Row: {
+          author_name: string | null
+          author_username: string | null
+          caption: string | null
+          created_at: string
+          hashtags: string[] | null
+          id: string
+          posted_at: string
+          thumbnail_url: string | null
+          tiktok_id: string
+          updated_at: string
+          video_url: string
+        }
+        Insert: {
+          author_name?: string | null
+          author_username?: string | null
+          caption?: string | null
+          created_at?: string
+          hashtags?: string[] | null
+          id?: string
+          posted_at: string
+          thumbnail_url?: string | null
+          tiktok_id: string
+          updated_at?: string
+          video_url: string
+        }
+        Update: {
+          author_name?: string | null
+          author_username?: string | null
+          caption?: string | null
+          created_at?: string
+          hashtags?: string[] | null
+          id?: string
+          posted_at?: string
+          thumbnail_url?: string | null
+          tiktok_id?: string
+          updated_at?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null

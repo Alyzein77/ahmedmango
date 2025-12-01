@@ -1,10 +1,10 @@
-import { Package, BarChart3, LogOut, User, Video, FileText } from "lucide-react";
+import { Package, BarChart3, LogOut, User, Video, FileText, Music2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface AdminSidebarProps {
-  currentView: "products" | "videos" | "content" | "stats";
-  onViewChange: (view: "products" | "videos" | "content" | "stats") => void;
+  currentView: "products" | "videos" | "content" | "tiktok" | "stats";
+  onViewChange: (view: "products" | "videos" | "content" | "tiktok" | "stats") => void;
   onLogout: () => void;
   userEmail: string;
 }
@@ -14,6 +14,7 @@ const AdminSidebar = ({ currentView, onViewChange, onLogout, userEmail }: AdminS
     { id: "products" as const, label: "لوحة المنتجات", icon: Package },
     { id: "videos" as const, label: "الفيديوهات", icon: Video },
     { id: "content" as const, label: "آخر المحتوى", icon: FileText },
+    { id: "tiktok" as const, label: "TikTok RSS", icon: Music2 },
     { id: "stats" as const, label: "إحصائيات", icon: BarChart3 },
   ];
 
