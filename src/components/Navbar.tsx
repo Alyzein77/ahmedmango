@@ -27,13 +27,9 @@ export const Navbar = () => {
       <div className="container mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
-          <a 
-            href="#" 
-            className="flex items-center gap-2 hover:scale-105 transition-transform" 
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 hover:scale-105 transition-transform"
           >
             <img 
               alt="Mango Snacks Logo" 
@@ -43,7 +39,7 @@ export const Navbar = () => {
             <span className="font-black text-lg sm:text-xl text-primary">
               أحمد مانجو
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
