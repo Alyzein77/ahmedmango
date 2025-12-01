@@ -3,26 +3,26 @@ import { Sparkles, Star, Video, Users } from "lucide-react";
 const stats = [
   { 
     icon: Users,
-    value: "+٢ مليون", 
+    value: "2.6M+", 
     label: "متابع",
     color: "text-accent"
   },
   { 
     icon: Star,
-    value: "+١٠٠٠", 
+    value: "1000+", 
     label: "منتج مراجع",
     color: "text-primary"
   },
   { 
     icon: Video,
-    value: "+١٫٥ ألف", 
-    label: "فيديو",
+    value: "500M+", 
+    label: "مشاهدة",
     color: "text-orange"
   },
   { 
     icon: Sparkles,
-    value: "+٥٠", 
-    label: "جائزة موزعة",
+    value: "745K", 
+    label: "مشترك يوتيوب",
     color: "text-sky"
   },
 ];
