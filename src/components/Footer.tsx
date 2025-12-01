@@ -61,24 +61,24 @@ export const Footer = () => {
           </div>
 
           {/* Legal Links */}
-          <div className="text-center md:text-right">
+          <div className="text-center md:text-right relative z-20">
             <h4 className="font-bold text-sm sm:text-lg mb-3 sm:mb-4 text-primary">معلومات</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-secondary-foreground/80 text-xs sm:text-sm">
               <li>
-                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
-                  <FileText className="w-3 h-3 sm:w-4 sm:h-4" />
+                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
                   من نحن
                 </a>
               </li>
               <li>
-                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
-                  <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
                   سياسة الخصوصية
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
-                  <FileText className="w-3 h-3 sm:w-4 sm:h-4" />
+                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
                   الشروط
                 </a>
               </li>
