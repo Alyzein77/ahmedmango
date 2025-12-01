@@ -4,7 +4,8 @@ import { AdSpaces } from "@/components/AdSpaces";
 import { ProductList } from "@/components/ProductList";
 import { MangoGame } from "@/components/MangoGame";
 import { StatsSection } from "@/components/StatsSection";
-import { RecentVideos } from "@/components/RecentVideos";
+import { VideosSection } from "@/components/VideosSection";
+import { LatestContentFeed } from "@/components/LatestContentFeed";
 import { SocialSection } from "@/components/SocialSection";
 import { Footer } from "@/components/Footer";
 
@@ -29,13 +30,16 @@ const Index = () => {
       {/* Section 5: Stats Section */}
       <StatsSection />
       
-      {/* Section 6: Recent Videos */}
-      <RecentVideos />
+      {/* Section 6: Videos from Database */}
+      <VideosSection />
       
-      {/* Section 7: Social Section */}
+      {/* Section 7: Latest Content Feed */}
+      <LatestContentFeed />
+      
+      {/* Section 8: Social Section */}
       <SocialSection />
       
-      {/* Section 8: Footer */}
+      {/* Section 9: Footer */}
       <Footer />
     </div>
   );

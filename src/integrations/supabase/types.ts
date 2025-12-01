@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      latest_content: {
+        Row: {
+          content_type: Database["public"]["Enums"]["content_type"]
+          id: string
+          link_url: string
+          platform: Database["public"]["Enums"]["video_platform"]
+          posted_at: string
+          preview_url: string
+          short_note: string | null
+          title: string
+        }
+        Insert: {
+          content_type: Database["public"]["Enums"]["content_type"]
+          id?: string
+          link_url: string
+          platform: Database["public"]["Enums"]["video_platform"]
+          posted_at?: string
+          preview_url: string
+          short_note?: string | null
+          title: string
+        }
+        Update: {
+          content_type?: Database["public"]["Enums"]["content_type"]
+          id?: string
+          link_url?: string
+          platform?: Database["public"]["Enums"]["video_platform"]
+          posted_at?: string
+          preview_url?: string
+          short_note?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           brand: string | null
@@ -122,6 +155,45 @@ export type Database = {
         }
         Relationships: []
       }
+      videos: {
+        Row: {
+          category: Database["public"]["Enums"]["video_category"]
+          created_at: string
+          description: string | null
+          duration: string | null
+          id: string
+          is_featured: boolean | null
+          platform: Database["public"]["Enums"]["video_platform"]
+          thumbnail_url: string
+          title: string
+          video_url: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["video_category"]
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          is_featured?: boolean | null
+          platform: Database["public"]["Enums"]["video_platform"]
+          thumbnail_url: string
+          title: string
+          video_url: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["video_category"]
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          is_featured?: boolean | null
+          platform?: Database["public"]["Enums"]["video_platform"]
+          thumbnail_url?: string
+          title?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -137,6 +209,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      content_type: "Video" | "Post" | "Story" | "Reel" | "TikTok"
       product_category:
         | "Chips"
         | "Chocolate"
@@ -145,6 +218,8 @@ export type Database = {
         | "Biscuits"
         | "Other"
       product_verdict: "2استكا" | "فاستكا"
+      video_category: "Review" | "Challenge" | "Announcement" | "Collaboration"
+      video_platform: "YouTube" | "TikTok" | "Instagram" | "Facebook"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -273,6 +348,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      content_type: ["Video", "Post", "Story", "Reel", "TikTok"],
       product_category: [
         "Chips",
         "Chocolate",
@@ -282,6 +358,8 @@ export const Constants = {
         "Other",
       ],
       product_verdict: ["2استكا", "فاستكا"],
+      video_category: ["Review", "Challenge", "Announcement", "Collaboration"],
+      video_platform: ["YouTube", "TikTok", "Instagram", "Facebook"],
     },
   },
 } as const
