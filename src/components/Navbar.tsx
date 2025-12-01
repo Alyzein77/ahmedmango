@@ -7,7 +7,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
     { title: "الرئيسية", href: "#hero" },
-    { title: "المنتجات", href: "#products" },
+    { title: "المنتجات", href: "/products", isPage: true },
     { title: "العب واكسب", href: "#game" },
     { title: "الفيديوهات", href: "#videos" },
     { title: "تابعنا", href: "#feeds" },

@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      products: {
+        Row: {
+          brand: string | null
+          category: Database["public"]["Enums"]["product_category"]
+          created_at: string
+          id: string
+          is_featured: boolean | null
+          name: string
+          platforms: string[] | null
+          rating: number
+          review_url: string | null
+          short_note: string | null
+          thumbnail_url: string | null
+          updated_at: string
+          verdict: Database["public"]["Enums"]["product_verdict"]
+        }
+        Insert: {
+          brand?: string | null
+          category?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          id?: string
+          is_featured?: boolean | null
+          name: string
+          platforms?: string[] | null
+          rating: number
+          review_url?: string | null
+          short_note?: string | null
+          thumbnail_url?: string | null
+          updated_at?: string
+          verdict: Database["public"]["Enums"]["product_verdict"]
+        }
+        Update: {
+          brand?: string | null
+          category?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          id?: string
+          is_featured?: boolean | null
+          name?: string
+          platforms?: string[] | null
+          rating?: number
+          review_url?: string | null
+          short_note?: string | null
+          thumbnail_url?: string | null
+          updated_at?: string
+          verdict?: Database["public"]["Enums"]["product_verdict"]
+        }
+        Relationships: []
+      }
       sponsors: {
         Row: {
           created_at: string | null
@@ -89,6 +137,14 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      product_category:
+        | "Chips"
+        | "Chocolate"
+        | "Drinks"
+        | "Noodles"
+        | "Biscuits"
+        | "Other"
+      product_verdict: "2استكا" | "فاستكا"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -217,6 +273,15 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      product_category: [
+        "Chips",
+        "Chocolate",
+        "Drinks",
+        "Noodles",
+        "Biscuits",
+        "Other",
+      ],
+      product_verdict: ["2استكا", "فاستكا"],
     },
   },
 } as const
