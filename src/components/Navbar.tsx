@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,7 @@ export const Navbar = () => {
     { title: "العب واكسب", href: "#game" },
     { title: "الفيديوهات", href: "#videos" },
     { title: "تابعنا", href: "#feeds" },
+    { title: "من نحن", href: "/about", isPage: true },
   ];
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false);
@@ -46,18 +48,29 @@ export const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
             {navLinks.map((link) => (
-              <a 
-                key={link.href} 
-                href={link.href} 
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }} 
-                className="text-foreground text-sm font-bold hover:text-primary transition-colors relative group"
-              >
-                {link.title}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-              </a>
+              link.isPage ? (
+                <Link 
+                  key={link.href} 
+                  to={link.href}
+                  className="text-foreground text-sm font-bold hover:text-primary transition-colors relative group"
+                >
+                  {link.title}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </Link>
+              ) : (
+                <a 
+                  key={link.href} 
+                  href={link.href} 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }} 
+                  className="text-foreground text-sm font-bold hover:text-primary transition-colors relative group"
+                >
+                  {link.title}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </a>
+              )
             ))}
             <Button 
               className="bg-primary text-primary-foreground text-sm font-bold hover:scale-105 transition-transform rounded-full px-4" 
@@ -82,17 +95,28 @@ export const Navbar = () => {
           <div className="md:hidden py-3 border-t border-primary/20 animate-slide-up">
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a 
-                  key={link.href} 
-                  href={link.href} 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }} 
-                  className="text-foreground font-bold py-3 px-4 hover:bg-primary/10 rounded-lg transition-colors text-right active:bg-primary/20"
-                >
-                  {link.title}
-                </a>
+                link.isPage ? (
+                  <Link 
+                    key={link.href} 
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-foreground font-bold py-3 px-4 hover:bg-primary/10 rounded-lg transition-colors text-right active:bg-primary/20"
+                  >
+                    {link.title}
+                  </Link>
+                ) : (
+                  <a 
+                    key={link.href} 
+                    href={link.href} 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }} 
+                    className="text-foreground font-bold py-3 px-4 hover:bg-primary/10 rounded-lg transition-colors text-right active:bg-primary/20"
+                  >
+                    {link.title}
+                  </a>
+                )
               ))}
               <Button 
                 className="bg-primary text-primary-foreground font-bold rounded-full w-full mt-2 h-12" 
