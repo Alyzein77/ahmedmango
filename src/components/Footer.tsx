@@ -1,5 +1,6 @@
 import { Music2, Instagram, Facebook, Youtube, Mail, FileText, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -70,10 +71,10 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
                   <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
-                  الخصوصية
-                </a>
+                  سياسة الخصوصية
+                </Link>
               </li>
               <li>
                 <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
