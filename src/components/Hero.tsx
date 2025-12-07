@@ -36,7 +36,7 @@ export const Hero = () => {
           
           {/* Man image - clipped circle container */}
           <div className="relative w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] rounded-full overflow-hidden drop-shadow-xl">
-            <img alt="Ahmed Mango" className="w-full h-auto object-cover -translate-y-5" src="/lovable-uploads/4f8a2edd-4a1c-4daa-929b-7e6e57e47a2f.png" />
+            <img alt="Ahmed Mango" className="w-full h-auto object-cover translate-y-6" src="/lovable-uploads/4f8a2edd-4a1c-4daa-929b-7e6e57e47a2f.png" />
           </div>
         </div>
 
