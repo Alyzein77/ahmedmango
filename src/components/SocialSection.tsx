@@ -1,4 +1,4 @@
-import { Music2, Instagram, Youtube } from "lucide-react";
+import { Music2, Instagram, Youtube, Facebook } from "lucide-react";
 export const SocialSection = () => {
   const socialPlatforms = [{
     name: "TikTok",
@@ -15,6 +15,11 @@ export const SocialSection = () => {
     Icon: Youtube,
     color: "bg-red-600 hover:bg-red-700",
     url: "https://www.youtube.com/@AhmedMango"
+  }, {
+    name: "Facebook",
+    Icon: Facebook,
+    color: "bg-blue-600 hover:bg-blue-700",
+    url: "https://www.facebook.com/search/top?q=ahmed%20mango%20-%20%D8%A7%D8%AD%D9%85%D8%AF%20%D9%85%D8%A7%D9%86%D8%AC%D9%88"
   }];
   return <section id="social" className="py-12 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto max-w-6xl text-center">
