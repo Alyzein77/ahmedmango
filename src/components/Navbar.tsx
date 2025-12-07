@@ -39,7 +39,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform">
-            <img alt="Mango Snacks Logo" className="h-10 sm:h-12 w-auto" src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" />
+            <img alt="Mango Snacks Logo" className="h-[3.75rem] sm:h-[4.5rem] w-auto" src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" />
             
           </Link>
 
