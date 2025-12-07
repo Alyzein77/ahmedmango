@@ -35,7 +35,7 @@ export const Hero = () => {
           <div className="absolute w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] bg-[#1A1349]/12 rounded-full blur-2xl translate-y-3" />
           
           {/* Man image */}
-          <img alt="Ahmed Mango" className="relative w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] object-cover object-center rounded-full drop-shadow-xl" src="/lovable-uploads/ahmed-mango-hero.png" />
+          <img alt="Ahmed Mango" className="relative w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] object-cover object-center rounded-full drop-shadow-xl" src="/lovable-uploads/4f8a2edd-4a1c-4daa-929b-7e6e57e47a2f.png" />
         </div>
 
         {/* TEXT STACKED UNDER THE IMAGE */}
