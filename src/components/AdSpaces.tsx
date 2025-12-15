@@ -1,6 +1,10 @@
 import { Card } from "@/components/ui/card";
 export const AdSpaces = () => {
-  return <section className="py-6 sm:py-8 px-3 sm:px-4" style={{ backgroundImage: 'url(/images/ad-background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+  return <section className="py-6 sm:py-8 px-3 sm:px-4" style={{
+    backgroundImage: 'url(/images/ad-background.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}>
       <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         
         {/* Wide Banner Ad */}
@@ -17,7 +21,7 @@ export const AdSpaces = () => {
           </div>
           
           {/* Ad Content */}
-          <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px]">
+          <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px] bg-white">
             <div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2 font-lalezar">
                 🥭 أعلن مع أحمد مانجو
@@ -49,7 +53,7 @@ export const AdSpaces = () => {
               
               
               {/* Ad Content */}
-              <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px]">
+              <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px] bg-white">
                 <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-4" style={{
               backgroundImage: 'url(/lovable-uploads/juhayna-mix-ad.png)',
               backgroundSize: 'cover',
