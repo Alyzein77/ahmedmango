@@ -3,9 +3,10 @@ import { Trophy, Gift, Zap, Star } from "lucide-react";
 export const MangoGame = () => {
   return <section id="game" className="relative py-8 sm:py-12 lg:py-20 px-3 sm:px-4 overflow-hidden min-h-[60vh] sm:min-h-0">
       {/* Orange pop-art background */}
-      <div className="absolute inset-0 bg-cover bg-bottom sm:bg-center bg-no-repeat" style={{
+      <div className="absolute inset-0 bg-no-repeat" style={{
         backgroundImage: "url('/images/game-bg.png')",
-        backgroundSize: "cover"
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center center"
       }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
