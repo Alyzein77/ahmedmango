@@ -109,7 +109,11 @@ export const ProductList = () => {
   const filteredProducts = activeFilter === "all" ? mockProducts : mockProducts.filter(p => p.rating === activeFilter);
   const visibleProducts = filteredProducts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredProducts.length;
-  return <section id="products" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-background to-muted/30">
+  return <section id="products" className="py-10 sm:py-16 px-3 sm:px-4" style={{
+    backgroundImage: 'url(/images/product-background.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}>
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10">
