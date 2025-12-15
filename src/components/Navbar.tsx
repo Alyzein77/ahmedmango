@@ -35,7 +35,7 @@ export const Navbar = () => {
     }
   };
   return <nav className="sticky top-0 z-50 bg-sky border-b-4 border-foreground">
-      <div className="container mx-auto px-3 sm:px-4">
+      <div className="container mx-auto px-3 sm:px-4 bg-[#9ad8ea]">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform">
