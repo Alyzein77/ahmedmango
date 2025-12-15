@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 export const AdSpaces = () => {
-  return <section className="py-6 sm:py-8 px-3 sm:px-4">
+  return <section className="py-6 sm:py-8 px-3 sm:px-4" style={{ backgroundImage: 'url(/images/ad-background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         
         {/* Wide Banner Ad */}
