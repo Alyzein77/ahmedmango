@@ -3,30 +3,11 @@ import { Trophy, Gift, Zap, Star } from "lucide-react";
 
 export const MangoGame = () => {
   return <section id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
-      {/* Energetic gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent via-accent/90 to-primary" />
-      
-      {/* Top fade overlay - darker pink blend */}
-      <div className="absolute top-0 left-0 right-0 h-12 sm:h-16 bg-gradient-to-b from-pink/80 via-pink/40 to-transparent z-[1] pointer-events-none" />
-      
-      {/* Bottom fade overlay - darker pink blend */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-16 bg-gradient-to-t from-pink/80 via-pink/40 to-transparent z-[1] pointer-events-none" />
-      
-      {/* Abstract shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-24 sm:w-40 h-24 sm:h-40 bg-primary/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-32 sm:w-60 h-32 sm:h-60 bg-pink/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 w-20 sm:w-32 h-20 sm:h-32 bg-secondary/20 rounded-full blur-2xl" />
-        
-        {/* Decorative circles */}
-        <div className="absolute top-20 right-[20%] w-6 sm:w-8 h-6 sm:h-8 bg-primary/40 rounded-full animate-float" />
-        <div className="absolute bottom-32 left-[15%] w-4 sm:w-6 h-4 sm:h-6 bg-pink/60 rounded-full animate-float" style={{
-        animationDelay: '1s'
-      }} />
-        <div className="absolute top-1/3 right-[10%] w-3 sm:w-4 h-3 sm:h-4 bg-sky/60 rounded-full animate-float" style={{
-        animationDelay: '2s'
-      }} />
-      </div>
+      {/* Orange pop-art background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/game-bg.png')" }}
+      />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
