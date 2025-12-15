@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Trophy, Gift, Zap, Star } from "lucide-react";
-
 export const MangoGame = () => {
   return <section id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
       {/* Orange pop-art background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/game-bg.png')" }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: "url('/images/game-bg.png')"
+    }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -16,7 +14,7 @@ export const MangoGame = () => {
           <div className="text-center lg:text-right order-1">
             {/* Game header image - visible on mobile */}
             <div className="mb-4 sm:mb-6 lg:hidden">
-              <img src="/lovable-uploads/game-header.png" alt="العب واكسب مع أحمد مانجو" className="w-full max-w-xs mx-auto rounded-2xl shadow-xl" />
+              
             </div>
             
             
@@ -46,21 +44,13 @@ export const MangoGame = () => {
                 </div>)}
             </div>
 
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow"
-              onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow" onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}>
               يلا نلعب 🥭
             </Button>
             
             {/* Secondary Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
-              <Button 
-                variant="outline" 
-                className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3"
-                onClick={() => window.open('https://mango.risca.dev/ar/leaderboard', '_blank')}
-              >
+              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3" onClick={() => window.open('https://mango.risca.dev/ar/leaderboard', '_blank')}>
                 <Trophy className="w-4 h-4 ml-2" />
                 المتصدرين
               </Button>
