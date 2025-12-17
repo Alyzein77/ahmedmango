@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -25,7 +26,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ExternalLink, Eye, Phone, Loader2, Trash2, RefreshCw } from "lucide-react";
+import { ExternalLink, Eye, Phone, Loader2, Trash2, RefreshCw, Search, Filter } from "lucide-react";
 import { format } from "date-fns";
 import { ar } from "date-fns/locale";
 
@@ -52,6 +53,8 @@ const AdRequestsManager = () => {
   const queryClient = useQueryClient();
   const [selectedRequest, setSelectedRequest] = useState<AdRequest | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("all");
 
   const { data: requests, isLoading, refetch } = useQuery({
     queryKey: ["ad-requests"],
@@ -65,6 +68,22 @@ const AdRequestsManager = () => {
       return data as AdRequest[];
     },
   });
+
+  // Filter requests based on search and status
+  const filteredRequests = useMemo(() => {
+    if (!requests) return [];
+    
+    return requests.filter((request) => {
+      const matchesSearch = searchQuery === "" || 
+        request.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        request.brand_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        request.phone.includes(searchQuery);
+      
+      const matchesStatus = statusFilter === "all" || request.status === statusFilter;
+      
+      return matchesSearch && matchesStatus;
+    });
+  }, [requests, searchQuery, statusFilter]);
 
   const updateStatusMutation = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: string }) => {
@@ -147,7 +166,7 @@ const AdRequestsManager = () => {
             طلبات الإعلانات
           </h2>
           <p className="text-sm text-foreground/70 font-tajawal">
-            {requests?.length || 0} طلب
+            {filteredRequests.length} من {requests?.length || 0} طلب
           </p>
         </div>
         <Button
@@ -160,8 +179,39 @@ const AdRequestsManager = () => {
         </Button>
       </div>
 
+      {/* Filters */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/50" />
+          <Input
+            placeholder="بحث بالاسم، البراند، أو رقم الهاتف..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pr-10 border-2 border-foreground font-tajawal shadow-bold-sm"
+          />
+        </div>
+        <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <SelectTrigger className="w-full sm:w-48 border-2 border-foreground font-tajawal shadow-bold-sm">
+            <Filter className="w-4 h-4 ml-2" />
+            <SelectValue placeholder="فلتر الحالة" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">
+              <span className="font-tajawal">كل الحالات</span>
+            </SelectItem>
+            {statusOptions.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                <Badge className={`${option.color} text-white font-tajawal`}>
+                  {option.label}
+                </Badge>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
       {/* Table */}
-      {requests && requests.length > 0 ? (
+      {filteredRequests.length > 0 ? (
         <div className="bg-background rounded-xl border-4 border-foreground shadow-bold overflow-hidden">
           <Table>
             <TableHeader>
@@ -174,7 +224,7 @@ const AdRequestsManager = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {requests.map((request) => (
+              {filteredRequests.map((request) => (
                 <TableRow key={request.id} className="border-b-2 border-foreground/20">
                   <TableCell className="font-tajawal font-bold">{request.name}</TableCell>
                   <TableCell className="font-tajawal">{request.brand_name}</TableCell>
@@ -238,14 +288,28 @@ const AdRequestsManager = () => {
       ) : (
         <div className="bg-background rounded-xl border-4 border-foreground shadow-bold p-12 text-center">
           <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground">
-            <span className="text-3xl">📭</span>
+            <span className="text-3xl">{requests && requests.length > 0 ? "🔍" : "📭"}</span>
           </div>
           <h3 className="text-lg font-bold font-lalezar text-foreground mb-2">
-            لا توجد طلبات
+            {requests && requests.length > 0 ? "لا توجد نتائج" : "لا توجد طلبات"}
           </h3>
           <p className="text-foreground/70 font-tajawal">
-            لم يتم استلام أي طلبات إعلانية حتى الآن
+            {requests && requests.length > 0 
+              ? "جرب تغيير الفلاتر أو البحث بكلمات مختلفة" 
+              : "لم يتم استلام أي طلبات إعلانية حتى الآن"}
           </p>
+          {requests && requests.length > 0 && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                setSearchQuery("");
+                setStatusFilter("all");
+              }}
+              className="mt-4 font-tajawal border-2 border-foreground shadow-bold-sm hover:shadow-none"
+            >
+              مسح الفلاتر
+            </Button>
+          )}
         </div>
       )}
 
