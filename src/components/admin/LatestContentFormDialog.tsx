@@ -50,6 +50,9 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
     preview_url: "",
     link_url: "",
     short_note: "",
+    views: 0,
+    engagements: 0,
+    ranking: 0,
   });
 
   useEffect(() => {
@@ -61,6 +64,9 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
         preview_url: content.preview_url,
         link_url: content.link_url,
         short_note: content.short_note || "",
+        views: content.views || 0,
+        engagements: content.engagements || 0,
+        ranking: content.ranking || 0,
       });
     } else {
       setFormData({
@@ -70,6 +76,9 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
         preview_url: "",
         link_url: "",
         short_note: "",
+        views: 0,
+        engagements: 0,
+        ranking: 0,
       });
     }
   }, [content, open]);
@@ -83,6 +92,9 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
       preview_url: formData.preview_url,
       link_url: formData.link_url,
       short_note: formData.short_note || null,
+      views: formData.views,
+      engagements: formData.engagements,
+      ranking: formData.ranking,
     });
   };
 
@@ -172,6 +184,44 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
               onChange={(e) => setFormData({ ...formData, short_note: e.target.value })}
               className="font-tajawal"
             />
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-2">
+              <Label className="font-tajawal">المشاهدات</Label>
+              <Input
+                type="number"
+                min="0"
+                value={formData.views}
+                onChange={(e) => setFormData({ ...formData, views: parseInt(e.target.value) || 0 })}
+                className="font-tajawal"
+                dir="ltr"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="font-tajawal">التفاعلات</Label>
+              <Input
+                type="number"
+                min="0"
+                value={formData.engagements}
+                onChange={(e) => setFormData({ ...formData, engagements: parseInt(e.target.value) || 0 })}
+                className="font-tajawal"
+                dir="ltr"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="font-tajawal">الترتيب</Label>
+              <Input
+                type="number"
+                min="0"
+                value={formData.ranking}
+                onChange={(e) => setFormData({ ...formData, ranking: parseInt(e.target.value) || 0 })}
+                className="font-tajawal"
+                dir="ltr"
+              />
+            </div>
           </div>
 
           <div className="flex gap-3 pt-4">
