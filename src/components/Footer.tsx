@@ -45,10 +45,14 @@ export const Footer = () => {
   return (
     <footer className="relative bg-secondary text-secondary-foreground pt-10 sm:pt-16 pb-6 sm:pb-8 px-3 sm:px-4 overflow-hidden border-t-4 border-foreground">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Brand & Logo */}
-          <div className="col-span-2 md:col-span-1 text-center md:text-right">
-            <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">🥭</div>
+          <div className="text-center md:text-right">
+            <img 
+              src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" 
+              alt="أحمد مانجو" 
+              className="h-20 sm:h-24 w-auto mx-auto md:mx-0 mb-2 sm:mb-3"
+            />
             <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3 uppercase">
               أحمد مانجو
             </h3>
@@ -56,17 +60,6 @@ export const Footer = () => {
               مراجعات صادقة للمنتجات اليومية<br />
               2استكا أو فاستكا - مافيش وسط!
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="text-center md:text-right">
-            <h4 className="font-black text-sm sm:text-lg mb-3 sm:mb-4 text-primary uppercase">روابط سريعة</h4>
-            <ul className="space-y-1.5 sm:space-y-2 text-secondary-foreground/80 text-xs sm:text-sm font-bold">
-              <li><a href="#products" className="hover:text-primary transition-colors">المراجعات</a></li>
-              <li><a href="#game" className="hover:text-primary transition-colors">العب واكسب</a></li>
-              <li><a href="#videos" className="hover:text-primary transition-colors">الفيديوهات</a></li>
-              <li><a href="#feeds" className="hover:text-primary transition-colors">السوشيال</a></li>
-            </ul>
           </div>
 
           {/* Legal Links */}
@@ -95,7 +88,7 @@ export const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div className="col-span-2 md:col-span-1 text-center md:text-right">
+          <div className="text-center md:text-right">
             <h4 className="font-black text-sm sm:text-lg mb-3 sm:mb-4 text-primary uppercase">تواصل معنا</h4>
             
             {/* Social Icons */}
