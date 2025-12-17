@@ -83,8 +83,16 @@ const AdRequest = () => {
         body: { action: 'send', phone: formattedPhone },
       });
 
-      if (response.error) throw new Error(response.error.message);
-      if (!response.data?.success) throw new Error(response.data?.error || 'Failed to send OTP');
+      const backendError = response.data?.error;
+      const backendCode = response.data?.code;
+
+      if (response.error || !response.data?.success) {
+        const message =
+          backendCode === 'USER_NOT_FOUND'
+            ? 'الرقم ده مش متسجل عند خدمة التحقق. جرّب رقم تاني أو تواصل معانا.'
+            : backendError || response.error?.message || 'جرب تاني';
+        throw new Error(message);
+      }
 
       setTransactionId(response.data.transactionId);
       setRequestId(response.data.requestId);
@@ -132,8 +140,11 @@ const AdRequest = () => {
         body: { action: 'verify', code: otpCode, transactionId, requestId },
       });
 
-      if (response.error) throw new Error(response.error.message);
-      if (!response.data?.verified) throw new Error(response.data?.error || 'Invalid OTP');
+      const backendError = response.data?.error;
+
+      if (response.error || !response.data?.verified) {
+        throw new Error(backendError || response.error?.message || 'Invalid OTP');
+      }
 
       setCurrentStep("about-you");
       toast({
@@ -143,7 +154,7 @@ const AdRequest = () => {
     } catch (error: any) {
       toast({
         title: "الكود غلط",
-        description: "جرب تكتب الكود تاني",
+        description: error.message || "جرب تكتب الكود تاني",
         variant: "destructive",
       });
     } finally {

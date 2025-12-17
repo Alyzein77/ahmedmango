@@ -65,9 +65,17 @@ serve(async (req) => {
 
       if (!createResponse.ok) {
         console.error('Akedly create transaction error:', createData);
-        const status = createData?.message === 'User not found' ? 400 : createResponse.status;
+
+        const message = createData?.message || createData?.error || 'Failed to create OTP transaction';
+        const isUserFacing = createResponse.status >= 400 && createResponse.status < 500;
+        const status = isUserFacing ? 200 : createResponse.status;
+
         return new Response(
-          JSON.stringify({ error: createData.message || createData.error || 'Failed to create OTP transaction' }),
+          JSON.stringify({
+            success: false,
+            error: message,
+            code: createData?.message === 'User not found' ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
+          }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -102,9 +110,17 @@ serve(async (req) => {
 
       if (!activateResponse.ok) {
         console.error('Akedly activate error:', activateData);
-        const status = activateData?.message === 'User not found' ? 400 : activateResponse.status;
+
+        const message = activateData?.message || activateData?.error || 'Failed to send OTP';
+        const isUserFacing = activateResponse.status >= 400 && activateResponse.status < 500;
+        const status = isUserFacing ? 200 : activateResponse.status;
+
         return new Response(
-          JSON.stringify({ error: activateData.message || activateData.error || 'Failed to send OTP' }),
+          JSON.stringify({
+            success: false,
+            error: message,
+            code: activateData?.message === 'User not found' ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
+          }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -162,9 +178,17 @@ serve(async (req) => {
       }
 
       if (!response.ok) {
-        const status = data?.message === 'User not found' ? 400 : response.status;
+        const message = data?.message || data?.error || 'Invalid OTP code';
+        const isUserFacing = response.status >= 400 && response.status < 500;
+        const status = isUserFacing ? 200 : response.status;
+
         return new Response(
-          JSON.stringify({ error: data.message || data.error || 'Invalid OTP code', verified: false }),
+          JSON.stringify({
+            success: false,
+            verified: false,
+            error: message,
+            code: data?.message === 'User not found' ? 'USER_NOT_FOUND' : 'INVALID_OTP',
+          }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
