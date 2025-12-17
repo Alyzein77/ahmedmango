@@ -1,6 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+
 export const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -9,10 +21,16 @@ export const Hero = () => {
       });
     }
   };
+
   return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Background Image Only */}
-      <div className="absolute inset-0">
-        <img alt="" className="w-full h-full object-cover rounded-none" src="/hero-background.png" />
+      {/* Background Image with Parallax */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img 
+          alt="" 
+          className="w-full h-[120%] object-cover rounded-none" 
+          src="/hero-background.png"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        />
       </div>
       
       {/* Solid color fade at bottom */}
