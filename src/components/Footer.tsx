@@ -1,32 +1,54 @@
-import { Music2, Instagram, Facebook, Youtube, Mail, FileText, Shield } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Music2, Instagram, Facebook, Youtube, Mail, FileText, Shield, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+interface SocialLink {
+  id: string;
+  platform: string;
+  url: string;
+  icon: string | null;
+  display_order: number | null;
+}
+
+// Fallback icons for known platforms
+const platformIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  TikTok: Music2,
+  Instagram: Instagram,
+  YouTube: Youtube,
+  Facebook: Facebook,
+};
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
 
-  const socialLinks = [
-    { 
-      name: "TikTok",
-      url: "https://www.tiktok.com/@ahmed_mangoo",
-      Icon: Music2
-    },
-    {
-      name: "Instagram", 
-      url: "https://www.instagram.com/ahmedmango.official/",
-      Icon: Instagram
-    },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/@AhmedMango",
-      Icon: Youtube
-    },
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/AhmedMango.Official/",
-      Icon: Facebook
-    }
+  useEffect(() => {
+    const fetchSocialLinks = async () => {
+      const { data, error } = await supabase
+        .from("social_links")
+        .select("id, platform, url, icon, display_order")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
+
+      if (!error && data) {
+        setSocialLinks(data);
+      }
+    };
+
+    fetchSocialLinks();
+  }, []);
+
+  // Fallback to hardcoded links if no data from DB
+  const defaultLinks = [
+    { id: "1", platform: "TikTok", url: "https://www.tiktok.com/@ahmed_mangoo", icon: "📱", display_order: 0 },
+    { id: "2", platform: "Instagram", url: "https://www.instagram.com/ahmedmango.official/", icon: "📸", display_order: 1 },
+    { id: "3", platform: "YouTube", url: "https://www.youtube.com/@AhmedMango", icon: "🎬", display_order: 2 },
+    { id: "4", platform: "Facebook", url: "https://www.facebook.com/AhmedMango.Official/", icon: "👤", display_order: 3 },
   ];
+
+  const displayLinks = socialLinks.length > 0 ? socialLinks : defaultLinks;
 
   return (
     <footer className="relative bg-secondary text-secondary-foreground pt-10 sm:pt-16 pb-6 sm:pb-8 px-3 sm:px-4 overflow-hidden border-t-4 border-foreground">
@@ -85,19 +107,29 @@ export const Footer = () => {
             <h4 className="font-black text-sm sm:text-lg mb-3 sm:mb-4 text-primary uppercase">تواصل معنا</h4>
             
             {/* Social Icons */}
-            <div className="flex gap-2 sm:gap-3 justify-center md:justify-start mb-3 sm:mb-4">
-              {socialLinks.map((social) => (
-                <a 
-                  key={social.name}
-                  href={social.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
-                  aria-label={social.name}
-                >
-                  <social.Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
-                </a>
-              ))}
+            <div className="flex gap-2 sm:gap-3 justify-center md:justify-start mb-3 sm:mb-4 flex-wrap">
+              {displayLinks.map((social) => {
+                const IconComponent = platformIcons[social.platform];
+                return (
+                  <a 
+                    key={social.id}
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                    aria-label={social.platform}
+                    title={social.platform}
+                  >
+                    {social.icon ? (
+                      <span className="text-lg">{social.icon}</span>
+                    ) : IconComponent ? (
+                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+                    ) : (
+                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+                    )}
+                  </a>
+                );
+              })}
             </div>
             
             {/* Contact Button */}
