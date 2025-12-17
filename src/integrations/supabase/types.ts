@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      ad_spaces: {
+        Row: {
+          background_color: string | null
+          background_image_url: string | null
+          card_type: string
+          created_at: string
+          display_order: number | null
+          id: string
+          image_url: string | null
+          is_active: boolean | null
+          overlay_image_url: string | null
+          redirect_url: string | null
+          sub_text: string | null
+          tag_color: string | null
+          tag_text: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          background_color?: string | null
+          background_image_url?: string | null
+          card_type?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          overlay_image_url?: string | null
+          redirect_url?: string | null
+          sub_text?: string | null
+          tag_color?: string | null
+          tag_text?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          background_color?: string | null
+          background_image_url?: string | null
+          card_type?: string
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          overlay_image_url?: string | null
+          redirect_url?: string | null
+          sub_text?: string | null
+          tag_color?: string | null
+          tag_text?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       latest_content: {
         Row: {
           content_type: Database["public"]["Enums"]["content_type"]
