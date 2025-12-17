@@ -1,10 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Shield } from "lucide-react";
-
 const PrivacyPolicy = () => {
-  return (
-    <div className="min-h-screen font-poppins bg-background">
+  return <div className="min-h-screen font-poppins bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -242,8 +240,7 @@ const PrivacyPolicy = () => {
               لأي استفسار بخصوص سياسة الخصوصية، يمكنك التواصل معنا عبر:
             </p>
             <div className="bg-primary/10 rounded-xl p-4 space-y-2">
-              <p className="text-foreground font-semibold">
-                📧 <a href="mailto:admin@ahmedmango.com" className="text-primary hover:underline">admin@ahmedmango.com</a>
+              <p className="text-foreground font-semibold">Hello@risca.dev<a href="mailto:admin@ahmedmango.com" className="text-primary hover:underline">admin@ahmedmango.com</a>
               </p>
               <p className="text-foreground">
                 📍 القاهرة، مصر
@@ -255,8 +252,6 @@ const PrivacyPolicy = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default PrivacyPolicy;
