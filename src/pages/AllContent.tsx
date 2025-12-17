@@ -61,7 +61,7 @@ const AllContent = () => {
       const { data, error } = await supabase
         .from("videos")
         .select("*")
-        .order("ranking", { ascending: false })
+        .order("ranking", { ascending: true })
         .order("created_at", { ascending: false });
 
       if (error) throw error;
