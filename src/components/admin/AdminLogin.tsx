@@ -68,33 +68,47 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-primary/10 flex items-center justify-center p-4">
-      <div className="bg-card rounded-2xl shadow-lg p-8 max-w-md w-full">
+    <div className="min-h-screen bg-primary flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background pattern */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            hsl(var(--orange)) 20px,
+            hsl(var(--orange)) 40px
+          )`
+        }}
+      />
+      
+      <div className="bg-background rounded-2xl border-4 border-foreground shadow-bold p-8 max-w-md w-full relative z-10">
         {/* Logo/Icon */}
         <div className="text-center mb-6">
-          <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <Lock className="w-10 h-10 text-primary-foreground" />
+          <div className="w-24 h-24 bg-orange rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground shadow-bold">
+            <span className="text-5xl">🥭</span>
           </div>
-          <h1 className="text-2xl font-bold text-foreground font-tajawal">
-            تسجيل الدخول – لوحة التحكم
+          <h1 className="text-3xl font-black text-foreground font-lalezar">
+            لوحة التحكم
           </h1>
-          <p className="text-muted-foreground font-tajawal mt-2">
-            هذه الصفحة للمسؤولين فقط
+          <p className="text-foreground/70 font-tajawal mt-2 font-bold">
+            للمسؤولين فقط
           </p>
         </div>
 
         {sent ? (
           <div className="text-center py-8">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8 text-green-600" />
+            <div className="w-20 h-20 bg-sky rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground shadow-bold">
+              <Mail className="w-10 h-10 text-foreground" />
             </div>
-            <h2 className="text-lg font-bold text-foreground font-tajawal mb-2">
+            <h2 className="text-xl font-black text-foreground font-lalezar mb-2">
               تم إرسال الرابط!
             </h2>
-            <p className="text-muted-foreground font-tajawal mb-4">
+            <p className="text-foreground/70 font-tajawal mb-4 font-medium">
               تحقق من بريدك الإلكتروني
               <br />
-              <span className="text-primary font-medium">{email}</span>
+              <span className="text-orange font-bold">{email}</span>
             </p>
             <Button
               variant="outline"
@@ -102,7 +116,7 @@ const AdminLogin = () => {
                 setSent(false);
                 setEmail("");
               }}
-              className="font-tajawal"
+              className="font-tajawal font-bold border-2 border-foreground shadow-bold-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
             >
               إعادة المحاولة
             </Button>
@@ -110,17 +124,17 @@ const AdminLogin = () => {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground font-tajawal mb-2 text-right">
+              <label className="block text-sm font-black text-foreground font-tajawal mb-2 text-right">
                 البريد الإلكتروني
               </label>
               <div className="relative">
-                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/50" />
                 <Input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@example.com"
-                  className="pr-10 text-right font-tajawal"
+                  className="pr-10 text-right font-tajawal border-2 border-foreground focus:ring-orange focus:border-orange"
                   dir="ltr"
                   required
                   disabled={loading}
@@ -129,14 +143,14 @@ const AdminLogin = () => {
             </div>
 
             {error && (
-              <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
-                <p className="text-destructive text-sm font-tajawal">{error}</p>
+              <div className="bg-destructive/10 border-2 border-destructive rounded-lg p-3 text-center">
+                <p className="text-destructive text-sm font-tajawal font-bold">{error}</p>
               </div>
             )}
 
             <Button
               type="submit"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-tajawal py-6 text-lg"
+              className="w-full bg-orange text-foreground hover:bg-orange/90 font-tajawal py-6 text-lg font-black border-2 border-foreground shadow-bold hover:shadow-bold-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
               disabled={loading}
             >
               {loading ? (
@@ -151,9 +165,9 @@ const AdminLogin = () => {
           </form>
         )}
 
-        <div className="mt-6 pt-6 border-t border-border text-center">
-          <p className="text-xs text-muted-foreground font-tajawal">
-            🥭 Ahmed Mango Admin Panel
+        <div className="mt-6 pt-6 border-t-2 border-foreground/20 text-center">
+          <p className="text-sm text-foreground font-lalezar font-bold">
+            🥭 أحمد مانجو - لوحة التحكم
           </p>
         </div>
       </div>
