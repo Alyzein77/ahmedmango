@@ -44,7 +44,7 @@ export const SocialFeeds = () => {
         <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           
           {/* Instagram Feed */}
-          <Card className="p-4 sm:p-6 border-2 hover:border-pink/30 transition-colors">
+          <Card className="p-4 sm:p-6 border-2 hover:border-pink/30 transition-colors flex flex-col h-full">
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center flex-shrink-0">
                 <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -55,20 +55,20 @@ export const SocialFeeds = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4 sm:mb-5 flex-1">
               {instagramPosts.map(post => <div key={post.id} className="aspect-square bg-muted rounded-lg overflow-hidden hover:opacity-80 transition-opacity cursor-pointer active:scale-95">
                   <img src={post.thumbnail} alt="Instagram post" className="w-full h-full object-cover" />
                 </div>)}
             </div>
             
-            <Button className="w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.instagram.com/ahmedmango.official/', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.instagram.com/ahmedmango.official/', '_blank')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على Instagram
             </Button>
           </Card>
 
           {/* TikTok Feed */}
-          <Card className="p-4 sm:p-6 border-2 hover:border-secondary/30 transition-colors">
+          <Card className="p-4 sm:p-6 border-2 hover:border-secondary/30 transition-colors flex flex-col h-full">
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center flex-shrink-0">
                 <Music2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -79,20 +79,20 @@ export const SocialFeeds = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-4 sm:grid-cols-2 gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+            <div className="grid grid-cols-4 sm:grid-cols-2 gap-1.5 sm:gap-2 mb-4 sm:mb-5 flex-1">
               {tiktokPosts.map(post => <div key={post.id} className="aspect-[9/14] sm:aspect-[9/16] bg-muted rounded-lg overflow-hidden hover:opacity-80 transition-opacity cursor-pointer active:scale-95">
                   
                 </div>)}
             </div>
             
-            <Button className="w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.tiktok.com/@ahmed_mangoo', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.tiktok.com/@ahmed_mangoo', '_blank')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على TikTok
             </Button>
           </Card>
 
           {/* YouTube Feed */}
-          <Card className="p-4 sm:p-6 border-2 hover:border-red-500/30 transition-colors sm:col-span-2 lg:col-span-1">
+          <Card className="p-4 sm:p-6 border-2 hover:border-red-500/30 transition-colors sm:col-span-2 lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0">
                 <Youtube className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -103,13 +103,13 @@ export const SocialFeeds = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-3 sm:grid-cols-1 lg:grid-cols-1 gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+            <div className="grid grid-cols-3 sm:grid-cols-1 lg:grid-cols-1 gap-1.5 sm:gap-2 mb-4 sm:mb-5 flex-1">
               {youtubePosts.map(post => <div key={post.id} className="aspect-video bg-muted rounded-lg overflow-hidden hover:opacity-80 transition-opacity cursor-pointer active:scale-95">
                   <img src={post.thumbnail} alt="YouTube video" className="w-full h-full object-cover" />
                 </div>)}
             </div>
             
-            <Button className="w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.youtube.com/@AhmedMango', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.youtube.com/@AhmedMango', '_blank')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف القناة على YouTube
             </Button>
