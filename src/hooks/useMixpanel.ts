@@ -1,73 +1,88 @@
+import { useCallback } from 'react';
+
 declare global {
   interface Window {
-    mixpanel: {
-      track: (event: string, properties?: Record<string, any>) => void;
+    mixpanel?: {
+      track: (event: string, properties?: Record<string, unknown>) => void;
       identify: (id: string) => void;
       people: {
-        set: (properties: Record<string, any>) => void;
+        set: (properties: Record<string, unknown>) => void;
       };
     };
   }
 }
 
 export const useMixpanel = () => {
-  const track = (event: string, properties?: Record<string, any>) => {
-    if (typeof window !== 'undefined' && window.mixpanel) {
-      window.mixpanel.track(event, {
-        ...properties,
-        timestamp: new Date().toISOString(),
-      });
+  const track = useCallback((event: string, properties?: Record<string, unknown>) => {
+    try {
+      if (typeof window !== 'undefined' && window.mixpanel?.track) {
+        window.mixpanel.track(event, {
+          ...properties,
+          timestamp: new Date().toISOString(),
+        });
+        console.log('[Mixpanel] Event tracked:', event, properties);
+      }
+    } catch (error) {
+      console.error('[Mixpanel] Error tracking event:', error);
     }
-  };
+  }, []);
 
-  const identify = (userId: string) => {
-    if (typeof window !== 'undefined' && window.mixpanel) {
-      window.mixpanel.identify(userId);
+  const identify = useCallback((userId: string) => {
+    try {
+      if (typeof window !== 'undefined' && window.mixpanel?.identify) {
+        window.mixpanel.identify(userId);
+      }
+    } catch (error) {
+      console.error('[Mixpanel] Error identifying user:', error);
     }
-  };
+  }, []);
 
-  const setUserProperties = (properties: Record<string, any>) => {
-    if (typeof window !== 'undefined' && window.mixpanel?.people) {
-      window.mixpanel.people.set(properties);
+  const setUserProperties = useCallback((properties: Record<string, unknown>) => {
+    try {
+      if (typeof window !== 'undefined' && window.mixpanel?.people?.set) {
+        window.mixpanel.people.set(properties);
+      }
+    } catch (error) {
+      console.error('[Mixpanel] Error setting user properties:', error);
     }
-  };
+  }, []);
 
   // Pre-defined events
-  const trackButtonClick = (buttonName: string, location?: string) => {
+  const trackButtonClick = useCallback((buttonName: string, location?: string) => {
     track('Button Clicked', { button_name: buttonName, location });
-  };
+  }, [track]);
 
-  const trackFormSubmission = (formName: string, data?: Record<string, any>) => {
+  const trackFormSubmission = useCallback((formName: string, data?: Record<string, unknown>) => {
     track('Form Submitted', { form_name: formName, ...data });
-  };
+  }, [track]);
 
-  const trackProductView = (productId: string, productName: string, category?: string) => {
+  const trackProductView = useCallback((productId: string, productName: string, category?: string) => {
     track('Product Viewed', { product_id: productId, product_name: productName, category });
-  };
+  }, [track]);
 
-  const trackProductClick = (productId: string, productName: string, action: string) => {
+  const trackProductClick = useCallback((productId: string, productName: string, action: string) => {
     track('Product Action', { product_id: productId, product_name: productName, action });
-  };
+  }, [track]);
 
-  const trackSectionView = (sectionName: string) => {
+  const trackSectionView = useCallback((sectionName: string) => {
     track('Section Viewed', { section_name: sectionName });
-  };
+  }, [track]);
 
-  const trackGamePlay = (action: string, score?: number) => {
+  const trackGamePlay = useCallback((action: string, score?: number) => {
     track('Game Action', { action, score });
-  };
+  }, [track]);
 
-  const trackAdClick = (adId: string, adTitle?: string) => {
+  const trackAdClick = useCallback((adId: string, adTitle?: string) => {
     track('Ad Clicked', { ad_id: adId, ad_title: adTitle });
-  };
+  }, [track]);
 
-  const trackVideoPlay = (videoId: string, videoTitle: string, platform: string) => {
+  const trackVideoPlay = useCallback((videoId: string, videoTitle: string, platform: string) => {
     track('Video Played', { video_id: videoId, video_title: videoTitle, platform });
-  };
+  }, [track]);
 
-  const trackNavigation = (from: string, to: string) => {
+  const trackNavigation = useCallback((from: string, to: string) => {
     track('Navigation', { from, to });
-  };
+  }, [track]);
 
   return {
     track,
