@@ -18,6 +18,9 @@ export type Database = {
         Row: {
           background_color: string | null
           background_image_url: string | null
+          button_color: string | null
+          button_link: string | null
+          button_text: string | null
           card_type: string
           created_at: string
           display_order: number | null
@@ -35,6 +38,9 @@ export type Database = {
         Insert: {
           background_color?: string | null
           background_image_url?: string | null
+          button_color?: string | null
+          button_link?: string | null
+          button_text?: string | null
           card_type?: string
           created_at?: string
           display_order?: number | null
@@ -52,6 +58,9 @@ export type Database = {
         Update: {
           background_color?: string | null
           background_image_url?: string | null
+          button_color?: string | null
+          button_link?: string | null
+          button_text?: string | null
           card_type?: string
           created_at?: string
           display_order?: number | null

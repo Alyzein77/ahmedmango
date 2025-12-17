@@ -26,6 +26,9 @@ interface AdSpace {
   background_image_url: string | null;
   overlay_image_url: string | null;
   redirect_url: string | null;
+  button_text: string | null;
+  button_color: string | null;
+  button_link: string | null;
   display_order: number | null;
   is_active: boolean | null;
   created_at: string;
