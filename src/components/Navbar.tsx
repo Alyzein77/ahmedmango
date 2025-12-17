@@ -20,13 +20,6 @@ export const Navbar = () => {
     title: "الفيديوهات",
     href: "/content",
     isPage: true
-  }, {
-    title: "تابعنا",
-    href: "#feeds"
-  }, {
-    title: "من نحن",
-    href: "/about",
-    isPage: true
   }];
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false);
