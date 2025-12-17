@@ -17,33 +17,42 @@ export type Database = {
       latest_content: {
         Row: {
           content_type: Database["public"]["Enums"]["content_type"]
+          engagements: number | null
           id: string
           link_url: string
           platform: Database["public"]["Enums"]["video_platform"]
           posted_at: string
           preview_url: string
+          ranking: number | null
           short_note: string | null
           title: string
+          views: number | null
         }
         Insert: {
           content_type: Database["public"]["Enums"]["content_type"]
+          engagements?: number | null
           id?: string
           link_url: string
           platform: Database["public"]["Enums"]["video_platform"]
           posted_at?: string
           preview_url: string
+          ranking?: number | null
           short_note?: string | null
           title: string
+          views?: number | null
         }
         Update: {
           content_type?: Database["public"]["Enums"]["content_type"]
+          engagements?: number | null
           id?: string
           link_url?: string
           platform?: Database["public"]["Enums"]["video_platform"]
           posted_at?: string
           preview_url?: string
+          ranking?: number | null
           short_note?: string | null
           title?: string
+          views?: number | null
         }
         Relationships: []
       }

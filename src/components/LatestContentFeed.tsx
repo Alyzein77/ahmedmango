@@ -48,6 +48,7 @@ export const LatestContentFeed = () => {
       const { data, error } = await supabase
         .from("latest_content")
         .select("*")
+        .order("ranking", { ascending: false })
         .order("posted_at", { ascending: false });
 
       if (error) throw error;
