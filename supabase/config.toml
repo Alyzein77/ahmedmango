@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.track-ad-click]
 verify_jwt = false
+
+[functions.akedly-otp]
+verify_jwt = false
