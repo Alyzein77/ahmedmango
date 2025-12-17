@@ -18,7 +18,8 @@ export const Navbar = () => {
     href: "#game"
   }, {
     title: "الفيديوهات",
-    href: "#videos"
+    href: "/content",
+    isPage: true
   }, {
     title: "تابعنا",
     href: "#feeds"
