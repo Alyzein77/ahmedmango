@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowLeft } from "lucide-react";
+import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowRight } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
@@ -33,7 +35,7 @@ const contentTypeColors: Record<ContentType, string> = {
   TikTok: "bg-black",
 };
 
-export const LatestContentFeed = () => {
+const AllContent = () => {
   const [content, setContent] = useState<LatestContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
@@ -53,7 +55,7 @@ export const LatestContentFeed = () => {
       if (error) throw error;
       setContent(data || []);
     } catch (error) {
-      console.error("Error fetching latest content:", error);
+      console.error("Error fetching content:", error);
     } finally {
       setLoading(false);
     }
@@ -65,90 +67,91 @@ export const LatestContentFeed = () => {
 
   const platforms: (Platform | "all")[] = ["all", "YouTube", "TikTok", "Instagram", "Facebook"];
 
+  // Get count per platform
+  const getCounts = () => {
+    const counts: Record<string, number> = { all: content.length };
+    platforms.forEach(p => {
+      if (p !== "all") {
+        counts[p] = content.filter(item => item.platform === p).length;
+      }
+    });
+    return counts;
+  };
+  const counts = getCounts();
+
   return (
-    <section id="latest-content" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-primary/5 to-background">
-      <div className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-2 sm:mb-3">
-            آخر المحتوى 📱
-          </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto px-4">
-            تابع أحدث المنشورات والستوريز
-          </p>
-        </div>
-
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-          {platforms.map((platform) => {
-            const isActive = activeFilter === platform;
-            const config = platform !== "all" ? platformConfig[platform] : null;
-            const Icon = config?.icon;
-            
-            return (
-              <Button
-                key={platform}
-                variant={isActive ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter(platform)}
-                className={`rounded-full font-bold gap-2 transition-all ${
-                  isActive 
-                    ? "bg-primary text-primary-foreground shadow-lg scale-105" 
-                    : "hover:bg-primary/10"
-                }`}
-              >
-                {Icon && <Icon className="w-4 h-4" />}
-                {platform === "all" ? "الكل" : config?.label}
-              </Button>
-            );
-          })}
-        </div>
-
-        {/* Loading State */}
-        {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <Loader2 className="w-8 h-8 animate-spin text-primary" />
-          </div>
-        ) : filteredContent.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              {activeFilter === "all" ? "لا يوجد محتوى حالياً" : `لا يوجد محتوى من ${platformConfig[activeFilter].label}`}
+    <div className="min-h-screen font-poppins bg-background">
+      <Navbar />
+      
+      <main className="pt-20 pb-16 px-3 sm:px-4">
+        <div className="container mx-auto max-w-6xl">
+          {/* Header */}
+          <div className="mb-8">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-4">
+              <ArrowRight className="w-4 h-4" />
+              العودة للرئيسية
+            </Link>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary mb-3 font-lalezar">
+              كل المحتوى 📱
+            </h1>
+            <p className="text-muted-foreground text-sm sm:text-lg max-w-xl">
+              تصفح جميع المنشورات والفيديوهات من كل المنصات
             </p>
           </div>
-        ) : (
-          <>
-            {/* Mobile: Horizontal Scroll */}
-            <div className="sm:hidden overflow-x-auto pb-4 -mx-3 px-3">
-              <div className="flex gap-4" style={{ width: "max-content" }}>
-                {filteredContent.slice(0, 8).map((item) => (
-                  <ContentCard key={item.id} item={item} />
-                ))}
-              </div>
-            </div>
 
-            {/* Desktop: Grid */}
-            <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredContent.slice(0, 8).map((item, idx) => (
-                <ContentCard key={item.id} item={item} delay={idx * 0.1} />
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
+            {platforms.map((platform) => {
+              const isActive = activeFilter === platform;
+              const config = platform !== "all" ? platformConfig[platform] : null;
+              const Icon = config?.icon;
+              const count = counts[platform];
+              
+              return (
+                <Button
+                  key={platform}
+                  variant={isActive ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setActiveFilter(platform)}
+                  className={`rounded-full font-bold gap-2 transition-all ${
+                    isActive 
+                      ? "bg-primary text-primary-foreground shadow-lg scale-105" 
+                      : "hover:bg-primary/10"
+                  }`}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  {platform === "all" ? "الكل" : config?.label}
+                  <span className={`text-xs px-1.5 py-0.5 rounded-full ${isActive ? "bg-primary-foreground/20" : "bg-muted"}`}>
+                    {count}
+                  </span>
+                </Button>
+              );
+            })}
+          </div>
+
+          {/* Loading State */}
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-10 h-10 animate-spin text-primary" />
+            </div>
+          ) : filteredContent.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground text-lg">
+                {activeFilter === "all" ? "لا يوجد محتوى حالياً" : `لا يوجد محتوى من ${platformConfig[activeFilter].label}`}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              {filteredContent.map((item, idx) => (
+                <ContentCard key={item.id} item={item} delay={idx * 0.05} />
               ))}
             </div>
+          )}
+        </div>
+      </main>
 
-            {/* View All Button */}
-            <div className="text-center mt-8">
-              <Link to="/content">
-                <Button 
-                  size="lg" 
-                  className="rounded-full font-bold gap-2 px-8"
-                >
-                  عرض كل المحتوى
-                  <ArrowLeft className="w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </>
-        )}
-      </div>
-    </section>
+      <Footer />
+    </div>
   );
 };
 
@@ -164,7 +167,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
 
   return (
     <Card
-      className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up w-[260px] sm:w-auto flex-shrink-0"
+      className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up"
       style={{ animationDelay: `${delay}s` }}
     >
       {/* Preview Image */}
@@ -213,3 +216,5 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
     </Card>
   );
 };
+
+export default AllContent;
