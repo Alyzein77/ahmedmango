@@ -7,8 +7,23 @@ import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
 type LatestContent = Database["public"]["Tables"]["latest_content"]["Row"];
+type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
 type ContentType = Database["public"]["Enums"]["content_type"];
+
+// Unified content type for display
+interface UnifiedContent {
+  id: string;
+  title: string;
+  preview_url: string;
+  link_url: string;
+  platform: Platform;
+  content_type: ContentType;
+  short_note: string | null;
+  views: number | null;
+  ranking: number | null;
+  source: 'latest_content' | 'videos';
+}
 
 const platformConfig: Record<Platform, { icon: typeof Youtube; color: string; label: string }> = {
   YouTube: { icon: Youtube, color: "bg-red-600", label: "YouTube" },
@@ -34,7 +49,7 @@ const contentTypeColors: Record<ContentType, string> = {
 };
 
 export const LatestContentFeed = () => {
-  const [content, setContent] = useState<LatestContent[]>([]);
+  const [content, setContent] = useState<UnifiedContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
 
@@ -45,16 +60,56 @@ export const LatestContentFeed = () => {
   const fetchContent = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase
-        .from("latest_content")
-        .select("*")
-        .order("ranking", { ascending: false })
-        .order("posted_at", { ascending: false });
+      // Fetch from both tables in parallel
+      const [latestContentResult, videosResult] = await Promise.all([
+        supabase
+          .from("latest_content")
+          .select("*")
+          .order("ranking", { ascending: false })
+          .order("posted_at", { ascending: false }),
+        supabase
+          .from("videos")
+          .select("*")
+          .order("ranking", { ascending: false })
+          .order("created_at", { ascending: false })
+      ]);
 
-      if (error) throw error;
-      setContent(data || []);
+      const latestContent: UnifiedContent[] = (latestContentResult.data || []).map((item: LatestContent) => ({
+        id: item.id,
+        title: item.title,
+        preview_url: item.preview_url,
+        link_url: item.link_url,
+        platform: item.platform,
+        content_type: item.content_type,
+        short_note: item.short_note,
+        views: item.views,
+        ranking: item.ranking,
+        source: 'latest_content' as const,
+      }));
+
+      const videos: UnifiedContent[] = (videosResult.data || []).map((item: Video) => ({
+        id: `video-${item.id}`,
+        title: item.title,
+        preview_url: item.thumbnail_url,
+        link_url: item.video_url,
+        platform: item.platform,
+        content_type: 'Video' as ContentType,
+        short_note: item.description,
+        views: item.views,
+        ranking: item.ranking,
+        source: 'videos' as const,
+      }));
+
+      // Merge and sort by ranking
+      const merged = [...latestContent, ...videos].sort((a, b) => {
+        const rankA = a.ranking ?? 0;
+        const rankB = b.ranking ?? 0;
+        return rankB - rankA;
+      });
+
+      setContent(merged);
     } catch (error) {
-      console.error("Error fetching latest content:", error);
+      console.error("Error fetching content:", error);
     } finally {
       setLoading(false);
     }
@@ -154,7 +209,7 @@ export const LatestContentFeed = () => {
 };
 
 interface ContentCardProps {
-  item: LatestContent;
+  item: UnifiedContent;
   delay?: number;
 }
 
