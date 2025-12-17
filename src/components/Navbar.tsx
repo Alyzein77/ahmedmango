@@ -58,7 +58,7 @@ export const Navbar = () => {
                   {link.title}
                   <span className="absolute bottom-0 left-0 w-0 h-1 bg-accent group-hover:w-full transition-all duration-200" />
                 </a>)}
-            <Button className="text-sm font-black uppercase tracking-wide rounded-lg" onClick={() => scrollToSection("#game")}>
+            <Button className="text-sm font-black uppercase tracking-wide rounded-lg" onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}>
               🎮 ابدأ اللعب
             </Button>
           </div>
