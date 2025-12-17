@@ -98,6 +98,42 @@ export type Database = {
         }
         Relationships: []
       }
+      site_stats: {
+        Row: {
+          color: string
+          created_at: string
+          display_order: number | null
+          icon: string
+          id: string
+          is_active: boolean | null
+          label: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          color?: string
+          created_at?: string
+          display_order?: number | null
+          icon: string
+          id?: string
+          is_active?: boolean | null
+          label: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          display_order?: number | null
+          icon?: string
+          id?: string
+          is_active?: boolean | null
+          label?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
       social_links: {
         Row: {
           created_at: string
