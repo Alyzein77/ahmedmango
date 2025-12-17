@@ -1,6 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
+
+const FloatingMango = ({ className, delay, duration }: { className: string; delay: string; duration: string }) => (
+  <div 
+    className={`absolute text-4xl sm:text-5xl opacity-60 pointer-events-none ${className}`}
+    style={{ 
+      animation: `float ${duration} ease-in-out infinite`,
+      animationDelay: delay 
+    }}
+  >
+    🥭
+  </div>
+);
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -32,6 +43,14 @@ export const Hero = () => {
           style={{ transform: `translateY(${scrollY * 0.3}px)` }}
         />
       </div>
+
+      {/* Floating Mango Animations */}
+      <FloatingMango className="top-[10%] left-[5%] sm:left-[10%]" delay="0s" duration="4s" />
+      <FloatingMango className="top-[15%] right-[8%] sm:right-[12%]" delay="1s" duration="5s" />
+      <FloatingMango className="bottom-[25%] left-[8%] sm:left-[15%]" delay="2s" duration="4.5s" />
+      <FloatingMango className="bottom-[30%] right-[5%] sm:right-[10%]" delay="0.5s" duration="5.5s" />
+      <FloatingMango className="top-[40%] left-[2%] sm:left-[5%] text-3xl sm:text-4xl" delay="1.5s" duration="6s" />
+      <FloatingMango className="top-[50%] right-[3%] sm:right-[8%] text-3xl sm:text-4xl" delay="2.5s" duration="4s" />
       
       {/* Solid color fade at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent" />
@@ -41,6 +60,10 @@ export const Hero = () => {
         
         {/* TOP SECTION — CENTERED IMAGE WITH CIRCLE */}
         <div className="relative flex items-center justify-center mb-4 sm:mb-6">
+          {/* Subtle glow effect behind profile */}
+          <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] rounded-full bg-orange/40 blur-2xl animate-pulse" />
+          <div className="absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full bg-primary/30 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+          
           {/* Bold solid circle background */}
           <div className="absolute w-[170px] h-[170px] sm:w-[210px] sm:h-[210px] rounded-full bg-primary border-4 border-foreground" />
           <div className="absolute w-[155px] h-[155px] sm:w-[195px] sm:h-[195px] rounded-full bg-orange border-2 border-foreground" />
@@ -81,6 +104,18 @@ export const Hero = () => {
         {/* STATS ROW */}
         
       </div>
+
+      {/* Custom float animation */}
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(10deg);
+          }
+        }
+      `}</style>
 
     </section>;
 };
