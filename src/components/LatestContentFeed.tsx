@@ -120,7 +120,7 @@ export const LatestContentFeed = () => {
             {/* Mobile: Horizontal Scroll */}
             <div className="sm:hidden overflow-x-auto pb-4 -mx-3 px-3">
               <div className="flex gap-4" style={{ width: "max-content" }}>
-                {filteredContent.slice(0, 8).map((item) => (
+                {filteredContent.slice(0, 4).map((item) => (
                   <ContentCard key={item.id} item={item} />
                 ))}
               </div>
@@ -128,7 +128,7 @@ export const LatestContentFeed = () => {
 
             {/* Desktop: Grid */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredContent.slice(0, 8).map((item, idx) => (
+              {filteredContent.slice(0, 4).map((item, idx) => (
                 <ContentCard key={item.id} item={item} delay={idx * 0.1} />
               ))}
             </div>
