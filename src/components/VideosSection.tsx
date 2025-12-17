@@ -156,7 +156,7 @@ export const VideosSection = () => {
                 return (
                   <Card
                     key={video.id}
-                    className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up"
+                    className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up flex flex-col h-full"
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
                     {/* Thumbnail */}
@@ -164,6 +164,7 @@ export const VideosSection = () => {
                       <img
                         src={video.thumbnail_url}
                         alt={video.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
 
@@ -199,18 +200,22 @@ export const VideosSection = () => {
                     </div>
 
                     {/* Info */}
-                    <div className="p-4 text-right" dir="rtl">
+                    <div className="p-4 text-right flex flex-col flex-1" dir="rtl">
                       <h3 className="font-bold text-secondary text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                         {video.title}
                       </h3>
-                      {video.description && (
-                        <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-                          {video.description}
-                        </p>
-                      )}
+
+                      <div className="flex-1">
+                        {video.description && (
+                          <p className="text-muted-foreground text-sm line-clamp-2">
+                            {video.description}
+                          </p>
+                        )}
+                      </div>
+
                       <Button
                         size="sm"
-                        className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                        className="mt-3 w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90"
                         onClick={() => {
                           trackVideoPlay(video.id, video.title, video.platform);
                           window.open(video.video_url, "_blank");
