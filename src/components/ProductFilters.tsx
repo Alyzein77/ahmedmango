@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -7,16 +8,7 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
-
-const categories = [
-  { value: "all", label: "كل الفئات" },
-  { value: "Chips", label: "شيبسي" },
-  { value: "Chocolate", label: "شوكولاتة" },
-  { value: "Drinks", label: "مشروبات" },
-  { value: "Noodles", label: "نودلز" },
-  { value: "Biscuits", label: "بسكويت" },
-  { value: "Other", label: "أخرى" },
-];
+import { supabase } from "@/integrations/supabase/client";
 
 const verdicts = [
   { value: "all", label: "الكل" },
@@ -41,6 +33,29 @@ export const ProductFilters = ({
   ratingRange,
   setRatingRange,
 }: ProductFiltersProps) => {
+  const [categories, setCategories] = useState<{ value: string; label: string }[]>([
+    { value: "all", label: "كل الفئات" },
+  ]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("category");
+
+      if (!error && data) {
+        // Get unique categories
+        const uniqueCategories = [...new Set(data.map((p) => p.category).filter(Boolean))];
+        setCategories([
+          { value: "all", label: "كل الفئات" },
+          ...uniqueCategories.map((cat) => ({ value: cat, label: cat })),
+        ]);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 mb-8 shadow-sm">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
