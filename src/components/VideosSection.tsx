@@ -25,6 +25,16 @@ const categoryLabels: Record<Category, string> = {
   Collaboration: "تعاون",
 };
 
+const formatViews = (views: number): string => {
+  if (views >= 1000000) {
+    return (views / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  }
+  if (views >= 1000) {
+    return (views / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  }
+  return views.toString();
+};
+
 export const VideosSection = () => {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
@@ -203,7 +213,7 @@ export const VideosSection = () => {
                       {(video.views ?? 0) > 0 && (
                         <div className="absolute bottom-3 left-3 bg-secondary/80 text-secondary-foreground px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
                           <Eye className="w-3 h-3" />
-                          <span>{video.views?.toLocaleString('ar-EG')}</span>
+                          <span>{formatViews(video.views!)}</span>
                         </div>
                       )}
                     </div>
