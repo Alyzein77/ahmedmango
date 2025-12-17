@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const navLinks = [{
     title: "الرئيسية",
     href: "#hero"
@@ -27,6 +29,13 @@ export const Navbar = () => {
   }];
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false);
+    
+    // If not on home page, navigate to home first
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({
