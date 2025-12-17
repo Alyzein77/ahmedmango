@@ -36,7 +36,8 @@ const AdRequest = () => {
   // OTP state
   const [phone, setPhone] = useState("");
   const [otpCode, setOtpCode] = useState("");
-  const [attemptId, setAttemptId] = useState<string | null>(null);
+  const [transactionId, setTransactionId] = useState<string | null>(null);
+  const [requestId, setRequestId] = useState<string | null>(null);
   
   // Form state
   const [formData, setFormData] = useState({
@@ -85,12 +86,13 @@ const AdRequest = () => {
       if (response.error) throw new Error(response.error.message);
       if (!response.data?.success) throw new Error(response.data?.error || 'Failed to send OTP');
 
-      setAttemptId(response.data.attemptId);
+      setTransactionId(response.data.transactionId);
+      setRequestId(response.data.requestId);
       setFormData(prev => ({ ...prev, phone: formattedPhone }));
       setCurrentStep("otp-verify");
       toast({
         title: "تم إرسال الكود",
-        description: "هيوصلك رسالة فيها الكود",
+        description: "افتح واتساب عشان تاخد الكود",
       });
     } catch (error: any) {
       toast({
@@ -113,7 +115,7 @@ const AdRequest = () => {
       return;
     }
 
-    if (!attemptId) {
+    if (!transactionId) {
       toast({
         title: "حصل مشكلة",
         description: "جرب تبعت الكود تاني",
@@ -127,7 +129,7 @@ const AdRequest = () => {
 
     try {
       const response = await supabase.functions.invoke('akedly-otp', {
-        body: { action: 'verify', code: otpCode, attemptId },
+        body: { action: 'verify', code: otpCode, transactionId, requestId },
       });
 
       if (response.error) throw new Error(response.error.message);
@@ -375,7 +377,8 @@ const AdRequest = () => {
           onClick={() => {
             setCurrentStep("otp");
             setOtpCode("");
-            setAttemptId(null);
+            setTransactionId(null);
+            setRequestId(null);
           }}
           className="w-full"
         >
