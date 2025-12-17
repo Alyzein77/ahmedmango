@@ -34,6 +34,7 @@ const AdRequest = () => {
   // OTP state
   const [phone, setPhone] = useState("");
   const [otpCode, setOtpCode] = useState("");
+  const [attemptId, setAttemptId] = useState<string | null>(null);
   
   // Form state
   const [formData, setFormData] = useState({
@@ -75,12 +76,14 @@ const AdRequest = () => {
     const formattedPhone = formatPhoneNumber(phone);
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        phone: formattedPhone,
+      const response = await supabase.functions.invoke('akedly-otp', {
+        body: { action: 'send', phone: formattedPhone },
       });
 
-      if (error) throw error;
+      if (response.error) throw new Error(response.error.message);
+      if (!response.data?.success) throw new Error(response.data?.error || 'Failed to send OTP');
 
+      setAttemptId(response.data.attemptId);
       setFormData(prev => ({ ...prev, phone: formattedPhone }));
       setCurrentStep("otp-verify");
       toast({
@@ -108,17 +111,25 @@ const AdRequest = () => {
       return;
     }
 
+    if (!attemptId) {
+      toast({
+        title: "حصل مشكلة",
+        description: "جرب تبعت الكود تاني",
+        variant: "destructive",
+      });
+      setCurrentStep("otp");
+      return;
+    }
+
     setIsLoading(true);
-    const formattedPhone = formatPhoneNumber(phone);
 
     try {
-      const { error } = await supabase.auth.verifyOtp({
-        phone: formattedPhone,
-        token: otpCode,
-        type: "sms",
+      const response = await supabase.functions.invoke('akedly-otp', {
+        body: { action: 'verify', code: otpCode, attemptId },
       });
 
-      if (error) throw error;
+      if (response.error) throw new Error(response.error.message);
+      if (!response.data?.verified) throw new Error(response.data?.error || 'Invalid OTP');
 
       setCurrentStep("about-you");
       toast({
@@ -161,9 +172,6 @@ const AdRequest = () => {
       if (error) throw error;
 
       setCurrentStep("success");
-      
-      // Sign out after successful submission
-      await supabase.auth.signOut();
     } catch (error: any) {
       toast({
         title: "حصل مشكلة",
