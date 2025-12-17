@@ -31,6 +31,7 @@ interface AdSpace {
   button_link: string | null;
   display_order: number | null;
   is_active: boolean | null;
+  click_count: number | null;
   created_at: string;
 }
 
@@ -136,6 +137,7 @@ const AdSpacesManager = () => {
                 <TableHead className="text-right font-tajawal">النوع</TableHead>
                 <TableHead className="text-right font-tajawal">العنوان/النص</TableHead>
                 <TableHead className="text-right font-tajawal">الترتيب</TableHead>
+                <TableHead className="text-right font-tajawal">النقرات</TableHead>
                 <TableHead className="text-right font-tajawal">الحالة</TableHead>
                 <TableHead className="text-right font-tajawal">الإجراءات</TableHead>
               </TableRow>
@@ -152,6 +154,9 @@ const AdSpacesManager = () => {
                     {adSpace.title || adSpace.sub_text || "-"}
                   </TableCell>
                   <TableCell>{adSpace.display_order}</TableCell>
+                  <TableCell className="font-tajawal font-bold">
+                    {adSpace.click_count || 0}
+                  </TableCell>
                   <TableCell>
                     <Badge variant={adSpace.is_active ? "default" : "outline"}>
                       {adSpace.is_active ? "نشط" : "غير نشط"}
