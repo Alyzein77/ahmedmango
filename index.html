@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SPA fallback for hosts that return 404 for direct deep links -->
+    <script>
+      (function () {
+        try {
+          var redirect = sessionStorage.getItem("spa_redirect");
+          if (redirect) {
+            sessionStorage.removeItem("spa_redirect");
+            history.replaceState(null, "", redirect);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <title>أحمد مانجو - 2استكا أو فاستكا | Ahmed Mango Reviews</title>
     <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
