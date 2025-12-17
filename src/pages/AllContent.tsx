@@ -46,6 +46,16 @@ const contentTypeColors: Record<string, string> = {
   TikTok: "bg-black",
 };
 
+const formatViews = (views: number): string => {
+  if (views >= 1000000) {
+    return (views / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  }
+  if (views >= 1000) {
+    return (views / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  }
+  return views.toString();
+};
+
 const AllContent = () => {
   const [content, setContent] = useState<UnifiedContent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -237,7 +247,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
         {(item.views ?? 0) > 0 && (
           <div className="flex items-center gap-1 text-muted-foreground text-xs mt-2">
             <Eye className="w-3.5 h-3.5" />
-            <span>{item.views!.toLocaleString()} مشاهدة</span>
+            <span>{formatViews(item.views!)} مشاهدة</span>
           </div>
         )}
 
