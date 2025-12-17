@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>جاري التحويل… | أحمد مانجو</title>
+  </head>
+  <body>
+    <script>
+      // SPA fallback: store the attempted path then send the browser to the app entry.
+      // index.html will restore the original URL via history.replaceState.
+      try {
+        sessionStorage.setItem(
+          "spa_redirect",
+          window.location.pathname + window.location.search + window.location.hash
+        );
+      } catch (e) {}
+      window.location.replace("/");
+    </script>
+  </body>
+</html>
