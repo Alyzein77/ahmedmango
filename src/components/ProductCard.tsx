@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, CheckCircle, XCircle } from "lucide-react";
+import { useMixpanel } from "@/hooks/useMixpanel";
 import type { Product } from "@/pages/Products";
 
 const categoryLabels: Record<string, string> = {
@@ -19,6 +20,11 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const isGood = product.verdict === "2استكا";
+  const { trackProductClick } = useMixpanel();
+
+  const handleReviewClick = () => {
+    trackProductClick(product.id, product.name, 'view_review');
+  };
 
   return (
     <Card className="group overflow-hidden border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg bg-card">
@@ -93,6 +99,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               href={product.review_url} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleReviewClick}
               className="flex items-center justify-center gap-2"
             >
               <ExternalLink className="w-4 h-4" />

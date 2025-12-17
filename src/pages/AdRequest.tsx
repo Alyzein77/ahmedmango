@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useMixpanel } from "@/hooks/useMixpanel";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ type Step = "otp" | "otp-verify" | "about-you" | "about-brand" | "message" | "su
 
 const AdRequest = () => {
   const { toast } = useToast();
+  const { trackFormSubmission, trackButtonClick } = useMixpanel();
   const [currentStep, setCurrentStep] = useState<Step>("otp");
   const [isLoading, setIsLoading] = useState(false);
   
@@ -189,6 +191,10 @@ const AdRequest = () => {
 
       if (error) throw error;
 
+      trackFormSubmission('Ad Request', { 
+        brand_name: formData.brandName,
+        brand_title: formData.brandTitle 
+      });
       setCurrentStep("success");
     } catch (error: any) {
       toast({

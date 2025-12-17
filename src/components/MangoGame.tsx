@@ -1,7 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Trophy, Gift, Zap, Star } from "lucide-react";
+import { useMixpanel } from "@/hooks/useMixpanel";
+import { useTrackSection } from "@/hooks/useTrackSection";
+
 export const MangoGame = () => {
-  return <section id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
+  const { trackGamePlay, trackButtonClick } = useMixpanel();
+  const sectionRef = useTrackSection('Game Section');
+
+  const handlePlayGame = () => {
+    trackGamePlay('start');
+    trackButtonClick('Play Game', 'Game Section');
+    window.open('https://mango.risca.dev/ar', '_blank');
+  };
+
+  const handleLeaderboard = () => {
+    trackButtonClick('View Leaderboard', 'Game Section');
+    window.open('https://mango.risca.dev/ar/leaderboard', '_blank');
+  };
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
       {/* Energetic gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent via-accent/90 to-primary" />
       
@@ -64,13 +80,13 @@ export const MangoGame = () => {
                 </div>)}
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow" onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}>
+            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow" onClick={handlePlayGame}>
               يلا نلعب 🥭
             </Button>
             
             {/* Secondary Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
-              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3" onClick={() => window.open('https://mango.risca.dev/ar/leaderboard', '_blank')}>
+              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3" onClick={handleLeaderboard}>
                 <Trophy className="w-4 h-4 ml-2" />
                 المتصدرين
               </Button>

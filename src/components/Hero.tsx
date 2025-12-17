@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useMixpanel } from "@/hooks/useMixpanel";
+import { useTrackSection } from "@/hooks/useTrackSection";
 
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
+  const { trackButtonClick } = useMixpanel();
+  const sectionRef = useTrackSection('Hero Section');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +19,14 @@ export const Hero = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
+      trackButtonClick('Scroll to Section', `Hero - ${href}`);
       element.scrollIntoView({
         behavior: "smooth"
       });
     }
   };
 
-  return <section id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <img 
