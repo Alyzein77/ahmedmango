@@ -65,9 +65,28 @@ export const AdSpaces = () => {
     return null;
   }
 
-  const handleAdClick = (url: string | null) => {
-    if (url) {
-      window.open(url, "_blank");
+  const trackClick = async (adId: string, clickType: "card" | "button") => {
+    try {
+      await supabase.functions.invoke("track-ad-click", {
+        body: { ad_space_id: adId, click_type: clickType },
+      });
+    } catch (error) {
+      console.error("Failed to track ad click:", error);
+    }
+  };
+
+  const handleAdClick = (ad: AdSpace) => {
+    if (ad.redirect_url) {
+      trackClick(ad.id, "card");
+      window.open(ad.redirect_url, "_blank");
+    }
+  };
+
+  const handleButtonClick = (e: React.MouseEvent, ad: AdSpace) => {
+    e.stopPropagation();
+    if (ad.button_link) {
+      trackClick(ad.id, "button");
+      window.open(ad.button_link, "_blank");
     }
   };
 
@@ -85,7 +104,7 @@ export const AdSpaces = () => {
         {largeAds.map((ad) => (
           <div
             key={ad.id}
-            onClick={() => handleAdClick(ad.redirect_url)}
+            onClick={() => handleAdClick(ad)}
             className={`relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-4 border-foreground shadow-bold z-10 ${
               ad.redirect_url ? "cursor-pointer hover:shadow-bold-sm transition-all" : ""
             }`}
@@ -165,10 +184,7 @@ export const AdSpaces = () => {
                   {/* Button */}
                   {ad.button_text && (
                     <Button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (ad.button_link) window.open(ad.button_link, "_blank");
-                      }}
+                      onClick={(e) => handleButtonClick(e, ad)}
                       className="font-black uppercase text-sm sm:text-base px-6 py-2 rounded-lg border-2 border-foreground shadow-bold hover:shadow-bold-sm transition-all"
                       style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
                     >
@@ -187,7 +203,7 @@ export const AdSpaces = () => {
             {smallAds.map((ad) => (
               <Card
                 key={ad.id}
-                onClick={() => handleAdClick(ad.redirect_url)}
+                onClick={() => handleAdClick(ad)}
                 className={`relative overflow-hidden hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-bold-sm transition-all ${
                   ad.redirect_url ? "cursor-pointer" : ""
                 }`}
@@ -254,10 +270,7 @@ export const AdSpaces = () => {
                       {/* Button */}
                       {ad.button_text && (
                         <Button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (ad.button_link) window.open(ad.button_link, "_blank");
-                          }}
+                          onClick={(e) => handleButtonClick(e, ad)}
                           className="font-black uppercase text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 rounded-lg border-2 border-foreground shadow-bold-sm hover:shadow-none transition-all mt-2"
                           style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
                         >
