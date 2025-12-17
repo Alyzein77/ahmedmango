@@ -19,17 +19,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import { Database, Constants } from "@/integrations/supabase/types";
+import ImageUpload from "./ImageUpload";
 
 type Product = Database["public"]["Tables"]["products"]["Row"];
 type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
 type ProductUpdate = Database["public"]["Tables"]["products"]["Update"];
-
-interface ProductFormDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  product: Product | null;
-  onSubmit: (data: ProductInsert | ProductUpdate) => Promise<void>;
-}
 
 const categories = Constants.public.Enums.product_category;
 const verdicts = Constants.public.Enums.product_verdict;
@@ -40,7 +34,12 @@ const ProductFormDialog = ({
   onOpenChange,
   product,
   onSubmit,
-}: ProductFormDialogProps) => {
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  product: Product | null;
+  onSubmit: (data: ProductInsert | ProductUpdate) => Promise<void>;
+}) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -213,31 +212,25 @@ const ProductFormDialog = ({
             </p>
           </div>
 
-          {/* URLs */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label className="font-tajawal">رابط الريڤيو</Label>
-              <Input
-                type="url"
-                value={formData.review_url}
-                onChange={(e) => setFormData({ ...formData, review_url: e.target.value })}
-                className="mt-1"
-                dir="ltr"
-                placeholder="https://..."
-              />
-            </div>
-            <div>
-              <Label className="font-tajawal">رابط الصورة</Label>
-              <Input
-                type="url"
-                value={formData.thumbnail_url}
-                onChange={(e) => setFormData({ ...formData, thumbnail_url: e.target.value })}
-                className="mt-1"
-                dir="ltr"
-                placeholder="https://..."
-              />
-            </div>
+          {/* Review URL */}
+          <div>
+            <Label className="font-tajawal">رابط الريڤيو</Label>
+            <Input
+              type="url"
+              value={formData.review_url}
+              onChange={(e) => setFormData({ ...formData, review_url: e.target.value })}
+              className="mt-1"
+              dir="ltr"
+              placeholder="https://..."
+            />
           </div>
+
+          {/* Image Upload */}
+          <ImageUpload
+            label="صورة المنتج"
+            value={formData.thumbnail_url}
+            onChange={(url) => setFormData({ ...formData, thumbnail_url: url })}
+          />
 
           {/* Platforms */}
           <div>

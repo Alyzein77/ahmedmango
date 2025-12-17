@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ImageUpload from "./ImageUpload";
 
 type LatestContent = Database["public"]["Tables"]["latest_content"]["Row"];
 type LatestContentInsert = Database["public"]["Tables"]["latest_content"]["Insert"];
@@ -145,17 +146,12 @@ const LatestContentFormDialog = ({ open, onOpenChange, content, onSubmit }: Late
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label className="font-tajawal">رابط الصورة المصغرة *</Label>
-            <Input
-              type="url"
-              value={formData.preview_url}
-              onChange={(e) => setFormData({ ...formData, preview_url: e.target.value })}
-              required
-              className="font-tajawal"
-              dir="ltr"
-            />
-          </div>
+          <ImageUpload
+            label="الصورة المصغرة"
+            value={formData.preview_url}
+            onChange={(url) => setFormData({ ...formData, preview_url: url })}
+            required
+          />
 
           <div className="space-y-2">
             <Label className="font-tajawal">رابط المحتوى *</Label>

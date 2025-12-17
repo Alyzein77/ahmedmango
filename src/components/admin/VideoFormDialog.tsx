@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import ImageUpload from "./ImageUpload";
 
 type Video = Database["public"]["Tables"]["videos"]["Row"];
 type VideoInsert = Database["public"]["Tables"]["videos"]["Insert"];
@@ -176,17 +177,12 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
             />
           </div>
 
-          <div className="space-y-2">
-            <Label className="font-tajawal">رابط الصورة المصغرة *</Label>
-            <Input
-              type="url"
-              value={formData.thumbnail_url}
-              onChange={(e) => setFormData({ ...formData, thumbnail_url: e.target.value })}
-              required
-              className="font-tajawal"
-              dir="ltr"
-            />
-          </div>
+          <ImageUpload
+            label="الصورة المصغرة"
+            value={formData.thumbnail_url}
+            onChange={(url) => setFormData({ ...formData, thumbnail_url: url })}
+            required
+          />
 
           <div className="space-y-2">
             <Label className="font-tajawal">المدة (مثال: 5:30)</Label>
