@@ -104,7 +104,7 @@ export const Hero = () => {
 
         {/* BUTTONS SECTION - Feastables style */}
         <div className="flex flex-col justify-center items-center gap-3 mt-4 mb-4 sm:mb-6 w-full">
-          <Button onClick={() => scrollToSection("#game")} className="h-11 px-6 w-[180px] text-sm font-black rounded-lg text-accent-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide bg-[#1a1349]">
+          <Button onClick={() => window.open('https://mango.risca.dev/ar', '_blank')} className="h-11 px-6 w-[180px] text-sm font-black rounded-lg text-accent-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide bg-[#1a1349]">
             العب واكسب جوائز
           </Button>
 
