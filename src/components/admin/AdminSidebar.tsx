@@ -1,11 +1,11 @@
-import { Package, BarChart3, LogOut, User, Video, FileText, Music2, Home, Share2, Megaphone, LineChart, ClipboardList, Activity, Trophy, Bell } from "lucide-react";
+import { Package, BarChart3, LogOut, User, Video, Music2, Home, Share2, Megaphone, LineChart, ClipboardList, Activity, Trophy, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 interface AdminSidebarProps {
-  currentView: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications";
-  onViewChange: (view: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications") => void;
+  currentView: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications";
+  onViewChange: (view: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications") => void;
   onLogout: () => void;
   userEmail: string;
 }
@@ -14,7 +14,6 @@ const AdminSidebar = ({ currentView, onViewChange, onLogout, userEmail }: AdminS
   const menuItems = [
     { id: "products" as const, label: "المنتجات", icon: Package },
     { id: "videos" as const, label: "الفيديوهات", icon: Video },
-    { id: "content" as const, label: "آخر المحتوى", icon: FileText },
     { id: "tiktok" as const, label: "TikTok", icon: Music2 },
     { id: "social" as const, label: "روابط التواصل", icon: Share2 },
     { id: "ads" as const, label: "المساحات الإعلانية", icon: Megaphone },

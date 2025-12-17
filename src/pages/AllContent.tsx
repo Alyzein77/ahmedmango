@@ -8,9 +8,20 @@ import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowRight
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
-type LatestContent = Database["public"]["Tables"]["latest_content"]["Row"];
+type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
-type ContentType = Database["public"]["Enums"]["content_type"];
+
+interface UnifiedContent {
+  id: string;
+  title: string;
+  preview_url: string;
+  link_url: string;
+  platform: Platform;
+  content_type: string;
+  short_note: string | null;
+  views: number | null;
+  ranking: number | null;
+}
 
 const platformConfig: Record<Platform, { icon: typeof Youtube; color: string; label: string }> = {
   YouTube: { icon: Youtube, color: "bg-red-600", label: "YouTube" },
@@ -19,7 +30,7 @@ const platformConfig: Record<Platform, { icon: typeof Youtube; color: string; la
   Facebook: { icon: Facebook, color: "bg-blue-600", label: "Facebook" },
 };
 
-const contentTypeLabels: Record<ContentType, string> = {
+const contentTypeLabels: Record<string, string> = {
   Video: "فيديو",
   Post: "منشور",
   Story: "ستوري",
@@ -27,7 +38,7 @@ const contentTypeLabels: Record<ContentType, string> = {
   TikTok: "تيك توك",
 };
 
-const contentTypeColors: Record<ContentType, string> = {
+const contentTypeColors: Record<string, string> = {
   Video: "bg-red-500",
   Post: "bg-blue-500",
   Story: "bg-purple-500",
@@ -36,7 +47,7 @@ const contentTypeColors: Record<ContentType, string> = {
 };
 
 const AllContent = () => {
-  const [content, setContent] = useState<LatestContent[]>([]);
+  const [content, setContent] = useState<UnifiedContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
 
@@ -48,13 +59,26 @@ const AllContent = () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
-        .from("latest_content")
+        .from("videos")
         .select("*")
         .order("ranking", { ascending: false })
-        .order("posted_at", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
-      setContent(data || []);
+
+      const videos: UnifiedContent[] = (data || []).map((item: Video) => ({
+        id: item.id,
+        title: item.title,
+        preview_url: item.thumbnail_url,
+        link_url: item.video_url,
+        platform: item.platform,
+        content_type: 'Video',
+        short_note: item.description,
+        views: item.views,
+        ranking: item.ranking,
+      }));
+
+      setContent(videos);
     } catch (error) {
       console.error("Error fetching content:", error);
     } finally {
@@ -157,14 +181,14 @@ const AllContent = () => {
 };
 
 interface ContentCardProps {
-  item: LatestContent;
+  item: UnifiedContent;
   delay?: number;
 }
 
 const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
   const platformCfg = platformConfig[item.platform];
-  const typeColor = contentTypeColors[item.content_type];
-  const typeLabel = contentTypeLabels[item.content_type];
+  const typeColor = contentTypeColors[item.content_type] || "bg-red-500";
+  const typeLabel = contentTypeLabels[item.content_type] || "فيديو";
 
   return (
     <Card

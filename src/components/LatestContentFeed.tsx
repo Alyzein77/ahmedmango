@@ -6,10 +6,8 @@ import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowLeft,
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
-type LatestContent = Database["public"]["Tables"]["latest_content"]["Row"];
 type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
-type ContentType = Database["public"]["Enums"]["content_type"];
 
 // Unified content type for display
 interface UnifiedContent {
@@ -18,11 +16,10 @@ interface UnifiedContent {
   preview_url: string;
   link_url: string;
   platform: Platform;
-  content_type: ContentType;
+  content_type: string;
   short_note: string | null;
   views: number | null;
   ranking: number | null;
-  source: 'latest_content' | 'videos';
 }
 
 const platformConfig: Record<Platform, { icon: typeof Youtube; color: string; label: string }> = {
@@ -32,7 +29,7 @@ const platformConfig: Record<Platform, { icon: typeof Youtube; color: string; la
   Facebook: { icon: Facebook, color: "bg-blue-600", label: "Facebook" },
 };
 
-const contentTypeLabels: Record<ContentType, string> = {
+const contentTypeLabels: Record<string, string> = {
   Video: "فيديو",
   Post: "منشور",
   Story: "ستوري",
@@ -40,7 +37,7 @@ const contentTypeLabels: Record<ContentType, string> = {
   TikTok: "تيك توك",
 };
 
-const contentTypeColors: Record<ContentType, string> = {
+const contentTypeColors: Record<string, string> = {
   Video: "bg-red-500",
   Post: "bg-blue-500",
   Story: "bg-purple-500",
@@ -60,54 +57,27 @@ export const LatestContentFeed = () => {
   const fetchContent = async () => {
     setLoading(true);
     try {
-      // Fetch from both tables in parallel
-      const [latestContentResult, videosResult] = await Promise.all([
-        supabase
-          .from("latest_content")
-          .select("*")
-          .order("ranking", { ascending: false })
-          .order("posted_at", { ascending: false }),
-        supabase
-          .from("videos")
-          .select("*")
-          .order("ranking", { ascending: false })
-          .order("created_at", { ascending: false })
-      ]);
+      const { data, error } = await supabase
+        .from("videos")
+        .select("*")
+        .order("ranking", { ascending: false })
+        .order("created_at", { ascending: false });
 
-      const latestContent: UnifiedContent[] = (latestContentResult.data || []).map((item: LatestContent) => ({
+      if (error) throw error;
+
+      const videos: UnifiedContent[] = (data || []).map((item: Video) => ({
         id: item.id,
-        title: item.title,
-        preview_url: item.preview_url,
-        link_url: item.link_url,
-        platform: item.platform,
-        content_type: item.content_type,
-        short_note: item.short_note,
-        views: item.views,
-        ranking: item.ranking,
-        source: 'latest_content' as const,
-      }));
-
-      const videos: UnifiedContent[] = (videosResult.data || []).map((item: Video) => ({
-        id: `video-${item.id}`,
         title: item.title,
         preview_url: item.thumbnail_url,
         link_url: item.video_url,
         platform: item.platform,
-        content_type: 'Video' as ContentType,
+        content_type: 'Video',
         short_note: item.description,
         views: item.views,
         ranking: item.ranking,
-        source: 'videos' as const,
       }));
 
-      // Merge and sort by ranking
-      const merged = [...latestContent, ...videos].sort((a, b) => {
-        const rankA = a.ranking ?? 0;
-        const rankB = b.ranking ?? 0;
-        return rankB - rankA;
-      });
-
-      setContent(merged);
+      setContent(videos);
     } catch (error) {
       console.error("Error fetching content:", error);
     } finally {
