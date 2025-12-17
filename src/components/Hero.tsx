@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const FloatingMango = ({ className, delay, duration }: { className: string; delay: string; duration: string }) => (
   <div 
-    className={`absolute text-4xl sm:text-5xl opacity-60 pointer-events-none ${className}`}
+    className={`absolute text-4xl sm:text-5xl opacity-25 pointer-events-none ${className}`}
     style={{ 
       animation: `float ${duration} ease-in-out infinite`,
       animationDelay: delay 
