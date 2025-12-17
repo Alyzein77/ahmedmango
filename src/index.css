@@ -26,9 +26,9 @@
     --secondary: 240 20% 10%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Muted - subtle gray */
-    --muted: 220 15% 95%;
-    --muted-foreground: 240 10% 40%;
+    /* Muted - subtle warm tone instead of grey */
+    --muted: 48 40% 92%;
+    --muted-foreground: 30 30% 35%;
 
     /* Accent - Bold Magenta/Pink (like Feastables pink CTAs) */
     --accent: 330 85% 55%;
@@ -92,8 +92,8 @@
     --secondary: 0 0% 98%;
     --secondary-foreground: 240 20% 10%;
 
-    --muted: 240 10% 18%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 240 10% 22%;
+    --muted-foreground: 48 30% 70%;
 
     --accent: 330 85% 55%;
     --accent-foreground: 0 0% 100%;

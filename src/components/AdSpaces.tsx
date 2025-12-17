@@ -1,14 +1,14 @@
 import { Card } from "@/components/ui/card";
 export const AdSpaces = () => {
-  return <section className="py-6 sm:py-8 px-3 sm:px-4" style={{
-    backgroundImage: 'url(/images/ad-background.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center'
-  }}>
+  return <section className="py-6 sm:py-8 px-3 sm:px-4 bg-sky relative overflow-hidden">
+      {/* Feastables-style radial burst pattern */}
+      <div className="absolute inset-0 opacity-20" style={{
+        background: `repeating-conic-gradient(from 0deg, hsl(var(--foreground)) 0deg 5deg, transparent 5deg 15deg)`
+      }} />
       <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         
         {/* Wide Banner Ad */}
-        <div className="relative w-full bg-primary/20 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-primary/30 shadow-lg">
+        <div className="relative w-full bg-background rounded-xl sm:rounded-2xl overflow-hidden border-4 border-foreground shadow-bold z-10">
           {/* Mango-style decorative border */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 bg-primary/20 rounded-full -translate-x-1/2 -translate-y-1/2" />
@@ -16,17 +16,17 @@ export const AdSpaces = () => {
           </div>
           
           {/* Ad Label */}
-          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-secondary text-secondary-foreground text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full z-10">
+          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-accent-foreground text-[10px] sm:text-xs font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-foreground z-10 uppercase">
             مساحة إعلانية
           </div>
           
           {/* Ad Content */}
-          <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px] bg-white">
+          <div className="relative p-4 sm:p-8 md:p-12 flex flex-col items-center text-center gap-4 min-h-[120px] sm:min-h-[160px] bg-primary">
             <div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-secondary mb-1 sm:mb-2 font-lalezar">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-black text-foreground mb-1 sm:mb-2 font-lalezar uppercase">
                 🥭 أعلن مع أحمد مانجو
               </h3>
-              <p className="text-secondary/70 font-medium text-sm sm:text-base font-tajawal">
+              <p className="text-foreground/80 font-bold text-sm sm:text-base font-tajawal">
                 وصّل منتجك لآلاف المتابعين المهتمين
               </p>
             </div>
@@ -41,10 +41,10 @@ export const AdSpaces = () => {
         </div>
 
         {/* Two Square Ads */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6">
-          {[1, 2].map(idx => <Card key={idx} className="relative overflow-hidden border-2 border-primary/30 hover:border-primary/40 transition-colors bg-primary/20">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 relative z-10">
+          {[1, 2].map(idx => <Card key={idx} className="relative overflow-hidden bg-orange hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-bold-sm transition-all">
               {/* Ad Label */}
-              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-accent-foreground text-[9px] sm:text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full z-10">
+              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-secondary text-secondary-foreground text-[9px] sm:text-xs font-black px-2 py-0.5 sm:py-1 rounded-lg border-2 border-secondary-foreground z-10 uppercase">
                 إعلان
               </div>
               
@@ -53,17 +53,17 @@ export const AdSpaces = () => {
               
               
               {/* Ad Content */}
-              <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px] bg-white">
-                <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-4" style={{
+              <div className="relative p-3 sm:p-6 flex flex-col items-center justify-center min-h-[140px] sm:min-h-[200px]">
+                <div className="w-full aspect-square max-w-[80px] sm:max-w-[150px] rounded-xl overflow-hidden mb-2 sm:mb-4 border-2 border-foreground" style={{
               backgroundImage: 'url(/lovable-uploads/juhayna-mix-ad.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }} />
 
-                <p className="text-secondary font-bold text-center text-xs sm:text-base">
+                <p className="text-foreground font-black text-center text-xs sm:text-base uppercase">
                   مساحة إعلانية
                 </p>
-                <p className="text-muted-foreground text-[10px] sm:text-sm text-center hidden sm:block">
+                <p className="text-foreground/80 text-[10px] sm:text-sm text-center hidden sm:block font-bold">
                   تواصل معنا للحجز
                 </p>
               </div>

@@ -71,7 +71,7 @@ export const WinnersSection = () => {
                 </Badge>
               </div>
               
-              <p className="text-sm text-muted-foreground font-medium">
+              <p className="text-sm text-foreground/70 font-bold">
                 {winner.date}
               </p>
             </Card>
