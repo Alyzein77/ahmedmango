@@ -109,37 +109,43 @@ export const ProductList = () => {
   const filteredProducts = activeFilter === "all" ? mockProducts : mockProducts.filter(p => p.rating === activeFilter);
   const visibleProducts = filteredProducts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredProducts.length;
-  return <section id="products" className="py-10 sm:py-16 px-3 sm:px-4" style={{
-    backgroundImage: 'url(/images/product-background.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center'
-  }}>
+  return <section id="products" className="py-10 sm:py-16 px-3 sm:px-4 bg-primary relative overflow-hidden">
+      {/* Feastables-style diagonal stripes pattern */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: `repeating-linear-gradient(
+          -45deg,
+          hsl(var(--foreground)) 0px,
+          hsl(var(--foreground)) 3px,
+          transparent 3px,
+          transparent 20px
+        )`
+      }} />
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-2 sm:mb-3 font-lalezar">قائمة المنتجات </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto px-4 font-tajawal">
+        <div className="text-center mb-6 sm:mb-10 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2 sm:mb-3 font-lalezar">قائمة المنتجات </h2>
+          <p className="text-foreground/80 text-sm sm:text-lg max-w-xl mx-auto px-4 font-tajawal font-bold">
             كل المنتجات اللي راجعتها بتقييم صادق
           </p>
         </div>
 
         {/* Filter Tabs - Scrollable on mobile */}
-        <div className="flex justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto pb-2 px-2">
-          <Button variant={activeFilter === "all" ? "default" : "outline"} onClick={() => setActiveFilter("all")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 ${activeFilter === "all" ? "bg-secondary text-secondary-foreground" : "border-secondary/30 text-secondary hover:bg-secondary/10"}`}>
+        <div className="flex justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto pb-2 px-2 relative z-10">
+          <Button variant={activeFilter === "all" ? "default" : "outline"} onClick={() => setActiveFilter("all")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${activeFilter === "all" ? "bg-secondary text-secondary-foreground shadow-bold-sm" : "bg-background text-foreground hover:bg-secondary/10"}`}>
             الكل
           </Button>
-          <Button variant={activeFilter === "tasteka" ? "default" : "outline"} onClick={() => setActiveFilter("tasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 ${activeFilter === "tasteka" ? "bg-primary text-primary-foreground" : "border-primary/30 text-secondary hover:bg-primary/10"}`}>
+          <Button variant={activeFilter === "tasteka" ? "default" : "outline"} onClick={() => setActiveFilter("tasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${activeFilter === "tasteka" ? "bg-sky text-foreground shadow-bold-sm" : "bg-background text-foreground hover:bg-sky/10"}`}>
             <Check className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
             استكا
           </Button>
-          <Button variant={activeFilter === "fasteka" ? "default" : "outline"} onClick={() => setActiveFilter("fasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 ${activeFilter === "fasteka" ? "bg-accent text-accent-foreground" : "border-accent/30 text-secondary hover:bg-accent/10"}`}>
+          <Button variant={activeFilter === "fasteka" ? "default" : "outline"} onClick={() => setActiveFilter("fasteka")} className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${activeFilter === "fasteka" ? "bg-accent text-accent-foreground shadow-bold-sm" : "bg-background text-foreground hover:bg-accent/10"}`}>
             <X className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
             فاستكا
           </Button>
         </div>
 
         {/* Product Grid - 2 columns on mobile */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 relative z-10">
           {visibleProducts.map((product, idx) => <Card key={product.id} className="group relative overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up" style={{
           animationDelay: `${idx * 0.05}s`
         }}>
@@ -152,19 +158,19 @@ export const ProductList = () => {
               <div className={`absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 rounded-full opacity-20 ${product.rating === "tasteka" ? "bg-primary" : "bg-accent"}`} />
 
               {/* Product Image */}
-              <div className="relative aspect-square bg-muted/50 overflow-hidden">
+              <div className="relative aspect-square bg-sky/20 overflow-hidden">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
               </div>
 
               {/* Product Info */}
               <div className="p-2.5 sm:p-4 relative">
-                <span className="text-[10px] sm:text-xs font-medium text-muted-foreground mb-0.5 sm:mb-1 block">
+                <span className="text-[10px] sm:text-xs font-bold text-accent mb-0.5 sm:mb-1 block uppercase">
                   {product.category}
                 </span>
-                <h3 className="font-bold text-secondary text-sm sm:text-lg mb-0.5 sm:mb-1 line-clamp-1">
+                <h3 className="font-bold text-foreground text-sm sm:text-lg mb-0.5 sm:mb-1 line-clamp-1">
                   {product.name}
                 </h3>
-                <p className="text-[10px] sm:text-sm text-muted-foreground mb-2 sm:mb-3 line-clamp-1">
+                <p className="text-[10px] sm:text-sm text-foreground/70 mb-2 sm:mb-3 line-clamp-1 font-medium">
                   {product.note}
                 </p>
                 <Button size="sm" className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 text-[10px] sm:text-sm h-8 sm:h-9">
@@ -175,8 +181,8 @@ export const ProductList = () => {
         </div>
 
         {/* Load More */}
-        {hasMore && <div className="text-center mt-6 sm:mt-8">
-            <Button variant="outline" onClick={() => setVisibleCount(prev => prev + 4)} className="rounded-full font-bold px-6 sm:px-8 border-secondary/30 text-secondary hover:bg-secondary/10 h-10 sm:h-11">
+        {hasMore && <div className="text-center mt-6 sm:mt-8 relative z-10">
+            <Button variant="outline" onClick={() => setVisibleCount(prev => prev + 4)} className="rounded-full font-bold px-6 sm:px-8 bg-secondary text-secondary-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm hover:translate-x-[2px] hover:translate-y-[2px] h-10 sm:h-11">
               تحميل المزيد ⬇️
             </Button>
           </div>}

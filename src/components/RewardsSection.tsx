@@ -40,7 +40,7 @@ export const RewardsSection = () => {
                 </div>
                 <div>
                   <h4 className="font-black text-lg mb-1 uppercase">شاهد الفيديوهات 📱</h4>
-                  <p className="text-muted-foreground font-medium">كل فيديو تشوفه يكسبك نقاط</p>
+                  <p className="text-foreground/70 font-bold">كل فيديو تشوفه يكسبك نقاط</p>
                 </div>
               </div>
 
@@ -50,7 +50,7 @@ export const RewardsSection = () => {
                 </div>
                 <div>
                   <h4 className="font-black text-lg mb-1 uppercase">تفاعل وعلق 💬</h4>
-                  <p className="text-muted-foreground font-medium">كومنتاتك وشيراتك تزود نقاطك</p>
+                  <p className="text-foreground/70 font-bold">كومنتاتك وشيراتك تزود نقاطك</p>
                 </div>
               </div>
 
@@ -60,7 +60,7 @@ export const RewardsSection = () => {
                 </div>
                 <div>
                   <h4 className="font-black text-lg mb-1 uppercase">اسحب واكسب 🎁</h4>
-                  <p className="text-muted-foreground font-medium">جوائز كل أسبوع للفائزين</p>
+                  <p className="text-foreground/70 font-bold">جوائز كل أسبوع للفائزين</p>
                 </div>
               </div>
             </div>

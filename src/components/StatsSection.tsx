@@ -29,7 +29,7 @@ const stats = [
 
 export const StatsSection = () => {
   return (
-    <section className="relative py-10 sm:py-16 px-3 sm:px-4 overflow-hidden bg-primary">
+    <section className="relative py-10 sm:py-16 px-3 sm:px-4 overflow-hidden bg-orange">
       {/* Solid background with subtle pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -72,7 +72,7 @@ export const StatsSection = () => {
               </div>
               
               {/* Label */}
-              <div className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-wide">
+              <div className="text-xs sm:text-sm text-foreground/80 font-bold uppercase tracking-wide">
                 {stat.label}
               </div>
             </div>

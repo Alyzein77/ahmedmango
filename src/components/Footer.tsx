@@ -114,7 +114,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t-2 border-secondary-foreground/30 pt-4 sm:pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-2 sm:gap-4 text-secondary-foreground/60 text-xs sm:text-sm font-medium">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 sm:gap-4 text-secondary-foreground/80 text-xs sm:text-sm font-bold">
             <p>© {currentYear} أحمد مانجو. جميع الحقوق محفوظة 🥭</p>
             <div className="flex flex-col md:flex-row items-center gap-2">
               <p>صنع بـ ❤️ في مصر</p>
