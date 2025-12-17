@@ -40,15 +40,7 @@ export const Footer = () => {
     fetchSocialLinks();
   }, []);
 
-  // Fallback to hardcoded links if no data from DB
-  const defaultLinks = [
-    { id: "1", platform: "TikTok", url: "https://www.tiktok.com/@ahmed_mangoo", icon: "📱", display_order: 0 },
-    { id: "2", platform: "Instagram", url: "https://www.instagram.com/ahmedmango.official/", icon: "📸", display_order: 1 },
-    { id: "3", platform: "YouTube", url: "https://www.youtube.com/@AhmedMango", icon: "🎬", display_order: 2 },
-    { id: "4", platform: "Facebook", url: "https://www.facebook.com/AhmedMango.Official/", icon: "👤", display_order: 3 },
-  ];
-
-  const displayLinks = socialLinks.length > 0 ? socialLinks : defaultLinks;
+  // Social links are now fetched from the database
 
   return (
     <footer className="relative bg-secondary text-secondary-foreground pt-10 sm:pt-16 pb-6 sm:pb-8 px-3 sm:px-4 overflow-hidden border-t-4 border-foreground">
@@ -108,7 +100,7 @@ export const Footer = () => {
             
             {/* Social Icons */}
             <div className="flex gap-2 sm:gap-3 justify-center md:justify-start mb-3 sm:mb-4 flex-wrap">
-              {displayLinks.map((social) => {
+              {socialLinks.map((social) => {
                 const IconComponent = platformIcons[social.platform];
                 return (
                   <a 
