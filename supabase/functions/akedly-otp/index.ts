@@ -30,16 +30,22 @@ serve(async (req) => {
 
     if (action === 'send') {
       // Step 1: Create OTP transaction
+      const requestBody = {
+        pipeline_id: AKEDLY_PIPELINE_ID,
+        phone: phone,
+      };
+      
+      console.log('Akedly request URL:', AKEDLY_API_URL);
+      console.log('Akedly request body:', JSON.stringify(requestBody));
+      console.log('Akedly API key prefix:', AKEDLY_API_KEY?.substring(0, 10) + '...');
+      
       const createResponse = await fetch(AKEDLY_API_URL, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${AKEDLY_API_KEY}`,
+          'x-api-key': AKEDLY_API_KEY,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          pipeline_id: AKEDLY_PIPELINE_ID,
-          phone: phone,
-        }),
+        body: JSON.stringify(requestBody),
       });
 
       const responseText = await createResponse.text();
@@ -71,7 +77,7 @@ serve(async (req) => {
       const activateResponse = await fetch(`${AKEDLY_API_URL}/${txnId}/activate`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${AKEDLY_API_KEY}`,
+          'x-api-key': AKEDLY_API_KEY,
           'Content-Type': 'application/json',
         },
       });
@@ -122,7 +128,7 @@ serve(async (req) => {
       const response = await fetch(verifyUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${AKEDLY_API_KEY}`,
+          'x-api-key': AKEDLY_API_KEY,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
