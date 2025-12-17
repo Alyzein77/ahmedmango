@@ -47,6 +47,7 @@ const LatestContentManager = () => {
       const { data, error } = await supabase
         .from("latest_content")
         .select("*")
+        .order("ranking", { ascending: false })
         .order("posted_at", { ascending: false });
 
       if (error) throw error;
@@ -182,14 +183,16 @@ const LatestContentManager = () => {
                 <TableHead className="text-right font-tajawal">العنوان</TableHead>
                 <TableHead className="text-right font-tajawal">النوع</TableHead>
                 <TableHead className="text-right font-tajawal">المنصة</TableHead>
-                <TableHead className="text-right font-tajawal">ملاحظة</TableHead>
+                <TableHead className="text-right font-tajawal">المشاهدات</TableHead>
+                <TableHead className="text-right font-tajawal">التفاعلات</TableHead>
+                <TableHead className="text-right font-tajawal">الترتيب</TableHead>
                 <TableHead className="text-right font-tajawal">الإجراءات</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {content.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center text-muted-foreground py-8 font-tajawal">
+                  <TableCell colSpan={7} className="text-center text-muted-foreground py-8 font-tajawal">
                     لا يوجد محتوى
                   </TableCell>
                 </TableRow>
@@ -208,8 +211,14 @@ const LatestContentManager = () => {
                           <span className="font-tajawal">{item.platform}</span>
                         </div>
                       </TableCell>
-                      <TableCell className="font-tajawal max-w-[200px] truncate">
-                        {item.short_note || "-"}
+                      <TableCell className="font-tajawal text-center">
+                        {(item.views || 0).toLocaleString()}
+                      </TableCell>
+                      <TableCell className="font-tajawal text-center">
+                        {(item.engagements || 0).toLocaleString()}
+                      </TableCell>
+                      <TableCell className="font-tajawal text-center font-bold">
+                        {item.ranking || 0}
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
