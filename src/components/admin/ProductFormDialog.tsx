@@ -25,7 +25,6 @@ type Product = Database["public"]["Tables"]["products"]["Row"];
 type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
 type ProductUpdate = Database["public"]["Tables"]["products"]["Update"];
 
-const categories = Constants.public.Enums.product_category;
 const verdicts = Constants.public.Enums.product_verdict;
 const platforms = ["YouTube", "TikTok", "Instagram", "Facebook"];
 
@@ -44,7 +43,7 @@ const ProductFormDialog = ({
   const [formData, setFormData] = useState({
     name: "",
     brand: "",
-    category: "Other" as typeof categories[number],
+    category: "أخرى",
     rating: 5,
     verdict: "2استكا" as typeof verdicts[number],
     short_note: "",
@@ -60,7 +59,7 @@ const ProductFormDialog = ({
       setFormData({
         name: product.name,
         brand: product.brand || "",
-        category: product.category,
+        category: product.category || "أخرى",
         rating: product.rating,
         verdict: product.verdict,
         short_note: product.short_note || "",
@@ -74,7 +73,7 @@ const ProductFormDialog = ({
       setFormData({
         name: "",
         brand: "",
-        category: "Other",
+        category: "أخرى",
         rating: 5,
         verdict: "2استكا",
         short_note: "",
@@ -142,23 +141,13 @@ const ProductFormDialog = ({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label className="font-tajawal">الفئة *</Label>
-              <Select
+              <Input
                 value={formData.category}
-                onValueChange={(value: typeof categories[number]) =>
-                  setFormData({ ...formData, category: value })
-                }
-              >
-                <SelectTrigger className="mt-1 font-tajawal">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {categories.map((cat) => (
-                    <SelectItem key={cat} value={cat} className="font-tajawal">
-                      {cat}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                className="font-tajawal mt-1"
+                placeholder="مثال: شيبسي، شوكولاتة، مشروبات..."
+                required
+              />
             </div>
             <div>
               <Label className="font-tajawal">التقييم (1-10) *</Label>

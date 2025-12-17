@@ -59,7 +59,7 @@ export type Database = {
       products: {
         Row: {
           brand: string | null
-          category: Database["public"]["Enums"]["product_category"]
+          category: string
           created_at: string
           id: string
           is_featured: boolean | null
@@ -75,7 +75,7 @@ export type Database = {
         }
         Insert: {
           brand?: string | null
-          category?: Database["public"]["Enums"]["product_category"]
+          category?: string
           created_at?: string
           id?: string
           is_featured?: boolean | null
@@ -91,7 +91,7 @@ export type Database = {
         }
         Update: {
           brand?: string | null
-          category?: Database["public"]["Enums"]["product_category"]
+          category?: string
           created_at?: string
           id?: string
           is_featured?: boolean | null
