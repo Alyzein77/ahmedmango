@@ -106,7 +106,9 @@ const Admin = () => {
 
   // Not logged in - show login form
   if (!user || !session) {
-    return <AdminLogin />;
+    return <AdminLogin onLoginSuccess={() => {
+      // Auth state listener will handle the state update
+    }} />;
   }
 
   // Logged in but not admin - show error

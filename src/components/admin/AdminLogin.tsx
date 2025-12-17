@@ -6,12 +6,19 @@ import { Loader2, Mail, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
-const emailSchema = z.string().email("البريد الإلكتروني غير صالح").max(255);
+const loginSchema = z.object({
+  email: z.string().email("البريد الإلكتروني غير صالح").max(255),
+  password: z.string().min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل").max(100),
+});
 
-const AdminLogin = () => {
+interface AdminLoginProps {
+  onLoginSuccess: () => void;
+}
+
+const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const { toast } = useToast();
 
@@ -19,46 +26,69 @@ const AdminLogin = () => {
     e.preventDefault();
     setError("");
 
-    // Validate email
-    const validation = emailSchema.safeParse(email.trim());
+    // Validate inputs
+    const validation = loginSchema.safeParse({ 
+      email: email.trim(), 
+      password 
+    });
+    
     if (!validation.success) {
-      setError("البريد الإلكتروني غير صالح");
+      const firstError = validation.error.errors[0];
+      setError(firstError.message);
       return;
     }
 
     setLoading(true);
 
     try {
-      const redirectUrl = `${window.location.origin}/admin`;
-      
-      // Call edge function to validate email and send magic link
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({
-            email: email.trim().toLowerCase(),
-            redirectTo: redirectUrl,
-          }),
+      // Sign in with email/password
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
+
+      if (signInError) {
+        if (signInError.message.includes("Invalid login credentials")) {
+          setError("البريد الإلكتروني أو كلمة المرور غير صحيحة");
+        } else {
+          setError("حدث خطأ أثناء تسجيل الدخول");
         }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "حدث خطأ أثناء تسجيل الدخول");
         return;
       }
 
-      setSent(true);
+      if (!data.user) {
+        setError("حدث خطأ أثناء تسجيل الدخول");
+        return;
+      }
+
+      // Check if user has admin role
+      const { data: roleData, error: roleError } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", data.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      if (roleError) {
+        console.error("Error checking admin role:", roleError);
+        await supabase.auth.signOut();
+        setError("حدث خطأ أثناء التحقق من الصلاحيات");
+        return;
+      }
+
+      if (!roleData) {
+        // User is not an admin, sign them out
+        await supabase.auth.signOut();
+        setError("هذا الحساب غير مصرح له بالدخول للوحة التحكم");
+        return;
+      }
+
       toast({
-        title: "تم الإرسال",
-        description: "تحقق من بريدك الإلكتروني للحصول على رابط الدخول",
+        title: "تم تسجيل الدخول",
+        description: "مرحباً بك في لوحة التحكم",
       });
+      
+      onLoginSuccess();
     } catch (err) {
       console.error("Login error:", err);
       setError("حدث خطأ أثناء الاتصال بالخادم");
@@ -97,73 +127,66 @@ const AdminLogin = () => {
           </p>
         </div>
 
-        {sent ? (
-          <div className="text-center py-8">
-            <div className="w-20 h-20 bg-sky rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground shadow-bold">
-              <Mail className="w-10 h-10 text-foreground" />
+        <form onSubmit={handleSubmit} className="space-y-4" dir="rtl">
+          <div>
+            <label className="block text-sm font-black text-foreground font-tajawal mb-2">
+              البريد الإلكتروني
+            </label>
+            <div className="relative">
+              <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/50" />
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="admin@example.com"
+                className="pr-10 font-tajawal border-2 border-foreground focus:ring-orange focus:border-orange"
+                dir="ltr"
+                required
+                disabled={loading}
+              />
             </div>
-            <h2 className="text-xl font-black text-foreground font-lalezar mb-2">
-              تم إرسال الرابط!
-            </h2>
-            <p className="text-foreground/70 font-tajawal mb-4 font-medium">
-              تحقق من بريدك الإلكتروني
-              <br />
-              <span className="text-orange font-bold">{email}</span>
-            </p>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setSent(false);
-                setEmail("");
-              }}
-              className="font-tajawal font-bold border-2 border-foreground shadow-bold-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-            >
-              إعادة المحاولة
-            </Button>
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-black text-foreground font-tajawal mb-2 text-right">
-                البريد الإلكتروني
-              </label>
-              <div className="relative">
-                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/50" />
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@example.com"
-                  className="pr-10 text-right font-tajawal border-2 border-foreground focus:ring-orange focus:border-orange"
-                  dir="ltr"
-                  required
-                  disabled={loading}
-                />
-              </div>
+
+          <div>
+            <label className="block text-sm font-black text-foreground font-tajawal mb-2">
+              كلمة المرور
+            </label>
+            <div className="relative">
+              <Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/50" />
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="pr-10 font-tajawal border-2 border-foreground focus:ring-orange focus:border-orange"
+                dir="ltr"
+                required
+                disabled={loading}
+              />
             </div>
+          </div>
 
-            {error && (
-              <div className="bg-destructive/10 border-2 border-destructive rounded-lg p-3 text-center">
-                <p className="text-destructive text-sm font-tajawal font-bold">{error}</p>
-              </div>
+          {error && (
+            <div className="bg-destructive/10 border-2 border-destructive rounded-lg p-3 text-center">
+              <p className="text-destructive text-sm font-tajawal font-bold">{error}</p>
+            </div>
+          )}
+
+          <Button
+            type="submit"
+            className="w-full bg-orange text-foreground hover:bg-orange/90 font-tajawal py-6 text-lg font-black border-2 border-foreground shadow-bold hover:shadow-bold-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin ml-2" />
+                جاري تسجيل الدخول...
+              </>
+            ) : (
+              "تسجيل الدخول"
             )}
-
-            <Button
-              type="submit"
-              className="w-full bg-orange text-foreground hover:bg-orange/90 font-tajawal py-6 text-lg font-black border-2 border-foreground shadow-bold hover:shadow-bold-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin ml-2" />
-                  جاري الإرسال...
-                </>
-              ) : (
-                "أرسل رابط الدخول"
-              )}
-            </Button>
-          </form>
-        )}
+          </Button>
+        </form>
 
         <div className="mt-6 pt-6 border-t-2 border-foreground/20 text-center">
           <p className="text-sm text-foreground font-lalezar font-bold">
