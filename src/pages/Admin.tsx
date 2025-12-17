@@ -80,10 +80,25 @@ const Admin = () => {
 
   if (loading || checkingRole) {
     return (
-      <div className="min-h-screen bg-muted flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-muted-foreground font-tajawal">جاري التحميل...</p>
+      <div className="min-h-screen bg-primary flex items-center justify-center relative overflow-hidden">
+        {/* Background pattern */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 20px,
+              hsl(var(--orange)) 20px,
+              hsl(var(--orange)) 40px
+            )`
+          }}
+        />
+        <div className="text-center relative z-10">
+          <div className="w-20 h-20 bg-background rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground shadow-bold">
+            <Loader2 className="w-10 h-10 animate-spin text-orange" />
+          </div>
+          <p className="text-foreground font-tajawal font-bold text-lg">جاري التحميل...</p>
         </div>
       </div>
     );
@@ -97,20 +112,33 @@ const Admin = () => {
   // Logged in but not admin - show error
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-muted flex items-center justify-center p-4">
-        <div className="bg-card rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-destructive/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-3xl">🚫</span>
+      <div className="min-h-screen bg-primary flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Background pattern */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 20px,
+              hsl(var(--orange)) 20px,
+              hsl(var(--orange)) 40px
+            )`
+          }}
+        />
+        <div className="bg-background rounded-2xl border-4 border-foreground shadow-bold p-8 max-w-md w-full text-center relative z-10">
+          <div className="w-20 h-20 bg-destructive/20 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-foreground">
+            <span className="text-4xl">🚫</span>
           </div>
-          <h1 className="text-xl font-bold text-foreground font-tajawal mb-2">
+          <h1 className="text-2xl font-black text-foreground font-lalezar mb-2">
             غير مصرح
           </h1>
-          <p className="text-muted-foreground font-tajawal mb-6">
+          <p className="text-foreground/70 font-tajawal mb-6 font-bold">
             هذا الحساب ليس لديه صلاحيات المسؤول.
           </p>
           <button
             onClick={handleLogout}
-            className="w-full bg-secondary text-secondary-foreground py-3 rounded-xl font-tajawal hover:opacity-90 transition-opacity"
+            className="w-full bg-secondary text-secondary-foreground py-3 rounded-xl font-tajawal font-bold border-2 border-foreground shadow-bold hover:shadow-bold-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
           >
             تسجيل الخروج
           </button>
