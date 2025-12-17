@@ -49,7 +49,7 @@ export const VideosSection = () => {
       let query = supabase
         .from("videos")
         .select("*")
-        .order("ranking", { ascending: false })
+        .order("ranking", { ascending: true })
         .order("created_at", { ascending: false });
 
       if (platformFilter !== "all") {
