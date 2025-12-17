@@ -25,11 +25,13 @@ const ProductsCompare = () => {
         .from("products")
         .select("*")
         .eq("verdict", "2استكا")
+        .order("ranking", { ascending: false })
         .order("rating", { ascending: false }),
       supabase
         .from("products")
         .select("*")
         .eq("verdict", "فاستكا")
+        .order("ranking", { ascending: false })
         .order("rating", { ascending: true }),
     ]);
 

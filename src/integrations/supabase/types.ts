@@ -56,6 +56,7 @@ export type Database = {
           is_featured: boolean | null
           name: string
           platforms: string[] | null
+          ranking: number
           rating: number
           review_url: string | null
           short_note: string | null
@@ -71,6 +72,7 @@ export type Database = {
           is_featured?: boolean | null
           name: string
           platforms?: string[] | null
+          ranking?: number
           rating: number
           review_url?: string | null
           short_note?: string | null
@@ -86,6 +88,7 @@ export type Database = {
           is_featured?: boolean | null
           name?: string
           platforms?: string[] | null
+          ranking?: number
           rating?: number
           review_url?: string | null
           short_note?: string | null
