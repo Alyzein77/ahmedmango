@@ -3,7 +3,6 @@ import { User } from "@supabase/supabase-js";
 import AdminSidebar from "./AdminSidebar";
 import ProductsManager from "./ProductsManager";
 import VideosManager from "./VideosManager";
-import LatestContentManager from "./LatestContentManager";
 import TikTokManager from "./TikTokManager";
 import SocialLinksManager from "./SocialLinksManager";
 import AdSpacesManager from "./AdSpacesManager";
@@ -19,12 +18,11 @@ interface AdminDashboardProps {
   onLogout: () => void;
 }
 
-type AdminView = "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications";
+type AdminView = "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications";
 
 const viewTitles: Record<AdminView, string> = {
   products: "إدارة المنتجات",
   videos: "إدارة الفيديوهات",
-  content: "إدارة آخر المحتوى",
   tiktok: "إدارة TikTok",
   social: "روابط التواصل الاجتماعي",
   ads: "إدارة المساحات الإعلانية",
@@ -63,7 +61,6 @@ const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
           <div className="max-w-7xl mx-auto">
             {currentView === "products" && <ProductsManager />}
             {currentView === "videos" && <VideosManager />}
-            {currentView === "content" && <LatestContentManager />}
             {currentView === "tiktok" && <TikTokManager />}
             {currentView === "social" && <SocialLinksManager />}
             {currentView === "ads" && <AdSpacesManager />}
