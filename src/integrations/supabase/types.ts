@@ -451,9 +451,11 @@ export type Database = {
           id: string
           is_featured: boolean | null
           platform: Database["public"]["Enums"]["video_platform"]
+          ranking: number | null
           thumbnail_url: string
           title: string
           video_url: string
+          views: number | null
         }
         Insert: {
           category: Database["public"]["Enums"]["video_category"]
@@ -463,9 +465,11 @@ export type Database = {
           id?: string
           is_featured?: boolean | null
           platform: Database["public"]["Enums"]["video_platform"]
+          ranking?: number | null
           thumbnail_url: string
           title: string
           video_url: string
+          views?: number | null
         }
         Update: {
           category?: Database["public"]["Enums"]["video_category"]
@@ -475,9 +479,11 @@ export type Database = {
           id?: string
           is_featured?: boolean | null
           platform?: Database["public"]["Enums"]["video_platform"]
+          ranking?: number | null
           thumbnail_url?: string
           title?: string
           video_url?: string
+          views?: number | null
         }
         Relationships: []
       }
