@@ -35,6 +35,7 @@ const contentTypeColors: Record<ContentType, string> = {
 export const LatestContentFeed = () => {
   const [content, setContent] = useState<LatestContent[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
 
   useEffect(() => {
     fetchContent();
@@ -57,6 +58,12 @@ export const LatestContentFeed = () => {
     }
   };
 
+  const filteredContent = activeFilter === "all" 
+    ? content 
+    : content.filter(item => item.platform === activeFilter);
+
+  const platforms: (Platform | "all")[] = ["all", "YouTube", "TikTok", "Instagram", "Facebook"];
+
   return (
     <section id="latest-content" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-primary/5 to-background">
       <div className="container mx-auto max-w-6xl">
@@ -70,21 +77,49 @@ export const LatestContentFeed = () => {
           </p>
         </div>
 
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+          {platforms.map((platform) => {
+            const isActive = activeFilter === platform;
+            const config = platform !== "all" ? platformConfig[platform] : null;
+            const Icon = config?.icon;
+            
+            return (
+              <Button
+                key={platform}
+                variant={isActive ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveFilter(platform)}
+                className={`rounded-full font-bold gap-2 transition-all ${
+                  isActive 
+                    ? "bg-primary text-primary-foreground shadow-lg scale-105" 
+                    : "hover:bg-primary/10"
+                }`}
+              >
+                {Icon && <Icon className="w-4 h-4" />}
+                {platform === "all" ? "الكل" : config?.label}
+              </Button>
+            );
+          })}
+        </div>
+
         {/* Loading State */}
         {loading ? (
           <div className="flex items-center justify-center py-12">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
-        ) : content.length === 0 ? (
+        ) : filteredContent.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">لا يوجد محتوى حالياً</p>
+            <p className="text-muted-foreground">
+              {activeFilter === "all" ? "لا يوجد محتوى حالياً" : `لا يوجد محتوى من ${platformConfig[activeFilter].label}`}
+            </p>
           </div>
         ) : (
           <>
             {/* Mobile: Horizontal Scroll */}
             <div className="sm:hidden overflow-x-auto pb-4 -mx-3 px-3">
               <div className="flex gap-4" style={{ width: "max-content" }}>
-                {content.map((item) => (
+                {filteredContent.map((item) => (
                   <ContentCard key={item.id} item={item} />
                 ))}
               </div>
@@ -92,7 +127,7 @@ export const LatestContentFeed = () => {
 
             {/* Desktop: Grid */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {content.map((item, idx) => (
+              {filteredContent.map((item, idx) => (
                 <ContentCard key={item.id} item={item} delay={idx * 0.1} />
               ))}
             </div>
