@@ -53,6 +53,8 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
     category: "Review" as Category,
     duration: "",
     is_featured: false,
+    ranking: 0,
+    views: 0,
   });
 
   useEffect(() => {
@@ -66,6 +68,8 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
         category: video.category,
         duration: video.duration || "",
         is_featured: video.is_featured || false,
+        ranking: (video as any).ranking || 0,
+        views: (video as any).views || 0,
       });
     } else {
       setFormData({
@@ -77,6 +81,8 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
         category: "Review",
         duration: "",
         is_featured: false,
+        ranking: 0,
+        views: 0,
       });
     }
   }, [video, open]);
@@ -92,7 +98,9 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
       category: formData.category,
       duration: formData.duration || null,
       is_featured: formData.is_featured,
-    });
+      ranking: formData.ranking,
+      views: formData.views,
+    } as any);
   };
 
   return (
@@ -201,6 +209,32 @@ const VideoFormDialog = ({ open, onOpenChange, video, onSubmit }: VideoFormDialo
               checked={formData.is_featured}
               onCheckedChange={(checked) => setFormData({ ...formData, is_featured: checked })}
             />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label className="font-tajawal">المشاهدات</Label>
+              <Input
+                type="number"
+                min="0"
+                value={formData.views}
+                onChange={(e) => setFormData({ ...formData, views: parseInt(e.target.value) || 0 })}
+                className="font-tajawal"
+                dir="ltr"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="font-tajawal">الترتيب (الأعلى = يظهر أولاً)</Label>
+              <Input
+                type="number"
+                min="0"
+                value={formData.ranking}
+                onChange={(e) => setFormData({ ...formData, ranking: parseInt(e.target.value) || 0 })}
+                className="font-tajawal"
+                dir="ltr"
+              />
+            </div>
           </div>
 
           <div className="flex gap-3 pt-4">

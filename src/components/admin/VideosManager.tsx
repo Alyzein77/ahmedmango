@@ -39,6 +39,7 @@ const VideosManager = () => {
       const { data, error } = await supabase
         .from("videos")
         .select("*")
+        .order("ranking", { ascending: false })
         .order("created_at", { ascending: false });
 
       if (error) throw error;
@@ -174,7 +175,8 @@ const VideosManager = () => {
                 <TableHead className="text-right font-tajawal">العنوان</TableHead>
                 <TableHead className="text-right font-tajawal">المنصة</TableHead>
                 <TableHead className="text-right font-tajawal">الفئة</TableHead>
-                <TableHead className="text-right font-tajawal">المدة</TableHead>
+                <TableHead className="text-right font-tajawal">المشاهدات</TableHead>
+                <TableHead className="text-right font-tajawal">الترتيب</TableHead>
                 <TableHead className="text-right font-tajawal">مميز</TableHead>
                 <TableHead className="text-right font-tajawal">الإجراءات</TableHead>
               </TableRow>
@@ -182,7 +184,7 @@ const VideosManager = () => {
             <TableBody>
               {videos.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center text-muted-foreground py-8 font-tajawal">
+                  <TableCell colSpan={7} className="text-center text-muted-foreground py-8 font-tajawal">
                     لا توجد فيديوهات
                   </TableCell>
                 </TableRow>
@@ -199,7 +201,12 @@ const VideosManager = () => {
                         </div>
                       </TableCell>
                       <TableCell className="font-tajawal">{video.category}</TableCell>
-                      <TableCell className="font-tajawal">{video.duration || "-"}</TableCell>
+                      <TableCell className="font-tajawal text-center">
+                        {((video as any).views || 0).toLocaleString()}
+                      </TableCell>
+                      <TableCell className="font-tajawal text-center font-bold">
+                        {(video as any).ranking || 0}
+                      </TableCell>
                       <TableCell>
                         {video.is_featured ? (
                           <span className="text-primary">✨ نعم</span>
