@@ -33,11 +33,11 @@ serve(async (req) => {
       const requestBody = {
         phone: phone,
       };
-      
+
       console.log('Akedly request URL:', AKEDLY_API_URL);
       console.log('Akedly request body:', JSON.stringify(requestBody));
       console.log('Akedly API key prefix:', AKEDLY_API_KEY?.substring(0, 10) + '...');
-      
+
       const createResponse = await fetch(AKEDLY_API_URL, {
         method: 'POST',
         headers: {
@@ -51,7 +51,7 @@ serve(async (req) => {
 
       const responseText = await createResponse.text();
       console.log('Akedly create transaction raw response:', responseText);
-      
+
       let createData;
       try {
         createData = JSON.parse(responseText);
@@ -68,13 +68,14 @@ serve(async (req) => {
 
         const message = createData?.message || createData?.error || 'Failed to create OTP transaction';
         const isUserFacing = createResponse.status >= 400 && createResponse.status < 500;
-        const status = isUserFacing ? 200 : createResponse.status;
+        const isUserNotFound = createData?.message === 'User not found';
+        const status = isUserFacing || isUserNotFound ? 200 : createResponse.status;
 
         return new Response(
           JSON.stringify({
             success: false,
             error: message,
-            code: createData?.message === 'User not found' ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
+            code: isUserNotFound ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
           }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
@@ -96,7 +97,7 @@ serve(async (req) => {
 
       const activateText = await activateResponse.text();
       console.log('Akedly activate raw response:', activateText);
-      
+
       let activateData;
       try {
         activateData = JSON.parse(activateText);
@@ -113,13 +114,14 @@ serve(async (req) => {
 
         const message = activateData?.message || activateData?.error || 'Failed to send OTP';
         const isUserFacing = activateResponse.status >= 400 && activateResponse.status < 500;
-        const status = isUserFacing ? 200 : activateResponse.status;
+        const isUserNotFound = activateData?.message === 'User not found';
+        const status = isUserFacing || isUserNotFound ? 200 : activateResponse.status;
 
         return new Response(
           JSON.stringify({
             success: false,
             error: message,
-            code: activateData?.message === 'User not found' ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
+            code: isUserNotFound ? 'USER_NOT_FOUND' : 'AKEDLY_ERROR',
           }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
@@ -129,11 +131,11 @@ serve(async (req) => {
       console.log('OTP sent successfully, request ID:', reqId);
 
       return new Response(
-        JSON.stringify({ 
-          success: true, 
+        JSON.stringify({
+          success: true,
           transactionId: txnId,
           requestId: reqId,
-          message: 'OTP sent via WhatsApp' 
+          message: 'OTP sent via WhatsApp'
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
@@ -165,7 +167,7 @@ serve(async (req) => {
 
       const responseText = await response.text();
       console.log('Akedly verify raw response:', responseText);
-      
+
       let data;
       try {
         data = JSON.parse(responseText);
@@ -180,14 +182,15 @@ serve(async (req) => {
       if (!response.ok) {
         const message = data?.message || data?.error || 'Invalid OTP code';
         const isUserFacing = response.status >= 400 && response.status < 500;
-        const status = isUserFacing ? 200 : response.status;
+        const isUserNotFound = data?.message === 'User not found';
+        const status = isUserFacing || isUserNotFound ? 200 : response.status;
 
         return new Response(
           JSON.stringify({
             success: false,
             verified: false,
             error: message,
-            code: data?.message === 'User not found' ? 'USER_NOT_FOUND' : 'INVALID_OTP',
+            code: isUserNotFound ? 'USER_NOT_FOUND' : 'INVALID_OTP',
           }),
           { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
