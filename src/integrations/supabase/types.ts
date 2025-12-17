@@ -14,6 +14,41 @@ export type Database = {
   }
   public: {
     Tables: {
+      ad_clicks: {
+        Row: {
+          ad_space_id: string
+          click_type: string | null
+          clicked_at: string
+          id: string
+          referrer: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          ad_space_id: string
+          click_type?: string | null
+          clicked_at?: string
+          id?: string
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          ad_space_id?: string
+          click_type?: string | null
+          clicked_at?: string
+          id?: string
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ad_clicks_ad_space_id_fkey"
+            columns: ["ad_space_id"]
+            isOneToOne: false
+            referencedRelation: "ad_spaces"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ad_spaces: {
         Row: {
           background_color: string | null
@@ -22,6 +57,7 @@ export type Database = {
           button_link: string | null
           button_text: string | null
           card_type: string
+          click_count: number | null
           created_at: string
           display_order: number | null
           id: string
@@ -42,6 +78,7 @@ export type Database = {
           button_link?: string | null
           button_text?: string | null
           card_type?: string
+          click_count?: number | null
           created_at?: string
           display_order?: number | null
           id?: string
@@ -62,6 +99,7 @@ export type Database = {
           button_link?: string | null
           button_text?: string | null
           card_type?: string
+          click_count?: number | null
           created_at?: string
           display_order?: number | null
           id?: string
