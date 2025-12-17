@@ -31,7 +31,6 @@ serve(async (req) => {
     if (action === 'send') {
       // Step 1: Create OTP transaction
       const requestBody = {
-        pipeline_id: AKEDLY_PIPELINE_ID,
         phone: phone,
       };
       
@@ -43,7 +42,9 @@ serve(async (req) => {
         method: 'POST',
         headers: {
           'x-api-key': AKEDLY_API_KEY,
+          'AKEDLY_PIPELINE_ID': AKEDLY_PIPELINE_ID,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(requestBody),
       });
@@ -64,9 +65,10 @@ serve(async (req) => {
 
       if (!createResponse.ok) {
         console.error('Akedly create transaction error:', createData);
+        const status = createData?.message === 'User not found' ? 400 : createResponse.status;
         return new Response(
           JSON.stringify({ error: createData.message || createData.error || 'Failed to create OTP transaction' }),
-          { status: createResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
@@ -78,7 +80,9 @@ serve(async (req) => {
         method: 'POST',
         headers: {
           'x-api-key': AKEDLY_API_KEY,
+          'AKEDLY_PIPELINE_ID': AKEDLY_PIPELINE_ID,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       });
 
@@ -98,9 +102,10 @@ serve(async (req) => {
 
       if (!activateResponse.ok) {
         console.error('Akedly activate error:', activateData);
+        const status = activateData?.message === 'User not found' ? 400 : activateResponse.status;
         return new Response(
           JSON.stringify({ error: activateData.message || activateData.error || 'Failed to send OTP' }),
-          { status: activateResponse.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
@@ -118,22 +123,27 @@ serve(async (req) => {
       );
 
     } else if (action === 'verify') {
-      // Verify the OTP code
-      const verifyUrl = requestId 
-        ? `${AKEDLY_API_URL}/${transactionId}/verify?request_id=${requestId}`
-        : `${AKEDLY_API_URL}/${transactionId}/verify`;
-        
+      if (!requestId) {
+        return new Response(
+          JSON.stringify({ error: 'Missing requestId', verified: false }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      // Verify the OTP code (Akedly v1 verifies via request_id)
+      const verifyUrl = `https://api.akedly.io/api/v1/requests/${requestId}/verify`;
       console.log('Verifying OTP at:', verifyUrl);
-      
+
       const response = await fetch(verifyUrl, {
         method: 'POST',
         headers: {
           'x-api-key': AKEDLY_API_KEY,
+          'AKEDLY_PIPELINE_ID': AKEDLY_PIPELINE_ID,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify({
           otp: code,
-          code: code,
         }),
       });
 
@@ -152,9 +162,10 @@ serve(async (req) => {
       }
 
       if (!response.ok) {
+        const status = data?.message === 'User not found' ? 400 : response.status;
         return new Response(
           JSON.stringify({ error: data.message || data.error || 'Invalid OTP code', verified: false }),
-          { status: response.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
