@@ -39,43 +39,44 @@ export const Hero = () => {
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
         
         {/* TOP SECTION — CENTERED IMAGE WITH MANGO FRAME */}
-        <div className="relative flex items-center justify-center mb-4 sm:mb-6">
+        <div className="relative flex items-center justify-center mb-8 sm:mb-10">
           {/* Subtle glow effect behind profile */}
           <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] rounded-full bg-orange/40 blur-2xl animate-pulse" />
           <div className="absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full bg-primary/30 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
           
-          {/* Mango-shaped frame */}
+          {/* Mango-shaped frame with slow rotation */}
           <svg 
-            className="absolute w-[220px] h-[220px] sm:w-[270px] sm:h-[270px]" 
+            className="absolute w-[195px] h-[195px] sm:w-[240px] sm:h-[240px] animate-spin-slow" 
             viewBox="0 0 200 200" 
             fill="none"
           >
-            {/* Outer mango shape */}
+            {/* Outer mango shape - more stylized */}
             <path 
-              d="M100 10 C150 10, 190 50, 190 100 C190 150, 150 190, 100 190 C50 190, 10 150, 10 100 C10 50, 50 10, 100 10 Z" 
+              d="M100 15 Q160 15, 175 70 Q190 125, 150 170 Q110 200, 70 175 Q20 145, 15 90 Q10 40, 60 20 Q80 15, 100 15 Z" 
               fill="hsl(var(--primary))" 
               stroke="hsl(var(--foreground))" 
               strokeWidth="4"
-              transform="rotate(-20 100 100) scale(1 1.15) translate(0 -12)"
             />
             {/* Inner mango shape */}
             <path 
-              d="M100 10 C150 10, 190 50, 190 100 C190 150, 150 190, 100 190 C50 190, 10 150, 10 100 C10 50, 50 10, 100 10 Z" 
+              d="M100 28 Q150 28, 162 75 Q175 120, 140 158 Q108 182, 75 162 Q35 138, 30 90 Q26 50, 68 33 Q84 28, 100 28 Z" 
               fill="hsl(var(--orange))" 
               stroke="hsl(var(--foreground))" 
               strokeWidth="2"
-              transform="rotate(-20 100 100) scale(0.85 0.98) translate(18 2)"
             />
-            {/* Mango stem */}
-            <ellipse 
-              cx="100" 
-              cy="8" 
-              rx="8" 
-              ry="12" 
+            {/* Mango stem/leaf */}
+            <path 
+              d="M95 15 Q85 5, 75 8 Q65 12, 70 20 Q75 15, 85 14 Q90 13, 95 15 Z" 
               fill="hsl(142 76% 36%)"
               stroke="hsl(var(--foreground))"
               strokeWidth="2"
-              transform="rotate(-20 100 100) translate(0 -8)"
+            />
+            {/* Small leaf detail */}
+            <path 
+              d="M72 12 Q60 0, 50 5 Q55 12, 68 15 Z" 
+              fill="hsl(142 76% 30%)"
+              stroke="hsl(var(--foreground))"
+              strokeWidth="1.5"
             />
           </svg>
           
@@ -115,6 +116,21 @@ export const Hero = () => {
         {/* STATS ROW */}
         
       </div>
+
+      {/* Custom slow spin animation */}
+      <style>{`
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+      `}</style>
 
     </section>;
 };
