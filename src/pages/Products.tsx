@@ -14,6 +14,7 @@ export interface Product {
   brand: string | null;
   category: string;
   rating: number;
+  ranking: number;
   verdict: string;
   short_note: string | null;
   review_url: string | null;
@@ -41,6 +42,7 @@ const Products = () => {
       .select("*")
       .gte("rating", ratingRange[0])
       .lte("rating", ratingRange[1])
+      .order("ranking", { ascending: false })
       .order("created_at", { ascending: false });
 
     if (category !== "all") {

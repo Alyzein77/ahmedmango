@@ -52,6 +52,7 @@ const ProductFormDialog = ({
     thumbnail_url: "",
     platforms: [] as string[],
     is_featured: false,
+    ranking: 0,
   });
 
   useEffect(() => {
@@ -67,6 +68,7 @@ const ProductFormDialog = ({
         thumbnail_url: product.thumbnail_url || "",
         platforms: product.platforms || [],
         is_featured: product.is_featured || false,
+        ranking: product.ranking || 0,
       });
     } else {
       setFormData({
@@ -80,6 +82,7 @@ const ProductFormDialog = ({
         thumbnail_url: "",
         platforms: [],
         is_featured: false,
+        ranking: 0,
       });
     }
   }, [product, open]);
@@ -171,6 +174,21 @@ const ProductFormDialog = ({
                 required
               />
             </div>
+          </div>
+
+          {/* Ranking */}
+          <div>
+            <Label className="font-tajawal">الترتيب (الأعلى يظهر أولاً)</Label>
+            <Input
+              type="number"
+              min={0}
+              value={formData.ranking}
+              onChange={(e) =>
+                setFormData({ ...formData, ranking: parseInt(e.target.value) || 0 })
+              }
+              className="font-tajawal mt-1"
+              placeholder="0"
+            />
           </div>
 
           {/* Verdict */}

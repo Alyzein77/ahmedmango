@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Pencil, Trash2 } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
-import { format } from "date-fns";
-import { ar } from "date-fns/locale";
 
 type Product = Database["public"]["Tables"]["products"]["Row"];
 
@@ -40,18 +38,21 @@ const ProductsTable = ({ products, onEdit, onDelete }: ProductsTableProps) => {
       <Table>
         <TableHeader>
           <TableRow className="bg-muted/50">
+            <TableHead className="text-right font-tajawal font-semibold">الترتيب</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">الاسم</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">العلامة التجارية</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">الفئة</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">التقييم</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">الحكم</TableHead>
-            <TableHead className="text-right font-tajawal font-semibold">التاريخ</TableHead>
             <TableHead className="text-right font-tajawal font-semibold">الإجراءات</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {products.map((product) => (
             <TableRow key={product.id} className="hover:bg-muted/30">
+              <TableCell className="font-tajawal font-bold text-center">
+                {product.ranking}
+              </TableCell>
               <TableCell className="font-tajawal font-medium">
                 <div className="flex items-center gap-3">
                   {product.thumbnail_url && (
@@ -87,9 +88,6 @@ const ProductsTable = ({ products, onEdit, onDelete }: ProductsTableProps) => {
                 >
                   {product.verdict === "2استكا" ? "✔️" : "✖️"} {product.verdict}
                 </Badge>
-              </TableCell>
-              <TableCell className="font-tajawal text-muted-foreground text-sm">
-                {format(new Date(product.created_at), "d MMM yyyy", { locale: ar })}
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
