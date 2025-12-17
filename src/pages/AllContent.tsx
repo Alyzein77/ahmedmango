@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowRight } from "lucide-react";
+import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowRight, Eye } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
@@ -168,7 +168,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
 
   return (
     <Card
-      className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up"
+      className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up flex flex-col h-full"
       style={{ animationDelay: `${delay}s` }}
     >
       {/* Preview Image */}
@@ -176,6 +176,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
         <img
           src={item.preview_url}
           alt={item.title}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
 
@@ -195,19 +196,31 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
       </div>
 
       {/* Info */}
-      <div className="p-4 text-right" dir="rtl">
+      <div className="p-4 text-right flex flex-col flex-1" dir="rtl">
         <h3 className="font-bold text-secondary text-base mb-2 line-clamp-2 group-hover:text-primary transition-colors">
           {item.title}
         </h3>
-        {item.short_note && (
-          <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-            {item.short_note}
-          </p>
+
+        <div className="flex-1">
+          {item.short_note && (
+            <p className="text-muted-foreground text-sm line-clamp-2">
+              {item.short_note}
+            </p>
+          )}
+        </div>
+
+        {/* Views */}
+        {(item.views ?? 0) > 0 && (
+          <div className="flex items-center gap-1 text-muted-foreground text-xs mt-2">
+            <Eye className="w-3.5 h-3.5" />
+            <span>{item.views!.toLocaleString()} مشاهدة</span>
+          </div>
         )}
+
         <Button
           size="sm"
           variant="outline"
-          className="w-full rounded-full font-bold border-primary text-primary hover:bg-primary hover:text-primary-foreground gap-2"
+          className="mt-3 w-full rounded-full font-bold border-primary text-primary hover:bg-primary hover:text-primary-foreground gap-2"
           onClick={() => window.open(item.link_url, "_blank")}
         >
           <ExternalLink className="w-4 h-4" />
