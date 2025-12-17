@@ -49,7 +49,7 @@ const Products = () => {
     let query = supabase
       .from("products")
       .select("*")
-      .order("ranking", { ascending: false })
+      .order("ranking", { ascending: true })
       .order("created_at", { ascending: false });
 
     if (activeFilter !== "all") {

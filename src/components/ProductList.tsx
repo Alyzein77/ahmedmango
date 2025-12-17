@@ -33,7 +33,7 @@ export const ProductList = () => {
     let query = supabase
       .from("products")
       .select("id, name, thumbnail_url, verdict, short_note, category, review_url")
-      .order("ranking", { ascending: false })
+      .order("ranking", { ascending: true })
       .order("created_at", { ascending: false })
       .limit(6);
 
