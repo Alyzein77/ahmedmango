@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Play, Music2, Instagram, Youtube, Facebook, Loader2, Sparkles } from "lucide-react";
+import { Play, Music2, Instagram, Youtube, Facebook, Loader2, Sparkles, Eye } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
@@ -49,6 +49,7 @@ export const VideosSection = () => {
       let query = supabase
         .from("videos")
         .select("*")
+        .order("ranking", { ascending: false })
         .order("created_at", { ascending: false });
 
       if (platformFilter !== "all") {
@@ -195,6 +196,14 @@ export const VideosSection = () => {
                       {video.duration && (
                         <div className="absolute bottom-3 right-3 bg-secondary/80 text-secondary-foreground px-2 py-1 rounded text-xs font-bold">
                           {video.duration}
+                        </div>
+                      )}
+
+                      {/* Views */}
+                      {(video.views ?? 0) > 0 && (
+                        <div className="absolute bottom-3 left-3 bg-secondary/80 text-secondary-foreground px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
+                          <Eye className="w-3 h-3" />
+                          <span>{video.views?.toLocaleString('ar-EG')}</span>
                         </div>
                       )}
                     </div>
