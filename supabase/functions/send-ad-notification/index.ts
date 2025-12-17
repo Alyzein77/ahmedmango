@@ -125,7 +125,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email via Resend
     const emailResponse = await resend.emails.send({
-      from: "Ahmed Mango <onboarding@resend.dev>",
+      from: "Ahmed Mango <notifications@updates.risca.dev>",
       to: toEmails,
       subject: `🥭 طلب إعلان جديد من ${adRequestData.brandName}`,
       html: emailHtml,
