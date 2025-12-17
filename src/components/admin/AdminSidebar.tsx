@@ -1,11 +1,11 @@
-import { Package, BarChart3, LogOut, User, Video, FileText, Music2, Home, Share2, Megaphone, LineChart } from "lucide-react";
+import { Package, BarChart3, LogOut, User, Video, FileText, Music2, Home, Share2, Megaphone, LineChart, ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 interface AdminSidebarProps {
-  currentView: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "stats" | "analytics";
-  onViewChange: (view: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "stats" | "analytics") => void;
+  currentView: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics";
+  onViewChange: (view: "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics") => void;
   onLogout: () => void;
   userEmail: string;
 }
@@ -18,6 +18,7 @@ const AdminSidebar = ({ currentView, onViewChange, onLogout, userEmail }: AdminS
     { id: "tiktok" as const, label: "TikTok", icon: Music2 },
     { id: "social" as const, label: "روابط التواصل", icon: Share2 },
     { id: "ads" as const, label: "المساحات الإعلانية", icon: Megaphone },
+    { id: "ad-requests" as const, label: "طلبات المعلنين", icon: ClipboardList },
     { id: "analytics" as const, label: "تحليلات الإعلانات", icon: LineChart },
     { id: "stats" as const, label: "إحصائيات", icon: BarChart3 },
   ];

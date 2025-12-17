@@ -7,6 +7,7 @@ import LatestContentManager from "./LatestContentManager";
 import TikTokManager from "./TikTokManager";
 import SocialLinksManager from "./SocialLinksManager";
 import AdSpacesManager from "./AdSpacesManager";
+import AdRequestsManager from "./AdRequestsManager";
 import AdminStats from "./AdminStats";
 import AdAnalyticsDashboard from "./AdAnalyticsDashboard";
 
@@ -15,7 +16,7 @@ interface AdminDashboardProps {
   onLogout: () => void;
 }
 
-type AdminView = "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "stats" | "analytics";
+type AdminView = "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics";
 
 const viewTitles: Record<AdminView, string> = {
   products: "إدارة المنتجات",
@@ -24,6 +25,7 @@ const viewTitles: Record<AdminView, string> = {
   tiktok: "إدارة TikTok",
   social: "روابط التواصل الاجتماعي",
   ads: "إدارة المساحات الإعلانية",
+  "ad-requests": "طلبات المعلنين",
   stats: "الإحصائيات",
   analytics: "تحليلات الإعلانات",
 };
@@ -59,6 +61,7 @@ const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
             {currentView === "tiktok" && <TikTokManager />}
             {currentView === "social" && <SocialLinksManager />}
             {currentView === "ads" && <AdSpacesManager />}
+            {currentView === "ad-requests" && <AdRequestsManager />}
             {currentView === "stats" && <AdminStats />}
             {currentView === "analytics" && <AdAnalyticsDashboard />}
           </div>
