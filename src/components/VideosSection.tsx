@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Music2, Instagram, Youtube, Facebook, Loader2, Sparkles } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
+import { useMixpanel } from "@/hooks/useMixpanel";
+import { useTrackSection } from "@/hooks/useTrackSection";
 
 type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
@@ -29,6 +31,8 @@ export const VideosSection = () => {
   const [platformFilter, setPlatformFilter] = useState<Platform | "all">("all");
   const [categoryFilter, setCategoryFilter] = useState<Category | "all">("all");
   const [visibleCount, setVisibleCount] = useState(2);
+  const { trackVideoPlay } = useMixpanel();
+  const sectionRef = useTrackSection('Videos Section');
 
   useEffect(() => {
     fetchVideos();
@@ -68,7 +72,7 @@ export const VideosSection = () => {
   const categories: Category[] = ["Review", "Challenge", "Announcement", "Collaboration"];
 
   return (
-    <section id="videos-section" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-background to-primary/5">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} id="videos-section" className="py-10 sm:py-16 px-3 sm:px-4 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10">
@@ -207,7 +211,10 @@ export const VideosSection = () => {
                       <Button
                         size="sm"
                         className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90"
-                        onClick={() => window.open(video.video_url, "_blank")}
+                        onClick={() => {
+                          trackVideoPlay(video.id, video.title, video.platform);
+                          window.open(video.video_url, "_blank");
+                        }}
                       >
                         شوف الفيديو 📺
                       </Button>

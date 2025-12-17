@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { useMixpanel } from "@/hooks/useMixpanel";
+import { useTrackSection } from "@/hooks/useTrackSection";
 
 interface AdSpace {
   id: string;
@@ -24,6 +26,8 @@ interface AdSpace {
 export const AdSpaces = () => {
   const [adSpaces, setAdSpaces] = useState<AdSpace[]>([]);
   const [loading, setLoading] = useState(true);
+  const { trackAdClick } = useMixpanel();
+  const sectionRef = useTrackSection('Ad Spaces Section');
 
   useEffect(() => {
     const fetchAdSpaces = async () => {
@@ -78,6 +82,7 @@ export const AdSpaces = () => {
   const handleAdClick = (ad: AdSpace) => {
     if (ad.redirect_url) {
       trackClick(ad.id, "card");
+      trackAdClick(ad.id, ad.title || undefined);
       window.open(ad.redirect_url, "_blank");
     }
   };
@@ -86,12 +91,13 @@ export const AdSpaces = () => {
     e.stopPropagation();
     if (ad.button_link) {
       trackClick(ad.id, "button");
+      trackAdClick(ad.id, ad.title || undefined);
       window.open(ad.button_link, "_blank");
     }
   };
 
   return (
-    <section className="py-6 sm:py-8 px-3 sm:px-4 bg-sky relative overflow-hidden">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} className="py-6 sm:py-8 px-3 sm:px-4 bg-sky relative overflow-hidden">
       {/* Feastables-style radial burst pattern */}
       <div
         className="absolute inset-0 opacity-20"

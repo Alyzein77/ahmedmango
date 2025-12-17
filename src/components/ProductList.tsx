@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Check, X, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useMixpanel } from "@/hooks/useMixpanel";
+import { useTrackSection } from "@/hooks/useTrackSection";
 
 interface Product {
   id: string;
@@ -19,6 +21,8 @@ export const ProductList = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "2استكا" | "فاستكا">("all");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const { trackProductClick } = useMixpanel();
+  const sectionRef = useTrackSection('Products Section');
 
   useEffect(() => {
     fetchProducts();
@@ -47,7 +51,7 @@ export const ProductList = () => {
   };
 
   return (
-    <section id="products" className="py-10 sm:py-16 px-3 sm:px-4 bg-primary relative overflow-hidden">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} id="products" className="py-10 sm:py-16 px-3 sm:px-4 bg-primary relative overflow-hidden">
       {/* Feastables-style diagonal stripes pattern */}
       <div 
         className="absolute inset-0 opacity-10" 
