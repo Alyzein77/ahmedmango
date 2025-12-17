@@ -118,14 +118,15 @@ export const Footer = () => {
             </div>
             
             {/* Contact Button */}
-            <Button 
-              variant="outline"
-              className="rounded-lg text-xs sm:text-sm h-9 sm:h-10 px-4 bg-primary text-primary-foreground border-2 border-primary-foreground font-black uppercase"
-              onClick={() => window.location.href = 'mailto:business@ahmedmango.com'}
-            >
-              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2" />
-              تواصل للإعلانات
-            </Button>
+            <Link to="/advertise">
+              <Button 
+                variant="outline"
+                className="rounded-lg text-xs sm:text-sm h-9 sm:h-10 px-4 bg-primary text-primary-foreground border-2 border-primary-foreground font-black uppercase"
+              >
+                <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2" />
+                تواصل للإعلانات
+              </Button>
+            </Link>
           </div>
         </div>
 

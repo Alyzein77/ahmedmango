@@ -49,6 +49,45 @@ export type Database = {
           },
         ]
       }
+      ad_requests: {
+        Row: {
+          brand_link: string | null
+          brand_name: string
+          brand_title: string
+          created_at: string
+          id: string
+          message: string
+          name: string
+          phone: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          brand_link?: string | null
+          brand_name: string
+          brand_title: string
+          created_at?: string
+          id?: string
+          message: string
+          name: string
+          phone: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          brand_link?: string | null
+          brand_name?: string
+          brand_title?: string
+          created_at?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ad_spaces: {
         Row: {
           background_color: string | null
