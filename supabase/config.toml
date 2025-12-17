@@ -14,3 +14,9 @@ verify_jwt = false
 
 [functions.akedly-otp]
 verify_jwt = false
+
+[functions.akedly-send-otp]
+verify_jwt = false
+
+[functions.akedly-verify-otp]
+verify_jwt = false

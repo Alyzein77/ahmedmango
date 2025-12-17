@@ -79,23 +79,24 @@ const AdRequest = () => {
     const formattedPhone = formatPhoneNumber(phone);
 
     try {
-      const response = await supabase.functions.invoke('akedly-otp', {
-        body: { action: 'send', phone: formattedPhone },
+      const response = await supabase.functions.invoke('akedly-send-otp', {
+        body: { phoneNumber: formattedPhone },
       });
 
-      const backendError = response.data?.error;
-      const backendCode = response.data?.code;
-
-      if (response.error || !response.data?.success) {
-        const message =
-          backendCode === 'USER_NOT_FOUND'
-            ? 'الرقم ده مش متسجل عند خدمة التحقق. جرّب رقم تاني أو تواصل معانا.'
-            : backendError || response.error?.message || 'جرب تاني';
-        throw new Error(message);
+      if (response.error) {
+        throw new Error(response.error.message || 'جرب تاني');
       }
 
-      setTransactionId(response.data.transactionId);
-      setRequestId(response.data.requestId);
+      if (response.data?.rateLimited) {
+        throw new Error('استنى شوية وجرب تاني');
+      }
+
+      if (!response.data?.success) {
+        throw new Error(response.data?.error || 'جرب تاني');
+      }
+
+      setTransactionId(response.data.transactionID);
+      setRequestId(response.data.verificationId);
       setFormData(prev => ({ ...prev, phone: formattedPhone }));
       setCurrentStep("otp-verify");
       toast({
@@ -123,7 +124,7 @@ const AdRequest = () => {
       return;
     }
 
-    if (!transactionId) {
+    if (!requestId) {
       toast({
         title: "حصل مشكلة",
         description: "جرب تبعت الكود تاني",
@@ -136,14 +137,16 @@ const AdRequest = () => {
     setIsLoading(true);
 
     try {
-      const response = await supabase.functions.invoke('akedly-otp', {
-        body: { action: 'verify', code: otpCode, transactionId, requestId },
+      const response = await supabase.functions.invoke('akedly-verify-otp', {
+        body: { verificationId: requestId, otp: otpCode },
       });
 
-      const backendError = response.data?.error;
+      if (response.error) {
+        throw new Error(response.error.message || 'الكود غلط');
+      }
 
-      if (response.error || !response.data?.verified) {
-        throw new Error(backendError || response.error?.message || 'Invalid OTP');
+      if (!response.data?.verified) {
+        throw new Error(response.data?.error || 'الكود غلط');
       }
 
       setCurrentStep("about-you");
