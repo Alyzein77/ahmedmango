@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useMixpanel } from '@/hooks/useMixpanel';
+import { useEngagementScore } from '@/hooks/useEngagementScore';
 
 const pageNames: Record<string, string> = {
   '/': 'Home',
@@ -17,13 +18,14 @@ const pageNames: Record<string, string> = {
 export const PageViewTracker = () => {
   const location = useLocation();
   const { track, trackNavigation } = useMixpanel();
+  const { trackPageView } = useEngagementScore();
   const previousPath = useRef<string | null>(null);
 
   useEffect(() => {
     const currentPath = location.pathname;
     const pageName = pageNames[currentPath] || 'Unknown Page';
 
-    // Track page view
+    // Track page view in Mixpanel
     track('Page View', {
       page_path: currentPath,
       page_name: pageName,
@@ -32,6 +34,9 @@ export const PageViewTracker = () => {
       referrer: document.referrer,
     });
 
+    // Track engagement score
+    trackPageView();
+
     // Track navigation if coming from another page
     if (previousPath.current && previousPath.current !== currentPath) {
       const fromPageName = pageNames[previousPath.current] || 'Unknown Page';
@@ -39,7 +44,7 @@ export const PageViewTracker = () => {
     }
 
     previousPath.current = currentPath;
-  }, [location, track, trackNavigation]);
+  }, [location, track, trackNavigation, trackPageView]);
 
   return null;
 };

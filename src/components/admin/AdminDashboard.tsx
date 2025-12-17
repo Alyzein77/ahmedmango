@@ -11,13 +11,14 @@ import AdRequestsManager from "./AdRequestsManager";
 import AdminStats from "./AdminStats";
 import AdAnalyticsDashboard from "./AdAnalyticsDashboard";
 import MixpanelDashboard from "./MixpanelDashboard";
+import EngagementDashboard from "./EngagementDashboard";
 
 interface AdminDashboardProps {
   user: User;
   onLogout: () => void;
 }
 
-type AdminView = "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel";
+type AdminView = "products" | "videos" | "content" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement";
 
 const viewTitles: Record<AdminView, string> = {
   products: "إدارة المنتجات",
@@ -30,6 +31,7 @@ const viewTitles: Record<AdminView, string> = {
   stats: "الإحصائيات",
   analytics: "تحليلات الإعلانات",
   mixpanel: "تحليلات Mixpanel",
+  engagement: "نقاط التفاعل",
 };
 
 const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
@@ -67,6 +69,7 @@ const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
             {currentView === "stats" && <AdminStats />}
             {currentView === "analytics" && <AdAnalyticsDashboard />}
             {currentView === "mixpanel" && <MixpanelDashboard />}
+            {currentView === "engagement" && <EngagementDashboard />}
           </div>
         </div>
       </main>
