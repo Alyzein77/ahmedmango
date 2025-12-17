@@ -92,10 +92,10 @@ const AllContent = () => {
               العودة للرئيسية
             </Link>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-secondary mb-3 font-lalezar">
-              كل المحتوى 📱
+              مانجو بيحب 💜
             </h1>
             <p className="text-muted-foreground text-sm sm:text-lg max-w-xl">
-              تصفح جميع المنشورات والفيديوهات من كل المنصات
+              أحلى محتوى عجبني وعايزك تشوفه
             </p>
           </div>
 

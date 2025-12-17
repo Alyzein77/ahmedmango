@@ -71,10 +71,10 @@ export const LatestContentFeed = () => {
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary mb-2 sm:mb-3">
-            آخر المحتوى 📱
+            مانجو بيحب 💜
           </h2>
           <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto px-4">
-            تابع أحدث المنشورات والستوريز
+            أحلى محتوى عجبني وعايزك تشوفه
           </p>
         </div>
 
