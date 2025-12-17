@@ -21,7 +21,9 @@ import {
   ArrowRight,
   ArrowLeft,
   Loader2,
-  Megaphone
+  Megaphone,
+  MessageCircle,
+  ExternalLink
 } from "lucide-react";
 
 type Step = "otp" | "otp-verify" | "about-you" | "about-brand" | "message" | "success";
@@ -248,9 +250,13 @@ const AdRequest = () => {
           <Phone className="w-8 h-8 text-primary" />
         </div>
         <h2 className="text-2xl font-bold text-foreground mb-2">تأكيد رقم الموبايل</h2>
-        <p className="text-muted-foreground">
-          علشان نتأكد إنك مش سبام، هنبعتلك كود على موبايلك
+        <p className="text-muted-foreground mb-3">
+          علشان نتأكد إنك مش سبام، هنبعتلك كود على الواتساب
         </p>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 rounded-full text-sm font-medium">
+          <MessageCircle className="w-4 h-4" />
+          <span>OTP عن طريق واتساب</span>
+        </div>
       </div>
 
       <div className="space-y-4">
@@ -265,19 +271,23 @@ const AdRequest = () => {
             className="text-right text-lg"
             dir="ltr"
           />
+          <p className="text-xs text-muted-foreground mt-2 text-right flex items-center justify-end gap-1">
+            <MessageCircle className="w-3 h-3" />
+            هيوصلك كود 6 أرقام على واتساب
+          </p>
         </div>
 
         <Button 
           onClick={handleSendOTP} 
-          className="w-full shadow-bold hover:-translate-y-0.5 transition-transform"
+          className="w-full bg-green-500 hover:bg-green-600 shadow-bold hover:-translate-y-0.5 transition-transform"
           disabled={isLoading}
         >
           {isLoading ? (
             <Loader2 className="w-4 h-4 animate-spin ml-2" />
           ) : (
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <MessageCircle className="w-4 h-4 ml-2" />
           )}
-          ابعتلي الكود
+          ابعتلي الكود على واتساب
         </Button>
       </div>
     </div>
@@ -285,38 +295,71 @@ const AdRequest = () => {
 
   const renderOTPVerifyStep = () => (
     <div className="space-y-6">
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
           <Phone className="w-8 h-8 text-primary" />
         </div>
         <h2 className="text-2xl font-bold text-foreground mb-2">اكتب الكود</h2>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground mb-2">
           بعتنالك كود على {phone}
         </p>
+        <div className="inline-flex items-center gap-2 text-green-600 text-sm font-medium">
+          <CheckCircle2 className="w-4 h-4" />
+          <span>تم الإرسال عن طريق واتساب</span>
+        </div>
       </div>
 
-      <div className="flex justify-center mb-6">
-        <InputOTP 
-          maxLength={6} 
-          value={otpCode}
-          onChange={setOtpCode}
+      {/* WhatsApp Card */}
+      <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-xl p-5 text-center">
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <CheckCircle2 className="w-6 h-6 text-green-500" />
+          <MessageCircle className="w-6 h-6 text-green-500" />
+        </div>
+        <h3 className="font-bold text-foreground mb-2">افتح واتساب علشان تاخد الكود</h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          شوف الرسايل من Akedly علشان تلاقي الكود المكون من 6 أرقام
+        </p>
+        <Button 
+          asChild
+          className="w-full bg-green-500 hover:bg-green-600 text-white"
         >
-          <InputOTPGroup className="gap-2">
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-              <InputOTPSlot 
-                key={index} 
-                index={index} 
-                className="w-12 h-14 text-xl border-2 rounded-lg"
-              />
-            ))}
-          </InputOTPGroup>
-        </InputOTP>
+          <a 
+            href="https://api.whatsapp.com/send/?phone=201508717690&text&type=phone_number&app_absent=0" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <MessageCircle className="w-4 h-4 ml-2" />
+            افتح واتساب
+            <ExternalLink className="w-3 h-3 mr-2" />
+          </a>
+        </Button>
+      </div>
+
+      <div>
+        <Label className="text-right block mb-2">كود التأكيد</Label>
+        <div className="flex justify-center mb-4">
+          <InputOTP 
+            maxLength={6} 
+            value={otpCode}
+            onChange={setOtpCode}
+          >
+            <InputOTPGroup className="gap-2">
+              {[0, 1, 2, 3, 4, 5].map((index) => (
+                <InputOTPSlot 
+                  key={index} 
+                  index={index} 
+                  className="w-12 h-14 text-xl border-2 rounded-lg"
+                />
+              ))}
+            </InputOTPGroup>
+          </InputOTP>
+        </div>
       </div>
 
       <div className="space-y-3">
         <Button 
           onClick={handleVerifyOTP} 
-          className="w-full shadow-bold hover:-translate-y-0.5 transition-transform"
+          className="w-full bg-gradient-to-r from-primary to-accent shadow-bold hover:-translate-y-0.5 transition-transform"
           disabled={isLoading || otpCode.length !== 6}
         >
           {isLoading ? (
@@ -328,15 +371,16 @@ const AdRequest = () => {
         </Button>
 
         <Button 
-          variant="ghost" 
+          variant="outline"
           onClick={() => {
             setCurrentStep("otp");
             setOtpCode("");
+            setAttemptId(null);
           }}
           className="w-full"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          رجّعني أغير الرقم
+          غيّر رقم الموبايل
         </Button>
       </div>
     </div>
