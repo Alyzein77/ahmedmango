@@ -206,7 +206,7 @@ const Products = () => {
                 {products.map((product, idx) => (
                   <Card 
                     key={product.id} 
-                    className="group relative overflow-hidden border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl animate-slide-up bg-card" 
+                    className="group relative overflow-hidden border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl animate-slide-up bg-card flex flex-col h-full" 
                     style={{ animationDelay: `${idx * 0.03}s` }}
                   >
                     {/* Rating Badge */}
@@ -236,7 +236,7 @@ const Products = () => {
                     </div>
 
                     {/* Product Info */}
-                    <div className="p-2.5 sm:p-4">
+                    <div className="p-2.5 sm:p-4 flex-1 flex flex-col">
                       <span className="text-[10px] sm:text-xs font-bold text-accent mb-0.5 sm:mb-1 block uppercase">
                         {product.category}
                       </span>
@@ -248,20 +248,22 @@ const Products = () => {
                           {product.brand}
                         </p>
                       )}
-                      <p className="text-[10px] sm:text-sm text-foreground/70 mb-2 sm:mb-3 line-clamp-2 font-medium font-tajawal">
+                      <p className="text-[10px] sm:text-sm text-foreground/70 mb-2 sm:mb-3 line-clamp-2 font-medium font-tajawal flex-1">
                         {product.short_note || ""}
                       </p>
-                      {product.review_url ? (
-                        <a href={product.review_url} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 text-[10px] sm:text-sm h-8 sm:h-9 border-2 border-foreground">
-                            شوف الريڤيو 🎬
+                      <div className="mt-auto">
+                        {product.review_url ? (
+                          <a href={product.review_url} target="_blank" rel="noopener noreferrer">
+                            <Button size="sm" className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 text-[10px] sm:text-sm h-8 sm:h-9 border-2 border-foreground">
+                              شوف الريڤيو 🎬
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button size="sm" disabled className="w-full rounded-full font-bold text-[10px] sm:text-sm h-8 sm:h-9">
+                            الريڤيو قريباً
                           </Button>
-                        </a>
-                      ) : (
-                        <Button size="sm" disabled className="w-full rounded-full font-bold text-[10px] sm:text-sm h-8 sm:h-9">
-                          الريڤيو قريباً
-                        </Button>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </Card>
                 ))}
