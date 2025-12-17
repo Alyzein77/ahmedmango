@@ -32,6 +32,9 @@ interface AdSpace {
   background_image_url: string | null;
   overlay_image_url: string | null;
   redirect_url: string | null;
+  button_text: string | null;
+  button_color: string | null;
+  button_link: string | null;
   display_order: number | null;
   is_active: boolean | null;
 }
@@ -47,6 +50,9 @@ interface AdSpaceFormData {
   background_image_url: string;
   overlay_image_url: string;
   redirect_url: string;
+  button_text: string;
+  button_color: string;
+  button_link: string;
   display_order: number;
   is_active: boolean;
 }
@@ -74,6 +80,9 @@ const AdSpaceFormDialog = ({
     background_image_url: "",
     overlay_image_url: "",
     redirect_url: "",
+    button_text: "",
+    button_color: "#1a1349",
+    button_link: "",
     display_order: 0,
     is_active: true,
   });
@@ -91,6 +100,9 @@ const AdSpaceFormDialog = ({
         background_image_url: adSpace.background_image_url || "",
         overlay_image_url: adSpace.overlay_image_url || "",
         redirect_url: adSpace.redirect_url || "",
+        button_text: adSpace.button_text || "",
+        button_color: adSpace.button_color || "#1a1349",
+        button_link: adSpace.button_link || "",
         display_order: adSpace.display_order || 0,
         is_active: adSpace.is_active ?? true,
       });
@@ -106,6 +118,9 @@ const AdSpaceFormDialog = ({
         background_image_url: "",
         overlay_image_url: "",
         redirect_url: "",
+        button_text: "",
+        button_color: "#1a1349",
+        button_link: "",
         display_order: 0,
         is_active: true,
       });
@@ -238,7 +253,7 @@ const AdSpaceFormDialog = ({
 
           {/* Redirect URL */}
           <div>
-            <Label className="font-tajawal">رابط التحويل</Label>
+            <Label className="font-tajawal">رابط التحويل (عند الضغط على الكارت)</Label>
             <Input
               type="url"
               value={formData.redirect_url}
@@ -247,6 +262,50 @@ const AdSpaceFormDialog = ({
               dir="ltr"
               placeholder="https://..."
             />
+          </div>
+
+          {/* Button Section */}
+          <div className="border-t pt-4 mt-4">
+            <h4 className="font-tajawal font-bold mb-3">زر الإجراء (اختياري)</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label className="font-tajawal">نص الزر</Label>
+                <Input
+                  value={formData.button_text}
+                  onChange={(e) => setFormData({ ...formData, button_text: e.target.value })}
+                  className="font-tajawal mt-1"
+                  placeholder="مثال: اعرف أكتر"
+                />
+              </div>
+              <div>
+                <Label className="font-tajawal">لون الزر</Label>
+                <div className="flex gap-2 mt-1">
+                  <Input
+                    type="color"
+                    value={formData.button_color}
+                    onChange={(e) => setFormData({ ...formData, button_color: e.target.value })}
+                    className="w-12 h-10 p-1 cursor-pointer"
+                  />
+                  <Input
+                    value={formData.button_color}
+                    onChange={(e) => setFormData({ ...formData, button_color: e.target.value })}
+                    className="flex-1"
+                    dir="ltr"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mt-3">
+              <Label className="font-tajawal">رابط الزر</Label>
+              <Input
+                type="url"
+                value={formData.button_link}
+                onChange={(e) => setFormData({ ...formData, button_link: e.target.value })}
+                className="mt-1"
+                dir="ltr"
+                placeholder="https://..."
+              />
+            </div>
           </div>
 
           {/* Image Upload */}

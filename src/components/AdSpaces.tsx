@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
 interface AdSpace {
@@ -14,6 +15,9 @@ interface AdSpace {
   background_image_url: string | null;
   overlay_image_url: string | null;
   redirect_url: string | null;
+  button_text: string | null;
+  button_color: string | null;
+  button_link: string | null;
   display_order: number | null;
 }
 
@@ -157,6 +161,20 @@ export const AdSpaces = () => {
                       }}
                     />
                   )}
+
+                  {/* Button */}
+                  {ad.button_text && (
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (ad.button_link) window.open(ad.button_link, "_blank");
+                      }}
+                      className="font-black uppercase text-sm sm:text-base px-6 py-2 rounded-lg border-2 border-foreground shadow-bold hover:shadow-bold-sm transition-all"
+                      style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
+                    >
+                      {ad.button_text}
+                    </Button>
+                  )}
                 </div>
               </>
             )}
@@ -228,11 +246,23 @@ export const AdSpaces = () => {
                       )}
 
                       {ad.sub_text && (
-                        <>
-                          <p className="text-foreground font-black text-center text-xs sm:text-base uppercase">
-                            {ad.sub_text}
-                          </p>
-                        </>
+                        <p className="text-foreground font-black text-center text-xs sm:text-base uppercase mb-2">
+                          {ad.sub_text}
+                        </p>
+                      )}
+
+                      {/* Button */}
+                      {ad.button_text && (
+                        <Button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (ad.button_link) window.open(ad.button_link, "_blank");
+                          }}
+                          className="font-black uppercase text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 rounded-lg border-2 border-foreground shadow-bold-sm hover:shadow-none transition-all mt-2"
+                          style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
+                        >
+                          {ad.button_text}
+                        </Button>
                       )}
                     </div>
                   </>
