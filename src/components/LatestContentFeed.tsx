@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowLeft } from "lucide-react";
+import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowLeft, Eye } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
 
@@ -205,6 +205,14 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
             </p>
           )}
         </div>
+
+        {/* Views */}
+        {(item.views ?? 0) > 0 && (
+          <div className="flex items-center gap-1 text-muted-foreground text-xs mt-2">
+            <Eye className="w-3.5 h-3.5" />
+            <span>{item.views!.toLocaleString()} مشاهدة</span>
+          </div>
+        )}
 
         <Button
           size="sm"
