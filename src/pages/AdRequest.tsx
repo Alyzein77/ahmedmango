@@ -191,6 +191,26 @@ const AdRequest = () => {
 
       if (error) throw error;
 
+      // Send email notification (fire and forget - don't block submission)
+      supabase.functions.invoke('send-ad-notification', {
+        body: {
+          name: formData.name,
+          phone: formData.phone,
+          brandTitle: formData.brandTitle,
+          brandName: formData.brandName,
+          brandLink: formData.brandLink || null,
+          message: formData.message,
+        },
+      }).then((res) => {
+        if (res.error) {
+          console.error("Error sending notification email:", res.error);
+        } else {
+          console.log("Notification email sent successfully");
+        }
+      }).catch((err) => {
+        console.error("Error invoking send-ad-notification:", err);
+      });
+
       trackFormSubmission('Ad Request', { 
         brand_name: formData.brandName,
         brand_title: formData.brandTitle 
