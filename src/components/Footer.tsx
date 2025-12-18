@@ -20,6 +20,14 @@ const platformIcons: Record<string, React.ComponentType<{ className?: string }>>
   Facebook: Facebook,
 };
 
+const openExternalLink = (url: string) => {
+  const absoluteUrl = url.startsWith('http') ? url : `https://${url}`;
+  const newWindow = window.open(absoluteUrl, "_blank", "noopener,noreferrer");
+  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+    window.location.href = absoluteUrl;
+  }
+};
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
@@ -96,12 +104,13 @@ export const Footer = () => {
               {socialLinks.map((social) => {
                 const IconComponent = platformIcons[social.platform];
                 return (
-                  <a 
+                  <button 
                     key={social.id}
-                    href={social.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openExternalLink(social.url);
+                    }}
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer"
                     aria-label={social.platform}
                     title={social.platform}
                   >
@@ -112,7 +121,7 @@ export const Footer = () => {
                     ) : (
                       <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
                     )}
-                  </a>
+                  </button>
                 );
               })}
             </div>
