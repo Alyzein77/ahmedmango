@@ -61,7 +61,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.instagram.com/ahmedmango.official/', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.instagram.com/ahmedmango.official/', '_blank', 'noopener,noreferrer')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على Instagram
             </Button>
@@ -85,7 +85,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.tiktok.com/@ahmed_mangoo', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.tiktok.com/@ahmed_mangoo', '_blank', 'noopener,noreferrer')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على TikTok
             </Button>
@@ -109,7 +109,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.youtube.com/@AhmedMango', '_blank')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.youtube.com/@AhmedMango', '_blank', 'noopener,noreferrer')}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف القناة على YouTube
             </Button>
