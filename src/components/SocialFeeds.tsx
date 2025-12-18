@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Instagram, Music2, Youtube, ExternalLink } from "lucide-react";
+
+const openExternalLink = (url: string) => {
+  const absoluteUrl = url.startsWith('http') ? url : `https://${url}`;
+  const newWindow = window.open(absoluteUrl, "_blank", "noopener,noreferrer");
+  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+    window.location.href = absoluteUrl;
+  }
+};
+
 interface FeedPost {
   id: number;
   thumbnail: string;
@@ -61,7 +70,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.instagram.com/ahmedmango.official/', '_blank', 'noopener,noreferrer')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 text-xs sm:text-sm h-10 sm:h-11" onClick={(e) => { e.preventDefault(); openExternalLink('https://www.instagram.com/ahmedmango.official/'); }}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على Instagram
             </Button>
@@ -85,7 +94,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.tiktok.com/@ahmed_mangoo', '_blank', 'noopener,noreferrer')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-black text-white hover:bg-black/90 text-xs sm:text-sm h-10 sm:h-11" onClick={(e) => { e.preventDefault(); openExternalLink('https://www.tiktok.com/@ahmed_mangoo'); }}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف الصفحة على TikTok
             </Button>
@@ -109,7 +118,7 @@ export const SocialFeeds = () => {
                 </div>)}
             </div>
             
-            <Button className="mt-auto w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={() => window.open('https://www.youtube.com/@AhmedMango', '_blank', 'noopener,noreferrer')}>
+            <Button className="mt-auto w-full rounded-full font-bold bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm h-10 sm:h-11" onClick={(e) => { e.preventDefault(); openExternalLink('https://www.youtube.com/@AhmedMango'); }}>
               <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2" />
               شوف القناة على YouTube
             </Button>
