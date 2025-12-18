@@ -2,20 +2,21 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
-
 export const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
-  const { trackButtonClick } = useMixpanel();
+  const {
+    trackButtonClick
+  } = useMixpanel();
   const sectionRef = useTrackSection('Hero Section');
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, {
+      passive: true
+    });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -25,16 +26,12 @@ export const Hero = () => {
       });
     }
   };
-
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        <img 
-          alt="" 
-          className="w-full h-[120%] object-cover rounded-none" 
-          src="/hero-background.png"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-        />
+        <img alt="" className="w-full h-[120%] object-cover rounded-none" style={{
+        transform: `translateY(${scrollY * 0.3}px)`
+      }} src="/lovable-uploads/a0b1042a-0f80-4031-aa41-87ba64e82ff3.png" />
       </div>
       
       {/* Solid color fade at bottom */}
@@ -47,42 +44,20 @@ export const Hero = () => {
         <div className="relative flex items-center justify-center mb-8 sm:mb-10">
           {/* Subtle glow effect behind profile */}
           <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] rounded-full bg-orange/40 blur-2xl animate-pulse" />
-          <div className="absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full bg-primary/30 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full bg-primary/30 blur-xl animate-pulse" style={{
+          animationDelay: '0.5s'
+        }} />
           
           {/* Mango-shaped frame with slow rotation */}
-          <svg 
-            className="absolute w-[195px] h-[195px] sm:w-[240px] sm:h-[240px] animate-spin-slow" 
-            viewBox="0 0 200 200" 
-            fill="none"
-          >
+          <svg className="absolute w-[195px] h-[195px] sm:w-[240px] sm:h-[240px] animate-spin-slow" viewBox="0 0 200 200" fill="none">
             {/* Outer mango shape - more stylized */}
-            <path 
-              d="M100 15 Q160 15, 175 70 Q190 125, 150 170 Q110 200, 70 175 Q20 145, 15 90 Q10 40, 60 20 Q80 15, 100 15 Z" 
-              fill="hsl(var(--primary))" 
-              stroke="hsl(var(--foreground))" 
-              strokeWidth="4"
-            />
+            <path d="M100 15 Q160 15, 175 70 Q190 125, 150 170 Q110 200, 70 175 Q20 145, 15 90 Q10 40, 60 20 Q80 15, 100 15 Z" fill="hsl(var(--primary))" stroke="hsl(var(--foreground))" strokeWidth="4" />
             {/* Inner mango shape */}
-            <path 
-              d="M100 28 Q150 28, 162 75 Q175 120, 140 158 Q108 182, 75 162 Q35 138, 30 90 Q26 50, 68 33 Q84 28, 100 28 Z" 
-              fill="hsl(var(--orange))" 
-              stroke="hsl(var(--foreground))" 
-              strokeWidth="2"
-            />
+            <path d="M100 28 Q150 28, 162 75 Q175 120, 140 158 Q108 182, 75 162 Q35 138, 30 90 Q26 50, 68 33 Q84 28, 100 28 Z" fill="hsl(var(--orange))" stroke="hsl(var(--foreground))" strokeWidth="2" />
             {/* Mango stem/leaf */}
-            <path 
-              d="M95 15 Q85 5, 75 8 Q65 12, 70 20 Q75 15, 85 14 Q90 13, 95 15 Z" 
-              fill="hsl(142 76% 36%)"
-              stroke="hsl(var(--foreground))"
-              strokeWidth="2"
-            />
+            <path d="M95 15 Q85 5, 75 8 Q65 12, 70 20 Q75 15, 85 14 Q90 13, 95 15 Z" fill="hsl(142 76% 36%)" stroke="hsl(var(--foreground))" strokeWidth="2" />
             {/* Small leaf detail */}
-            <path 
-              d="M72 12 Q60 0, 50 5 Q55 12, 68 15 Z" 
-              fill="hsl(142 76% 30%)"
-              stroke="hsl(var(--foreground))"
-              strokeWidth="1.5"
-            />
+            <path d="M72 12 Q60 0, 50 5 Q55 12, 68 15 Z" fill="hsl(142 76% 30%)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
           </svg>
           
           {/* Man image - clipped circle container */}
