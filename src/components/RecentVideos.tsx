@@ -57,7 +57,7 @@ export const RecentVideos = () => {
                 key={video.id}
                 className="group overflow-hidden border border-transparent hover:border-primary/30 transition-all duration-300 hover:shadow-xl animate-slide-up cursor-pointer"
                 style={{ animationDelay: `${idx * 0.1}s` }}
-                onClick={() => window.open(video.url, '_blank')}
+                onClick={() => window.open(video.url, '_blank', 'noopener,noreferrer')}
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-[9/12] sm:aspect-video bg-muted overflow-hidden">

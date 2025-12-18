@@ -237,7 +237,7 @@ export const VideosSection = () => {
                         className="mt-3 w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90"
                         onClick={() => {
                           trackVideoPlay(video.id, video.title, video.platform);
-                          window.open(video.video_url, "_blank");
+                          window.open(video.video_url, "_blank", "noopener,noreferrer");
                         }}
                       >
                         شوف الفيديو 📺
