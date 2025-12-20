@@ -17,7 +17,7 @@ export const MangoGame = () => {
     trackButtonClick('View Leaderboard', 'Game Section');
     window.open('https://mango.risca.dev/ar/leaderboard', '_blank');
   };
-  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden border-y-4 border-purple-600/50">
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
       {/* Orange pop-art rays background */}
       <div 
         className="absolute inset-0" 
