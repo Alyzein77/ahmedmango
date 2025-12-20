@@ -46,7 +46,7 @@ export const MangoGame = () => {
           <div className="text-center lg:text-right order-1">
             {/* Game header image - visible on mobile */}
             <div className="mb-4 sm:mb-6 lg:hidden">
-              <img alt="العب واكسب مع أحمد مانجو" className="w-full max-w-xs mx-auto rounded-2xl shadow-xl" src="/lovable-uploads/b7ecebd3-b283-4928-9ca3-2ef3d79f1f9e.png" />
+              <img alt="العب واكسب مع أحمد مانجو" className="w-full max-w-xs mx-auto rounded-2xl shadow-xl" src="/lovable-uploads/play-and-win-header.png" />
             </div>
             
             
@@ -92,7 +92,7 @@ export const MangoGame = () => {
           {/* Right Side - Game Header Image */}
           <div className="order-2 w-full hidden lg:flex justify-center">
             <div className="relative">
-              <img src="/lovable-uploads/game-header.png" alt="العب واكسب مع أحمد مانجو" className="w-full max-w-md rounded-2xl shadow-2xl animate-float" />
+              <img src="/lovable-uploads/play-and-win-header.png" alt="العب واكسب مع أحمد مانجو" className="w-full max-w-md rounded-2xl shadow-2xl animate-float" />
             </div>
           </div>
         </div>
