@@ -23,8 +23,10 @@ export const MangoGame = () => {
         className="absolute inset-0" 
         style={{
           backgroundImage: 'url(/images/game-rays-bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: 'hsl(25, 95%, 53%)'
         }}
       />
       
