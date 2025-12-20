@@ -98,106 +98,100 @@ export const MangoGame = () => {
               </div>
             </div>
 
-            {/* Features - 2x2 grid as mini stickers */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0 relative">
-              {/* Subtle comic sparkles decoration */}
-              <div className="absolute inset-0 pointer-events-none opacity-[0.06]" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 L31 10 L30 15 L29 10 Z M30 45 L31 50 L30 55 L29 50 Z M5 30 L10 29 L15 30 L10 31 Z M45 30 L50 29 L55 30 L50 31 Z' fill='%231A1A2A'/%3E%3C/svg%3E")`,
-                backgroundSize: '60px 60px'
-              }} />
-              
+            {/* INFO CARDS (NOT BUTTONS) — flat icons, no colored badges */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0">
               {[{
-                icon: Zap,
-                text: "اللعبة بتسرّع",
-                badgeColor: '#FFD44D'
-              }, {
                 icon: Trophy,
-                text: "سجّل رقمك القياسي",
-                badgeColor: '#E848A6'
+                text: "سجّل رقمك القياسي"
               }, {
-                icon: Gift,
-                text: "كل منجاية 10 نقاط",
-                badgeColor: '#61D6F2'
+                icon: Zap,
+                text: "اللعبة بتسرّع"
               }, {
                 icon: Star,
-                text: "دخول سريع",
-                badgeColor: '#FF9A3D'
+                text: "دخول سريع"
+              }, {
+                icon: Gift,
+                text: "كل منجاية 10 نقاط"
               }].map((feature, idx) => (
                 <div 
                   key={idx} 
-                  className="flex items-center gap-2 sm:gap-3 rounded-[16px] px-3 py-3 sm:px-4 sm:py-4 border-[3px]"
+                  className="pointer-events-none select-none cursor-default flex items-center justify-between gap-3 rounded-2xl px-3 py-3 sm:px-4 sm:py-3 border-2 opacity-95"
                   style={{
-                    background: '#FFFFFF',
-                    borderColor: '#1A1A2A',
-                    boxShadow: '6px 6px 0px #1A1A2A'
+                    background: '#FFF3D6',
+                    borderColor: '#2D1B4F',
+                    boxShadow: '0 2px 0 rgba(45,27,79,0.18)'
                   }}
+                  aria-hidden="true"
                 >
-                  {/* Icon badge */}
-                  <div 
-                    className="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-lg border-[2px] flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: feature.badgeColor,
-                      borderColor: '#1A1A2A',
-                      boxShadow: '3px 3px 0px #1A1A2A'
-                    }}
-                  >
-                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#1A1A2A' }} />
-                  </div>
-                  <span className="font-extrabold text-xs sm:text-sm" style={{ color: '#1A1A2A' }}>
+                  <span className="font-semibold text-xs sm:text-base leading-tight" style={{ color: '#2D1B4F' }}>
                     {feature.text}
                   </span>
+                  {/* Icon: FLAT (no colored badge), smaller */}
+                  <div className="text-xl opacity-70" style={{ color: '#2D1B4F' }}>
+                    <feature.icon className="w-5 h-5" />
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Primary CTA Button - Stats card style */}
-            <button 
-              onClick={handlePlayGame}
-              className="group w-full sm:w-auto bg-white hover:-translate-y-[2px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 rounded-2xl border-[3px] border-foreground flex items-center justify-center gap-3 px-5 sm:px-6 py-3 sm:py-4"
-              style={{
-                boxShadow: '8px 8px 0px hsl(260, 50%, 15%)'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.boxShadow = '10px 10px 0px hsl(260, 50%, 15%)'}
-              onMouseLeave={(e) => e.currentTarget.style.boxShadow = '8px 8px 0px hsl(260, 50%, 15%)'}
-            >
-              {/* Icon badge - Yellow for primary */}
-              <div 
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary border-[2px] border-foreground flex items-center justify-center flex-shrink-0"
-                style={{
-                  boxShadow: '4px 4px 0px hsl(260, 50%, 15%)'
-                }}
-              >
-                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
-              </div>
-              <span className="text-foreground font-black text-lg sm:text-xl">
-                يلا نلعب 🥭
-              </span>
-            </button>
-            
-            {/* Secondary Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
+            {/* CTA BUTTONS (ONLY clickable items) - pill shape with colored badges */}
+            <div className="space-y-4">
+              {/* Primary CTA Button */}
               <button 
-                onClick={handleLeaderboard}
-                className="group bg-white hover:-translate-y-[2px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 rounded-2xl border-[3px] border-foreground flex items-center justify-center gap-3 px-5 sm:px-6 py-3 sm:py-4"
+                onClick={handlePlayGame}
+                className="group w-full rounded-full border-4 px-5 py-4 flex items-center justify-center gap-3 font-extrabold text-lg transition hover:-translate-y-0.5 active:translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#FFD34D]/50"
                 style={{
-                  boxShadow: '8px 8px 0px hsl(260, 50%, 15%)'
+                  background: '#FFD34D',
+                  borderColor: '#2D1B4F',
+                  color: '#2D1B4F',
+                  boxShadow: '0 8px 0 #2D1B4F'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = '10px 10px 0px hsl(260, 50%, 15%)'}
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = '8px 8px 0px hsl(260, 50%, 15%)'}
+                onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 10px 0 #2D1B4F'}
+                onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 8px 0 #2D1B4F'}
+                onMouseDown={(e) => e.currentTarget.style.boxShadow = '0 2px 0 #2D1B4F'}
+                onMouseUp={(e) => e.currentTarget.style.boxShadow = '0 8px 0 #2D1B4F'}
               >
-                {/* Icon badge - Cyan/light blue for secondary */}
-                <div 
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg border-[2px] border-foreground flex items-center justify-center flex-shrink-0"
+                {/* Icon in white badge */}
+                <span 
+                  className="grid place-items-center w-11 h-11 rounded-2xl border-4 transition group-active:translate-y-0.5"
                   style={{
-                    background: 'hsl(185, 80%, 65%)',
-                    boxShadow: '4px 4px 0px hsl(260, 50%, 15%)'
+                    background: 'white',
+                    borderColor: '#2D1B4F',
+                    boxShadow: '0 4px 0 #2D1B4F'
                   }}
                 >
-                  <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
-                </div>
-                <span className="text-foreground font-black text-lg sm:text-xl">
-                  المتصدرين
+                  <Zap className="w-6 h-6" style={{ color: '#2D1B4F' }} />
                 </span>
+                <span className="leading-none">يلا نلعب</span>
+              </button>
+
+              {/* Secondary CTA Button */}
+              <button 
+                onClick={handleLeaderboard}
+                className="group w-full rounded-full border-4 px-5 py-4 flex items-center justify-center gap-3 font-extrabold text-lg transition hover:-translate-y-0.5 active:translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#FFD34D]/50"
+                style={{
+                  background: 'white',
+                  borderColor: '#2D1B4F',
+                  color: '#2D1B4F',
+                  boxShadow: '0 8px 0 #2D1B4F'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 10px 0 #2D1B4F'}
+                onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 8px 0 #2D1B4F'}
+                onMouseDown={(e) => e.currentTarget.style.boxShadow = '0 2px 0 #2D1B4F'}
+                onMouseUp={(e) => e.currentTarget.style.boxShadow = '0 8px 0 #2D1B4F'}
+              >
+                {/* Icon in yellow badge */}
+                <span 
+                  className="grid place-items-center w-11 h-11 rounded-2xl border-4 transition group-active:translate-y-0.5"
+                  style={{
+                    background: '#FFD34D',
+                    borderColor: '#2D1B4F',
+                    boxShadow: '0 4px 0 #2D1B4F'
+                  }}
+                >
+                  <Trophy className="w-6 h-6" style={{ color: '#2D1B4F' }} />
+                </span>
+                <span className="leading-none">المتصدرين</span>
               </button>
             </div>
           </div>
