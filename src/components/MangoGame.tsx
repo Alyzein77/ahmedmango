@@ -73,55 +73,81 @@ export const MangoGame = () => {
               </div>
             </div>
             
-            {/* Paragraph with backplate */}
-            <div className="mb-6 sm:mb-8 max-w-[90%] mx-auto lg:mx-0 lg:mr-0 lg:max-w-lg">
+            {/* Paragraph sticker card */}
+            <div className="mb-6 sm:mb-8 max-w-[90%] mx-auto lg:mx-0 lg:mr-0 lg:max-w-lg relative">
               <div 
-                className="backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-4"
+                className="relative rounded-[20px] px-4 py-3 sm:px-5 sm:py-4 border-[3px] overflow-hidden"
                 style={{
-                  background: 'hsla(260, 50%, 20%, 0.3)'
+                  background: '#FFE08A',
+                  borderColor: '#1A1A2A',
+                  boxShadow: '8px 8px 0px #1A1A2A'
                 }}
               >
-                <p 
-                  className="text-sm sm:text-lg md:text-xl text-white leading-relaxed"
+                {/* Halftone texture overlay */}
+                <div 
+                  className="absolute inset-0 pointer-events-none opacity-[0.07]"
                   style={{
-                    textShadow: '0 2px 8px hsla(0, 0%, 0%, 0.5), 0 1px 3px hsla(0, 0%, 0%, 0.3)'
+                    backgroundImage: 'radial-gradient(circle, #1A1A2A 1px, transparent 1px)',
+                    backgroundSize: '4px 4px'
                   }}
-                >
+                />
+                <p className="text-sm sm:text-lg md:text-xl leading-relaxed font-bold relative z-10" style={{ color: '#1A1A2A' }}>
                   ساعد القرد الجعان يمسك المنجا… اللعبة بسيطة بس صدقني مش سهلة.
                   حرّك يمين وشمال، امسك المنجا النازلة، وخلي بالك ما توقعهاش! 🥭
                 </p>
               </div>
             </div>
 
-            {/* Features - 2x2 grid with improved contrast */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0">
+            {/* Features - 2x2 grid as mini stickers */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0 relative">
+              {/* Subtle comic sparkles decoration */}
+              <div className="absolute inset-0 pointer-events-none opacity-[0.06]" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 L31 10 L30 15 L29 10 Z M30 45 L31 50 L30 55 L29 50 Z M5 30 L10 29 L15 30 L10 31 Z M45 30 L50 29 L55 30 L50 31 Z' fill='%231A1A2A'/%3E%3C/svg%3E")`,
+                backgroundSize: '60px 60px'
+              }} />
+              
               {[{
-              icon: Zap,
-              text: "اللعبة بتسرّع"
-            }, {
-              icon: Trophy,
-              text: "سجّل رقمك القياسي"
-            }, {
-              icon: Gift,
-              text: "كل منجاية 10 نقاط"
-            }, {
-              icon: Star,
-              text: "دخول سريع"
-            }].map((feature, idx) => <div 
-                key={idx} 
-                className="flex items-center gap-2 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3 border border-[hsla(260,50%,25%,0.5)]"
-                style={{
-                  background: 'hsla(260, 50%, 15%, 0.25)'
-                }}
-              >
-                  <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" style={{ filter: 'drop-shadow(0 0 4px hsla(45, 100%, 50%, 0.5))' }} />
-                  <span 
-                    className="text-white font-medium text-xs sm:text-sm"
-                    style={{ textShadow: '0 1px 3px hsla(0, 0%, 0%, 0.4)' }}
+                icon: Zap,
+                text: "اللعبة بتسرّع",
+                badgeColor: '#FFD44D'
+              }, {
+                icon: Trophy,
+                text: "سجّل رقمك القياسي",
+                badgeColor: '#E848A6'
+              }, {
+                icon: Gift,
+                text: "كل منجاية 10 نقاط",
+                badgeColor: '#61D6F2'
+              }, {
+                icon: Star,
+                text: "دخول سريع",
+                badgeColor: '#FF9A3D'
+              }].map((feature, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex items-center gap-2 sm:gap-3 rounded-[16px] px-3 py-3 sm:px-4 sm:py-4 border-[3px]"
+                  style={{
+                    background: '#FFFFFF',
+                    borderColor: '#1A1A2A',
+                    boxShadow: '6px 6px 0px #1A1A2A'
+                  }}
+                >
+                  {/* Icon badge */}
+                  <div 
+                    className="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-lg border-[2px] flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: feature.badgeColor,
+                      borderColor: '#1A1A2A',
+                      boxShadow: '3px 3px 0px #1A1A2A'
+                    }}
                   >
+                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#1A1A2A' }} />
+                  </div>
+                  <span className="font-extrabold text-xs sm:text-sm" style={{ color: '#1A1A2A' }}>
                     {feature.text}
                   </span>
-                </div>)}
+                </div>
+              ))}
             </div>
 
             {/* Primary CTA Button - Stats card style */}
