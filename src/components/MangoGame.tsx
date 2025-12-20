@@ -59,10 +59,7 @@ export const MangoGame = () => {
                 }}
               >
                 <div 
-                  className="rounded-[14px] p-[8px]"
-                  style={{
-                    background: 'hsl(260, 50%, 25%)'
-                  }}
+                  className="rounded-[14px]"
                 >
                   <img 
                     alt="العب واكسب مع أحمد مانجو" 
