@@ -117,7 +117,7 @@ export const MangoGame = () => {
                   key={idx} 
                   className="pointer-events-none select-none cursor-default flex items-center justify-between gap-3 rounded-2xl px-3 py-3 sm:px-4 sm:py-3 border-2 opacity-95"
                   style={{
-                    background: '#FFF3D6',
+                    background: '#FFFFFF',
                     borderColor: '#2D1B4F',
                     boxShadow: '0 2px 0 rgba(45,27,79,0.18)'
                   }}
