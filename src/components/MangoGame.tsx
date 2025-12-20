@@ -22,36 +22,7 @@ export const MangoGame = () => {
       <div 
         className="absolute inset-0" 
         style={{
-          background: `
-            conic-gradient(
-              from 0deg at 50% 50%,
-              hsl(25, 95%, 53%) 0deg,
-              hsl(35, 95%, 60%) 15deg,
-              hsl(25, 95%, 53%) 30deg,
-              hsl(35, 95%, 60%) 45deg,
-              hsl(25, 95%, 53%) 60deg,
-              hsl(35, 95%, 60%) 75deg,
-              hsl(25, 95%, 53%) 90deg,
-              hsl(35, 95%, 60%) 105deg,
-              hsl(25, 95%, 53%) 120deg,
-              hsl(35, 95%, 60%) 135deg,
-              hsl(25, 95%, 53%) 150deg,
-              hsl(35, 95%, 60%) 165deg,
-              hsl(25, 95%, 53%) 180deg,
-              hsl(35, 95%, 60%) 195deg,
-              hsl(25, 95%, 53%) 210deg,
-              hsl(35, 95%, 60%) 225deg,
-              hsl(25, 95%, 53%) 240deg,
-              hsl(35, 95%, 60%) 255deg,
-              hsl(25, 95%, 53%) 270deg,
-              hsl(35, 95%, 60%) 285deg,
-              hsl(25, 95%, 53%) 300deg,
-              hsl(35, 95%, 60%) 315deg,
-              hsl(25, 95%, 53%) 330deg,
-              hsl(35, 95%, 60%) 345deg,
-              hsl(25, 95%, 53%) 360deg
-            )
-          `,
+          backgroundImage: 'url(/images/game-rays-bg.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
