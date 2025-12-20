@@ -95,33 +95,45 @@ export const MangoGame = () => {
 
             {/* Features - 2x2 grid with improved contrast */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 lg:mr-0">
-              {[{
+            {[{
               icon: Zap,
-              text: "اللعبة بتسرّع"
+              text: "اللعبة بتسرّع",
+              badgeColor: 'hsl(45, 100%, 55%)'
             }, {
               icon: Trophy,
-              text: "سجّل رقمك القياسي"
+              text: "سجّل رقمك القياسي",
+              badgeColor: 'hsl(185, 80%, 65%)'
             }, {
               icon: Gift,
-              text: "كل منجاية 10 نقاط"
+              text: "كل منجاية 10 نقاط",
+              badgeColor: 'hsl(320, 70%, 60%)'
             }, {
               icon: Star,
-              text: "دخول سريع"
-            }].map((feature, idx) => <div 
+              text: "دخول سريع",
+              badgeColor: 'hsl(140, 70%, 55%)'
+            }].map((feature, idx) => (
+              <div 
                 key={idx} 
-                className="flex items-center gap-2 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 py-2 sm:px-4 sm:py-3 border border-[hsla(260,50%,25%,0.5)]"
+                className="flex items-center gap-2 bg-white rounded-2xl px-3 py-2 sm:px-4 sm:py-3 border-[3px] border-foreground"
                 style={{
-                  background: 'hsla(260, 50%, 15%, 0.25)'
+                  boxShadow: '6px 6px 0px hsl(260, 50%, 15%)'
                 }}
               >
-                  <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" style={{ filter: 'drop-shadow(0 0 4px hsla(45, 100%, 50%, 0.5))' }} />
-                  <span 
-                    className="text-white font-medium text-xs sm:text-sm"
-                    style={{ textShadow: '0 1px 3px hsla(0, 0%, 0%, 0.4)' }}
-                  >
-                    {feature.text}
-                  </span>
-                </div>)}
+                {/* Icon badge */}
+                <div 
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg border-[2px] border-foreground flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: feature.badgeColor,
+                    boxShadow: '3px 3px 0px hsl(260, 50%, 15%)'
+                  }}
+                >
+                  <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
+                </div>
+                <span className="text-foreground font-bold text-xs sm:text-sm">
+                  {feature.text}
+                </span>
+              </div>
+            ))}
             </div>
 
             {/* Primary CTA Button - Stats card style */}
