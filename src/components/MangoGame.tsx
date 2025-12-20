@@ -124,16 +124,55 @@ export const MangoGame = () => {
                 </div>)}
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-xl font-black px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse-glow" onClick={handlePlayGame}>
-              يلا نلعب 🥭
-            </Button>
+            {/* Primary CTA Button - Stats card style */}
+            <button 
+              onClick={handlePlayGame}
+              className="group w-full sm:w-auto bg-white hover:-translate-y-[2px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 rounded-2xl border-[3px] border-foreground flex items-center justify-center gap-3 px-5 sm:px-6 py-3 sm:py-4"
+              style={{
+                boxShadow: '8px 8px 0px hsl(260, 50%, 15%)'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.boxShadow = '10px 10px 0px hsl(260, 50%, 15%)'}
+              onMouseLeave={(e) => e.currentTarget.style.boxShadow = '8px 8px 0px hsl(260, 50%, 15%)'}
+            >
+              {/* Icon badge - Yellow for primary */}
+              <div 
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary border-[2px] border-foreground flex items-center justify-center flex-shrink-0"
+                style={{
+                  boxShadow: '4px 4px 0px hsl(260, 50%, 15%)'
+                }}
+              >
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
+              </div>
+              <span className="text-foreground font-black text-lg sm:text-xl">
+                يلا نلعب 🥭
+              </span>
+            </button>
             
             {/* Secondary Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-4">
-              <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full font-bold px-6 py-3" onClick={handleLeaderboard}>
-                <Trophy className="w-4 h-4 ml-2" />
-                المتصدرين
-              </Button>
+              <button 
+                onClick={handleLeaderboard}
+                className="group bg-white hover:-translate-y-[2px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 rounded-2xl border-[3px] border-foreground flex items-center justify-center gap-3 px-5 sm:px-6 py-3 sm:py-4"
+                style={{
+                  boxShadow: '8px 8px 0px hsl(260, 50%, 15%)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.boxShadow = '10px 10px 0px hsl(260, 50%, 15%)'}
+                onMouseLeave={(e) => e.currentTarget.style.boxShadow = '8px 8px 0px hsl(260, 50%, 15%)'}
+              >
+                {/* Icon badge - Cyan/light blue for secondary */}
+                <div 
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg border-[2px] border-foreground flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: 'hsl(185, 80%, 65%)',
+                    boxShadow: '4px 4px 0px hsl(260, 50%, 15%)'
+                  }}
+                >
+                  <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
+                </div>
+                <span className="text-foreground font-black text-lg sm:text-xl">
+                  المتصدرين
+                </span>
+              </button>
             </div>
           </div>
 
