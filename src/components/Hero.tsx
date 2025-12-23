@@ -1,22 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 export const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
   const {
     trackButtonClick
   } = useMixpanel();
   const sectionRef = useTrackSection('Hero Section');
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true
-    });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -27,11 +16,9 @@ export const Hero = () => {
     }
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Background Image with Parallax */}
+      {/* Static Background Image */}
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="w-full h-[120%] object-cover rounded-none" style={{
-        transform: `translateY(${scrollY * 0.3}px)`
-      }} src="/lovable-uploads/a0b1042a-0f80-4031-aa41-87ba64e82ff3.png" />
+        <img alt="" className="w-full h-full object-cover" src="/lovable-uploads/a0b1042a-0f80-4031-aa41-87ba64e82ff3.png" />
       </div>
       
       {/* Solid color fade at bottom */}
@@ -66,8 +53,8 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* TEXT STACKED UNDER THE IMAGE */}
-        <div className="flex flex-col items-center text-center">
+        {/* TEXT STACKED UNDER THE IMAGE - with plain background for legibility */}
+        <div className="flex flex-col items-center text-center bg-[#4DD4D9]/95 rounded-2xl px-6 py-4 backdrop-blur-sm">
           <h1 className="font-oi sm:text-3xl leading-none text-foreground tracking-tight mb-2 text-center text-4xl">
             أحمد مانجو
           </h1>
@@ -76,10 +63,6 @@ export const Hero = () => {
             <span className="text-orange text-3xl font-black">استكا</span>{" "}
             <span className="text-foreground text-3xl font-black">ولا فستكا؟</span>
           </h2>
-          
-          {/* Rating Rules */}
-          <div className="text-xs sm:text-sm font-medium text-foreground space-y-1">
-          </div>
         </div>
 
         {/* BUTTONS SECTION - Feastables style */}
