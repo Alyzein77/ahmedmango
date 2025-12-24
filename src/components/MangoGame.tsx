@@ -89,7 +89,7 @@ export const MangoGame = () => {
                   }}
                 />
                 <p className="text-sm sm:text-lg md:text-xl leading-relaxed font-bold relative z-10" style={{ color: '#1A1A2A' }}>
-                  ساعد القرد الجعان يمسك المنجا… اللعبة بسيطة بس صدقني مش سهلة.
+                  ساعد أحمد مانجو يأكل المنجا… اللعبة بسيطة بس صدقني مش سهلة.
                   حرّك يمين وشمال، امسك المنجا النازلة، وخلي بالك ما توقعهاش! 🥭
                 </p>
               </div>
