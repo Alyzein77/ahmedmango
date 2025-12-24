@@ -10,12 +10,12 @@ export const MangoGame = () => {
   const handlePlayGame = () => {
     trackGamePlay('start');
     trackButtonClick('Play Game', 'Game Section');
-    window.open('https://mango.risca.dev/ar', '_blank');
+    window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank');
   };
 
   const handleLeaderboard = () => {
     trackButtonClick('View Leaderboard', 'Game Section');
-    window.open('https://mango.risca.dev/ar/leaderboard', '_blank');
+    window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank');
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">
       {/* Orange pop-art rays background */}

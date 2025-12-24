@@ -69,7 +69,7 @@ export const RewardsSection = () => {
               size="lg" 
               variant="accent"
               className="w-full text-base sm:text-lg md:text-xl font-black uppercase tracking-wide rounded-lg py-6"
-              onClick={() => window.open('https://mango.risca.dev/ar', '_blank')}
+              onClick={() => window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank')}
             >
               🚀 ابدأ اللعب دلوقتي
             </Button>
