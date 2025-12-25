@@ -54,13 +54,13 @@ export const Hero = () => {
         </div>
 
         {/* TEXT STACKED UNDER THE IMAGE - with plain background for legibility */}
-        <div className="flex flex-col items-center text-center bg-orange/95 rounded-2xl px-6 py-4 backdrop-blur-sm">
+        <div className="flex flex-col items-center text-center rounded-2xl px-6 py-4 backdrop-blur-sm bg-orange-50">
           <h1 className="font-oi sm:text-3xl leading-none text-foreground tracking-tight mb-2 text-center text-4xl">
             أحمد مانجو
           </h1>
           
           <h2 className="text-base sm:text-lg leading-tight mb-2 font-lalezar">
-            <span className="text-orange text-3xl font-black">استكا</span>{" "}
+            <span className="text-3xl font-black text-[#14141f]">استكا</span>{" "}
             <span className="text-foreground text-3xl font-black">ولا فستكا؟</span>
           </h2>
         </div>
