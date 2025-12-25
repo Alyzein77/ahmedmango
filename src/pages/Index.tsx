@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { AdSpaces } from "@/components/AdSpaces";
 import { ProductList } from "@/components/ProductList";
+import { ProductReviewsSection } from "@/components/ProductReviewsSection";
 import { MangoGame } from "@/components/MangoGame";
 import { StatsSection } from "@/components/StatsSection";
 import { LatestContentFeed } from "@/components/LatestContentFeed";
@@ -23,19 +24,22 @@ const Index = () => {
       {/* Section 3: Product List (2استكا / فاستكا) */}
       <ProductList />
       
-      {/* Section 4: Mango Game */}
+      {/* Section 4: Product Reviews */}
+      <ProductReviewsSection />
+      
+      {/* Section 5: Mango Game */}
       <MangoGame />
       
-      {/* Section 5: Stats Section */}
+      {/* Section 6: Stats Section */}
       <StatsSection />
       
-      {/* Section 6: Latest Content Feed */}
+      {/* Section 7: Latest Content Feed */}
       <LatestContentFeed />
       
-      {/* Section 7: Social Section */}
+      {/* Section 8: Social Section */}
       <SocialSection />
       
-      {/* Section 8: Footer */}
+      {/* Section 9: Footer */}
       <Footer />
     </div>
   );
