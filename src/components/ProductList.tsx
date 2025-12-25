@@ -35,7 +35,7 @@ export const ProductList = () => {
       .select("id, name, thumbnail_url, verdict, short_note, category, review_url")
       .order("ranking", { ascending: true })
       .order("created_at", { ascending: false })
-      .limit(6);
+      .limit(15);
 
     if (activeFilter !== "all") {
       query = query.eq("verdict", activeFilter);
