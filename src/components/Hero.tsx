@@ -71,7 +71,7 @@ export const Hero = () => {
             العب واكسب جوائز
           </Button>
 
-          <Button variant="outline" className="h-11 px-6 w-[180px] text-sm font-black rounded-lg bg-transparent border-2 border-foreground shadow-bold hover:shadow-bold-sm hover:bg-foreground/10 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide" onClick={() => scrollToSection("#products")}>
+          <Button variant="outline" className="h-11 px-6 w-[180px] text-sm font-black rounded-lg bg-background border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide" onClick={() => scrollToSection("#products")}>
             شوف المراجعات
           </Button>
         </div>
