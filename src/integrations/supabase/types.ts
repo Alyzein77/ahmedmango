@@ -220,42 +220,6 @@ export type Database = {
         }
         Relationships: []
       }
-      product_reviews: {
-        Row: {
-          created_at: string
-          id: string
-          platform: string | null
-          posted_at: string
-          product_image: string | null
-          product_name: string
-          score: number | null
-          verdict: string | null
-          video_url: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          platform?: string | null
-          posted_at: string
-          product_image?: string | null
-          product_name: string
-          score?: number | null
-          verdict?: string | null
-          video_url: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          platform?: string | null
-          posted_at?: string
-          product_image?: string | null
-          product_name?: string
-          score?: number | null
-          verdict?: string | null
-          video_url?: string
-        }
-        Relationships: []
-      }
       products: {
         Row: {
           brand: string | null
