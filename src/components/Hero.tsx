@@ -54,7 +54,7 @@ export const Hero = () => {
         </div>
 
         {/* TEXT STACKED UNDER THE IMAGE */}
-        <div className="flex flex-col items-center text-center px-6 py-4">
+        <div className="flex flex-col items-center text-center">
           <h1 className="font-oi sm:text-3xl leading-none text-foreground tracking-tight mb-2 text-center text-4xl">
             أحمد مانجو
           </h1>
