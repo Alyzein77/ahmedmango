@@ -18,7 +18,7 @@ export const Hero = () => {
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
       {/* Static Background Image */}
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="w-full h-full object-cover" src="/lovable-uploads/b0d419d3-0b59-4382-a5cd-0843a14f1d13.png" />
+        <img alt="" className="w-full h-full object-cover" src="/lovable-uploads/078f0c0e-41aa-407b-b90d-0ec9180af01b.png" />
       </div>
       
       {/* Solid color fade at bottom */}
