@@ -10,7 +10,7 @@ const corsHeaders = {
 const ALLOWED_ADMIN_EMAILS = [
   "admin@ahmedmango.com",
   "team@ahmedmango.com",
-  // Add more admin emails here
+  "amal06499@gmail.com",
 ];
 
 interface AdminLoginRequest {
