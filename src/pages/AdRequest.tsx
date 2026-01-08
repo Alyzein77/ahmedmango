@@ -631,7 +631,7 @@ const AdRequest = () => {
     <div className="min-h-screen bg-background flex flex-col" dir="rtl">
       <Navbar />
       
-      <main className="flex-1 flex items-center justify-center px-4 py-8">
+      <main className="flex-1 flex items-start justify-center px-4 py-8 pt-24 md:pt-8 md:items-center">
         <div className="w-full max-w-md">
           <div className="text-center mb-6">
             <h1 className="text-3xl font-bold text-foreground mb-2">
