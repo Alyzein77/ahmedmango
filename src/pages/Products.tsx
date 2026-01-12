@@ -29,15 +29,17 @@ const Products = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "2استكا" | "فاستكا">("all");
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const categories = ["all", "Chips", "Chocolate", "Drinks", "Noodles", "Biscuits", "Other"];
+  const categories = ["all", "شيبسي", "شوكولاتة", "مشروبات", "نودلز", "بسكويت", "سناكس", "حلويات", "أخرى"];
   const categoryLabels: Record<string, string> = {
     all: "الكل",
-    Chips: "شيبسي",
-    Chocolate: "شوكولاتة",
-    Drinks: "مشروبات",
-    Noodles: "نودلز",
-    Biscuits: "بسكويت",
-    Other: "أخرى",
+    "شيبسي": "شيبسي",
+    "شوكولاتة": "شوكولاتة",
+    "مشروبات": "مشروبات",
+    "نودلز": "نودلز",
+    "بسكويت": "بسكويت",
+    "سناكس": "سناكس",
+    "حلويات": "حلويات",
+    "أخرى": "أخرى",
   };
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const Products = () => {
     }
 
     if (activeCategory !== "all") {
-      query = query.eq("category", activeCategory as "Chips" | "Chocolate" | "Drinks" | "Noodles" | "Biscuits" | "Other");
+      query = query.eq("category", activeCategory);
     }
 
     const { data, error } = await query;
