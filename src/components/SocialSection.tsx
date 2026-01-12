@@ -2,10 +2,7 @@ import { Music2, Instagram, Youtube, Facebook } from "lucide-react";
 
 const openExternalLink = (url: string) => {
   const absoluteUrl = url.startsWith('http') ? url : `https://${url}`;
-  const newWindow = window.open(absoluteUrl, "_blank", "noopener,noreferrer");
-  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-    window.location.href = absoluteUrl;
-  }
+  window.open(absoluteUrl, "_blank", "noopener,noreferrer");
 };
 
 export const SocialSection = () => {
