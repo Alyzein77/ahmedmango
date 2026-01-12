@@ -53,7 +53,7 @@ export const Footer = () => {
   return (
     <footer className="relative bg-secondary text-secondary-foreground pt-10 sm:pt-16 pb-6 sm:pb-8 px-3 sm:px-4 overflow-hidden border-t-4 border-foreground">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col md:flex-row md:justify-between gap-8 sm:gap-10 mb-8 sm:mb-12">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 sm:gap-10 mb-8 sm:mb-12">
           {/* Brand & Logo */}
           <div className="text-center md:text-right flex flex-col items-center md:items-start">
             <img 
@@ -75,20 +75,20 @@ export const Footer = () => {
             <h4 className="font-black text-sm sm:text-lg mb-3 sm:mb-4 text-primary uppercase">معلومات</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-secondary-foreground/80 text-xs sm:text-sm font-bold">
               <li>
-                <a href="#" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
-                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
+                <Link to="/about" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4" />
                   من نحن
-                </a>
+                </Link>
               </li>
               <li>
-                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
-                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
                   سياسة الخصوصية
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start cursor-pointer">
-                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 pointer-events-none" />
+                <Link to="/terms" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4" />
                   الشروط والأحكام
                 </Link>
               </li>
@@ -106,20 +106,18 @@ export const Footer = () => {
                 return (
                   <button 
                     key={social.id}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openExternalLink(social.url);
-                    }}
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    type="button"
+                    onClick={() => openExternalLink(social.url)}
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
                     aria-label={social.platform}
                     title={social.platform}
                   >
                     {social.icon ? (
-                      <span className="text-lg">{social.icon}</span>
+                      <span className="text-lg pointer-events-none">{social.icon}</span>
                     ) : IconComponent ? (
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
                     ) : (
-                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
                     )}
                   </button>
                 );
