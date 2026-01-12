@@ -17,9 +17,11 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 import { Database, Constants } from "@/integrations/supabase/types";
+import { supabase } from "@/integrations/supabase/client";
 import ImageUpload from "./ImageUpload";
+import { toast } from "sonner";
 
 type Product = Database["public"]["Tables"]["products"]["Row"];
 type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
@@ -40,6 +42,8 @@ const ProductFormDialog = ({
   onSubmit: (data: ProductInsert | ProductUpdate) => Promise<void>;
 }) => {
   const [loading, setLoading] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [existingCategories, setExistingCategories] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
     brand: "",
@@ -53,6 +57,21 @@ const ProductFormDialog = ({
     is_featured: false,
     ranking: 0,
   });
+
+  // Fetch existing categories from database
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("category");
+
+      if (!error && data) {
+        const uniqueCategories = [...new Set(data.map((p) => p.category).filter(Boolean))];
+        setExistingCategories(uniqueCategories);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     if (product) {
@@ -106,6 +125,43 @@ const ProductFormDialog = ({
     }));
   };
 
+  const handleAiSuggestCategory = async () => {
+    if (!formData.name.trim()) {
+      toast.error("أدخل اسم المنتج أولاً");
+      return;
+    }
+
+    setAiLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("suggest-category", {
+        body: {
+          productName: formData.name,
+          brand: formData.brand,
+          existingCategories,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data?.error) {
+        toast.error(data.error);
+        return;
+      }
+
+      if (data?.category) {
+        setFormData((prev) => ({ ...prev, category: data.category }));
+        toast.success(`تم اقتراح الفئة: ${data.category}`);
+      }
+    } catch (error) {
+      console.error("AI suggestion error:", error);
+      toast.error("حدث خطأ في اقتراح الفئة");
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" dir="rtl">
@@ -139,13 +195,56 @@ const ProductFormDialog = ({
 
           {/* Category & Rating */}
           <div className="grid grid-cols-2 gap-4">
-            <div>
+            <div className="space-y-2">
               <Label className="font-tajawal">الفئة *</Label>
+              
+              {/* AI Suggest Button */}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={handleAiSuggestCategory}
+                disabled={aiLoading || !formData.name.trim()}
+                className="w-full mb-2 border-dashed border-primary/50 text-primary hover:bg-primary/10"
+              >
+                {aiLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin ml-2" />
+                    جاري التحليل...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4 ml-2" />
+                    اقتراح بالذكاء الاصطناعي
+                  </>
+                )}
+              </Button>
+
+              {/* Existing Categories Select */}
+              {existingCategories.length > 0 && (
+                <Select
+                  value={existingCategories.includes(formData.category) ? formData.category : ""}
+                  onValueChange={(value) => setFormData({ ...formData, category: value })}
+                >
+                  <SelectTrigger className="font-tajawal">
+                    <SelectValue placeholder="اختر من الفئات الموجودة" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {existingCategories.map((cat) => (
+                      <SelectItem key={cat} value={cat} className="font-tajawal">
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+
+              {/* Custom Category Input */}
               <Input
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="font-tajawal mt-1"
-                placeholder="مثال: شيبسي، شوكولاتة، مشروبات..."
+                className="font-tajawal"
+                placeholder="أو أدخل فئة جديدة..."
                 required
               />
             </div>
