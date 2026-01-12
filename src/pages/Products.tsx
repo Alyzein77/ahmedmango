@@ -28,19 +28,22 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<"all" | "2استكا" | "فاستكا">("all");
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [categories, setCategories] = useState<string[]>(["all"]);
 
-  const categories = ["all", "شيبسي", "شوكولاتة", "مشروبات", "نودلز", "بسكويت", "سناكس", "حلويات", "أخرى"];
-  const categoryLabels: Record<string, string> = {
-    all: "الكل",
-    "شيبسي": "شيبسي",
-    "شوكولاتة": "شوكولاتة",
-    "مشروبات": "مشروبات",
-    "نودلز": "نودلز",
-    "بسكويت": "بسكويت",
-    "سناكس": "سناكس",
-    "حلويات": "حلويات",
-    "أخرى": "أخرى",
-  };
+  // Fetch unique categories from database
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("category");
+
+      if (!error && data) {
+        const uniqueCategories = [...new Set(data.map((p) => p.category).filter(Boolean))];
+        setCategories(["all", ...uniqueCategories]);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     fetchProducts();
@@ -176,7 +179,7 @@ const Products = () => {
                       : "bg-muted text-foreground hover:bg-muted/80"
                   }`}
                 >
-                  {categoryLabels[cat]}
+                  {cat === "all" ? "الكل" : cat}
                 </Button>
               ))}
             </div>
