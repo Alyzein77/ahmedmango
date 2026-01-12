@@ -36,15 +36,13 @@ export const SocialSection = () => {
         <div className="flex justify-center items-center gap-4 sm:gap-6">
           {socialPlatforms.map((platform, idx) => (
             <button 
-              key={idx} 
-              onClick={(e) => {
-                e.preventDefault();
-                openExternalLink(platform.url);
-              }}
-              className={`w-14 h-14 sm:w-16 sm:h-16 ${platform.color} rounded-lg border-2 border-foreground flex items-center justify-center transition-all duration-150 hover:shadow-bold-sm hover:translate-x-[2px] hover:translate-y-[2px] shadow-bold cursor-pointer`} 
+              key={idx}
+              type="button"
+              onClick={() => openExternalLink(platform.url)}
+              className={`w-14 h-14 sm:w-16 sm:h-16 ${platform.color} rounded-lg border-2 border-foreground flex items-center justify-center transition-all duration-150 hover:shadow-bold-sm hover:translate-x-[2px] hover:translate-y-[2px] shadow-bold`} 
               aria-label={platform.name}
             >
-              <platform.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-background" strokeWidth={2.5} />
+              <platform.Icon className="w-7 h-7 sm:w-8 sm:h-8 text-background pointer-events-none" strokeWidth={2.5} />
             </button>
           ))}
         </div>
