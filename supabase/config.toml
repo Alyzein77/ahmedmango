@@ -23,3 +23,15 @@ verify_jwt = false
 
 [functions.send-ad-notification]
 verify_jwt = false
+
+[functions.suggest-category]
+verify_jwt = false
+
+[functions.akedly-widget-otp]
+verify_jwt = false
+
+[functions.akedly-webhook]
+verify_jwt = false
+
+[functions.akedly-get-token]
+verify_jwt = false
