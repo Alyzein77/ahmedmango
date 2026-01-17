@@ -154,6 +154,39 @@ export type Database = {
         }
         Relationships: []
       }
+      auth_tokens: {
+        Row: {
+          created_at: string | null
+          expires_at: string
+          id: string
+          phone_number: string
+          transaction_id: string
+          used: boolean | null
+          verified: boolean | null
+          verified_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          expires_at: string
+          id?: string
+          phone_number: string
+          transaction_id: string
+          used?: boolean | null
+          verified?: boolean | null
+          verified_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          expires_at?: string
+          id?: string
+          phone_number?: string
+          transaction_id?: string
+          used?: boolean | null
+          verified?: boolean | null
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
       latest_content: {
         Row: {
           content_type: Database["public"]["Enums"]["content_type"]
@@ -217,6 +250,33 @@ export type Database = {
           id?: string
           is_active?: boolean | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      otp_attempts: {
+        Row: {
+          attempt_count: number | null
+          created_at: string | null
+          first_attempt_at: string | null
+          id: string
+          phone_number: string
+          reset_at: string
+        }
+        Insert: {
+          attempt_count?: number | null
+          created_at?: string | null
+          first_attempt_at?: string | null
+          id?: string
+          phone_number: string
+          reset_at: string
+        }
+        Update: {
+          attempt_count?: number | null
+          created_at?: string | null
+          first_attempt_at?: string | null
+          id?: string
+          phone_number?: string
+          reset_at?: string
         }
         Relationships: []
       }
@@ -475,6 +535,33 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      verified_phones: {
+        Row: {
+          created_at: string | null
+          first_verified_at: string | null
+          id: string
+          last_verified_at: string | null
+          phone_number: string
+          verification_count: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          first_verified_at?: string | null
+          id?: string
+          last_verified_at?: string | null
+          phone_number: string
+          verification_count?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          first_verified_at?: string | null
+          id?: string
+          last_verified_at?: string | null
+          phone_number?: string
+          verification_count?: number | null
         }
         Relationships: []
       }
