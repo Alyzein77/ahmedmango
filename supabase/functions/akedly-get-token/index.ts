@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -6,8 +7,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// In-memory rate limiting for token retrieval
-const tokenRetrievalAttempts = new Map<string, { count: number; resetTime: number }>();
+// In-memory rate limiting
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -32,24 +33,48 @@ serve(async (req) => {
       );
     }
 
-    // Rate limiting: max 30 attempts per transaction ID per minute (for polling)
+    // Rate limiting: max 30 requests per minute per transactionID
     const now = Date.now();
-    const rateLimitKey = `token_${transactionID}`;
-    const current = tokenRetrievalAttempts.get(rateLimitKey);
-
-    if (current && now < current.resetTime) {
-      if (current.count >= 30) {
-        return new Response(
-          JSON.stringify({ success: false, error: 'Too many attempts. Please try again later.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+    const rateLimit = rateLimitMap.get(transactionID);
+    
+    if (rateLimit) {
+      if (now < rateLimit.resetAt) {
+        if (rateLimit.count >= 30) {
+          const retryAfter = Math.ceil((rateLimit.resetAt - now) / 1000);
+          return new Response(
+            JSON.stringify({ 
+              success: false, 
+              error: 'Rate limit exceeded',
+              retryAfter 
+            }),
+            { 
+              status: 429, 
+              headers: { 
+                ...corsHeaders, 
+                'Content-Type': 'application/json',
+                'Retry-After': String(retryAfter)
+              } 
+            }
+          );
+        }
+        rateLimit.count++;
+      } else {
+        rateLimit.count = 1;
+        rateLimit.resetAt = now + 60000;
       }
-      current.count++;
     } else {
-      tokenRetrievalAttempts.set(rateLimitKey, { count: 1, resetTime: now + 60000 });
+      rateLimitMap.set(transactionID, { count: 1, resetAt: now + 60000 });
     }
 
-    // Get Supabase credentials
+    // Clean up old entries periodically
+    if (rateLimitMap.size > 1000) {
+      for (const [key, value] of rateLimitMap.entries()) {
+        if (now > value.resetAt) {
+          rateLimitMap.delete(key);
+        }
+      }
+    }
+
     const supabaseUrl = Deno.env.get('SUPABASE_URL');
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
@@ -61,98 +86,149 @@ serve(async (req) => {
       );
     }
 
-    // Create Supabase client
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Get token from database
-    const { data: token, error } = await supabase
+    // Look up token by EITHER transaction_id OR attempt_id
+    // This is the key fix - the frontend polls with attemptId but webhook may store as transaction_id
+    const { data: token, error: fetchError } = await supabase
       .from('auth_tokens')
       .select('*')
-      .eq('transaction_id', transactionID)
+      .or(`transaction_id.eq.${transactionID},attempt_id.eq.${transactionID}`)
       .maybeSingle();
 
-    if (error) {
-      console.error('Error fetching token:', error);
+    if (fetchError) {
+      console.error('Error fetching token:', fetchError);
       return new Response(
-        JSON.stringify({ success: false, error: 'Failed to fetch token' }),
+        JSON.stringify({ success: false, error: 'Database error' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
+    // Token not found - verification pending
     if (!token) {
-      // Token not found - verification might not be complete yet
       return new Response(
-        JSON.stringify({ success: false, verified: false, error: 'Verification pending' }),
+        JSON.stringify({ 
+          success: false, 
+          verified: false,
+          message: 'Verification pending' 
+        }),
         { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Check if expired
-    if (new Date(token.expires_at) < new Date()) {
-      console.log(`Token expired for transaction: ${transactionID}`);
-      // Delete expired token
-      await supabase.from('auth_tokens').delete().eq('id', token.id);
+    // Check if token is expired
+    const expiresAt = new Date(token.expires_at);
+    if (Date.now() > expiresAt.getTime()) {
+      console.log(`Token expired for ${transactionID}`);
+      
+      // Log expired token retrieval
+      await supabase.from('otp_logs').insert({
+        phone_number: token.phone_number,
+        attempt_id: token.attempt_id,
+        transaction_id: token.transaction_id,
+        event_type: 'token_retrieved',
+        status: 'failed',
+        error_message: 'Token expired',
+      } as Record<string, unknown>);
+
       return new Response(
-        JSON.stringify({ success: false, verified: false, error: 'Token expired' }),
-        { status: 410, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ 
+          success: false, 
+          verified: false,
+          error: 'Token expired' 
+        }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Check if already used (one-time use)
+    // Check if already used
     if (token.used) {
-      console.log(`Token already used for transaction: ${transactionID}`);
+      console.log(`Token already used for ${transactionID}`);
+      
+      // Log already used token
+      await supabase.from('otp_logs').insert({
+        phone_number: token.phone_number,
+        attempt_id: token.attempt_id,
+        transaction_id: token.transaction_id,
+        event_type: 'token_retrieved',
+        status: 'failed',
+        error_message: 'Token already used',
+      } as Record<string, unknown>);
+
       return new Response(
-        JSON.stringify({ success: false, verified: false, error: 'Token already used' }),
-        { status: 410, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ 
+          success: false, 
+          verified: false,
+          error: 'Token already used' 
+        }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     // Check if verified
     if (!token.verified) {
       return new Response(
-        JSON.stringify({ success: false, verified: false, error: 'Verification pending' }),
+        JSON.stringify({ 
+          success: false, 
+          verified: false,
+          message: 'Verification pending' 
+        }),
         { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Mark as used immediately
-    const { error: updateError } = await supabase
+    // Token is valid and verified - mark as used
+    await supabase
       .from('auth_tokens')
-      .update({ used: true })
+      .update({ used: true } as Record<string, unknown>)
       .eq('id', token.id);
 
-    if (updateError) {
-      console.error('Error marking token as used:', updateError);
-    }
+    // Log successful token retrieval
+    await supabase.from('otp_logs').insert({
+      phone_number: token.phone_number,
+      attempt_id: token.attempt_id,
+      transaction_id: token.transaction_id,
+      event_type: 'token_retrieved',
+      status: 'success',
+      metadata: {
+        verified_at: token.verified_at,
+        retrieved_at: new Date().toISOString(),
+      },
+    } as Record<string, unknown>);
 
-    console.log(`Token verified and marked as used for transaction: ${transactionID}`);
-
-    // Schedule cleanup (delete after 5 seconds)
+    // Schedule token deletion after 5 seconds
     setTimeout(async () => {
       try {
         const cleanupClient = createClient(supabaseUrl, supabaseServiceKey);
-        await cleanupClient.from('auth_tokens').delete().eq('id', token.id);
-        console.log(`Token deleted for transaction: ${transactionID}`);
-      } catch (err) {
-        console.error('Error deleting used token:', err);
+        await cleanupClient
+          .from('auth_tokens')
+          .delete()
+          .eq('id', token.id);
+        console.log(`Deleted token ${token.id}`);
+      } catch (e) {
+        console.error('Error deleting token:', e);
       }
     }, 5000);
+
+    console.log(`Token retrieved successfully for ${token.phone_number}`);
 
     return new Response(
       JSON.stringify({
         success: true,
         verified: true,
-        phoneNumber: token.phone_number,
-        verifiedAt: token.verified_at,
+        data: {
+          phoneNumber: token.phone_number,
+          verifiedAt: token.verified_at,
+        },
       }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
-    console.error('Error fetching auth token:', error);
+    console.error('Get token error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return new Response(
-      JSON.stringify({ success: false, error: 'Failed to fetch token', details: errorMessage }),
+      JSON.stringify({ success: false, error: 'Internal server error', details: errorMessage }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

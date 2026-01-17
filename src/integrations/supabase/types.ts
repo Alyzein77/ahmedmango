@@ -156,6 +156,7 @@ export type Database = {
       }
       auth_tokens: {
         Row: {
+          attempt_id: string | null
           created_at: string | null
           expires_at: string
           id: string
@@ -166,6 +167,7 @@ export type Database = {
           verified_at: string | null
         }
         Insert: {
+          attempt_id?: string | null
           created_at?: string | null
           expires_at: string
           id?: string
@@ -176,6 +178,7 @@ export type Database = {
           verified_at?: string | null
         }
         Update: {
+          attempt_id?: string | null
           created_at?: string | null
           expires_at?: string
           id?: string
@@ -277,6 +280,48 @@ export type Database = {
           id?: string
           phone_number?: string
           reset_at?: string
+        }
+        Relationships: []
+      }
+      otp_logs: {
+        Row: {
+          attempt_id: string | null
+          created_at: string | null
+          error_message: string | null
+          event_type: string
+          id: string
+          ip_address: string | null
+          metadata: Json | null
+          phone_number: string
+          status: string
+          transaction_id: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          attempt_id?: string | null
+          created_at?: string | null
+          error_message?: string | null
+          event_type: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          phone_number: string
+          status: string
+          transaction_id?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          attempt_id?: string | null
+          created_at?: string | null
+          error_message?: string | null
+          event_type?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          phone_number?: string
+          status?: string
+          transaction_id?: string | null
+          user_agent?: string | null
         }
         Relationships: []
       }

@@ -1,11 +1,11 @@
-import { Package, BarChart3, LogOut, User, Video, Music2, Home, Share2, Megaphone, LineChart, ClipboardList, Activity, Trophy, Bell } from "lucide-react";
+import { Package, BarChart3, LogOut, User, Video, Music2, Home, Share2, Megaphone, LineChart, ClipboardList, Activity, Trophy, Bell, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 interface AdminSidebarProps {
-  currentView: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications";
-  onViewChange: (view: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications") => void;
+  currentView: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications" | "otp-logs";
+  onViewChange: (view: "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications" | "otp-logs") => void;
   onLogout: () => void;
   userEmail: string;
 }
@@ -19,6 +19,7 @@ const AdminSidebar = ({ currentView, onViewChange, onLogout, userEmail }: AdminS
     { id: "ads" as const, label: "المساحات الإعلانية", icon: Megaphone },
     { id: "ad-requests" as const, label: "طلبات المعلنين", icon: ClipboardList },
     { id: "notifications" as const, label: "إيميلات الإشعارات", icon: Bell },
+    { id: "otp-logs" as const, label: "سجلات OTP", icon: FileText },
     { id: "analytics" as const, label: "تحليلات الإعلانات", icon: LineChart },
     { id: "mixpanel" as const, label: "Mixpanel", icon: Activity },
     { id: "engagement" as const, label: "نقاط التفاعل", icon: Trophy },
