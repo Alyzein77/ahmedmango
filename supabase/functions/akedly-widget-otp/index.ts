@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -58,6 +59,15 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Get Supabase client early for logging
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
+  const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  let supabase: ReturnType<typeof createClient> | null = null;
+  
+  if (supabaseUrl && supabaseServiceKey) {
+    supabase = createClient(supabaseUrl, supabaseServiceKey);
+  }
+
   try {
     if (req.method !== 'POST') {
       return new Response(
@@ -92,8 +102,6 @@ serve(async (req) => {
     const apiKey = Deno.env.get('AKEDLY_API_KEY');
     const publicKey = Deno.env.get('AKEDLY_WIDGET_PUBLIC_KEY');
     const secret = Deno.env.get('AKEDLY_WIDGET_SECRET');
-    const supabaseUrl = Deno.env.get('SUPABASE_URL');
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
     if (!apiKey || !publicKey || !secret) {
       console.error('Missing Akedly widget credentials');
@@ -103,7 +111,7 @@ serve(async (req) => {
       );
     }
 
-    if (!supabaseUrl || !supabaseServiceKey) {
+    if (!supabase) {
       console.error('Missing Supabase credentials');
       return new Response(
         JSON.stringify({ success: false, error: 'Server configuration error' }),
@@ -111,30 +119,35 @@ serve(async (req) => {
       );
     }
 
-    // Create Supabase client
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
     // Check rate limit (5 attempts per 60 seconds)
     const now = new Date();
-    const windowStart = new Date(now.getTime() - 60000); // 60 seconds ago
 
-    const { data: existingAttempt, error: fetchError } = await supabase
+    const { data: existingAttempt } = await supabase
       .from('otp_attempts')
       .select('*')
       .eq('phone_number', formattedPhone)
       .gte('reset_at', now.toISOString())
       .maybeSingle();
 
-    if (fetchError) {
-      console.error('Error checking rate limit:', fetchError);
-    }
-
     if (existingAttempt) {
-      if (existingAttempt.attempt_count >= 5) {
-        const resetAt = new Date(existingAttempt.reset_at);
+      const attemptCount = (existingAttempt as { attempt_count: number }).attempt_count || 0;
+      const resetAtStr = (existingAttempt as { reset_at: string }).reset_at;
+      const attemptId = (existingAttempt as { id: string }).id;
+      
+      if (attemptCount >= 5) {
+        const resetAt = new Date(resetAtStr);
         const retryAfterSeconds = Math.ceil((resetAt.getTime() - now.getTime()) / 1000);
         
         console.log(`Rate limited: ${formattedPhone}, retry in ${retryAfterSeconds}s`);
+        
+        // Log rate limit hit
+        await supabase.from('otp_logs').insert({
+          phone_number: formattedPhone,
+          event_type: 'otp_initiated',
+          status: 'failed',
+          error_message: `Rate limited. Retry in ${retryAfterSeconds}s`,
+        } as Record<string, unknown>);
+
         return new Response(
           JSON.stringify({ 
             success: false, 
@@ -155,8 +168,8 @@ serve(async (req) => {
       // Increment attempt count
       await supabase
         .from('otp_attempts')
-        .update({ attempt_count: existingAttempt.attempt_count + 1 })
-        .eq('id', existingAttempt.id);
+        .update({ attempt_count: attemptCount + 1 } as Record<string, unknown>)
+        .eq('id', attemptId);
     } else {
       // Create new rate limit record
       const resetAt = new Date(now.getTime() + 60000); // Reset after 60 seconds
@@ -166,7 +179,7 @@ serve(async (req) => {
           phone_number: formattedPhone,
           attempt_count: 1,
           reset_at: resetAt.toISOString(),
-        });
+        } as Record<string, unknown>);
     }
 
     // Generate timestamp (Unix timestamp in milliseconds)
@@ -208,6 +221,16 @@ serve(async (req) => {
       data = JSON.parse(responseText);
     } catch (e) {
       console.error('Failed to parse Akedly response:', e);
+      
+      // Log parse error
+      await supabase.from('otp_logs').insert({
+        phone_number: formattedPhone,
+        event_type: 'otp_initiated',
+        status: 'failed',
+        error_message: 'Failed to parse Akedly response',
+        metadata: { raw_response: responseText.substring(0, 500) },
+      } as Record<string, unknown>);
+
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid response from OTP service' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -216,6 +239,15 @@ serve(async (req) => {
 
     if (!response.ok || data?.status !== 'success') {
       console.error('Akedly Widget SDK error:', data);
+      
+      // Log Akedly error
+      await supabase.from('otp_logs').insert({
+        phone_number: formattedPhone,
+        event_type: 'otp_initiated',
+        status: 'failed',
+        error_message: data?.message || 'Akedly API error',
+        metadata: { akedly_response: data },
+      } as Record<string, unknown>);
       
       // Handle rate limit from Akedly
       if (response.status === 429) {
@@ -253,6 +285,16 @@ serve(async (req) => {
 
     if (!attemptId || !iframeUrl) {
       console.error('Missing attemptId or iframeUrl in response:', data);
+      
+      // Log missing data
+      await supabase.from('otp_logs').insert({
+        phone_number: formattedPhone,
+        event_type: 'otp_initiated',
+        status: 'failed',
+        error_message: 'Missing attemptId or iframeUrl in Akedly response',
+        metadata: { akedly_response: data },
+      } as Record<string, unknown>);
+
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid response from OTP service' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -260,6 +302,28 @@ serve(async (req) => {
     }
 
     console.log(`Widget SDK attempt created: ${attemptId}`);
+
+    // Pre-create auth_tokens entry with attempt_id so webhook can find it
+    const expiresAt = new Date(now.getTime() + 10 * 60 * 1000); // 10 minutes
+    await supabase.from('auth_tokens').insert({
+      attempt_id: attemptId,
+      transaction_id: attemptId, // Use attemptId as initial transaction_id
+      phone_number: formattedPhone,
+      verified: false,
+      expires_at: expiresAt.toISOString(),
+    } as Record<string, unknown>);
+
+    // Log successful OTP initiation
+    await supabase.from('otp_logs').insert({
+      phone_number: formattedPhone,
+      attempt_id: attemptId,
+      event_type: 'otp_initiated',
+      status: 'success',
+      metadata: { 
+        iframe_url: iframeUrl,
+        expires_at: expiresAt.toISOString(),
+      },
+    } as Record<string, unknown>);
 
     return new Response(
       JSON.stringify({
@@ -276,6 +340,21 @@ serve(async (req) => {
   } catch (error) {
     console.error('Akedly Widget OTP error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Try to log error
+    if (supabase) {
+      try {
+        await supabase.from('otp_logs').insert({
+          phone_number: 'unknown',
+          event_type: 'otp_initiated',
+          status: 'failed',
+          error_message: errorMessage,
+        } as Record<string, unknown>);
+      } catch (e) {
+        console.error('Failed to log error:', e);
+      }
+    }
+
     return new Response(
       JSON.stringify({ success: false, error: 'Internal server error', details: errorMessage }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
