@@ -412,6 +412,36 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          key: string
+          label: string
+          updated_at: string | null
+          value: boolean
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          key: string
+          label: string
+          updated_at?: string | null
+          value?: boolean
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          key?: string
+          label?: string
+          updated_at?: string | null
+          value?: boolean
+        }
+        Relationships: []
+      }
       site_stats: {
         Row: {
           color: string
