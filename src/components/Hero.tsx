@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
+
 export const Hero = () => {
-  const {
-    trackButtonClick
-  } = useMixpanel();
+  const { trackButtonClick } = useMixpanel();
   const sectionRef = useTrackSection('Hero Section');
+  const { data: showGameButton } = useSiteSettings('hero_game_button_visible');
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -67,13 +68,20 @@ export const Hero = () => {
 
         {/* BUTTONS SECTION - Feastables style */}
         <div className="flex flex-col justify-center items-center gap-3 mt-4 mb-4 sm:mb-6 w-full">
-          <Button onClick={() => window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank')} className="h-11 px-6 w-[180px] text-sm font-black rounded-lg text-accent-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide bg-[#1a1349]">
-            العب واكسب جوائز
-          </Button>
-
-          <Button variant="outline" className="h-11 px-6 w-[180px] text-sm font-black rounded-lg bg-background border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide" onClick={() => scrollToSection("#products")}>
-            شوف المراجعات
-          </Button>
+          {showGameButton ? (
+            <>
+              <Button onClick={() => window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank')} className="h-11 px-6 w-[180px] text-sm font-black rounded-lg text-accent-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide bg-[#1a1349]">
+                العب واكسب جوائز
+              </Button>
+              <Button variant="outline" className="h-11 px-6 w-[180px] text-sm font-black rounded-lg bg-background border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide" onClick={() => scrollToSection("#products")}>
+                شوف المراجعات
+              </Button>
+            </>
+          ) : (
+            <Button onClick={() => scrollToSection("#products")} className="h-11 px-6 w-[180px] text-sm font-black rounded-lg text-accent-foreground border-2 border-foreground shadow-bold hover:shadow-bold-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 uppercase tracking-wide bg-[#1a1349]">
+              شوف المراجعات
+            </Button>
+          )}
         </div>
 
         {/* STATS ROW */}
