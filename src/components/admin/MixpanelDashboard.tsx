@@ -13,7 +13,8 @@ import {
   Activity,
   Users,
   TrendingUp,
-  Layers
+  Layers,
+  Filter
 } from "lucide-react";
 
 const trackedEvents = [
@@ -39,7 +40,11 @@ const trackedEvents = [
     icon: ShoppingBag,
     color: "bg-green-500",
     events: [
-      { name: "Product Action", description: "عند الضغط على زر شوف الريڤيو" },
+      { 
+        name: "Product Clicked", 
+        description: "عند الضغط على منتج",
+        properties: ["product_id", "product_name", "category", "verdict", "rating", "brand", "source", "position", "action"]
+      },
     ]
   },
   {
@@ -47,7 +52,11 @@ const trackedEvents = [
     icon: Play,
     color: "bg-red-500",
     events: [
-      { name: "Video Played", description: "عند الضغط على زر شوف الفيديو" },
+      { 
+        name: "Video Clicked", 
+        description: "عند الضغط على فيديو",
+        properties: ["video_id", "video_title", "platform", "category", "views", "source", "position"]
+      },
     ]
   },
   {
@@ -55,7 +64,7 @@ const trackedEvents = [
     icon: Gamepad2,
     color: "bg-yellow-500",
     events: [
-      { name: "Game Action", description: "عند الضغط على يلا نلعب أو المتصدرين" },
+      { name: "Game Action", description: "عند الضغط على يلا نلعب أو المتصدرين", properties: ["action"] },
     ]
   },
   {
@@ -63,7 +72,35 @@ const trackedEvents = [
     icon: MousePointer,
     color: "bg-orange-500",
     events: [
-      { name: "Ad Clicked", description: "عند الضغط على أي إعلان" },
+      { 
+        name: "Ad Clicked", 
+        description: "عند الضغط على أي إعلان",
+        properties: ["ad_id", "ad_title", "card_type", "click_type", "position", "redirect_url"]
+      },
+    ]
+  },
+  {
+    category: "Filter Changes",
+    icon: Filter,
+    color: "bg-cyan-500",
+    events: [
+      { 
+        name: "Filter Changed", 
+        description: "عند تغيير الفلاتر",
+        properties: ["filter_type", "filter_value", "source"]
+      },
+    ]
+  },
+  {
+    category: "CTA Clicks",
+    icon: MousePointer,
+    color: "bg-indigo-500",
+    events: [
+      { 
+        name: "CTA Clicked", 
+        description: "عند الضغط على أزرار الـ CTA",
+        properties: ["button_name", "destination", "source"]
+      },
     ]
   },
   {
@@ -72,14 +109,6 @@ const trackedEvents = [
     color: "bg-pink-500",
     events: [
       { name: "Form Submitted", description: "عند إرسال طلب إعلان" },
-    ]
-  },
-  {
-    category: "Button Clicks",
-    icon: MousePointer,
-    color: "bg-indigo-500",
-    events: [
-      { name: "Button Clicked", description: "عند الضغط على أزرار محددة" },
     ]
   },
 ];
@@ -198,7 +227,16 @@ const MixpanelDashboard = () => {
               {category.events.map((event) => (
                 <div key={event.name} className="bg-muted/50 rounded-lg p-3">
                   <p className="font-bold text-sm text-foreground">{event.name}</p>
-                  <p className="text-xs text-muted-foreground">{event.description}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{event.description}</p>
+                  {'properties' in event && event.properties && (
+                    <div className="flex flex-wrap gap-1">
+                      {event.properties.map((prop) => (
+                        <Badge key={prop} variant="outline" className="text-[10px] px-1.5 py-0">
+                          {prop}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </CardContent>
@@ -209,21 +247,68 @@ const MixpanelDashboard = () => {
       {/* Event Properties Info */}
       <Card className="border-2 border-foreground shadow-bold">
         <CardHeader>
-          <CardTitle className="text-lg font-bold">Event Properties</CardTitle>
+          <CardTitle className="text-lg font-bold">Event Properties Summary</CardTitle>
           <CardDescription>
-            كل حدث يتضمن هذه الخصائص الإضافية
+            كل حدث يتضمن هذه الخصائص الإضافية حسب النوع
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <PropertyCard name="timestamp" description="وقت الحدث" />
-            <PropertyCard name="page_path" description="مسار الصفحة" />
-            <PropertyCard name="page_name" description="اسم الصفحة" />
-            <PropertyCard name="referrer" description="المصدر" />
-            <PropertyCard name="product_id" description="معرف المنتج" />
-            <PropertyCard name="product_name" description="اسم المنتج" />
-            <PropertyCard name="video_id" description="معرف الفيديو" />
-            <PropertyCard name="ad_id" description="معرف الإعلان" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <ShoppingBag className="w-4 h-4 text-green-500" />
+                Product Clicked
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                <PropertyCard name="product_id" description="معرف المنتج" />
+                <PropertyCard name="product_name" description="اسم المنتج" />
+                <PropertyCard name="category" description="التصنيف" />
+                <PropertyCard name="verdict" description="2استكا / فاستكا" />
+                <PropertyCard name="rating" description="التقييم (1-10)" />
+                <PropertyCard name="brand" description="الماركة" />
+                <PropertyCard name="source" description="المصدر" />
+                <PropertyCard name="position" description="الترتيب في القائمة" />
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <Play className="w-4 h-4 text-red-500" />
+                Video Clicked
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                <PropertyCard name="video_id" description="معرف الفيديو" />
+                <PropertyCard name="video_title" description="عنوان الفيديو" />
+                <PropertyCard name="platform" description="المنصة" />
+                <PropertyCard name="category" description="نوع المحتوى" />
+                <PropertyCard name="views" description="عدد المشاهدات" />
+                <PropertyCard name="source" description="المصدر" />
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <MousePointer className="w-4 h-4 text-orange-500" />
+                Ad Clicked
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                <PropertyCard name="ad_id" description="معرف الإعلان" />
+                <PropertyCard name="ad_title" description="عنوان الإعلان" />
+                <PropertyCard name="card_type" description="1x أو 2x" />
+                <PropertyCard name="click_type" description="card أو button" />
+                <PropertyCard name="position" description="الترتيب" />
+                <PropertyCard name="redirect_url" description="رابط التوجيه" />
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                <Filter className="w-4 h-4 text-cyan-500" />
+                Filter Changed
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                <PropertyCard name="filter_type" description="نوع الفلتر" />
+                <PropertyCard name="filter_value" description="القيمة المختارة" />
+                <PropertyCard name="source" description="الصفحة/القسم" />
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -294,9 +379,9 @@ const StatCard = ({ icon: Icon, label, value, color }: {
 );
 
 const PropertyCard = ({ name, description }: { name: string; description: string }) => (
-  <div className="bg-muted/50 rounded-lg p-3">
-    <code className="text-xs font-mono text-primary">{name}</code>
-    <p className="text-xs text-muted-foreground mt-1">{description}</p>
+  <div className="bg-muted/50 rounded-lg p-2">
+    <code className="text-[10px] font-mono text-primary">{name}</code>
+    <p className="text-[10px] text-muted-foreground">{description}</p>
   </div>
 );
 

@@ -21,8 +21,23 @@ export const ProductList = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "2استكا" | "فاستكا">("all");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const { trackProductClick } = useMixpanel();
+  const { trackProductClick, trackFilterChange } = useMixpanel();
   const sectionRef = useTrackSection('Products Section');
+
+  const handleFilterChange = (filter: "all" | "2استكا" | "فاستكا") => {
+    setActiveFilter(filter);
+    trackFilterChange('verdict', filter, 'homepage');
+  };
+
+  const handleProductClick = (product: Product, index: number) => {
+    trackProductClick(product.id, product.name, {
+      action: 'view_review',
+      category: product.category,
+      verdict: product.verdict as '2استكا' | 'فاستكا',
+      source: 'homepage',
+      position: index + 1,
+    });
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -80,7 +95,7 @@ export const ProductList = () => {
         <div className="flex justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 overflow-x-auto pb-2 px-2 relative z-10">
           <Button 
             variant={activeFilter === "all" ? "default" : "outline"} 
-            onClick={() => setActiveFilter("all")} 
+            onClick={() => handleFilterChange("all")} 
             className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${
               activeFilter === "all" 
                 ? "bg-secondary text-secondary-foreground shadow-bold-sm" 
@@ -91,7 +106,7 @@ export const ProductList = () => {
           </Button>
           <Button 
             variant={activeFilter === "2استكا" ? "default" : "outline"} 
-            onClick={() => setActiveFilter("2استكا")} 
+            onClick={() => handleFilterChange("2استكا")} 
             className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${
               activeFilter === "2استكا" 
                 ? "bg-sky text-foreground shadow-bold-sm" 
@@ -103,7 +118,7 @@ export const ProductList = () => {
           </Button>
           <Button 
             variant={activeFilter === "فاستكا" ? "default" : "outline"} 
-            onClick={() => setActiveFilter("فاستكا")} 
+            onClick={() => handleFilterChange("فاستكا")} 
             className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm whitespace-nowrap h-9 sm:h-10 border-2 border-foreground ${
               activeFilter === "فاستكا" 
                 ? "bg-accent text-accent-foreground shadow-bold-sm" 
@@ -171,7 +186,12 @@ export const ProductList = () => {
                   </p>
                   <div className="mt-auto">
                     {product.review_url ? (
-                      <a href={product.review_url} target="_blank" rel="noopener noreferrer">
+                      <a 
+                        href={product.review_url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={() => handleProductClick(product, idx)}
+                      >
                         <Button size="sm" className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 text-[10px] sm:text-sm h-8 sm:h-9">
                           شوف الريڤيو 🎬
                         </Button>
