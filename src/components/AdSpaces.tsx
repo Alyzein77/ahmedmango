@@ -69,7 +69,7 @@ export const AdSpaces = () => {
     return null;
   }
 
-  const trackClick = async (adId: string, clickType: "card" | "button") => {
+  const trackClickDb = async (adId: string, clickType: "card" | "button") => {
     try {
       await supabase.functions.invoke("track-ad-click", {
         body: { ad_space_id: adId, click_type: clickType },
@@ -79,19 +79,31 @@ export const AdSpaces = () => {
     }
   };
 
-  const handleAdClick = (ad: AdSpace) => {
+  const handleAdClick = (ad: AdSpace, index: number) => {
     if (ad.redirect_url) {
-      trackClick(ad.id, "card");
-      trackAdClick(ad.id, ad.title || undefined);
+      trackClickDb(ad.id, "card");
+      trackAdClick(ad.id, {
+        ad_title: ad.title || undefined,
+        card_type: ad.card_type as '1x' | '2x',
+        click_type: 'card',
+        position: index + 1,
+        redirect_url: ad.redirect_url,
+      });
       window.open(ad.redirect_url, "_blank");
     }
   };
 
-  const handleButtonClick = (e: React.MouseEvent, ad: AdSpace) => {
+  const handleButtonClick = (e: React.MouseEvent, ad: AdSpace, index: number) => {
     e.stopPropagation();
     if (ad.button_link) {
-      trackClick(ad.id, "button");
-      trackAdClick(ad.id, ad.title || undefined);
+      trackClickDb(ad.id, "button");
+      trackAdClick(ad.id, {
+        ad_title: ad.title || undefined,
+        card_type: ad.card_type as '1x' | '2x',
+        click_type: 'button',
+        position: index + 1,
+        redirect_url: ad.button_link,
+      });
       window.open(ad.button_link, "_blank");
     }
   };
@@ -107,10 +119,10 @@ export const AdSpaces = () => {
       />
       <div className="container mx-auto max-w-6xl space-y-4 sm:space-y-6">
         {/* Large Ads (2x) */}
-        {largeAds.map((ad) => (
+        {largeAds.map((ad, index) => (
           <div
             key={ad.id}
-            onClick={() => handleAdClick(ad)}
+            onClick={() => handleAdClick(ad, index)}
             className={`relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-4 border-foreground shadow-bold z-10 ${
               ad.redirect_url ? "cursor-pointer hover:shadow-bold-sm transition-all" : ""
             }`}
@@ -190,7 +202,7 @@ export const AdSpaces = () => {
                   {/* Button */}
                   {ad.button_text && (
                     <Button
-                      onClick={(e) => handleButtonClick(e, ad)}
+                      onClick={(e) => handleButtonClick(e, ad, largeAds.indexOf(ad))}
                       className="font-black uppercase text-sm sm:text-base px-6 py-2 rounded-lg border-2 border-foreground shadow-bold hover:shadow-bold-sm transition-all"
                       style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
                     >
@@ -206,10 +218,10 @@ export const AdSpaces = () => {
         {/* Small Ads (1x) */}
         {smallAds.length > 0 && (
           <div className="grid grid-cols-2 gap-3 sm:gap-6 relative z-10">
-            {smallAds.map((ad) => (
+            {smallAds.map((ad, index) => (
               <Card
                 key={ad.id}
-                onClick={() => handleAdClick(ad)}
+                onClick={() => handleAdClick(ad, largeAds.length + index)}
                 className={`relative overflow-hidden hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-bold-sm transition-all ${
                   ad.redirect_url ? "cursor-pointer" : ""
                 }`}
@@ -276,7 +288,7 @@ export const AdSpaces = () => {
                       {/* Button */}
                       {ad.button_text && (
                         <Button
-                          onClick={(e) => handleButtonClick(e, ad)}
+                          onClick={(e) => handleButtonClick(e, ad, largeAds.length + index)}
                           className="font-black uppercase text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 rounded-lg border-2 border-foreground shadow-bold-sm hover:shadow-none transition-all mt-2"
                           style={{ backgroundColor: ad.button_color || "#1a1349", color: "#fff" }}
                         >

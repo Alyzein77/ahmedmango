@@ -4,17 +4,18 @@ import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 
 export const MangoGame = () => {
-  const { trackGamePlay, trackButtonClick } = useMixpanel();
+  const { trackGamePlay, trackCTAClick } = useMixpanel();
   const sectionRef = useTrackSection('Game Section');
 
   const handlePlayGame = () => {
     trackGamePlay('start');
-    trackButtonClick('Play Game', 'Game Section');
+    trackCTAClick('يلا نلعب', 'kharbsh_game', 'game_section');
     window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank');
   };
 
   const handleLeaderboard = () => {
-    trackButtonClick('View Leaderboard', 'Game Section');
+    trackGamePlay('leaderboard');
+    trackCTAClick('المتصدرين', 'kharbsh_leaderboard', 'game_section');
     window.open('https://www.kharbsh.com/ahmed-mango/campaign/3775071ae46c47f4b41f5688e66406a0', '_blank');
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="game" className="relative py-12 sm:py-20 px-3 sm:px-4 overflow-hidden">

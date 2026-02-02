@@ -6,6 +6,7 @@ import { Loader2, Check, X, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useMixpanel } from "@/hooks/useMixpanel";
 
 export interface Product {
   id: string;
@@ -29,6 +30,29 @@ const Products = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "2استكا" | "فاستكا">("all");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [categories, setCategories] = useState<string[]>(["all"]);
+  const { trackProductClick, trackFilterChange } = useMixpanel();
+
+  const handleVerdictFilter = (verdict: "all" | "2استكا" | "فاستكا") => {
+    setActiveFilter(verdict);
+    trackFilterChange('verdict', verdict, 'products_page');
+  };
+
+  const handleCategoryFilter = (category: string) => {
+    setActiveCategory(category);
+    trackFilterChange('category', category, 'products_page');
+  };
+
+  const handleReviewClick = (product: Product, index: number) => {
+    trackProductClick(product.id, product.name, {
+      action: 'view_review',
+      category: product.category,
+      verdict: product.verdict as '2استكا' | 'فاستكا',
+      rating: product.rating,
+      brand: product.brand || undefined,
+      source: 'products_page',
+      position: index + 1,
+    });
+  };
 
   // Fetch unique categories from database
   useEffect(() => {
@@ -130,7 +154,7 @@ const Products = () => {
             <div className="flex justify-center gap-2 sm:gap-3 mb-4">
               <Button 
                 variant={activeFilter === "all" ? "default" : "outline"} 
-                onClick={() => setActiveFilter("all")} 
+                onClick={() => handleVerdictFilter("all")} 
                 className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm h-9 sm:h-10 border-2 border-foreground ${
                   activeFilter === "all" 
                     ? "bg-secondary text-secondary-foreground shadow-bold-sm" 
@@ -141,7 +165,7 @@ const Products = () => {
               </Button>
               <Button 
                 variant={activeFilter === "2استكا" ? "default" : "outline"} 
-                onClick={() => setActiveFilter("2استكا")} 
+                onClick={() => handleVerdictFilter("2استكا")} 
                 className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm h-9 sm:h-10 border-2 border-foreground ${
                   activeFilter === "2استكا" 
                     ? "bg-sky text-foreground shadow-bold-sm" 
@@ -153,7 +177,7 @@ const Products = () => {
               </Button>
               <Button 
                 variant={activeFilter === "فاستكا" ? "default" : "outline"} 
-                onClick={() => setActiveFilter("فاستكا")} 
+                onClick={() => handleVerdictFilter("فاستكا")} 
                 className={`rounded-full font-bold px-4 sm:px-6 text-xs sm:text-sm h-9 sm:h-10 border-2 border-foreground ${
                   activeFilter === "فاستكا" 
                     ? "bg-accent text-accent-foreground shadow-bold-sm" 
@@ -172,7 +196,7 @@ const Products = () => {
                   key={cat}
                   variant="ghost"
                   size="sm"
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => handleCategoryFilter(cat)}
                   className={`rounded-full font-bold text-xs px-3 h-8 ${
                     activeCategory === cat
                       ? "bg-foreground text-background"
@@ -258,7 +282,12 @@ const Products = () => {
                       </p>
                       <div className="mt-auto">
                         {product.review_url ? (
-                          <a href={product.review_url} target="_blank" rel="noopener noreferrer">
+                          <a 
+                            href={product.review_url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={() => handleReviewClick(product, idx)}
+                          >
                             <Button size="sm" className="w-full rounded-full font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 text-[10px] sm:text-sm h-8 sm:h-9 border-2 border-foreground">
                               شوف الريڤيو 🎬
                             </Button>

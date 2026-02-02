@@ -60,8 +60,25 @@ export const useMixpanel = () => {
     track('Product Viewed', { product_id: productId, product_name: productName, category });
   }, [track]);
 
-  const trackProductClick = useCallback((productId: string, productName: string, action: string) => {
-    track('Product Action', { product_id: productId, product_name: productName, action });
+  // Enhanced product tracking with rich properties
+  const trackProductClick = useCallback((
+    productId: string, 
+    productName: string, 
+    properties: {
+      action: 'view_review' | 'card_click';
+      category: string;
+      verdict: '2استكا' | 'فاستكا';
+      rating?: number;
+      brand?: string;
+      source: 'homepage' | 'products_page' | 'compare_page';
+      position?: number;
+    }
+  ) => {
+    track('Product Clicked', {
+      product_id: productId,
+      product_name: productName,
+      ...properties,
+    });
   }, [track]);
 
   const trackSectionView = useCallback((sectionName: string) => {
@@ -72,8 +89,40 @@ export const useMixpanel = () => {
     track('Game Action', { action, score });
   }, [track]);
 
-  const trackAdClick = useCallback((adId: string, adTitle?: string) => {
-    track('Ad Clicked', { ad_id: adId, ad_title: adTitle });
+  // Enhanced ad tracking with position and type
+  const trackAdClick = useCallback((
+    adId: string,
+    properties: {
+      ad_title?: string;
+      card_type: '1x' | '2x';
+      click_type: 'card' | 'button';
+      position: number;
+      redirect_url?: string;
+    }
+  ) => {
+    track('Ad Clicked', {
+      ad_id: adId,
+      ...properties,
+    });
+  }, [track]);
+
+  // Enhanced video tracking
+  const trackVideoClick = useCallback((
+    videoId: string,
+    videoTitle: string,
+    properties: {
+      platform: 'YouTube' | 'TikTok' | 'Instagram' | 'Facebook';
+      category?: string;
+      views?: number;
+      source: 'homepage' | 'content_page';
+      position?: number;
+    }
+  ) => {
+    track('Video Clicked', {
+      video_id: videoId,
+      video_title: videoTitle,
+      ...properties,
+    });
   }, [track]);
 
   const trackVideoPlay = useCallback((videoId: string, videoTitle: string, platform: string) => {
@@ -82,6 +131,32 @@ export const useMixpanel = () => {
 
   const trackNavigation = useCallback((from: string, to: string) => {
     track('Navigation', { from, to });
+  }, [track]);
+
+  // Filter tracking
+  const trackFilterChange = useCallback((
+    filterType: 'verdict' | 'category' | 'platform',
+    filterValue: string,
+    source: string
+  ) => {
+    track('Filter Changed', {
+      filter_type: filterType,
+      filter_value: filterValue,
+      source,
+    });
+  }, [track]);
+
+  // CTA button tracking
+  const trackCTAClick = useCallback((
+    buttonName: string,
+    destination: string,
+    source: string
+  ) => {
+    track('CTA Clicked', {
+      button_name: buttonName,
+      destination,
+      source,
+    });
   }, [track]);
 
   return {
@@ -95,7 +170,10 @@ export const useMixpanel = () => {
     trackSectionView,
     trackGamePlay,
     trackAdClick,
+    trackVideoClick,
     trackVideoPlay,
     trackNavigation,
+    trackFilterChange,
+    trackCTAClick,
   };
 };

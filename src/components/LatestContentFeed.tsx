@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowLeft, Eye } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
+import { useMixpanel } from "@/hooks/useMixpanel";
 
 type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
@@ -59,6 +60,7 @@ export const LatestContentFeed = () => {
   const [content, setContent] = useState<UnifiedContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
+  const { trackVideoClick, trackFilterChange } = useMixpanel();
 
   useEffect(() => {
     fetchContent();
@@ -95,6 +97,11 @@ export const LatestContentFeed = () => {
     }
   };
 
+  const handlePlatformFilter = (platform: Platform | "all") => {
+    setActiveFilter(platform);
+    trackFilterChange('platform', platform, 'content_feed');
+  };
+
   const filteredContent = activeFilter === "all" 
     ? content 
     : content.filter(item => item.platform === activeFilter);
@@ -126,7 +133,7 @@ export const LatestContentFeed = () => {
                 key={platform}
                 variant={isActive ? "default" : "outline"}
                 size="sm"
-                onClick={() => setActiveFilter(platform)}
+                onClick={() => handlePlatformFilter(platform)}
                 className={`rounded-full font-bold gap-2 transition-all ${
                   isActive 
                     ? "bg-primary text-primary-foreground shadow-lg scale-105" 
@@ -156,8 +163,13 @@ export const LatestContentFeed = () => {
             {/* Mobile: Horizontal Scroll */}
             <div className="sm:hidden overflow-x-auto pb-4 -mx-3 px-3">
               <div className="flex gap-4" style={{ width: "max-content" }}>
-                {filteredContent.slice(0, 4).map((item) => (
-                  <ContentCard key={item.id} item={item} />
+                {filteredContent.slice(0, 4).map((item, idx) => (
+                  <ContentCard 
+                    key={item.id} 
+                    item={item} 
+                    index={idx}
+                    onVideoClick={trackVideoClick}
+                  />
                 ))}
               </div>
             </div>
@@ -165,7 +177,13 @@ export const LatestContentFeed = () => {
             {/* Desktop: Grid */}
             <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {filteredContent.slice(0, 4).map((item, idx) => (
-                <ContentCard key={item.id} item={item} delay={idx * 0.1} />
+                <ContentCard 
+                  key={item.id} 
+                  item={item} 
+                  delay={idx * 0.1} 
+                  index={idx}
+                  onVideoClick={trackVideoClick}
+                />
               ))}
             </div>
 
@@ -191,12 +209,35 @@ export const LatestContentFeed = () => {
 interface ContentCardProps {
   item: UnifiedContent;
   delay?: number;
+  index: number;
+  onVideoClick: (
+    videoId: string,
+    videoTitle: string,
+    properties: {
+      platform: 'YouTube' | 'TikTok' | 'Instagram' | 'Facebook';
+      category?: string;
+      views?: number;
+      source: 'homepage' | 'content_page';
+      position?: number;
+    }
+  ) => void;
 }
 
-const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
+const ContentCard = ({ item, delay = 0, index, onVideoClick }: ContentCardProps) => {
   const platformCfg = platformConfig[item.platform];
   const typeColor = contentTypeColors[item.content_type];
   const typeLabel = contentTypeLabels[item.content_type];
+
+  const handleClick = () => {
+    onVideoClick(item.id, item.title, {
+      platform: item.platform,
+      category: item.content_type,
+      views: item.views || undefined,
+      source: 'homepage',
+      position: index + 1,
+    });
+    window.open(item.link_url, "_blank");
+  };
 
   return (
     <Card
@@ -253,7 +294,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
           size="sm"
           variant="outline"
           className="mt-3 w-full rounded-full font-bold border-primary text-primary hover:bg-primary hover:text-primary-foreground gap-2"
-          onClick={() => window.open(item.link_url, "_blank")}
+          onClick={handleClick}
         >
           <ExternalLink className="w-4 h-4" />
           افتح
