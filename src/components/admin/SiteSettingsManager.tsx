@@ -15,8 +15,11 @@ interface SiteSetting {
   description: string | null;
 }
 
+import { MousePointer2 } from "lucide-react";
+
 const settingIcons: Record<string, React.ReactNode> = {
   game_section_visible: <Gamepad2 className="w-5 h-5" />,
+  hero_game_button_visible: <MousePointer2 className="w-5 h-5" />,
 };
 
 const SiteSettingsManager = () => {
