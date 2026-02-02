@@ -13,13 +13,14 @@ import MixpanelDashboard from "./MixpanelDashboard";
 import EngagementDashboard from "./EngagementDashboard";
 import NotificationEmailsManager from "./NotificationEmailsManager";
 import OtpLogsManager from "./OtpLogsManager";
+import SiteSettingsManager from "./SiteSettingsManager";
 
 interface AdminDashboardProps {
   user: User;
   onLogout: () => void;
 }
 
-type AdminView = "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications" | "otp-logs";
+type AdminView = "products" | "videos" | "tiktok" | "social" | "ads" | "ad-requests" | "stats" | "analytics" | "mixpanel" | "engagement" | "notifications" | "otp-logs" | "settings";
 
 const viewTitles: Record<AdminView, string> = {
   products: "إدارة المنتجات",
@@ -34,6 +35,7 @@ const viewTitles: Record<AdminView, string> = {
   engagement: "نقاط التفاعل",
   notifications: "إيميلات الإشعارات",
   "otp-logs": "سجلات OTP",
+  settings: "إعدادات الموقع",
 };
 
 const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
@@ -73,6 +75,7 @@ const AdminDashboard = ({ user, onLogout }: AdminDashboardProps) => {
             {currentView === "engagement" && <EngagementDashboard />}
             {currentView === "notifications" && <NotificationEmailsManager />}
             {currentView === "otp-logs" && <OtpLogsManager />}
+            {currentView === "settings" && <SiteSettingsManager />}
           </div>
         </div>
       </main>
