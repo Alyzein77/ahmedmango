@@ -31,6 +31,17 @@ import {
 
 type Step = "otp" | "iframe-verify" | "about-you" | "about-brand" | "message" | "success";
 
+// Utility to scroll to top (especially for mobile after OTP verification)
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  document.body.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  // Fallback for mobile browsers
+  setTimeout(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, 50);
+};
+
 const AdRequest = () => {
   const { toast } = useToast();
   const { trackFormSubmission, trackButtonClick } = useMixpanel();
@@ -124,6 +135,9 @@ const AdRequest = () => {
     setIsPollingForVerification(false);
     setShowIframeModal(false);
     setCurrentStep("about-you");
+    
+    // Scroll to top after verification (important for mobile)
+    scrollToTop();
     
     toast({
       title: "تم التأكيد!",
