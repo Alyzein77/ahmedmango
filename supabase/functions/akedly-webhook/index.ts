@@ -49,7 +49,7 @@ serve(async (req) => {
     const transactionStatus = payload.transaction?.status || payload.transactionStatus;
     
     // Check if verification was successful
-    if (status !== 'success' && transactionStatus !== 'Successful') {
+    if (status !== 'success') {
       console.log('Verification not successful:', { status, transactionStatus });
       
       // Log failed webhook
