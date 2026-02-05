@@ -23,7 +23,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const { trackProductClick } = useMixpanel();
 
   const handleReviewClick = () => {
-    trackProductClick(product.id, product.name, 'view_review');
+    trackProductClick(product.id, product.name, {
+      action: 'view_review',
+      category: product.category,
+      verdict: product.verdict as '2استكا' | 'فاستكا',
+      rating: product.rating,
+      brand: product.brand || undefined,
+      source: 'homepage',
+    });
   };
 
   return (
