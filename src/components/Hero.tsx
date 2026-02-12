@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { DottedSurface } from "@/components/ui/dotted-surface";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 export const Hero = () => {
   const { trackButtonClick } = useMixpanel();
@@ -17,15 +17,11 @@ export const Hero = () => {
       });
     }
   };
-  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins">
+      <BackgroundBeamsWithCollision className="min-h-[500px] pt-6 pb-16 sm:pt-10 sm:pb-20">
 
-      {/* Dotted Surface Background */}
-      <div className="absolute inset-0" style={{ zIndex: 0 }}>
-        <DottedSurface />
-      </div>
-
-      {/* Content Container - z-10 above grid */}
-      <div className="relative w-full flex flex-col items-center px-4 max-w-md mx-auto" style={{ zIndex: 10 }}>
+      {/* Content Container */}
+      <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
         
         {/* TOP SECTION — CENTERED IMAGE WITH MANGO FRAME */}
         <div className="relative flex items-center justify-center mb-8 sm:mb-10">
@@ -87,6 +83,8 @@ export const Hero = () => {
         {/* STATS ROW */}
         
       </div>
+
+      </BackgroundBeamsWithCollision>
 
       {/* Custom slow spin animation */}
       <style>{`
