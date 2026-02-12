@@ -113,7 +113,10 @@ export default {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.02)" },
         },
-        "float": {
+        "grid": {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-5px)" },
         },
@@ -125,6 +128,7 @@ export default {
         "slide-up": "slide-up 0.3s ease-out",
         "wiggle": "wiggle 0.3s ease-in-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "grid": "grid 15s linear infinite",
         "float": "float 2s ease-in-out infinite",
       },
     },

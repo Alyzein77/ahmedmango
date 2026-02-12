@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { RetroGrid } from "@/components/ui/retro-grid";
 
 export const Hero = () => {
   const { trackButtonClick } = useMixpanel();
@@ -17,6 +18,9 @@ export const Hero = () => {
     }
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20 bg-transparent">
+
+      {/* Retro Grid Background */}
+      <RetroGrid angle={65} />
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
@@ -49,13 +53,14 @@ export const Hero = () => {
 
         {/* TEXT STACKED UNDER THE IMAGE */}
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-oi sm:text-3xl leading-none text-foreground tracking-tight mb-2 text-center text-4xl">
-            أحمد مانجو
+          <h1 className="font-oi sm:text-3xl leading-none tracking-tight mb-2 text-center text-4xl text-secondary">
+            <span className="text-primary">أحمد</span>{" "}
+            <span className="text-secondary">مانجو</span>
           </h1>
           
           <h2 className="text-base sm:text-lg leading-tight mb-2 font-lalezar">
             <span className="text-3xl font-black text-primary">استكة</span>{" "}
-            <span className="text-foreground text-3xl font-black">ولا فستكة؟</span>
+            <span className="text-secondary text-3xl font-black">ولا فستكة؟</span>
           </h2>
         </div>
 
