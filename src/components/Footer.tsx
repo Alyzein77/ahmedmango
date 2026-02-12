@@ -94,35 +94,8 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact & Social */}
-          <div className="text-center md:text-right flex flex-col items-center md:items-start">
-            <h4 className="font-black text-sm sm:text-lg mb-3 sm:mb-4 text-primary uppercase">تواصل معنا</h4>
-            
-            {/* Social Icons */}
-            <div className="flex gap-2 sm:gap-3 justify-center mb-3 sm:mb-4 flex-wrap">
-              {socialLinks.map((social) => {
-                const IconComponent = platformIcons[social.platform];
-                return (
-                  <button 
-                    key={social.id}
-                    type="button"
-                    onClick={() => openExternalLink(social.url)}
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
-                    aria-label={social.platform}
-                    title={social.platform}
-                  >
-                    {social.icon ? (
-                      <span className="text-lg pointer-events-none">{social.icon}</span>
-                    ) : IconComponent ? (
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
-                    ) : (
-                      <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-            
+          {/* Contact */}
+          <div className="text-center md:text-right flex flex-col items-center md:items-start gap-3 sm:gap-4">
             {/* Contact Button */}
             <Link to="/advertise">
               <Button 
@@ -133,6 +106,27 @@ export const Footer = () => {
                 تواصل للإعلانات
               </Button>
             </Link>
+
+            {/* Message on social */}
+            <p className="text-secondary-foreground/80 text-xs sm:text-sm font-bold">أو راسلني على</p>
+            <div className="flex gap-3 items-center">
+              <button
+                type="button"
+                onClick={() => openExternalLink('https://ig.me/m/ahmedmango.official')}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                aria-label="Message on Instagram"
+              >
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
+              </button>
+              <button
+                type="button"
+                onClick={() => openExternalLink('https://www.tiktok.com/@ahmed_mangoo')}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary border-2 border-primary-foreground flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                aria-label="Message on TikTok"
+              >
+                <Music2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground pointer-events-none" />
+              </button>
+            </div>
           </div>
         </div>
 
