@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Trophy, Gift, Zap, Star } from "lucide-react";
 import mangoIcon from "@/assets/mango-icon.png";
+import mangoLogoFull from "@/assets/mango-logo-full.png";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 
@@ -54,22 +55,24 @@ export const MangoGame = () => {
             {/* Game header image - visible on mobile with bold outlines */}
             <div className="mb-4 sm:mb-6 lg:hidden">
               <div 
-                className="relative w-full max-w-xs mx-auto rounded-2xl p-[3px]"
+                className="relative w-full max-w-xs mx-auto rounded-2xl overflow-hidden border-4"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(45, 100%, 55%), hsl(30, 100%, 50%))',
-                  boxShadow: '0 20px 50px -10px hsla(260, 60%, 20%, 0.5), 0 10px 30px -5px hsla(260, 60%, 30%, 0.3)'
+                  borderColor: '#1A1349',
+                  boxShadow: '0 20px 50px -10px hsla(260, 60%, 20%, 0.5)',
+                  background: 'radial-gradient(circle, hsl(40, 100%, 60%) 0%, hsl(30, 100%, 50%) 100%)'
                 }}
               >
-                <div className="rounded-[14px] relative">
-                  <img 
-                    alt="العب واكسب مع أحمد مانجو" 
-                    className="w-full rounded-lg" 
-                    src="/lovable-uploads/play-and-win-header.png" 
-                  />
-                  <div className="absolute bottom-3 left-0 right-0 text-center">
-                    <h3 className="text-2xl font-black font-lalezar text-white drop-shadow-[0_3px_0_#1A1349]">العب واكسب</h3>
-                    <p className="text-sm font-bold text-white drop-shadow-[0_2px_0_#1A1349]">مع أحمد مانجو 🥭</p>
-                  </div>
+                {/* Pop-art rays */}
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'url(/images/game-rays-bg.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  opacity: 0.3
+                }} />
+                <div className="relative flex flex-col items-center py-6 px-4">
+                  <img src={mangoLogoFull} alt="أحمد مانجو" className="w-36 h-36 object-contain mb-3" />
+                  <h3 className="text-2xl font-black font-lalezar text-white drop-shadow-[0_3px_0_#1A1349]">العب واكسب</h3>
+                  <p className="text-sm font-bold text-white drop-shadow-[0_2px_0_#1A1349]">مع أحمد مانجو 🥭</p>
                 </div>
               </div>
             </div>
@@ -201,27 +204,24 @@ export const MangoGame = () => {
           {/* Right Side - Game Header Image with bold outlines */}
           <div className="order-2 w-full hidden lg:flex justify-center">
             <div 
-              className="relative rounded-2xl p-[3px] animate-float"
+              className="relative rounded-2xl animate-float overflow-hidden border-4"
               style={{
-                background: 'linear-gradient(135deg, hsl(45, 100%, 55%), hsl(30, 100%, 50%))',
-                boxShadow: '0 25px 60px -15px hsla(260, 60%, 20%, 0.5), 0 15px 40px -10px hsla(260, 60%, 30%, 0.3)'
+                borderColor: '#1A1349',
+                boxShadow: '0 25px 60px -15px hsla(260, 60%, 20%, 0.5)',
+                background: 'radial-gradient(circle, hsl(40, 100%, 60%) 0%, hsl(30, 100%, 50%) 100%)'
               }}
             >
-              <div 
-                className="rounded-[14px] p-[10px] relative"
-                style={{
-                  background: 'hsl(260, 50%, 25%)'
-                }}
-              >
-                <img 
-                  src="/lovable-uploads/play-and-win-header.png" 
-                  alt="العب واكسب مع أحمد مانجو" 
-                  className="w-full max-w-md rounded-xl" 
-                />
-                <div className="absolute bottom-5 left-0 right-0 text-center">
-                  <h3 className="text-4xl font-black font-lalezar text-white drop-shadow-[0_4px_0_#1A1349]">العب واكسب</h3>
-                  <p className="text-lg font-bold text-white drop-shadow-[0_3px_0_#1A1349]">مع أحمد مانجو 🥭</p>
-                </div>
+              {/* Pop-art rays */}
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'url(/images/game-rays-bg.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: 0.3
+              }} />
+              <div className="relative flex flex-col items-center py-10 px-12">
+                <img src={mangoLogoFull} alt="أحمد مانجو" className="w-52 h-52 object-contain mb-4" />
+                <h3 className="text-4xl font-black font-lalezar text-white drop-shadow-[0_4px_0_#1A1349]">العب واكسب</h3>
+                <p className="text-lg font-bold text-white drop-shadow-[0_3px_0_#1A1349]">مع أحمد مانجو 🥭</p>
               </div>
             </div>
           </div>
