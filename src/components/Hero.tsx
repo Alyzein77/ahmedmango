@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useMixpanel } from "@/hooks/useMixpanel";
-import ThermodynamicGrid from "@/components/ui/interactive-thermodynamic-grid";
 import { useTrackSection } from "@/hooks/useTrackSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 
@@ -17,11 +16,7 @@ export const Hero = () => {
       });
     }
   };
-  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Interactive Thermodynamic Background */}
-      <div className="absolute inset-0">
-        <ThermodynamicGrid resolution={20} coolingFactor={0.96} className="w-full h-full" />
-      </div>
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20 bg-transparent">
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
