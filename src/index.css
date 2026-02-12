@@ -132,6 +132,13 @@
 
   html {
     scroll-behavior: smooth;
+    cursor: url('/favicon.jpg') 16 16, auto;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      cursor: auto;
+    }
   }
 
   body {
