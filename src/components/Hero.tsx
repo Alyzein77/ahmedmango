@@ -19,8 +19,8 @@ export const Hero = () => {
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20 bg-transparent">
 
-      {/* Retro Grid Background - z-0 to stay behind all content */}
-      <RetroGrid angle={65} className="z-0" />
+      {/* Retro Grid Background */}
+      <RetroGrid angle={65} />
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
