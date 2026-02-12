@@ -10,11 +10,10 @@ export function RetroGrid({
   return (
     <div
       className={cn(
-        "pointer-events-none absolute size-full overflow-hidden [perspective:200px]",
-        "-z-10",
+        "pointer-events-none absolute inset-0 overflow-hidden [perspective:200px]",
         className,
       )}
-      style={{ "--grid-angle": `${angle}deg` } as React.CSSProperties}
+      style={{ "--grid-angle": `${angle}deg`, zIndex: 0 } as React.CSSProperties}
     >
       {/* Grid */}
       <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
