@@ -16,14 +16,7 @@ export const Hero = () => {
       });
     }
   };
-  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
-      {/* Static Background Image */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="w-full h-full object-cover" src="/lovable-uploads/078f0c0e-41aa-407b-b90d-0ec9180af01b.png" />
-      </div>
-      
-      {/* Solid color fade at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent" />
+  return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20 bg-transparent">
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
@@ -61,8 +54,8 @@ export const Hero = () => {
           </h1>
           
           <h2 className="text-base sm:text-lg leading-tight mb-2 font-lalezar">
-            <span className="text-3xl font-black text-[#14141f]">استكا</span>{" "}
-            <span className="text-foreground text-3xl font-black">ولا فستكا؟</span>
+            <span className="text-3xl font-black text-primary">استكة</span>{" "}
+            <span className="text-foreground text-3xl font-black">ولا فستكة؟</span>
           </h2>
         </div>
 
