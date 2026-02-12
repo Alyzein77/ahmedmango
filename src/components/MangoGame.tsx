@@ -60,14 +60,16 @@ export const MangoGame = () => {
                   boxShadow: '0 20px 50px -10px hsla(260, 60%, 20%, 0.5), 0 10px 30px -5px hsla(260, 60%, 30%, 0.3)'
                 }}
               >
-                <div 
-                  className="rounded-[14px]"
-                >
+                <div className="rounded-[14px] relative">
                   <img 
                     alt="العب واكسب مع أحمد مانجو" 
                     className="w-full rounded-lg" 
                     src="/lovable-uploads/play-and-win-header.png" 
                   />
+                  <div className="absolute bottom-3 left-0 right-0 text-center">
+                    <h3 className="text-2xl font-black font-lalezar text-white drop-shadow-[0_3px_0_#1A1349]">العب واكسب</h3>
+                    <p className="text-sm font-bold text-white drop-shadow-[0_2px_0_#1A1349]">مع أحمد مانجو 🥭</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,7 +208,7 @@ export const MangoGame = () => {
               }}
             >
               <div 
-                className="rounded-[14px] p-[10px]"
+                className="rounded-[14px] p-[10px] relative"
                 style={{
                   background: 'hsl(260, 50%, 25%)'
                 }}
@@ -216,6 +218,10 @@ export const MangoGame = () => {
                   alt="العب واكسب مع أحمد مانجو" 
                   className="w-full max-w-md rounded-xl" 
                 />
+                <div className="absolute bottom-5 left-0 right-0 text-center">
+                  <h3 className="text-4xl font-black font-lalezar text-white drop-shadow-[0_4px_0_#1A1349]">العب واكسب</h3>
+                  <p className="text-lg font-bold text-white drop-shadow-[0_3px_0_#1A1349]">مع أحمد مانجو 🥭</p>
+                </div>
               </div>
             </div>
           </div>
