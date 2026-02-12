@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { RetroGrid } from "@/components/ui/retro-grid";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 export const Hero = () => {
   const { trackButtonClick } = useMixpanel();
@@ -19,9 +19,9 @@ export const Hero = () => {
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20">
 
-      {/* Retro Grid Background - absolute, z-0 */}
+      {/* Dotted Surface Background */}
       <div className="absolute inset-0" style={{ zIndex: 0 }}>
-        <RetroGrid angle={65} className="!absolute !inset-0" />
+        <DottedSurface />
       </div>
 
       {/* Content Container - z-10 above grid */}
