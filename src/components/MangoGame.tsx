@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Trophy, Gift, Zap, Star } from "lucide-react";
+import mangoIcon from "@/assets/mango-icon.png";
 import { useMixpanel } from "@/hooks/useMixpanel";
 import { useTrackSection } from "@/hooks/useTrackSection";
 
@@ -90,8 +91,9 @@ export const MangoGame = () => {
                   }}
                 />
                 <p className="text-sm sm:text-lg md:text-xl leading-relaxed font-bold relative z-10" style={{ color: '#1A1A2A' }}>
-                  ساعد أحمد مانجو يأكل المنجا… اللعبة بسيطة بس صدقني مش سهلة.
-                  حرّك يمين وشمال، امسك المنجا النازلة، وخلي بالك ما توقعهاش! 🥭
+                  ساعد أحمد مانجو يأكل المانجو… اللعبة بسيطة بس صدقني مش سهلة.
+                  حرّك يمين وشمال، امسك المانجو النازلة، وخلي بالك ما توقعهاش!
+                  <img src={mangoIcon} alt="مانجو" className="inline-block w-6 h-6 align-middle" />
                 </p>
               </div>
             </div>
@@ -109,7 +111,7 @@ export const MangoGame = () => {
                 text: "دخول سريع"
               }, {
                 icon: Gift,
-                text: "كل منجاية 10 نقاط"
+                text: "كل مانجو 10 نقاط"
               }].map((feature, idx) => (
                 <div 
                   key={idx} 
