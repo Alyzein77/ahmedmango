@@ -151,7 +151,7 @@ const CollisionMechanism = React.forwardRef<
           repeatDelay: beamOptions.repeatDelay || 0,
         }}
         className={cn(
-          "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-primary via-orange to-transparent",
+          "absolute left-0 top-20 m-auto h-14 w-[3px] rounded-full bg-gradient-to-t from-primary via-orange to-transparent scale-y-[3]",
           beamOptions.className
         )}
       />
