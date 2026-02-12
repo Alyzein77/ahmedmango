@@ -64,8 +64,8 @@ export const Footer = () => {
             <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3 uppercase">
               أحمد مانجو
             </h3>
-            <p className="text-secondary-foreground/80 leading-relaxed text-xs sm:text-sm font-medium italic">
-              "I'm not reviewing a product, I'm telling a story"
+            <p className="text-secondary-foreground/80 leading-relaxed text-xs sm:text-sm font-medium">
+              أنا مش بعمل مراجعة، أنا بحكي حكاية ✨
             </p>
           </div>
 
