@@ -19,14 +19,14 @@ export const Hero = () => {
   };
   return <section ref={sectionRef as React.RefObject<HTMLElement>} id="hero" className="relative w-full overflow-hidden font-poppins pt-6 pb-16 sm:pt-10 sm:pb-20 bg-transparent">
 
-      {/* Retro Grid Background */}
-      <RetroGrid angle={65} />
+      {/* Retro Grid Background - z-0 to stay behind all content */}
+      <RetroGrid angle={65} className="z-0" />
 
       {/* Content Container */}
       <div className="relative z-10 w-full flex flex-col items-center px-4 max-w-md mx-auto">
         
         {/* TOP SECTION — CENTERED IMAGE WITH MANGO FRAME */}
-        <div className="relative flex items-center justify-center mb-8 sm:mb-10">
+        <div className="relative z-20 flex items-center justify-center mb-8 sm:mb-10">
           {/* Subtle glow effect behind profile */}
           <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] rounded-full bg-orange/40 blur-2xl animate-pulse" />
           <div className="absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full bg-primary/30 blur-xl animate-pulse" style={{
