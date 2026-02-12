@@ -59,14 +59,13 @@ export const Footer = () => {
             <img 
               src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" 
               alt="أحمد مانجو" 
-              className="h-20 sm:h-24 w-auto mb-2 sm:mb-3"
+              className="h-28 sm:h-32 w-auto mb-2 sm:mb-3"
             />
             <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3 uppercase">
               أحمد مانجو
             </h3>
-            <p className="text-secondary-foreground/80 leading-relaxed text-xs sm:text-sm font-medium">
-              مراجعات صادقة للمنتجات اليومية<br />
-              2استكا أو فاستكا - مافيش وسط!
+            <p className="text-secondary-foreground/80 leading-relaxed text-xs sm:text-sm font-medium italic">
+              "I'm not reviewing a product, I'm telling a story"
             </p>
           </div>
 
