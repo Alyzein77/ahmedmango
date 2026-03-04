@@ -1,8 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Youtube, Instagram, Facebook, Star, Users, Trophy, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 
 const About = () => {
+  useSEO({
+    title: "من هو أحمد مانجو - صانع محتوى مراجعات السناكس",
+    description: "تعرف على أحمد مانجو، أكبر صانع محتوى مراجعات سناكس ومنتجات غذائية في مصر. أكثر من 2 مليون متابع و50 مليون مشاهدة منذ 2019.",
+    canonical: "/about",
+    ogImage: "https://ahmedmango.com/lovable-uploads/ahmed-mango-hero.png",
+  });
   const stats = [
     { icon: Users, value: "2M+", label: "متابع" },
     { icon: Youtube, value: "500+", label: "فيديو" },

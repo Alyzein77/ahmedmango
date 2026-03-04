@@ -8,36 +8,45 @@ import { LatestContentFeed } from "@/components/LatestContentFeed";
 import { SocialSection } from "@/components/SocialSection";
 import { Footer } from "@/components/Footer";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
   const { data: showGameSection } = useSiteSettings('game_section_visible');
+
+  useSEO({
+    title: "أحمد مانجو | مراجعات سناكس ومنتجات - استكا ولا فاستكا",
+    description: "أحمد مانجو - أكبر منصة مراجعات سناكس ومنتجات غذائية في مصر. شوف تقييمات صادقة لشيبسي، شوكولاتة، مشروبات، بسكويت وكل السناكس. استكا ولا فاستكا؟ العب واكسب جوائز حقيقية!",
+    canonical: "/",
+  });
 
   return (
     <div className="min-h-screen font-poppins">
       {/* Section 1: Navigation */}
       <Navbar />
-      
-      {/* Section 1: Hero */}
-      <Hero />
-      
-      {/* Section 2: Ad Spaces */}
-      <AdSpaces />
-      
-      {/* Section 3: Product List (2استكا / فاستكا) */}
-      <ProductList />
-      
-      {/* Section 4: Mango Game - Only show if enabled */}
-      {showGameSection && <MangoGame />}
-      
-      {/* Section 5: Stats Section */}
-      <StatsSection />
-      
-      {/* Section 6: Latest Content Feed */}
-      <LatestContentFeed />
-      
-      {/* Section 7: Social Section */}
-      <SocialSection />
-      
+
+      <main>
+        {/* Section 1: Hero */}
+        <Hero />
+
+        {/* Section 2: Ad Spaces */}
+        <AdSpaces />
+
+        {/* Section 3: Product List (2استكا / فاستكا) */}
+        <ProductList />
+
+        {/* Section 4: Mango Game - Only show if enabled */}
+        {showGameSection && <MangoGame />}
+
+        {/* Section 5: Stats Section */}
+        <StatsSection />
+
+        {/* Section 6: Latest Content Feed */}
+        <LatestContentFeed />
+
+        {/* Section 7: Social Section */}
+        <SocialSection />
+      </main>
+
       {/* Section 8: Footer */}
       <Footer />
     </div>

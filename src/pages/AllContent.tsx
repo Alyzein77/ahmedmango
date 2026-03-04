@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Music2, Instagram, Youtube, Facebook, Loader2, ExternalLink, ArrowRight, Eye } from "lucide-react";
 import { Database } from "@/integrations/supabase/types";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 
 type Video = Database["public"]["Tables"]["videos"]["Row"];
 type Platform = Database["public"]["Enums"]["video_platform"];
@@ -60,6 +61,12 @@ const AllContent = () => {
   const [content, setContent] = useState<UnifiedContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Platform | "all">("all");
+
+  useSEO({
+    title: "فيديوهات ومحتوى أحمد مانجو",
+    description: "شوف أحلى فيديوهات أحمد مانجو على يوتيوب، تيك توك، انستجرام وفيسبوك. مراجعات سناكس، تحديات، تجارب منتجات جديدة وأكتر!",
+    canonical: "/content",
+  });
 
   useEffect(() => {
     fetchContent();

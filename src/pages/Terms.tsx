@@ -2,8 +2,14 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSEO } from "@/hooks/useSEO";
 
 const Terms = () => {
+  useSEO({
+    title: "الشروط والأحكام",
+    description: "الشروط والأحكام لاستخدام موقع أحمد مانجو. تعرف على القواعد والسياسات المتبعة في الموقع.",
+    canonical: "/terms",
+  });
   return (
     <div className="min-h-screen font-poppins bg-background">
       <Navbar />

@@ -14,8 +14,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { 
-  Phone, 
+import { useSEO } from "@/hooks/useSEO";
+import {
+  Phone,
   User, 
   Building2, 
   MessageSquare, 
@@ -47,6 +48,12 @@ const AdRequest = () => {
   const { trackFormSubmission, trackButtonClick } = useMixpanel();
   const [currentStep, setCurrentStep] = useState<Step>("otp");
   const [isLoading, setIsLoading] = useState(false);
+
+  useSEO({
+    title: "أعلن مع أحمد مانجو",
+    description: "عايز تعلن مع أحمد مانجو؟ تواصل معانا لعرض منتجك على أكثر من 2 مليون متابع. إعلانات سناكس، منتجات غذائية، مشروبات وأكتر.",
+    canonical: "/advertise",
+  });
   
   // OTP state
   const [phone, setPhone] = useState("");

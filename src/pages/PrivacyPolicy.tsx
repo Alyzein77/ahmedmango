@@ -1,7 +1,13 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Shield } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 const PrivacyPolicy = () => {
+  useSEO({
+    title: "سياسة الخصوصية",
+    description: "سياسة الخصوصية لموقع أحمد مانجو. تعرف على كيفية جمع واستخدام وحماية بياناتك الشخصية.",
+    canonical: "/privacy-policy",
+  });
   return <div className="min-h-screen font-poppins bg-background">
       <Navbar />
       

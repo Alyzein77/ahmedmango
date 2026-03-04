@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useMixpanel } from "@/hooks/useMixpanel";
+import { useSEO } from "@/hooks/useSEO";
 
 export interface Product {
   id: string;
@@ -31,6 +32,12 @@ const Products = () => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [categories, setCategories] = useState<string[]>(["all"]);
   const { trackProductClick, trackFilterChange } = useMixpanel();
+
+  useSEO({
+    title: "كل المنتجات - مراجعات سناكس وأكل",
+    description: "اكتشف كل المنتجات اللي راجعها أحمد مانجو. تقييمات صادقة لشيبسي، شوكولاتة، مشروبات، بسكويت، نودلز وكل السناكس في مصر. استكا ولا فاستكا؟",
+    canonical: "/products",
+  });
 
   const handleVerdictFilter = (verdict: "all" | "2استكا" | "فاستكا") => {
     setActiveFilter(verdict);
