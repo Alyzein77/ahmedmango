@@ -7,8 +7,15 @@ import { Loader2, ThumbsUp, ThumbsDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import type { Product } from "./Products";
+import { useSEO } from "@/hooks/useSEO";
 
 const ProductsCompare = () => {
+  useSEO({
+    title: "مقارنة المنتجات - 2استكا vs فاستكا",
+    description: "قارن بين المنتجات الكويسة والوحشة. شوف تقييم أحمد مانجو للسناكس والمنتجات الغذائية - مين استكا ومين فاستكا؟",
+    canonical: "/products/compare",
+  });
+
   const [goodProducts, setGoodProducts] = useState<Product[]>([]);
   const [badProducts, setBadProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
