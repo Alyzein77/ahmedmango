@@ -197,6 +197,16 @@ The app requires these `VITE_`-prefixed variables (available at runtime via `imp
 - Production build: `npm run build` outputs to `dist/`
 - Both `package-lock.json` (npm) and `bun.lockb` (Bun) are present
 
+## SEO Conventions
+
+- **Per-page SEO**: Every page must call `useSEO()` from `@/hooks/useSEO` with unique `title`, `description`, and `canonical`
+- **Structured data**: JSON-LD schemas are in `index.html` (Organization, WebSite, Person) and injected dynamically (BreadcrumbList, FAQPage)
+- **Image alt text**: Use keyword-rich Arabic alt text including "أحمد مانجو" (e.g. `مراجعة [product] من أحمد مانجو`)
+- **Lazy loading**: All below-fold images must have `loading="lazy"`
+- **Code splitting**: Non-critical routes use `React.lazy()` in `App.tsx` — keep Index, Products, AllContent as eager imports
+- **Sitemap**: Update `public/sitemap.xml` when adding new public routes
+- **FAQ component**: `src/components/FAQ.tsx` renders on homepage with `FAQPage` schema — update when adding new common questions
+
 ## Notes for AI Assistants
 
 - This is an Arabic-first platform — preserve RTL layout and Arabic content in templates
@@ -204,5 +214,5 @@ The app requires these `VITE_`-prefixed variables (available at runtime via `imp
 - Database types in `src/integrations/supabase/types.ts` are auto-generated — do not edit manually
 - The `.lovable/` directory contains Lovable platform configuration — treat as read-only
 - Admin components in `src/components/admin/` follow a consistent pattern: fetch data with React Query, display in tables, provide CRUD modals
-- When adding new pages, register routes in `src/App.tsx`
+- When adding new pages, register routes in `src/App.tsx` (use `React.lazy` for non-critical pages) and add to `public/sitemap.xml`
 - When adding new Supabase tables, create a migration in `supabase/migrations/`

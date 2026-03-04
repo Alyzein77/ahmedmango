@@ -24,7 +24,7 @@ export const SponsorBanner = ({
           </span>
           {sponsorLogo && (
             <div className="w-16 h-16 bg-background rounded-xl flex items-center justify-center border-2 border-border">
-              <img src={sponsorLogo} alt={sponsorName} className="w-12 h-12 object-contain" />
+              <img src={sponsorLogo} alt={sponsorName} loading="lazy" className="w-12 h-12 object-contain" />
             </div>
           )}
           <div className="text-right">

@@ -6,6 +6,7 @@ import { MangoGame } from "@/components/MangoGame";
 import { StatsSection } from "@/components/StatsSection";
 import { LatestContentFeed } from "@/components/LatestContentFeed";
 import { SocialSection } from "@/components/SocialSection";
+import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { useSEO } from "@/hooks/useSEO";
@@ -45,6 +46,9 @@ const Index = () => {
 
         {/* Section 7: Social Section */}
         <SocialSection />
+
+        {/* Section 8: FAQ - SEO rich content */}
+        <FAQ />
       </main>
 
       {/* Section 8: Footer */}
