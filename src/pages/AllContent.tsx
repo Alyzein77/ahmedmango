@@ -66,6 +66,10 @@ const AllContent = () => {
     title: "فيديوهات ومحتوى أحمد مانجو",
     description: "شوف أحلى فيديوهات أحمد مانجو على يوتيوب، تيك توك، انستجرام وفيسبوك. مراجعات سناكس، تحديات، تجارب منتجات جديدة وأكتر!",
     canonical: "/content",
+    breadcrumbs: [
+      { name: "الرئيسية", url: "/" },
+      { name: "الفيديوهات والمحتوى", url: "/content" },
+    ],
   });
 
   useEffect(() => {
@@ -216,7 +220,7 @@ const ContentCard = ({ item, delay = 0 }: ContentCardProps) => {
       <div className="relative aspect-square bg-muted overflow-hidden">
         <img
           src={item.preview_url}
-          alt={item.title}
+          alt={`${item.title} - فيديو أحمد مانجو على ${item.platform}`}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />

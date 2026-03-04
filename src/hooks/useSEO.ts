@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface SEOConfig {
   title: string;
   description: string;
@@ -8,6 +13,7 @@ interface SEOConfig {
   ogDescription?: string;
   ogImage?: string;
   ogType?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const BASE_URL = "https://ahmedmango.com";
@@ -22,6 +28,7 @@ export function useSEO({
   ogDescription,
   ogImage,
   ogType = "website",
+  breadcrumbs,
 }: SEOConfig) {
   useEffect(() => {
     // Set document title
@@ -65,5 +72,29 @@ export function useSEO({
       }
       link.setAttribute("href", `${BASE_URL}${canonical}`);
     }
-  }, [title, description, canonical, ogTitle, ogDescription, ogImage, ogType]);
+    // BreadcrumbList structured data
+    const breadcrumbScriptId = "seo-breadcrumb-jsonld";
+    if (breadcrumbs && breadcrumbs.length > 0) {
+      let script = document.getElementById(breadcrumbScriptId) as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement("script");
+        script.id = breadcrumbScriptId;
+        script.type = "application/ld+json";
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": `${BASE_URL}${item.url}`,
+        })),
+      });
+    } else {
+      const existing = document.getElementById(breadcrumbScriptId);
+      if (existing) existing.remove();
+    }
+  }, [title, description, canonical, ogTitle, ogDescription, ogImage, ogType, breadcrumbs]);
 }

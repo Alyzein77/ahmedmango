@@ -163,10 +163,11 @@ export const ProductList = () => {
 
                 {/* Product Image */}
                 <div className="relative aspect-square bg-sky/20 overflow-hidden">
-                  <img 
-                    src={product.thumbnail_url || "/placeholder.svg"} 
-                    alt={product.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  <img
+                    src={product.thumbnail_url || "/placeholder.svg"}
+                    alt={`مراجعة ${product.name} من أحمد مانجو - ${product.verdict}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
 

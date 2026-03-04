@@ -14,6 +14,11 @@ const ProductsCompare = () => {
     title: "مقارنة المنتجات - 2استكا vs فاستكا",
     description: "قارن بين المنتجات الكويسة والوحشة. شوف تقييم أحمد مانجو للسناكس والمنتجات الغذائية - مين استكا ومين فاستكا؟",
     canonical: "/products/compare",
+    breadcrumbs: [
+      { name: "الرئيسية", url: "/" },
+      { name: "المنتجات", url: "/products" },
+      { name: "2استكا vs فاستكا", url: "/products/compare" },
+    ],
   });
 
   const [goodProducts, setGoodProducts] = useState<Product[]>([]);

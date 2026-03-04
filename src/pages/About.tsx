@@ -33,9 +33,9 @@ const About = () => {
             <ArrowLeft className="w-5 h-5 text-primary group-hover:-translate-x-1 transition-transform" />
             <span className="text-primary font-bold">العودة للرئيسية</span>
           </Link>
-          <img 
-            src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" 
-            alt="Logo" 
+          <img
+            src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png"
+            alt="شعار أحمد مانجو"
             className="h-10"
           />
         </div>
@@ -87,9 +87,10 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden border-4 border-primary/30 shadow-2xl">
-                <img 
-                  src="/lovable-uploads/ahmed-mango-hero.png" 
-                  alt="أحمد مانجو"
+                <img
+                  src="/lovable-uploads/ahmed-mango-hero.png"
+                  alt="أحمد مانجو - صانع محتوى مراجعات سناكس ومنتجات غذائية في مصر"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -37,6 +37,10 @@ const Products = () => {
     title: "كل المنتجات - مراجعات سناكس وأكل",
     description: "اكتشف كل المنتجات اللي راجعها أحمد مانجو. تقييمات صادقة لشيبسي، شوكولاتة، مشروبات، بسكويت، نودلز وكل السناكس في مصر. استكا ولا فاستكا؟",
     canonical: "/products",
+    breadcrumbs: [
+      { name: "الرئيسية", url: "/" },
+      { name: "كل المنتجات", url: "/products" },
+    ],
   });
 
   const handleVerdictFilter = (verdict: "all" | "2استكا" | "فاستكا") => {
@@ -264,10 +268,11 @@ const Products = () => {
 
                     {/* Product Image */}
                     <div className="relative aspect-square bg-muted overflow-hidden">
-                      <img 
-                        src={product.thumbnail_url || "/placeholder.svg"} 
-                        alt={product.name} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                      <img
+                        src={product.thumbnail_url || "/placeholder.svg"}
+                        alt={`مراجعة ${product.name} من أحمد مانجو - ${product.verdict}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
 

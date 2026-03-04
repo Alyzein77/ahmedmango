@@ -23,7 +23,7 @@ export const RewardsSection = () => {
           {/* Image */}
           <div className="relative order-2 md:order-2">
             <div className="rounded-xl border-4 border-foreground shadow-bold-lg overflow-hidden bg-background">
-              <img alt="Rewards Game" className="w-full h-auto" src="/lovable-uploads/de1bfc73-4d03-4bdd-8144-0c7153fec776.png" />
+              <img alt="لعبة المكافآت - العب واكسب جوائز مع أحمد مانجو" loading="lazy" className="w-full h-auto" src="/lovable-uploads/de1bfc73-4d03-4bdd-8144-0c7153fec776.png" />
             </div>
           </div>
 

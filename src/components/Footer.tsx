@@ -56,9 +56,10 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 sm:gap-10 mb-8 sm:mb-12">
           {/* Brand & Logo */}
           <div className="text-center md:text-right flex flex-col items-center md:items-start">
-            <img 
-              src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png" 
-              alt="أحمد مانجو" 
+            <img
+              src="/lovable-uploads/88e2436f-26ab-4234-a5ba-a613e3bc664f.png"
+              alt="شعار أحمد مانجو - منصة مراجعات السناكس"
+              loading="lazy"
               className="h-28 sm:h-32 w-auto mb-2 sm:mb-3"
             />
             <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3 uppercase">
