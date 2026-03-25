@@ -7,6 +7,7 @@ import { StatsSection } from "@/components/StatsSection";
 import { LatestContentFeed } from "@/components/LatestContentFeed";
 import { SocialSection } from "@/components/SocialSection";
 import { Footer } from "@/components/Footer";
+import { BrandsSection } from "@/components/BrandsSection";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -21,33 +22,34 @@ const Index = () => {
 
   return (
     <div className="min-h-screen font-poppins">
-      {/* Section 1: Navigation */}
       <Navbar />
 
       <main>
         {/* Section 1: Hero */}
         <Hero />
 
-        {/* Section 2: Ad Spaces */}
-        <AdSpaces />
-
-        {/* Section 3: Product List (2استكا / فاستكا) */}
-        <ProductList />
-
-        {/* Section 4: Mango Game - Only show if enabled */}
-        {showGameSection && <MangoGame />}
-
-        {/* Section 5: Stats Section */}
+        {/* Section 2: Stats - Social proof right after hero */}
         <StatsSection />
 
-        {/* Section 6: Latest Content Feed */}
+        {/* Section 3: Latest Videos - Fans want content */}
         <LatestContentFeed />
 
-        {/* Section 7: Social Section */}
+        {/* Section 4: Product List (استكا / فاستكا) */}
+        <ProductList />
+
+        {/* Section 5: For Brands CTA */}
+        <BrandsSection />
+
+        {/* Section 6: Ad Spaces - Earned attention */}
+        <AdSpaces />
+
+        {/* Section 7: Mango Game - Only show if enabled */}
+        {showGameSection && <MangoGame />}
+
+        {/* Section 8: Social Section */}
         <SocialSection />
       </main>
 
-      {/* Section 8: Footer */}
       <Footer />
     </div>
   );

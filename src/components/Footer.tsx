@@ -80,6 +80,12 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/advertise" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
+                  <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                  أعلن معانا
+                </Link>
+              </li>
+              <li>
                 <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
                   <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
                   سياسة الخصوصية
